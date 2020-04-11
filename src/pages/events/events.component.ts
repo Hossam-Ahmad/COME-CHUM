@@ -22,10 +22,10 @@ export class EventsComponent implements OnInit {
   }
 
   initData() {
-    this.getGroups();
+    this.getEvents();
   }
 
-  getGroups() {
+  getEvents() {
     this.eventsService.getAll(this.pageId).subscribe(data => {
       this.groups = data;
       console.log(data);
@@ -45,7 +45,7 @@ export class EventsComponent implements OnInit {
   }
 
   onScroll() {
-    this.getGroups();
+    this.getEvents();
   }
 
   details(index) {

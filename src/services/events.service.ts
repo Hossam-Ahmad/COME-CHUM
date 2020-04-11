@@ -11,11 +11,11 @@ export class EventsService {
        ) {}
 
     getAll(pageId): any {
-      return this.httpClient.get(`${environment.api}groups/all/${pageId}`);
+      return this.httpClient.get(`${environment.api}events/all/${pageId}`);
     }
 
     remove(userId): any {
-      return this.httpClient.post(`${environment.api}groups/remove`, {
+      return this.httpClient.post(`${environment.api}events/remove`, {
         userId
       });
     }
