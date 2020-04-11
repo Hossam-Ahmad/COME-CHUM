@@ -14,12 +14,10 @@
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
       
-              <li class="nav-item"  (click)="clickEvent('/cpanel/dashboard')"  [ngClass]="status == '/cpanel/dashboard' ? 'active' : 'in-active'">
-                <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/cpanel/dashboard'">الصفحات</a>
+              <li *ngFor="let route of routes" class="nav-item"  (click)="clickEvent(route.path)"  [ngClass]="status == route.path ? 'active' : 'in-active'">
+                <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="route.path">{{route.title}}</a>
               </li>
-              <li class="nav-item"  (click)="clickEvent('/cpanel/contact')"  [ngClass]="status == '/cpanel/contact' ? 'active' : 'in-active'">
-                <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/cpanel/contact'">التواصل</a>
-              </li>
+              
               <li class="nav-item"  (click)="logout()">
                 <a class="nav-link waves-light items-style" mdbWavesEffect routerLinkActive="on">تسجيل خروح</a>
               </li>

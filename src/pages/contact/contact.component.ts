@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from '../../services/events.service';
+import { GroupsService } from '../../services/groups.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss']
 })
-export class EventsComponent implements OnInit {
+export class ContactComponent implements OnInit {
 
   aboutHeight: any;
   public groups = [];
   public cover = '';
   pageId = 1;
-  constructor(public eventsService: EventsService) {
+  constructor(public groupsService: GroupsService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -22,11 +22,11 @@ export class EventsComponent implements OnInit {
   }
 
   initData() {
-    this.getEvents();
+    this.getGroups();
   }
 
-  getEvents() {
-    this.eventsService.getAll(this.pageId).subscribe(data => {
+  getGroups() {
+    this.groupsService.getAll(this.pageId).subscribe(data => {
       this.groups = data;
       console.log(data);
       this.pageId++;
@@ -34,18 +34,18 @@ export class EventsComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].event_id}`, '_blank');
+    const win = window.open(`${environment.host}group/${this.groups[index].group_id}`, '_blank');
     win.focus();
   }
 
   remove(index) {
-    this.eventsService.remove(index).subscribe( data => {
+    this.groupsService.remove(index).subscribe( data => {
       this.groups.splice(index, 1);
     });
   }
 
   onScroll() {
-    this.getEvents();
+    this.getGroups();
   }
 
   details(index) {

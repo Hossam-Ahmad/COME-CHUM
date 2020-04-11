@@ -8,7 +8,7 @@
               <app-dashboard-navbar></app-dashboard-navbar>
             </div>
     </section>
-    <div class="main-panel" [ngStyle]="{'width': isLogin() || isMobile() ? '100%' : 'calc(100% - 260px)'}">
+    <div class="main-panel" [ngStyle]="{'width': isLogin() || isMobile() ? '100%' : 'calc(100% - 260px)'}" style="height: 100%;background-color: #eee;">
         <router-outlet></router-outlet>
     </div>
 </div>
