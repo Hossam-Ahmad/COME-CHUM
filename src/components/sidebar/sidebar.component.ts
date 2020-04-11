@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
+
+declare const $: any;
+declare interface RouteInfo {
+    path: string;
+    title: string;
+    icon: string;
+    class: string;
+}
+export const ROUTES: RouteInfo[] = [
+    { path: '/cpanel/dashboard', title: 'الصفحات',  icon: 'dashboard', class: ''},
+    { path: '/cpanel/users', title: 'المستخدمين',  icon: 'person', class: ''},
+    { path: '/cpanel/groups', title: 'الجروبات',  icon: 'group', class: ''},
+    { path: '/cpanel/events', title: 'الايفينتات',  icon: 'event', class: ''},
+    { path: '/cpanel/contests', title: 'المسابقات',  icon: 'emoji_events', class: ''},
+    { path: '/cpanel/statictics', title: 'الاحصائيات',  icon: 'equalizer', class: ''},
+    { path: '/cpanel/events', title: 'الميزانية',  icon: 'account_balance_wallet', class: ''},
+    { path: '/cpanel/faq', title: 'الاسئلة المتكررة',  icon: 'help', class: ''},
+    { path: '/cpanel/contact', title: 'التواصل',  icon: 'textsms', class: ''},
+];
+
+@Component({
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
+})
+export class SidebarComponent implements OnInit {
+  menuItems: any[];
+
+  constructor(public router: Router, public authService: AuthService) { }
+
+  ngOnInit() {
+    this.menuItems = ROUTES.filter(menuItem => menuItem);
+  }
+
+  isMobileMenu() {
+      if (window.screen.width > 991) {
+          return false;
+      }
+      return true;
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+}

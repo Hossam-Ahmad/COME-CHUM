@@ -1,0 +1,29 @@
+@import "../../styles.scss";
+
+mdb-navbar{
+    direction: rtl;
+    // position: relative;
+    .nav-link {
+        font-family: cairo-semibold;
+        color: #fff;
+        margin: 0 1em;
+        font-size: 14px;
+    }
+    .dropdown{
+        direction: ltr;
+        background-color: #38aab6;
+        // position: absolute;
+        // left: 0;
+        .dropdown-item:hover{
+          background-color: transparent;
+        }
+    }
+    .navbar-toggler{
+        background-color: #fff !important;
+    }
+}
+.items-style{
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    border-radius: 25px;
+} 

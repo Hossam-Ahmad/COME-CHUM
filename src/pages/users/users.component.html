@@ -1,0 +1,54 @@
+
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">قائمه المستخدمين</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                حذف
+                                            </th>
+                                            <th>
+                                                تاريخ الاشتراك
+                                            </th>
+                                            <th>
+                                                الباقه
+                                            </th>
+                                            <th>
+                                                الايميل
+                                            </th>
+                                            <th>
+                                                الاسم
+                                            </th>
+                                            <th>
+                                                الرقم
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let user of users;let i = index;">
+                                                <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
+                                                <td>{{user.created_at}}</td>
+                                                <td>{{user.package}}</td>
+                                                <td>{{user.email}}</td>
+                                                <td>{{user.name}}</td>
+                                                <td class="text-primary">
+                                                    {{i+1}}
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <app-dasboard-footer></app-dasboard-footer>

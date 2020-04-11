@@ -1,0 +1,61 @@
+<!--Navbar-->
+<mdb-navbar #navbarid id="navbarid" SideClass="navbar navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/images/logo.png">
+    </a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item"  (click)="clickEvent('/about')"  [ngClass]="status == '/' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/'">{{'home_nav' | translate}}</a>
+        </li>
+        <li class="nav-item"  (click)="clickEvent('/about')"  [ngClass]="status == '/about' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/about'">{{'about_nav' | translate}}</a>
+        </li>
+        <li class="nav-item" (click)="clickEvent('/services')"  [ngClass]="status == '/services' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/services'">{{'services_nav' | translate}}</a>
+        </li>
+
+        <li *ngIf="sixthPage" class="nav-item" (click)="clickEvent('/page')"  [ngClass]="status == '/page' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/page'">{{languageService.getCurrentLanguage() == 'ar' ? sixthPageAr : sixthPageEn}}</a>
+        </li>
+
+        <li class="nav-item" (click)="contact()" [ngClass]="status == '/contact' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#contact">{{'contact_nav' | translate}} <span class="sr-only">(current)</span></a>
+        </li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link waves-light items-style" mdbWavesEffect href="https://www.gecc-ksa.co/login.aspx">{{'login' | translate}} <span class="sr-only">(current)</span></a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                  {{'language' | translate}} <span class="caret"></span></a>
+              <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                  <li class="nav-item translation" (click)="changeLanguage('ar')">
+                      <a class="nav-link dropdown-item waves-light"  mdbWavesEffect style="cursor: pointer" [style.text-decoration]="language == null || language == 'ar' ? 'underline' : 'none'">Ar<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item translation" (click)="changeLanguage('en')">
+                      <a class="nav-link dropdown-item waves-light"  mdbWavesEffect style="cursor: pointer" [style.text-decoration]="language == 'en' ? 'underline' : 'none'">En<span class="sr-only">(current)</span></a>
+                    </li> 
+              </div>
+            </li>
+            
+        </ul>
+        <!-- Links -->
+
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

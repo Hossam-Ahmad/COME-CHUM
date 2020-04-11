@@ -1,0 +1,21 @@
+<div class="logo">
+    <a class="simple-text">
+        <div class="logo-img">
+            <img style="max-width: 150px;" src="../../../assets/images/logo_website.png"/>
+        </div>
+        <a class="nav-link" (click)="logout()">
+            <p class="logout_btn">تسجيل خروج</p>
+        </a>
+    </a>
+    
+</div>
+<div class="sidebar-wrapper">
+    <ul class="nav scrollable_list">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" routerLinkActive="on" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

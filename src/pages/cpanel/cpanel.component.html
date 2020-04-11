@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div *ngIf="!isLogin() && !isMobile()" class="sidebar" data-color="danger" data-background-color="white" data-image="../../../assets/images/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/images/sidebar-4.jpg)"></div>
+    </div>
+    <section class="first-section" *ngIf="isMobile() && !isLogin()">
+            <div class="container">
+              <app-dashboard-navbar></app-dashboard-navbar>
+            </div>
+    </section>
+    <div class="main-panel" [ngStyle]="{'width': isLogin() || isMobile() ? '100%' : 'calc(100% - 260px)'}">
+        <router-outlet></router-outlet>
+    </div>
+</div>

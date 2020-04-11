@@ -1,0 +1,34 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+          <a class="navbar-brand" href="#">
+            <img src="../../../assets/images/logo.png">
+          </a>
+        </mdb-navbar-brand>
+      
+        <!-- Collapsible content -->
+        <links>
+      
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+      
+              <li class="nav-item"  (click)="clickEvent('/cpanel/dashboard')"  [ngClass]="status == '/cpanel/dashboard' ? 'active' : 'in-active'">
+                <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/cpanel/dashboard'">الصفحات</a>
+              </li>
+              <li class="nav-item"  (click)="clickEvent('/cpanel/contact')"  [ngClass]="status == '/cpanel/contact' ? 'active' : 'in-active'">
+                <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/cpanel/contact'">التواصل</a>
+              </li>
+              <li class="nav-item"  (click)="logout()">
+                <a class="nav-link waves-light items-style" mdbWavesEffect routerLinkActive="on">تسجيل خروح</a>
+              </li>
+      
+              </ul>
+              <!-- Links -->
+      
+        </links>
+        <!-- Collapsible content -->
+      
+      </mdb-navbar>
+      <!--/.Navbar-->
