@@ -33,12 +33,15 @@ import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
+import { EventsComponent } from 'src/pages/events/events.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
 import { ContentService } from '../services/content.service';
 import { UsersService } from '../services/users.service';
 import { GroupsService } from 'src/services/groups.service';
+import { EventsService } from 'src/services/events.service';
+
 
 
 export function createHttpLoader(http: HttpClient) {
@@ -58,7 +61,8 @@ export function createHttpLoader(http: HttpClient) {
     NavbarComponent,
     DashboardNavbarComponent,
     UsersComponent,
-    GroupsComponent
+    GroupsComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ export function createHttpLoader(http: HttpClient) {
     AuthService,
     ContentService,
     UsersService,
-    GroupsService
+    GroupsService,
+    EventsService
   ],
   bootstrap: [AppComponent]
 })
