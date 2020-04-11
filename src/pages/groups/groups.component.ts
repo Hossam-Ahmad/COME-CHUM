@@ -44,7 +44,7 @@ export class GroupsComponent implements OnInit {
     });
   }
 
-  onScroll(event: any) {
+  onScroll() {
     this.getGroups();
   }
 

@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  onScroll(event: any) {
+  onScroll() {
     this.getUsers();
   }
 
