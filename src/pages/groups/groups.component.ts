@@ -48,4 +48,8 @@ export class GroupsComponent implements OnInit {
     this.getGroups();
   }
 
+  details(index) {
+
+  }
+
 }

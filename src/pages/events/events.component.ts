@@ -48,4 +48,8 @@ export class EventsComponent implements OnInit {
     this.getGroups();
   }
 
+  details(index) {
+
+  }
+
 }

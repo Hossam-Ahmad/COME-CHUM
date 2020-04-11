@@ -48,4 +48,8 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
+  details(index) {
+
+  }
+
 }
