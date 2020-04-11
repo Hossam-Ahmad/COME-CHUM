@@ -3,7 +3,6 @@ import {TranslateService} from '@ngx-translate/core';
 import { Router } from '@angular/router';
 // import { NavbarComponent as navmdb } from '../../../node_modules/angular-bootstrap-md/lib/free/navbars/navbar.component';
 // import { ContentService } from 'src/app/services/content.service';
-// import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-navbar',
@@ -30,7 +29,6 @@ export class NavbarComponent implements OnInit {
   constructor(public translate: TranslateService,
               public router: Router,
               // public contentService: ContentService,
-              // public languageService: LanguageService
               ) {
                 this.hasPage();
                }

@@ -24,10 +24,6 @@
           <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/services'">{{'services_nav' | translate}}</a>
         </li>
 
-        <li *ngIf="sixthPage" class="nav-item" (click)="clickEvent('/page')"  [ngClass]="status == '/page' ? 'active' : 'in-active'">
-          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/page'">{{languageService.getCurrentLanguage() == 'ar' ? sixthPageAr : sixthPageEn}}</a>
-        </li>
-
         <li class="nav-item" (click)="contact()" [ngClass]="status == '/contact' ? 'active' : 'in-active'">
           <a class="nav-link waves-light items-style" mdbWavesEffect href="#contact">{{'contact_nav' | translate}} <span class="sr-only">(current)</span></a>
         </li>
