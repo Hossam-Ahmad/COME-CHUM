@@ -1,0 +1,52 @@
+.client{
+    background-size: cover;
+    background-repeat: no-repeat no-repeat;
+    background-position: center;
+    padding: 1em 0;
+    .client-details{
+        padding: 3em;
+
+.client-header{
+    direction: rtl;
+    text-align: right;
+    color: #fff;
+}
+
+}
+}
+.portfolio{ margin: 5em 0 0;
+    .titlePicture{
+        background-repeat: no-repeat no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 20em;
+        width: 80%;
+        margin: 1em auto;
+        position: relative;
+        span{
+            position: absolute;
+            bottom: 0;
+            left: 0%;
+            background-color: #fff;
+            padding: 1em;
+            font-family: cairo-black;
+        }
+    }
+    .detailsOfWorks{
+        width: 80%;
+        text-align: center;
+        margin: auto;
+        .worksInner{padding: 2em;
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+}
+@media (max-width: 768px) {
+    .titlePicture{height: 12em !important;}
+    .worksInner{
+        padding: 0 !important;
+    }
+}

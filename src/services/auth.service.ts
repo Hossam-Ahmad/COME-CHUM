@@ -41,14 +41,14 @@ export class AuthService implements CanActivate {
     }
 
     login(email, password) {
-      return this.httpClient.post(`${environment.host}admins/auth`, {
+      return this.httpClient.post(`${environment.api}admins/auth`, {
         'email' : email,
         'password': password
       });
     }
 
     changeCredentials(email, oldPassword, newPassword) {
-      return this.httpClient.post(`${environment.host}admins/auth`, {
+      return this.httpClient.post(`${environment.api}admins/auth`, {
         'email' : email,
         'oldPassword': oldPassword,
         'newdPassword': newPassword,

@@ -18,7 +18,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/cpanel/contests', title: 'المسابقات',  icon: 'emoji_events', class: ''},
     { path: '/cpanel/statictics', title: 'الاحصائيات',  icon: 'equalizer', class: ''},
     { path: '/cpanel/events', title: 'الميزانية',  icon: 'account_balance_wallet', class: ''},
-    { path: '/cpanel/faq', title: 'الاسئلة المتكررة',  icon: 'help', class: ''},
     { path: '/cpanel/contact', title: 'التواصل',  icon: 'textsms', class: ''},
 ];
 

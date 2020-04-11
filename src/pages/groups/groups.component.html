@@ -5,7 +5,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-danger">
-                                <h4 class="card-title ">قائمه المستخدمين</h4>
+                                <h4 class="card-title ">قائمه الجروبات</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -15,19 +15,22 @@
                                                 حذف
                                             </th>
                                             <th>
-                                                صفحه البروفايل
+                                                صفحه الجروب
                                             </th>
                                             <th>
-                                                التفاصيل 
+                                               تفاصيل
                                             </th>
                                             <th>
                                                 تاريخ الاشتراك
                                             </th>
                                             <th>
-                                                الباقه
+                                                عن جروب 
                                             </th>
                                             <th>
-                                                الايميل
+                                                الادمن
+                                            </th>
+                                            <th>
+                                                عدد الاعضاء
                                             </th>
                                             <th>
                                                 الاسم
@@ -42,14 +45,15 @@
                                             [infiniteScrollThrottle]="50"
                                             (scrolled)="onScroll()"
                                         >
-                                            <tr *ngFor="let user of users;let i = index;">
+                                            <tr *ngFor="let group of groups;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{user.created_at}}</td>
-                                                <td>{{user.package}}</td>
-                                                <td>{{user.email}}</td>
-                                                <td>{{user.name}}</td>
+                                                <td>{{group.created_at}}</td>
+                                                <td>{{group.about}}</td>
+                                                <td>{{group.owner_name}}</td>
+                                                <td>{{group.members}}</td>
+                                                <td>{{group.name}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>

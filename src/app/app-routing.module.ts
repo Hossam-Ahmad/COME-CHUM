@@ -5,6 +5,7 @@ import { DashboardComponent } from 'src/pages/dashboard/dashboard.component';
 import { AuthService } from 'src/services/auth.service';
 import { CpanelComponent } from 'src/pages/cpanel/cpanel.component';
 import { UsersComponent } from 'src/pages/users/users.component';
+import { GroupsComponent } from 'src/pages/groups/groups.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'groups',
+        component: GroupsComponent,
         canActivate: [AuthService]
       },
     ]

@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const groups = require('./src/routes/groups');
 const admins = require('./src/routes/admins');
 const users = require('./src/routes/users');
 
@@ -20,6 +21,7 @@ app.use(express.static(__dirname + '/dist/travel-app'));
 
 
 app.use('/api/admins', admins);
+app.use('/api/groups', groups);
 app.use('/api/users', users);
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

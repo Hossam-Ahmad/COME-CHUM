@@ -18,13 +18,14 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { CpanelComponent } from '../pages/cpanel/cpanel.component';
 import { UsersComponent } from 'src/pages/users/users.component';
-
+import { GroupsComponent } from 'src/pages/groups/groups.component';
 
 
 // Components
@@ -37,6 +38,8 @@ import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboa
 import { AuthService } from '../services/auth.service';
 import { ContentService } from '../services/content.service';
 import { UsersService } from '../services/users.service';
+import { GroupsService } from 'src/services/groups.service';
+
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,10 +57,12 @@ export function createHttpLoader(http: HttpClient) {
     SidebarComponent,
     NavbarComponent,
     DashboardNavbarComponent,
-    UsersComponent
+    UsersComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -84,7 +89,8 @@ export function createHttpLoader(http: HttpClient) {
   providers: [
     AuthService,
     ContentService,
-    UsersService
+    UsersService,
+    GroupsService
   ],
   bootstrap: [AppComponent]
 })
