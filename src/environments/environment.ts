@@ -5,7 +5,11 @@
 export const environment = {
   production: false,
   host : 'http://localhost:4200/',
-  api : 'http://localhost:4200/api/'
+  api : 'http://localhost:4200/api/',
+  dbHost     : 'localhost',
+  dbUser     : 'root',
+  dbPassword : '',
+  dbDatabase : 'travel'
 };
 
 /*

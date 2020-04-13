@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public height;
 
   constructor(public authService: AuthService, public router: Router) {
-    this.height = window.innerHeight + 'px';
+    this.height = window.outerHeight + 'px';
   }
 
   ngOnInit() {
