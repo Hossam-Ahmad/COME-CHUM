@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupsService } from '../../services/groups.service';
+import { ContactService } from '../../services/contact.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   public groups = [];
   public cover = '';
   pageId = 1;
-  constructor(public groupsService: GroupsService) {
+  constructor(public contactService: ContactService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -22,11 +22,11 @@ export class ContactComponent implements OnInit {
   }
 
   initData() {
-    this.getGroups();
+    this.getGontacts();
   }
 
-  getGroups() {
-    this.groupsService.getAll(this.pageId).subscribe(data => {
+  getGontacts() {
+    this.contactService.getAll(this.pageId).subscribe(data => {
       this.groups = data;
       console.log(data);
       this.pageId++;
@@ -34,18 +34,11 @@ export class ContactComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].group_id}`, '_blank');
-    win.focus();
-  }
 
-  remove(index) {
-    this.groupsService.remove(index).subscribe( data => {
-      this.groups.splice(index, 1);
-    });
   }
 
   onScroll() {
-    this.getGroups();
+    this.getGontacts();
   }
 
   details(index) {

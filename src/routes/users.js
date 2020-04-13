@@ -24,7 +24,7 @@ router.post('/remove', function(req, res, next) {
     var userId = req.body['userId'];
     connection.query('UPDATE users SET status = 0 where id = ' + userId, function(error,results,fields){
       res.send({
-        status : success
+        status : 'success'
       });
     });
   });

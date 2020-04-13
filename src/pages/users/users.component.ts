@@ -39,7 +39,7 @@ export class UsersComponent implements OnInit {
   }
 
   remove(index) {
-    this.usersService.remove(index).subscribe( data => {
+    this.usersService.remove(this.users[index].id).subscribe( data => {
       this.users.splice(index, 1);
     });
   }

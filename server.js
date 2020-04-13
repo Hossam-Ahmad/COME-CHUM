@@ -10,6 +10,7 @@ const admins = require('./src/routes/admins');
 const users = require('./src/routes/users');
 const events = require('./src/routes/events');
 const statictics = require('./src/routes/statictics');
+const contact = require('./src/routes/contact');
 
 const app = express();
 const port = process.env.PORT || 4200;
@@ -27,6 +28,7 @@ app.use('/api/groups', groups);
 app.use('/api/users', users);
 app.use('/api/events', events);
 app.use('/api/statictics', statictics);
+app.use('/api/contact', contact);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

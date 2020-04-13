@@ -45,7 +45,7 @@ import { ContentService } from '../services/content.service';
 import { UsersService } from '../services/users.service';
 import { GroupsService } from 'src/services/groups.service';
 import { EventsService } from 'src/services/events.service';
-
+import { ContactService } from 'src/services/contact.service';
 
 
 
@@ -104,7 +104,8 @@ export function createHttpLoader(http: HttpClient) {
     ContentService,
     UsersService,
     GroupsService,
-    EventsService
+    EventsService,
+    ContactService
   ],
   bootstrap: [AppComponent]
 })
