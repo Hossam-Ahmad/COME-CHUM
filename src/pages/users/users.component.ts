@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,9 @@ export class UsersComponent implements OnInit {
   public users = [];
   public cover = '';
   pageId = 1;
-  constructor(public usersService: UsersService) {
+  constructor(
+    public usersService: UsersService,
+    public router: Router) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -49,7 +52,7 @@ export class UsersComponent implements OnInit {
   }
 
   details(index) {
-
+    this.router.navigate(['/cpanel/user-details'], { queryParams: { userId: this.users[index].id } });
   }
 
 }

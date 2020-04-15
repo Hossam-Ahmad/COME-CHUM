@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupsService } from '../../services/groups.service';
+import { ContestsService } from '../../services/contests.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,10 +10,10 @@ import { environment } from 'src/environments/environment';
 export class ContestsComponent implements OnInit {
 
   aboutHeight: any;
-  public groups = [];
+  public contests = [];
   public cover = '';
   pageId = 1;
-  constructor(public groupsService: GroupsService) {
+  constructor(public contestService: ContestsService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -26,21 +26,21 @@ export class ContestsComponent implements OnInit {
   }
 
   getGroups() {
-    this.groupsService.getAll(this.pageId).subscribe(data => {
-      this.groups = data;
+    this.contestService.getAll(this.pageId).subscribe(data => {
+      this.contests = data;
       console.log(data);
       this.pageId++;
     });
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].group_id}`, '_blank');
+    const win = window.open(`${environment.host}contest/${this.contests[index].contest_id}`, '_blank');
     win.focus();
   }
 
   remove(index) {
-    this.groupsService.remove(index).subscribe( data => {
-      this.groups.splice(index, 1);
+    this.contestService.remove(this.contests[index].id).subscribe( data => {
+      this.contests.splice(index, 1);
     });
   }
 
@@ -50,6 +50,10 @@ export class ContestsComponent implements OnInit {
 
   details(index) {
 
+  }
+
+  update(index) {
+    
   }
 
 }

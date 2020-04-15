@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class EventsComponent implements OnInit {
 
   aboutHeight: any;
-  public groups = [];
+  public events = [];
   public cover = '';
   pageId = 1;
   constructor(public eventsService: EventsService) {
@@ -27,20 +27,20 @@ export class EventsComponent implements OnInit {
 
   getEvents() {
     this.eventsService.getAll(this.pageId).subscribe(data => {
-      this.groups = data;
+      this.events = data;
       console.log(data);
       this.pageId++;
     });
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].event_id}`, '_blank');
+    const win = window.open(`${environment.host}group/${this.events[index].event_id}`, '_blank');
     win.focus();
   }
 
   remove(index) {
-    this.eventsService.remove(index).subscribe( data => {
-      this.groups.splice(index, 1);
+    this.eventsService.remove(this.events[index].id).subscribe( data => {
+      this.events.splice(index, 1);
     });
   }
 

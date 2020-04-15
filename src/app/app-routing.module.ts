@@ -11,6 +11,7 @@ import { StaticticsComponent } from 'src/pages/statictics/statictics.component';
 import { FinanceComponent } from 'src/pages/finance/finance.component';
 import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
+import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,11 @@ const routes: Routes = [
       {
         path: 'contests',
         component: ContestsComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'user-details',
+        component: UserProfileComponent,
         canActivate: [AuthService]
       },
     ]

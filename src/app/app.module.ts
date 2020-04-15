@@ -38,6 +38,8 @@ import { StaticticsComponent } from 'src/pages/statictics/statictics.component';
 import { FinanceComponent } from 'src/pages/finance/finance.component';
 import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
+import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
+
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -46,6 +48,9 @@ import { UsersService } from '../services/users.service';
 import { GroupsService } from 'src/services/groups.service';
 import { EventsService } from 'src/services/events.service';
 import { ContactService } from 'src/services/contact.service';
+import { FinanceService } from 'src/services/finance.service';
+import { ContestsService } from 'src/services/contests.service';
+
 
 
 
@@ -71,7 +76,8 @@ export function createHttpLoader(http: HttpClient) {
     StaticticsComponent,
     FinanceComponent,
     ContactComponent,
-    ContestsComponent
+    ContestsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +111,9 @@ export function createHttpLoader(http: HttpClient) {
     UsersService,
     GroupsService,
     EventsService,
-    ContactService
+    ContactService,
+    FinanceService,
+    ContestsService
   ],
   bootstrap: [AppComponent]
 })

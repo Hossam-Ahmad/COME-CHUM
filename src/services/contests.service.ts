@@ -4,24 +4,20 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
 @Injectable()
-export class UsersService {
+export class ContestsService {
 
     constructor(public httpClient: HttpClient,
                 public router: Router
        ) {}
 
     getAll(pageId): any {
-      return this.httpClient.get(`${environment.api}users/all/${pageId}`);
+      return this.httpClient.get(`${environment.api}contests/all/${pageId}`);
     }
 
-    remove(userId): any {
-      return this.httpClient.post(`${environment.api}users/remove`, {
-        userId
+    remove(contestId): any {
+      return this.httpClient.post(`${environment.api}contests/remove`, {
+        contestId
       });
-    }
-
-    get(userId): any {
-      return this.httpClient.get(`${environment.api}users/user/${userId}`);
     }
 
 }

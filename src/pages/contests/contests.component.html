@@ -5,7 +5,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-danger">
-                                <h4 class="card-title ">قائمه الجروبات</h4>
+                                <h4 class="card-title ">قائمه المسابقات</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -15,22 +15,28 @@
                                                 حذف
                                             </th>
                                             <th>
-                                                صفحه الجروب
+                                                تعديل
                                             </th>
                                             <th>
-                                               تفاصيل
+                                                صفحه المسابقه
                                             </th>
                                             <th>
-                                                تاريخ الاشتراك
+                                                المركز الثالث
+                                             </th>
+                                            <th>
+                                               المركز الثاني
                                             </th>
                                             <th>
-                                                عن جروب 
+                                                المركز الاول
                                             </th>
                                             <th>
-                                                الادمن
+                                                تاريخ الانتهاء
                                             </th>
                                             <th>
-                                                عدد الاعضاء
+                                                تاريخ الانشاء
+                                            </th>
+                                            <th>
+                                                التفاصيل
                                             </th>
                                             <th>
                                                 الاسم
@@ -45,15 +51,16 @@
                                             [infiniteScrollThrottle]="50"
                                             (scrolled)="onScroll()"
                                         >
-                                            <tr *ngFor="let group of groups;let i = index;">
+                                            <tr *ngFor="let contest of contests;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
+                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="update(i)">تعديل</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{group.created_at}}</td>
-                                                <td>{{group.about}}</td>
-                                                <td>{{group.owner_name}}</td>
-                                                <td>{{group.members}}</td>
-                                                <td>{{group.name}}</td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td>{{contest.end_at}}</td>
+                                                <td>{{contest.created_at}}</td>
+                                                <td>{{contest.name}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>

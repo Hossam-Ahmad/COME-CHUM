@@ -2,35 +2,88 @@
         <div class="main-content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">attach_money</i>
+                                </div>
+                                <p class="card-category">اجمالي الارباح</p>
+                                <h3 class="card-title">4500$</h3>
+                            </div>
+                            <div class="card-footer">
+                              <div class="stats">
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">event_note</i>
+                                </div>
+                                <p class="card-category">ارباح السنه</p>
+                                <h3 class="card-title">2000$</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                  <i class="material-icons">update</i> Just Updated
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">group</i>
+                                </div>
+                                <p class="card-category">ارباح الشهر</p>
+                                <h3 class="card-title">1509$</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                  <i class="material-icons">update</i> Just Updated
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">account_box</i>
+                                </div>
+                                <p class="card-category">ارباح اليوم</p>
+                                <h3 class="card-title">15$</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">update</i> Just Updated
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-danger">
-                                <h4 class="card-title ">قائمه الجروبات</h4>
+                                <h4 class="card-title ">قائمه المعاملات المادية</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
                                             <th>
-                                                حذف
-                                            </th>
-                                            <th>
-                                                صفحه الجروب
-                                            </th>
-                                            <th>
-                                               تفاصيل
-                                            </th>
-                                            <th>
                                                 تاريخ الاشتراك
                                             </th>
                                             <th>
-                                                عن جروب 
+                                                عن طريق
                                             </th>
                                             <th>
-                                                الادمن
-                                            </th>
-                                            <th>
-                                                عدد الاعضاء
+                                                الباقه
                                             </th>
                                             <th>
                                                 الاسم
@@ -46,14 +99,10 @@
                                             (scrolled)="onScroll()"
                                         >
                                             <tr *ngFor="let group of groups;let i = index;">
-                                                <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
                                                 <td>{{group.created_at}}</td>
-                                                <td>{{group.about}}</td>
-                                                <td>{{group.owner_name}}</td>
-                                                <td>{{group.members}}</td>
-                                                <td>{{group.name}}</td>
+                                                <td>{{methods[group.method]}}</td>
+                                                <td>{{group.package_name}}</td>
+                                                <td>{{group.user_name}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>

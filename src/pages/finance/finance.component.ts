@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupsService } from '../../services/groups.service';
+import { FinanceService } from '../../services/finance.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,9 +11,15 @@ export class FinanceComponent implements OnInit {
 
   aboutHeight: any;
   public groups = [];
+  public methods = [
+    'Credit Card',
+    'Paypal',
+    'Google Pay',
+    'Apple Pay'
+  ];
   public cover = '';
   pageId = 1;
-  constructor(public groupsService: GroupsService) {
+  constructor(public financeService: FinanceService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -26,30 +32,15 @@ export class FinanceComponent implements OnInit {
   }
 
   getGroups() {
-    this.groupsService.getAll(this.pageId).subscribe(data => {
+    this.financeService.getAll(this.pageId).subscribe(data => {
       this.groups = data;
       console.log(data);
       this.pageId++;
     });
   }
 
-  open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].group_id}`, '_blank');
-    win.focus();
-  }
-
-  remove(index) {
-    this.groupsService.remove(index).subscribe( data => {
-      this.groups.splice(index, 1);
-    });
-  }
-
   onScroll() {
     this.getGroups();
-  }
-
-  details(index) {
-
   }
 
 }

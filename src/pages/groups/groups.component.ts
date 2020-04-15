@@ -39,7 +39,7 @@ export class GroupsComponent implements OnInit {
   }
 
   remove(index) {
-    this.groupsService.remove(index).subscribe( data => {
+    this.groupsService.remove(this.groups[index].id).subscribe( data => {
       this.groups.splice(index, 1);
     });
   }

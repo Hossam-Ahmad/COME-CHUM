@@ -11,7 +11,8 @@ const users = require('./src/routes/users');
 const events = require('./src/routes/events');
 const statictics = require('./src/routes/statictics');
 const contact = require('./src/routes/contact');
-
+const finance = require('./src/routes/finance');
+const contests = require('./src/routes/contests');
 const app = express();
 const port = process.env.PORT || 4200;
 
@@ -29,6 +30,8 @@ app.use('/api/users', users);
 app.use('/api/events', events);
 app.use('/api/statictics', statictics);
 app.use('/api/contact', contact);
+app.use('/api/finance', finance);
+app.use('/api/contests', contests);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');
