@@ -10,7 +10,7 @@ import { UsersService } from 'src/services/users.service';
 export class UserProfileComponent implements OnInit {
 
   userId;
-  public userData = false;
+  public userData;
 
   constructor(
     private route: ActivatedRoute,
