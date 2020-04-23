@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/services/users.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,6 +29,11 @@ export class UserProfileComponent implements OnInit {
           console.log(this.userData);
         });
       });
+  }
+
+  open() {
+    const win = window.open(`${environment.host}profile/${this.userData.profile_id}`, '_blank');
+    win.focus();
   }
 
 }

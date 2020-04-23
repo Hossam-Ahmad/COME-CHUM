@@ -1,0 +1,56 @@
+
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">قائمه رسائل</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile">
+                                    <p>{{userData != undefined ? userData.name != undefined ? userData.name : 'غير مسجل'  : ''}}</p>
+                                    <img src="{{userData != undefined ? userData.image : './assets/images/marc.jpg'}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';"/>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr *ngFor="let message of messages;let i = index;">
+                                                <div class="bubble client" *ngIf="message.sender == 0 && message.type == 0">
+                                                    <p style="margin: 0;">
+                                                        {{message.data}}
+                                                    </p>
+                                                </div>
+
+                                                <!-- <div class="bubble admin">
+                                                    <p>{{message.created_at}}</p>
+                                                </div> -->
+                                            
+                                                <div class="bubble admin" *ngIf="message.sender == 1 && message.type == 0">
+                                                    <p style="margin: 0;">
+                                                        {{message.data}}
+                                                    </p>
+                                                </div>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="sender">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <textarea rows = "5" cols = "60" placeholder="اكتب ردك هنا" [(ngModel)]="text"></textarea>
+                                          </div>
+                                          <div class="col-2">
+                                            <i class="material-icons colorize margin" style="margin-right: 2em;" (click)="send()">send</i>
+                                            <i class="material-icons colorize margin">add_photo_alternate</i>
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <app-dasboard-footer></app-dasboard-footer>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -10,10 +11,12 @@ import { environment } from 'src/environments/environment';
 export class ContactComponent implements OnInit {
 
   aboutHeight: any;
-  public groups = [];
+  public contacts = [];
   public cover = '';
   pageId = 1;
-  constructor(public contactService: ContactService) {
+  constructor(
+    public contactService: ContactService,
+    private router: Router) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -27,14 +30,14 @@ export class ContactComponent implements OnInit {
 
   getGontacts() {
     this.contactService.getAll(this.pageId).subscribe(data => {
-      this.groups = data;
+      this.contacts = data;
       console.log(data);
       this.pageId++;
     });
   }
 
   open(index) {
-
+    this.router.navigate(['/cpanel/chat-contact'], { queryParams: { contactId: this.contacts[index].id } });
   }
 
   onScroll() {

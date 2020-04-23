@@ -1,13 +1,6 @@
+var connection = require('./enviroment.js');
 var express = require('express');
-var mysql = require('mysql');
 var router = express.Router();
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'travel'
-});
 
 /* GET users listing. */
 router.get('/all/:pageId', function(req, res, next) {

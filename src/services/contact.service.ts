@@ -14,6 +14,14 @@ export class ContactService {
       return this.httpClient.get(`${environment.api}contact/all/${pageId}`);
     }
 
+    get(contactId): any {
+        return this.httpClient.get(`${environment.api}contact/${contactId}`);
+    }
+
+    getMessages(contactId, pageId): any {
+        return this.httpClient.get(`${environment.api}contact/${contactId}/${pageId}`);
+    }
+
     send(data, type , contactId): any {
         return this.httpClient.post(`${environment.api}contact/send` , {
             data, type, contactId

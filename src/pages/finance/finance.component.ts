@@ -19,6 +19,10 @@ export class FinanceComponent implements OnInit {
   ];
   public cover = '';
   pageId = 1;
+  public day = 0;
+  public month = 0;
+  public year = 0;
+  public total = 0;
   constructor(public financeService: FinanceService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
@@ -28,10 +32,11 @@ export class FinanceComponent implements OnInit {
   }
 
   initData() {
-    this.getGroups();
+    this.getTransactions();
+    this.getStatictics();
   }
 
-  getGroups() {
+  getTransactions() {
     this.financeService.getAll(this.pageId).subscribe(data => {
       this.groups = data;
       console.log(data);
@@ -39,8 +44,26 @@ export class FinanceComponent implements OnInit {
     });
   }
 
+  getStatictics() {
+    this.financeService.getStatictics().subscribe(data => {
+      console.log(data);
+      if (data[0].day) {
+        this.day = data[0].day;
+      }
+      if (data[0].month) {
+        this.month = data[0].month;
+      }
+      if (data[0].year) {
+        this.year = data[0].year;
+      }
+      if (data[0].total) {
+        this.total = data[0].total;
+      }
+    });
+  }
+
   onScroll() {
-    this.getGroups();
+    this.getTransactions();
   }
 
 }

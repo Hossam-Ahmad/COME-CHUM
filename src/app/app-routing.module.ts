@@ -12,6 +12,7 @@ import { FinanceComponent } from 'src/pages/finance/finance.component';
 import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
+import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,11 @@ const routes: Routes = [
       {
         path: 'user-details',
         component: UserProfileComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'chat-contact',
+        component: ChatContactComponent,
         canActivate: [AuthService]
       },
     ]

@@ -39,7 +39,7 @@ import { FinanceComponent } from 'src/pages/finance/finance.component';
 import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
-
+import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -77,7 +77,8 @@ export function createHttpLoader(http: HttpClient) {
     FinanceComponent,
     ContactComponent,
     ContestsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ChatContactComponent
   ],
   imports: [
     BrowserModule,

@@ -14,4 +14,12 @@ export class FinanceService {
       return this.httpClient.get(`${environment.api}finance/all/${pageId}`);
     }
 
+    getStatictics(day = null, month = null, year = null): any {
+      if (day) {
+        return this.httpClient.get(`${environment.api}finance/statictics/${day}/${month}/${year}`);
+      } else {
+        return this.httpClient.get(`${environment.api}finance/statictics`);
+      }
+    }
+
 }

@@ -1,0 +1,118 @@
+.client{
+    background-size: cover;
+    background-repeat: no-repeat no-repeat;
+    background-position: center;
+    padding: 1em 0;
+    .client-details{
+        padding: 3em;
+
+.client-header{
+    direction: rtl;
+    text-align: right;
+    color: #fff;
+}
+
+}
+}
+.portfolio{ margin: 5em 0 0;
+    .titlePicture{
+        background-repeat: no-repeat no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 20em;
+        width: 80%;
+        margin: 1em auto;
+        position: relative;
+        span{
+            position: absolute;
+            bottom: 0;
+            left: 0%;
+            background-color: #fff;
+            padding: 1em;
+            font-family: cairo-black;
+        }
+    }
+    .detailsOfWorks{
+        width: 80%;
+        text-align: center;
+        margin: auto;
+        .worksInner{padding: 2em;
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+}
+@media (max-width: 768px) {
+    .titlePicture{height: 12em !important;}
+    .worksInner{
+        padding: 0 !important;
+    }
+}
+
+.bubble{
+    max-width: 50%;
+    border-radius: 25px;
+    padding: 1em;
+}
+
+.admin{
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    color:white;
+    // background-color: #0099ff;
+    float: right;
+    display: block;
+    margin: 1em;
+}
+
+.client{
+    background-color: #f1f0f0;
+    float: left;
+    display: block;
+}
+
+.profile{
+    text-align: right;
+    border-bottom: 1px solid #f1f0f0;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    p{
+        display: inline-block;
+        margin-right: 1em;
+    }
+    img{
+        border-radius: 50%;
+        width: 5%;
+        height: 50px;
+    }
+}
+
+.sender{
+    margin-top: 2em;
+    border-top: 1px solid #f1f0f0;
+    padding-top: 2em;
+    textarea{
+        border-radius: 25px;
+        border: 0px;
+        border: 1px solid #b0b0b0;
+        // background-color: #f1f0f0;
+        padding: 0.5em;
+        text-align: center;
+        width: 100%;
+        height: 50px !important;
+    }
+    .colorize{
+        background: -moz-linear-gradient(top, #e72c83 0%, #a742c6 100%);
+        background: -webkit-linear-gradient(top, #e72c83 0%,#a742c6 100%);
+        background: linear-gradient(to bottom, #e72c83 0%,#a742c6 100%);
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .margin{
+        margin-top: 10%;
+    }
+}

@@ -33,11 +33,11 @@
                                             [infiniteScrollThrottle]="50"
                                             (scrolled)="onScroll()"
                                         >
-                                            <tr *ngFor="let group of groups;let i = index;">
+                                            <tr *ngFor="let contact of contacts;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td>{{group.created_at}}</td>
-                                                <td>{{group.data}}</td>
-                                                <td>{{group.name}}</td>
+                                                <td>{{contact.created_at}}</td>
+                                                <td>{{contact.data}}</td>
+                                                <td>{{contact.name}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>
