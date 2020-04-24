@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { PackagesService } from '../../services/packages.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MiscService } from 'src/services/misc.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-packages',
+  templateUrl: './packages.component.html',
+  styleUrls: ['./packages.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class PackagesComponent implements OnInit {
 
   aboutHeight: any;
   public users = [];
   public cover = '';
   pageId = 1;
   constructor(
-    public usersService: UsersService,
+    public packagesService: PackagesService,
     public router: Router,
     public misc: MiscService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.usersService.getAll(this.pageId).subscribe(data => {
+    this.packagesService.getAll(this.pageId).subscribe(data => {
       this.users = data;
       console.log(data);
       this.pageId++;
@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
   }
 
   remove(index) {
-    this.usersService.remove(this.users[index].id).subscribe( data => {
+    this.packagesService.remove(this.users[index].id).subscribe( data => {
       this.users.splice(index, 1);
     });
   }

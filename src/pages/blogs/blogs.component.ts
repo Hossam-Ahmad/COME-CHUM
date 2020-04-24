@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { BlogsService } from '../../services/blogs.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MiscService } from 'src/services/misc.service';
@@ -16,7 +16,7 @@ export class BlogsComponent implements OnInit {
   public cover = '';
   pageId = 1;
   constructor(
-    public usersService: UsersService,
+    public blogsService: BlogsService,
     public router: Router,
     public misc: MiscService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
@@ -31,7 +31,7 @@ export class BlogsComponent implements OnInit {
   }
 
   getUsers() {
-    this.usersService.getAll(this.pageId).subscribe(data => {
+    this.blogsService.getAll(this.pageId).subscribe(data => {
       this.users = data;
       console.log(data);
       this.pageId++;
@@ -44,7 +44,7 @@ export class BlogsComponent implements OnInit {
   }
 
   remove(index) {
-    this.usersService.remove(this.users[index].id).subscribe( data => {
+    this.blogsService.remove(this.users[index].id).subscribe( data => {
       this.users.splice(index, 1);
     });
   }

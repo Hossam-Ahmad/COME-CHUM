@@ -42,6 +42,8 @@ import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
 import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
 import { MembersComponent } from 'src/components/members/members.component';
+import { BlogsComponent } from 'src/pages/blogs/blogs.component';
+import { PackagesComponent } from 'src/pages/packages/packages.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -54,6 +56,10 @@ import { FinanceService } from 'src/services/finance.service';
 import { ContestsService } from 'src/services/contests.service';
 import { MiscService } from 'src/services/misc.service';
 import { StaticticsService } from 'src/services/statictics.service';
+import { PackagesService } from 'src/services/packages.service';
+import { BlogsService } from 'src/services/blogs.service';
+
+
 
 
 
@@ -83,7 +89,9 @@ export function createHttpLoader(http: HttpClient) {
     ContestsComponent,
     UserProfileComponent,
     ChatContactComponent,
-    MembersComponent
+    MembersComponent,
+    BlogsComponent,
+    PackagesComponent
   ],
   imports: [
     BrowserModule,
@@ -122,6 +130,8 @@ export function createHttpLoader(http: HttpClient) {
     FinanceService,
     ContestsService,
     StaticticsService,
+    BlogsService,
+    PackagesService,
     MiscService
   ],
   bootstrap: [AppComponent],
