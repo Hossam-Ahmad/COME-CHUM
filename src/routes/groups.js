@@ -4,16 +4,17 @@ var router = express.Router();
 
 /* GET groups listing. */
 router.get('/all/:pageId', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) {   
     var pageId = req.params['pageId'];
-    connection.query(`SELECT * FROM groups where status = 1 LIMIT ${10*pageId}`, function(error,results,fields){
+    conn.query(`SELECT * FROM groups where status = 1 LIMIT ${10*pageId}`, function(error,results,fields){
+      conn.release();
       res.send(results);
     });
   });
 });
 
 router.get('/members/:groupId/:pageId', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) { 
     var groupId = req.params['groupId'];
     var pageId = req.params['pageId'];
 
@@ -22,15 +23,17 @@ router.get('/members/:groupId/:pageId', function(req, res, next) {
     where m.group_id = ${groupId} and m.status = 1 and m.user_id = u.id
     ORDER BY m.created_at DESC
     LIMIT ${10*pageId}`, function(error,results,fields){
+      conn.release();
       res.send(results);
     });
   });
 });
 
 router.post('/remove', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) { 
     var userId = req.body['userId'];
-    connection.query('UPDATE groups SET status = 0 where id = ' + userId, function(error,results,fields){
+    conn.query('UPDATE groups SET status = 0 where id = ' + userId, function(error,results,fields){
+      conn.release();
       res.send({
         status : 'success'
       });
@@ -39,9 +42,10 @@ router.post('/remove', function(req, res, next) {
 });
 
 router.get('/group/:profileId', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) { 
     var profileId = req.params['profileId'];
-    connection.query('SELECT * FROM groups where profile_id = ' + profileId, function(error,results,fields){
+    conn.query('SELECT * FROM groups where profile_id = ' + profileId, function(error,results,fields){
+      conn.release();
       res.send(results);
     });
   });

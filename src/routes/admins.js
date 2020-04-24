@@ -27,10 +27,11 @@ router.post('/auth', function(req, res, next) {
 
 
 router.post('/forget', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) {
     var email = req.params['email'];
     var password = req.params['password'];
-    connection.query("SELECT * FROM admins where email like 'admin@gmail.com' and password like '123'", function(error,results,fields){
+    conn.query("SELECT * FROM admins where email like 'admin@gmail.com' and password like '123'", function(error,results,fields){
+      conn.release();
       res.send({
         status : 'success',
         token : '123456789'
@@ -40,7 +41,7 @@ router.post('/forget', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {
-  connection.connect(function(err) {  
+  connection.getConnection(function (err, conn) {
     var name = req.params['name']; 
     var email = req.params['email'];
     var password = req.params['password'];
@@ -48,10 +49,11 @@ router.post('/create', function(req, res, next) {
     var write_perm = req.params['write_perm'];
     var print_perm = req.params['print_perm'];
     var financial_perm = req.params['financial_perm'];
-    connection.query(`
+    conn.query(`
     INSERT INTO admins('name', 'email', 'password', 'read_perm', 'write_perm', 'print_perm', 'financial_perm', 'active') VALUES 
     (${name},${email},${password},${read_perm},${write_perm},${print_perm},${financial_perm},'true')
     `, function(error,results,fields){
+      conn.release();
       res.send({
         status : 'success'
       });
@@ -60,15 +62,16 @@ router.post('/create', function(req, res, next) {
 });
 
 router.post('/change', function(req, res, next) {
-  connection.connect(function(err) {  
+  connection.getConnection(function (err, conn) {
     var email = req.params['email'];
     var oldPassword = req.params['oldPassword'];
     var newPassword = req.params['newPassword'];
     connection.query(`SELECT * FROM admins where email like '${email}' and password like '${oldPassword}'`, function(error,results,fields){
       if(results.length > 0){
-        connection.query(`
+        conn.query(`
         UPDATE admins SET password=${newPassword} WHERE email=${email}
         `, function(error,results,fields){
+          conn.release();
           res.send({
             status : 'success'
           });
@@ -81,7 +84,7 @@ router.post('/change', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
-  connection.connect(function(err) {  
+  connection.getConnection(function (err, conn) {
     var id = req.params['id'];  
     var name = req.params['name']; 
     var email = req.params['email'];
@@ -91,9 +94,10 @@ router.post('/update', function(req, res, next) {
     var print_perm = req.params['print_perm'];
     var financial_perm = req.params['financial_perm'];
     var status = req.params['status'];
-    connection.query(`
+    conn.query(`
     UPDATE admins SET name=${name},email=${email},password=${password},read_perm=${read_perm},write_perm=${write_perm},print_perm=${print_perm},financial_perm=${financial_perm},active=${status} WHERE id=${id}
     `, function(error,results,fields){
+      conn.release();
       res.send({
         status : 'success'
       });
@@ -102,9 +106,10 @@ router.post('/update', function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next) {
-  connection.connect(function(err) {   
+  connection.getConnection(function (err, conn) {
     var id = req.params['id'];
-    connection.query("DELETE FROM admins where id = " + id, function(error,results,fields){
+    conn.query("DELETE FROM admins where id = " + id, function(error,results,fields){
+      conn.release();
       res.send({
         status : 'success'
       });
