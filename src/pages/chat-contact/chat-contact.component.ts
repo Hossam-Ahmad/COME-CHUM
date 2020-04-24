@@ -73,7 +73,7 @@ export class ChatContactComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    const file = event.target.files[0]
+    const file = event.target.files[0];
   }
 
 }
