@@ -18,7 +18,7 @@
                                                 صفحه الجروب
                                             </th>
                                             <th>
-                                               تفاصيل
+                                               الاعضاء
                                             </th>
                                             <th>
                                                 تاريخ الاشتراك
@@ -48,10 +48,10 @@
                                             <tr *ngFor="let group of groups;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{group.created_at}}</td>
+                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="members(i)">الاعضاء</button></td>
+                                                <td>{{misc.formatDate(group.created_at)}}</td>
                                                 <td>{{group.about}}</td>
-                                                <td>{{group.owner_name}}</td>
+                                                <td><a [routerLink]="['/cpanel/user-details']" [queryParams]="{ userId: group.owner_id }">{{group.owner_name}}</a></td>
                                                 <td>{{group.members}}</td>
                                                 <td>{{group.name}}</td>
                                                 <td class="text-primary">

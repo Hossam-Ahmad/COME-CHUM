@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FinanceService } from '../../services/finance.service';
 import { environment } from 'src/environments/environment';
+import { MiscService } from 'src/services/misc.service';
+
 
 @Component({
   selector: 'app-finance',
@@ -23,7 +25,18 @@ export class FinanceComponent implements OnInit {
   public month = 0;
   public year = 0;
   public total = 0;
-  constructor(public financeService: FinanceService) {
+
+  public dayDate;
+  public monthDate;
+  public yearDate;
+  constructor(
+    public financeService: FinanceService,
+    public misc: MiscService
+  ) {
+    const d = new Date();
+    this.dayDate = d.getDate();
+    this.monthDate = d.getMonth() + 1;
+    this.yearDate = d.getFullYear();
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -45,21 +58,51 @@ export class FinanceComponent implements OnInit {
   }
 
   getStatictics() {
-    this.financeService.getStatictics().subscribe(data => {
-      console.log(data);
-      if (data[0].day) {
-        this.day = data[0].day;
-      }
-      if (data[0].month) {
-        this.month = data[0].month;
-      }
-      if (data[0].year) {
-        this.year = data[0].year;
-      }
-      if (data[0].total) {
-        this.total = data[0].total;
-      }
-    });
+    if (this.dayDate) {
+      this.financeService.getStatictics(this.dayDate, this.monthDate, this.yearDate).subscribe(data => {
+        console.log(data);
+        if (data[0].day) {
+          this.day = data[0].day;
+        } else {
+          this.day = 0;
+        }
+
+        if (data[0].month) {
+          this.month = data[0].month;
+        } else {
+          this.month = 0;
+        }
+
+        if (data[0].year) {
+          this.year = data[0].year;
+        } else {
+          this.year = 0;
+        }
+
+        if (data[0].total) {
+          this.total = data[0].total;
+        } else {
+          this.total = 0;
+        }
+
+      });
+    } else {
+      this.financeService.getStatictics().subscribe(data => {
+        console.log(data);
+        if (data[0].day) {
+          this.day = data[0].day;
+        }
+        if (data[0].month) {
+          this.month = data[0].month;
+        }
+        if (data[0].year) {
+          this.year = data[0].year;
+        }
+        if (data[0].total) {
+          this.total = data[0].total;
+        }
+      });
+    }
   }
 
   onScroll() {

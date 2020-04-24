@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { MiscService } from 'src/services/misc.service';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,8 @@ export class UsersComponent implements OnInit {
   pageId = 1;
   constructor(
     public usersService: UsersService,
-    public router: Router) {
+    public router: Router,
+    public misc: MiscService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 

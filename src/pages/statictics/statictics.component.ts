@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { StaticticsService } from 'src/services/statictics.service';
 
 @Component({
   selector: 'app-statictics',
@@ -8,7 +9,15 @@ import * as Chartist from 'chartist';
 })
 export class StaticticsComponent implements OnInit {
 
-  constructor() { }
+  public profits = 0;
+  public events = 0;
+  public groups = 0;
+  public users = 0;
+
+  constructor(
+    public statictics: StaticticsService
+  ) { }
+
   startAnimationForLineChart(chart) {
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -41,7 +50,8 @@ export class StaticticsComponent implements OnInit {
       });
 
       seq = 0;
-  };
+  }
+
   startAnimationForBarChart(chart){
       let seq2: any, delays2: any, durations2: any;
 
@@ -64,7 +74,8 @@ export class StaticticsComponent implements OnInit {
       });
 
       seq2 = 0;
-  };
+  }
+
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
@@ -145,6 +156,17 @@ export class StaticticsComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+      this.getStatictics();
+  }
+
+  getStatictics() {
+    this.statictics.getAll().subscribe(data => {
+      this.profits = data[0].total;
+      this.events = data[0].events;
+      this.users = data[0].users;
+      this.groups = data[0].groups;
+      console.log(data);
+    });
   }
 
 }

@@ -14,6 +14,10 @@ export class GroupsService {
       return this.httpClient.get(`${environment.api}groups/all/${pageId}`);
     }
 
+    getMembers(groupId, pageId): any {
+      return this.httpClient.get(`${environment.api}groups/members/${groupId}/${pageId}`);
+    }
+
     remove(userId): any {
       return this.httpClient.post(`${environment.api}groups/remove`, {
         userId

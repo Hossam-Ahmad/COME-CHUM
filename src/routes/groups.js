@@ -12,6 +12,21 @@ router.get('/all/:pageId', function(req, res, next) {
   });
 });
 
+router.get('/members/:groupId/:pageId', function(req, res, next) {
+  connection.connect(function(err) {   
+    var groupId = req.params['groupId'];
+    var pageId = req.params['pageId'];
+
+    connection.query(`SELECT m.user_id , u.name , u.image
+    from groups_members m , users u 
+    where m.group_id = ${groupId} and m.status = 1 and m.user_id = u.id
+    ORDER BY m.created_at DESC
+    LIMIT ${10*pageId}`, function(error,results,fields){
+      res.send(results);
+    });
+  });
+});
+
 router.post('/remove', function(req, res, next) {
   connection.connect(function(err) {   
     var userId = req.body['userId'];

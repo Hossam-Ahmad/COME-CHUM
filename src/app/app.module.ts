@@ -13,7 +13,8 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +41,7 @@ import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
 import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
+import { MembersComponent } from 'src/components/members/members.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -50,6 +52,8 @@ import { EventsService } from 'src/services/events.service';
 import { ContactService } from 'src/services/contact.service';
 import { FinanceService } from 'src/services/finance.service';
 import { ContestsService } from 'src/services/contests.service';
+import { MiscService } from 'src/services/misc.service';
+import { StaticticsService } from 'src/services/statictics.service';
 
 
 
@@ -78,7 +82,8 @@ export function createHttpLoader(http: HttpClient) {
     ContactComponent,
     ContestsComponent,
     UserProfileComponent,
-    ChatContactComponent
+    ChatContactComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +97,7 @@ export function createHttpLoader(http: HttpClient) {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDialogModule,
     NgbModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
@@ -114,8 +120,11 @@ export function createHttpLoader(http: HttpClient) {
     EventsService,
     ContactService,
     FinanceService,
-    ContestsService
+    ContestsService,
+    StaticticsService,
+    MiscService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MembersComponent]
 })
 export class AppModule { }

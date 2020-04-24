@@ -4,3 +4,12 @@
     border: 1px solid #9c27b0;
     background-color: transparent;
 }
+
+.mat-input-element:disabled{
+    color: #000;
+}
+
+.placeholder {
+    float: right !important;
+    font-family: cairo-semibold !important;
+}

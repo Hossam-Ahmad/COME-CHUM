@@ -42,8 +42,9 @@
                                             <textarea rows = "5" cols = "60" placeholder="اكتب ردك هنا" [(ngModel)]="text"></textarea>
                                           </div>
                                           <div class="col-2">
-                                            <i class="material-icons colorize margin" style="margin-right: 2em;" (click)="send()">send</i>
-                                            <i class="material-icons colorize margin">add_photo_alternate</i>
+                                            <i class="material-icons colorize margin" style="margin-right: 2em;cursor: pointer;" (click)="send()">send</i>
+                                            <i class="material-icons colorize margin" style="cursor: pointer;" (click)="select()">add_photo_alternate</i>
+                                            <input id="upload" accept="image/*" type="file" style="visibility: hidden ;" (change)="onFileChanged($event)">
                                           </div>
                                     </div>
                                 </div>

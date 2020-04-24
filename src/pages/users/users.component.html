@@ -46,7 +46,7 @@
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{user.created_at}}</td>
+                                                <td>{{misc.formatDate(user.created_at)}}</td>
                                                 <td>{{user.package}}</td>
                                                 <td>{{user.email}}</td>
                                                 <td>{{user.name}}</td>

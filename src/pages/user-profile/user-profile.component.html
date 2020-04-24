@@ -11,73 +11,32 @@
                       <form>
                           <div class="row">
                               <div class="col-md-5">
+                                <label class="placeholder">الاسم</label>
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company (disabled)" disabled>
+                                    <input matInput value="{{userData != undefined ? userData.name : ''}}" disabled>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-3">
+                                  <label class="placeholder">الايميل</label>
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
+                                    <input matInput value="{{userData != undefined ? userData.email : ''}}" disabled>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
+                                  <label class="placeholder">الباقه</label>
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
+                                    <input matInput  value="{{userData != undefined ? userData.package : ''}}" disabled>
                                   </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
-                                </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
+                                <label class="placeholder">عن المستخدم</label>
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Adress" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <label>About Me</label>
-                                <mat-form-field class="example-full-width">
-                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                   <textarea matInput disabled>{{userData ? userData.about : ''}}</textarea>
                                  </mat-form-field>
-                                  <!-- <div class="form-group">
-
-                                      <div class="form-group">
-                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                          <textarea class="form-control" rows="5"></textarea>
-                                      </div>
-                                  </div> -->
                               </div>
                           </div>
-                          <!-- <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button> -->
                           <div class="clearfix"></div>
                       </form>
                   </div>
@@ -87,14 +46,11 @@
               <div class="card card-profile">
                   <div class="card-avatar">
                       <a href="javascript:void(0)">
-                          <img class="img" src="./assets/images/marc.jpg" />
+                          <img class="img" src="{{userData != undefined ? userData.image : './assets/images/marc.jpg'}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" />
                       </a>
                   </div>
                   <div class="card-body">
                       <h4 class="card-title">{{userData ? userData.name : ''}}</h4>
-                      <p class="card-description">
-                        {{userData ? userData.about : ''}}
-                      </p>
                       <a href="javascript:void(0)" class="btn btn-primary btn-round btn_title" (click)="open()">
                         صفحه المستخدم
                       </a>

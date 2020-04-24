@@ -48,22 +48,32 @@ export class ChatContactComponent implements OnInit {
   }
 
   send() {
-    this.contactService.send(this.text, 0, this.contactId).subscribe( data => {
-      this.messages.push({
-        contact_id: this.contactId,
-        created_at: "2020-04-12T07:07:37.000Z",
-        data: this.text,
-        seen: 1,
-        sender: 1,
-        type: 0
+    if (this.text.trim() !== '') {
+      this.contactService.send(this.text, 0, this.contactId).subscribe( data => {
+        this.messages.push({
+          contact_id: this.contactId,
+          created_at: '',
+          data: this.text,
+          seen: 1,
+          sender: 1,
+          type: 0
+        });
+        this.text = '';
+        console.log(data);
       });
-      this.text = '';
-      console.log(data);
-    });
+    }
   }
 
   onScroll() {
     this.getMessages();
+  }
+
+  select() {
+    document.getElementById('upload').click();
+  }
+
+  onFileChanged(event) {
+    const file = event.target.files[0]
   }
 
 }

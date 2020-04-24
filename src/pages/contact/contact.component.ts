@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { MiscService } from 'src/services/misc.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,7 +17,8 @@ export class ContactComponent implements OnInit {
   pageId = 1;
   constructor(
     public contactService: ContactService,
-    private router: Router) {
+    private router: Router,
+    public misc: MiscService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 

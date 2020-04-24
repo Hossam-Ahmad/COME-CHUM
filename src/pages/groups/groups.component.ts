@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '../../services/groups.service';
 import { environment } from 'src/environments/environment';
+import { MiscService } from 'src/services/misc.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import { MembersComponent } from 'src/components/members/members.component';
 
 @Component({
   selector: 'app-users',
@@ -11,9 +14,15 @@ export class GroupsComponent implements OnInit {
 
   aboutHeight: any;
   public groups = [];
+  public membersList = [];
   public cover = '';
   pageId = 1;
-  constructor(public groupsService: GroupsService) {
+  pageIdMembers = 1;
+  constructor(
+    public groupsService: GroupsService,
+    public misc: MiscService,
+    private dialog: MatDialog
+    ) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -48,8 +57,15 @@ export class GroupsComponent implements OnInit {
     this.getGroups();
   }
 
-  details(index) {
-
+  members(index) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: this.groups[index].id
+    };
+    dialogConfig.panelClass = 'colorize-background';
+    this.dialog.open(MembersComponent, dialogConfig);
   }
 
 }

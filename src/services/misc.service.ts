@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
 @Injectable()
-export class StaticticsService {
+export class MiscService {
 
     constructor(public httpClient: HttpClient,
                 public router: Router
-       ) {}
+    ) {}
 
-    getAll(): any {
-      return this.httpClient.get(`${environment.api}statictics/all`);
+    formatDate(date) {
+        return date.replace('T', ' ').replace('.000Z', ' ');
     }
 
 }
