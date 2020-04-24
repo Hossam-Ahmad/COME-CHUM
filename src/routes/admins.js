@@ -4,14 +4,15 @@ var router = express.Router();
 
 /* GET admins listing. */
 router.post('/auth', function(req, res, next) {
-  connection.connect(function(err) {
+  connection.getConnection(function (err, conn) {
     if(err) {
       console.log(err);
     } else {
       var email = req.body['email'];
       var password = req.body['password'];
-      connection.query(`SELECT * FROM admins where email like '${email}' and password like '${password}'`, function(error,results,fields){
-          if(results.length > 0){
+      conn.query(`SELECT * FROM admins where email like '${email}' and password like '${password}'`, function(error,results,fields){
+        conn.release();  
+        if(results.length > 0){
               res.send({
                   status : 'success',
                   token : '123456789'
