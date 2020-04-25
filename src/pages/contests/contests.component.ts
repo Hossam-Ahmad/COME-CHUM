@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContestsService } from '../../services/contests.service';
 import { environment } from 'src/environments/environment';
+import { MiscService } from 'src/services/misc.service';
 
 @Component({
   selector: 'app-contests',
@@ -13,7 +14,10 @@ export class ContestsComponent implements OnInit {
   public contests = [];
   public cover = '';
   pageId = 1;
-  constructor(public contestService: ContestsService) {
+  constructor(
+    public contestService: ContestsService,
+    public misc: MiscService
+    ) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 

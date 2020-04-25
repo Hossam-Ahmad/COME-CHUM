@@ -1,0 +1,15 @@
+<div id="page" class="login-page"  [ngStyle]="{'height': height}">
+    <div class="login-container">
+        <img src="../../../assets/images/logo_website.png" class="login-img">
+        <br>
+        <input type="email" placeholder="الايميل القديم" class="login-input" [(ngModel)]="oldEmail" required>
+        <br>
+        <input type="password" placeholder="كلمة المرور القديمه" class="login-input" [(ngModel)]="oldPassword" required>
+        <br>
+        <input type="email" placeholder="الايميل الجديد" class="login-input" [(ngModel)]="newEmail" required>
+        <br>
+        <input type="password" placeholder="كلمة المرور الجديدة" class="login-input" [(ngModel)]="newPassword" required>
+        <br>
+        <button class="login-btn" (click)="update()"><span>تعديل</span></button>
+    </div>
+</div>

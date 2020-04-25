@@ -12,7 +12,7 @@ import { MiscService } from 'src/services/misc.service';
 export class BlogsComponent implements OnInit {
 
   aboutHeight: any;
-  public users = [];
+  public blogs = [];
   public cover = '';
   pageId = 1;
   constructor(
@@ -27,34 +27,34 @@ export class BlogsComponent implements OnInit {
   }
 
   initData() {
-    this.getUsers();
+    this.getBlogs();
   }
 
-  getUsers() {
+  getBlogs() {
     this.blogsService.getAll(this.pageId).subscribe(data => {
-      this.users = data;
+      this.blogs = data;
       console.log(data);
       this.pageId++;
     });
   }
 
   open(index) {
-    const win = window.open(`${environment.host}profile/${this.users[index].profile_id}`, '_blank');
+    const win = window.open(`${environment.host}blog/${this.blogs[index].blog_id}`, '_blank');
     win.focus();
   }
 
   remove(index) {
-    this.blogsService.remove(this.users[index].id).subscribe( data => {
-      this.users.splice(index, 1);
+    this.blogsService.remove(this.blogs[index].id).subscribe( data => {
+      this.blogs.splice(index, 1);
     });
   }
 
   onScroll() {
-    this.getUsers();
+    this.getBlogs();
   }
 
   details(index) {
-    this.router.navigate(['/cpanel/user-details'], { queryParams: { userId: this.users[index].id } });
+    this.router.navigate(['/cpanel/blog-details'], { queryParams: { blogId: this.blogs[index].id } });
   }
 
 }

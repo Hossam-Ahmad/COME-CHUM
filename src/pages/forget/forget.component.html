@@ -1,0 +1,9 @@
+<div class="login-page"  [ngStyle]="{'height': height}">
+        <div class="login-container">
+            <img src="../../../assets/images/logo_website.png" class="login-img">
+            <br>
+            <input type="email" placeholder="Email" class="login-input" [(ngModel)]="email" required>
+            <br>
+            <button class="login-btn" (click)="send()"><span>إرسال</span></button>
+        </div>
+    </div>

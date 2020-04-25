@@ -15,11 +15,11 @@
                                                 حذف
                                             </th>
                                             <th>
-                                                صفحه الجروب
+                                                صفحه الايفينت
                                             </th>
-                                            <th>
+                                            <!-- <th>
                                                تفاصيل
-                                            </th>
+                                            </th> -->
                                             <th>
                                                 تاريخ الاشتراك
                                             </th>
@@ -48,10 +48,10 @@
                                             <tr *ngFor="let event of events;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{event.created_at}}</td>
+                                                <!-- <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td> -->
+                                                <td>{{misc.formatDate(event.created_at)}}</td>
                                                 <td>{{event.about}}</td>
-                                                <td>{{event.owner_name}}</td>
+                                                <td><a [routerLink]="['/cpanel/user-details']" [queryParams]="{ userId: event.owner_id }">{{event.owner_name}}</a></td>
                                                 <td>{{event.members}}</td>
                                                 <td>{{event.name}}</td>
                                                 <td class="text-primary">

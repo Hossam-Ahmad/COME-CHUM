@@ -12,7 +12,7 @@ import { MiscService } from 'src/services/misc.service';
 export class PackagesComponent implements OnInit {
 
   aboutHeight: any;
-  public users = [];
+  public packages = [];
   public cover = '';
   pageId = 1;
   constructor(
@@ -32,20 +32,15 @@ export class PackagesComponent implements OnInit {
 
   getUsers() {
     this.packagesService.getAll(this.pageId).subscribe(data => {
-      this.users = data;
+      this.packages = data;
       console.log(data);
       this.pageId++;
     });
   }
 
-  open(index) {
-    const win = window.open(`${environment.host}profile/${this.users[index].profile_id}`, '_blank');
-    win.focus();
-  }
-
   remove(index) {
-    this.packagesService.remove(this.users[index].id).subscribe( data => {
-      this.users.splice(index, 1);
+    this.packagesService.remove(this.packages[index].id).subscribe( data => {
+      this.packages.splice(index, 1);
     });
   }
 
@@ -53,8 +48,8 @@ export class PackagesComponent implements OnInit {
     this.getUsers();
   }
 
-  details(index) {
-    this.router.navigate(['/cpanel/user-details'], { queryParams: { userId: this.users[index].id } });
+  update(index) {
+    this.router.navigate(['/cpanel/package-details'], { queryParams: { packageId: this.packages[index].id } });
   }
 
 }

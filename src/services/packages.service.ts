@@ -14,8 +14,15 @@ export class PackagesService {
       return this.httpClient.get(`${environment.api}packages/all/${pageId}`);
     }
 
+    get(packageId): any {
+      return this.httpClient.get(`${environment.api}packages/package/${packageId}`);
+    }
+
     update(packageId, data): any {
-      return this.httpClient.get(`${environment.api}packages/${packageId}/${data}`);
+      return this.httpClient.post(`${environment.api}packages/update`, {
+        id: packageId,
+        data
+      });
     }
 
     remove(packageId): any {

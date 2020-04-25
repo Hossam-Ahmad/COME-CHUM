@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { environment } from 'src/environments/environment';
+import { MiscService } from 'src/services/misc.service';
 
 @Component({
   selector: 'app-events',
@@ -13,7 +14,9 @@ export class EventsComponent implements OnInit {
   public events = [];
   public cover = '';
   pageId = 1;
-  constructor(public eventsService: EventsService) {
+  constructor(
+    public eventsService: EventsService,
+    public misc: MiscService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 

@@ -44,6 +44,9 @@ import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.compon
 import { MembersComponent } from 'src/components/members/members.component';
 import { BlogsComponent } from 'src/pages/blogs/blogs.component';
 import { PackagesComponent } from 'src/pages/packages/packages.component';
+import { ForgetComponent } from 'src/pages/forget/forget.component';
+import { ChangeComponent } from 'src/pages/change/change.component';
+import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -58,9 +61,6 @@ import { MiscService } from 'src/services/misc.service';
 import { StaticticsService } from 'src/services/statictics.service';
 import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
-
-
-
 
 
 
@@ -91,7 +91,10 @@ export function createHttpLoader(http: HttpClient) {
     ChatContactComponent,
     MembersComponent,
     BlogsComponent,
-    PackagesComponent
+    PackagesComponent,
+    ForgetComponent,
+    ChangeComponent,
+    PackageDetailsComponent
   ],
   imports: [
     BrowserModule,

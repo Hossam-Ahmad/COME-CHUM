@@ -1,0 +1,49 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">الباقه</h4>
+                      <p class="card-category">بيانات</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                              <div class="col-md-5">
+                                <label class="placeholder">الاسم</label>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput value="{{userData != undefined ? userData.name : ''}}" disabled>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-3">
+                                  <label class="placeholder">الايميل</label>
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput value="{{userData != undefined ? userData.email : ''}}" disabled>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                  <label class="placeholder">الباقه</label>
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput  value="{{userData != undefined ? userData.package : ''}}" disabled>
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label class="placeholder">عن المستخدم</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput disabled>{{userData ? userData.about : ''}}</textarea>
+                                 </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right btn-create" [routerLink]="['/cpanel/package-details']">{{btnTitle}}</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>

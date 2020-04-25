@@ -5,7 +5,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-danger">
-                                <h4 class="card-title ">قائمه المستخدمين</h4>
+                                <h4 class="card-title ">قائمه المدونات</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -15,19 +15,25 @@
                                                 حذف
                                             </th>
                                             <th>
-                                                صفحه البروفايل
+                                                صفحه المقاله
                                             </th>
                                             <th>
-                                                التفاصيل 
+                                                تعديل
                                             </th>
                                             <th>
-                                                تاريخ الاشتراك
+                                                تاريخ الانشاء
                                             </th>
                                             <th>
-                                                الباقه
+                                                مشاهدات 
                                             </th>
                                             <th>
-                                                الايميل
+                                                التعليقات
+                                            </th>
+                                            <th>
+                                                الاعجابات
+                                            </th>
+                                            <th>
+                                                صاحب المدونة
                                             </th>
                                             <th>
                                                 الاسم
@@ -42,14 +48,17 @@
                                             [infiniteScrollThrottle]="50"
                                             (scrolled)="onScroll()"
                                         >
-                                            <tr *ngFor="let user of users;let i = index;">
+                                            <tr *ngFor="let blog of blogs;let i = index;">
                                                 <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
-                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
-                                                <td>{{misc.formatDate(user.created_at)}}</td>
-                                                <td>{{user.package}}</td>
-                                                <td>{{user.email}}</td>
-                                                <td>{{user.name}}</td>
+                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="update(i)">تعديل</button></td>
+                                                <td>{{misc.formatDate(blog.created_at)}}</td>
+                                                <td>{{blog.seen}}</td>
+                                                <td>{{blog.comments}}</td>
+                                                <td>{{blog.likes}}</td>
+                                                <td *ngIf="blog.created_by != -1"><a [routerLink]="['/cpanel/user-details']" [queryParams]="{ userId: blog.created_by }">{{blog.created_by_name}}</a></td>
+                                                <td *ngIf="blog.created_by == -1">{{blog.created_by_name}}</td>
+                                                <td>{{blog.title}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>

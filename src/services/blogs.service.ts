@@ -15,7 +15,10 @@ export class BlogsService {
     }
 
     getMembers(blogId, data): any {
-      return this.httpClient.get(`${environment.api}blogs/update/${blogId}/${data}`);
+      return this.httpClient.post(`${environment.api}blogs/update`, {
+        id : blogId,
+        data
+      });
     }
 
     remove(blogId): any {

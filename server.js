@@ -13,6 +13,8 @@ const statictics = require('./src/routes/statictics');
 const contact = require('./src/routes/contact');
 const finance = require('./src/routes/finance');
 const contests = require('./src/routes/contests');
+const blogs = require('./src/routes/blogs');
+const packages = require('./src/routes/packages');
 const app = express();
 const port = process.env.PORT || 4200;
 
@@ -32,6 +34,8 @@ app.use('/api/statictics', statictics);
 app.use('/api/contact', contact);
 app.use('/api/finance', finance);
 app.use('/api/contests', contests);
+app.use('/api/blogs', blogs);
+app.use('/api/packages', packages);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

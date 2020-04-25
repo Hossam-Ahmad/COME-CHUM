@@ -13,6 +13,11 @@ import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
 import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
+import { ChangeComponent } from 'src/pages/change/change.component';
+import { ForgetComponent } from 'src/pages/forget/forget.component';
+import { BlogsComponent } from 'src/pages/blogs/blogs.component';
+import { PackagesComponent } from 'src/pages/packages/packages.component';
+import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 
 
 const routes: Routes = [
@@ -28,6 +33,16 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'forget',
+        component: ForgetComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'change',
+        component: ChangeComponent,
         canActivate: [AuthService]
       },
       {
@@ -72,12 +87,12 @@ const routes: Routes = [
       },
       {
         path: 'packages',
-        component: ContestsComponent,
+        component: PackagesComponent,
         canActivate: [AuthService]
       },
       {
         path: 'blogs',
-        component: ContestsComponent,
+        component: BlogsComponent,
         canActivate: [AuthService]
       },
       {
@@ -88,6 +103,11 @@ const routes: Routes = [
       {
         path: 'chat-contact',
         component: ChatContactComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'package-details',
+        component: PackageDetailsComponent,
         canActivate: [AuthService]
       },
     ]

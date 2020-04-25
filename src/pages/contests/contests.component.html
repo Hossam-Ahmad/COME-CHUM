@@ -36,9 +36,6 @@
                                                 تاريخ الانشاء
                                             </th>
                                             <th>
-                                                التفاصيل
-                                            </th>
-                                            <th>
                                                 الاسم
                                             </th>
                                             <th>
@@ -58,8 +55,8 @@
                                                 <td> </td>
                                                 <td> </td>
                                                 <td> </td>
-                                                <td>{{contest.end_at}}</td>
-                                                <td>{{contest.created_at}}</td>
+                                                <td> {{misc.formatDate(contest.end_at)}} </td>
+                                                <td> {{misc.formatDate(contest.created_at)}} </td>
                                                 <td>{{contest.name}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
