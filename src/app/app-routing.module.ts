@@ -18,6 +18,7 @@ import { ForgetComponent } from 'src/pages/forget/forget.component';
 import { BlogsComponent } from 'src/pages/blogs/blogs.component';
 import { PackagesComponent } from 'src/pages/packages/packages.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
+import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 
 
 const routes: Routes = [
@@ -108,6 +109,11 @@ const routes: Routes = [
       {
         path: 'package-details',
         component: PackageDetailsComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'blog-details',
+        component: BlogDetailsComponent,
         canActivate: [AuthService]
       },
     ]

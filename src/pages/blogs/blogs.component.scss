@@ -44,6 +44,14 @@
     }
 
 }
+
+.btn-create{
+    margin: auto !important;
+    display: block;
+    margin-top: 1em !important;
+    font-family: cairo-semibold;
+}
+
 @media (max-width: 768px) {
     .titlePicture{height: 12em !important;}
     .worksInner{

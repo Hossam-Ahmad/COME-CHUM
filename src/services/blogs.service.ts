@@ -14,9 +14,19 @@ export class BlogsService {
       return this.httpClient.get(`${environment.api}blogs/all/${pageId}`);
     }
 
-    getMembers(blogId, data): any {
+    get(blogId): any {
+      return this.httpClient.get(`${environment.api}blogs/blog/${blogId}`);
+    }
+
+    create(data): any {
+      return this.httpClient.post(`${environment.api}blogs/create`, {
+        data
+      });
+    }
+
+    update(blogId, data): any {
       return this.httpClient.post(`${environment.api}blogs/update`, {
-        id : blogId,
+        blogId,
         data
       });
     }

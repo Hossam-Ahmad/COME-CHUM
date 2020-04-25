@@ -58,7 +58,7 @@ export class BlogsComponent implements OnInit {
   }
 
   update(index) {
-
+    this.router.navigate(['/cpanel/blog-details'], { queryParams: { blogId: this.blogs[index].id } });
   }
 
 }

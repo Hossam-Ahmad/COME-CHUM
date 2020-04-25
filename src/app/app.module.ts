@@ -27,7 +27,7 @@ import { LoginComponent } from '../pages/login/login.component';
 import { CpanelComponent } from '../pages/cpanel/cpanel.component';
 import { UsersComponent } from 'src/pages/users/users.component';
 import { GroupsComponent } from 'src/pages/groups/groups.component';
-
+import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -64,6 +64,7 @@ import { BlogsService } from 'src/services/blogs.service';
 
 
 
+
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -94,7 +95,8 @@ export function createHttpLoader(http: HttpClient) {
     PackagesComponent,
     ForgetComponent,
     ChangeComponent,
-    PackageDetailsComponent
+    PackageDetailsComponent,
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,

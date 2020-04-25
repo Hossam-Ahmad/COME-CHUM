@@ -18,6 +18,12 @@ export class PackagesService {
       return this.httpClient.get(`${environment.api}packages/package/${packageId}`);
     }
 
+    create(data): any {
+      return this.httpClient.post(`${environment.api}packages/create`, {
+        data
+      });
+    }
+
     update(packageId, data): any {
       return this.httpClient.post(`${environment.api}packages/update`, {
         id: packageId,

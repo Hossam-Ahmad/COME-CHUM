@@ -33,6 +33,31 @@ router.get('/all/:pageId', function(req, res, next) {
   });
 });
 
+
+router.post('/create', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var userId = req.body['userId'];
+    conn.query('UPDATE blogs SET status = 0 where id = ' + userId, function(error,results,fields){
+      conn.release();
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
+router.post('/update', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var userId = req.body['userId'];
+    conn.query('UPDATE blogs SET status = 0 where id = ' + userId, function(error,results,fields){
+      conn.release();
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
 router.post('/remove', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var userId = req.body['userId'];

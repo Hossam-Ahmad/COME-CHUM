@@ -13,6 +13,34 @@ router.get('/all/:pageId', function(req, res, next) {
   });
 });
 
+router.post('/create', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var data = req.body['data'];
+    conn.query(`
+    INSERT INTO packages( name, details, price_month, price_year, status) VALUES 
+    ('${data.name}','${data.details}',${data.price_month},${data.price_year},1)
+    `, function(error,results,fields){
+      conn.release();
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
+router.post('/update', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var packageId = req.body['id'];
+    var data = req.body['data'];
+    conn.query(`UPDATE packages SET name = '${data.name}' , details='${data.details}' , price_month=${data.price_month} , price_year=${data.price_year} where id = ${packageId}` , function(error,results,fields){
+      conn.release();
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
 router.post('/remove', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var packageId = req.body['packageId'];

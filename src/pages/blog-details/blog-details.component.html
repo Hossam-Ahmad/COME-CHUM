@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">المدونه</h4>
+                      <p class="card-category">بيانات</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                              <div class="col-md-6">
+                                  <label class="placeholder">العنوان</label>
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput  value="{{blogData != undefined ? blogData.title : ''}}" [(ngModel)]="title" [ngModelOptions]="{standalone: true}">
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <label class="placeholder">الصورة</label>
+                                  <img src="{{blogData != undefined ? blogData.image : ''}}"/>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label class="placeholder">المحتوى</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea class="content" matInput [(ngModel)]="body" [ngModelOptions]="{standalone: true}" value="{{blogData != undefined ? blogData.body : ''}}"></textarea>
+                                 </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right btn-create" (click)="perform()">{{btnTitle}}</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>
