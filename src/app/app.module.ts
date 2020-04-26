@@ -29,6 +29,7 @@ import { UsersComponent } from 'src/pages/users/users.component';
 import { GroupsComponent } from 'src/pages/groups/groups.component';
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 
+
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
@@ -47,6 +48,7 @@ import { PackagesComponent } from 'src/pages/packages/packages.component';
 import { ForgetComponent } from 'src/pages/forget/forget.component';
 import { ChangeComponent } from 'src/pages/change/change.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
+import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -61,8 +63,6 @@ import { MiscService } from 'src/services/misc.service';
 import { StaticticsService } from 'src/services/statictics.service';
 import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
-
-
 
 
 export function createHttpLoader(http: HttpClient) {
@@ -96,7 +96,8 @@ export function createHttpLoader(http: HttpClient) {
     ForgetComponent,
     ChangeComponent,
     PackageDetailsComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    ContestDetailsComponent
   ],
   imports: [
     BrowserModule,

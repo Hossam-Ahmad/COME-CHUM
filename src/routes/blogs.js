@@ -36,8 +36,9 @@ router.get('/all/:pageId', function(req, res, next) {
 
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    var userId = req.body['userId'];
-    conn.query('UPDATE blogs SET status = 0 where id = ' + userId, function(error,results,fields){
+    var data = req.body['data'];
+    conn.query(`INSERT INTO blogs(title, body, image, created_by, likes, comments, seen, blog_id, status) VALUES
+     ('${data.title}' , '${data.body}' , '' , -1 , 0 , 0 , 0 , 'UAGSD' , 1)`, function(error,results,fields){
       conn.release();
       res.send({
         status : 'success'
@@ -48,8 +49,9 @@ router.post('/create', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    var userId = req.body['userId'];
-    conn.query('UPDATE blogs SET status = 0 where id = ' + userId, function(error,results,fields){
+    var blogId = req.body['blogId'];
+    var data = req.body['data'];
+    conn.query(`UPDATE blogs SET title = '${data.title}' , body = '${data.body}' where id = ${blogId}`, function(error,results,fields){
       conn.release();
       res.send({
         status : 'success'

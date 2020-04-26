@@ -19,6 +19,7 @@ import { BlogsComponent } from 'src/pages/blogs/blogs.component';
 import { PackagesComponent } from 'src/pages/packages/packages.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
+import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
 
 
 const routes: Routes = [
@@ -116,6 +117,11 @@ const routes: Routes = [
         component: BlogDetailsComponent,
         canActivate: [AuthService]
       },
+      {
+        path: 'contest-details',
+        component: ContestDetailsComponent,
+        canActivate: [AuthService]
+      }
     ]
   }
 ];

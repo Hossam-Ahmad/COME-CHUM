@@ -14,6 +14,23 @@ export class ContestsService {
       return this.httpClient.get(`${environment.api}contests/all/${pageId}`);
     }
 
+    get(contestId): any {
+      return this.httpClient.get(`${environment.api}contests/contest/${contestId}`);
+    }
+
+    create(data): any {
+      return this.httpClient.post(`${environment.api}contests/create`, {
+        data
+      });
+    }
+
+    update(contestId , data): any {
+      return this.httpClient.post(`${environment.api}contests/update`, {
+        contestId ,
+        data
+      });
+    }
+
     remove(contestId): any {
       return this.httpClient.post(`${environment.api}contests/remove`, {
         contestId

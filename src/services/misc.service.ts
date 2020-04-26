@@ -14,4 +14,8 @@ export class MiscService {
         return date.replace('T', ' ').replace('.000Z', ' ');
     }
 
+    getDate(date) {
+        return date.split('T')[0];
+    }
+
 }

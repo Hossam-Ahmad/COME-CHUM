@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContestsService } from '../../services/contests.service';
 import { environment } from 'src/environments/environment';
 import { MiscService } from 'src/services/misc.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contests',
@@ -16,7 +17,8 @@ export class ContestsComponent implements OnInit {
   pageId = 1;
   constructor(
     public contestService: ContestsService,
-    public misc: MiscService
+    public misc: MiscService,
+    private router: Router
     ) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
@@ -52,12 +54,8 @@ export class ContestsComponent implements OnInit {
     this.getGroups();
   }
 
-  details(index) {
-
-  }
-
   update(index) {
-    
+    this.router.navigate(['/cpanel/contest-details'], { queryParams: { contestId: this.contests[index].id } });
   }
 
 }
