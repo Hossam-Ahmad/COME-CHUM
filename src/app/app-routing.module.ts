@@ -20,6 +20,7 @@ import { PackagesComponent } from 'src/pages/packages/packages.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
+import { TestComponent } from 'src/pages/test/test.component';
 
 
 const routes: Routes = [
@@ -123,6 +124,10 @@ const routes: Routes = [
         canActivate: [AuthService]
       }
     ]
+  },
+  {
+    path: 'test',
+    component: TestComponent
   }
 ];
 

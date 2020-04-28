@@ -16,5 +16,11 @@ var connection = mysql.createPool({
     database : 'heroku_f0cb29b5b6f62bb'
 });
 
-module.exports = connection;
+var stripe_key = 'sk_test_E8ix1UwimY0qvL1oTbdqYK5T001ALXjDea';
+// var stripe_key = 'sk_test_E8ix1UwimY0qvL1oTbdqYK5T001ALXjDea';
+
+module.exports = {
+    connection,
+    stripe_key
+};
 

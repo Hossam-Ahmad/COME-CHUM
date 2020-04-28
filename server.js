@@ -15,6 +15,7 @@ const finance = require('./src/routes/finance');
 const contests = require('./src/routes/contests');
 const blogs = require('./src/routes/blogs');
 const packages = require('./src/routes/packages');
+const payments = require('./src/routes/payments');
 const app = express();
 const port = process.env.PORT || 4200;
 
@@ -36,6 +37,7 @@ app.use('/api/finance', finance);
 app.use('/api/contests', contests);
 app.use('/api/blogs', blogs);
 app.use('/api/packages', packages);
+app.use('/api/payments', payments);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

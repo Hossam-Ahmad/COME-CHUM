@@ -28,7 +28,7 @@ import { CpanelComponent } from '../pages/cpanel/cpanel.component';
 import { UsersComponent } from 'src/pages/users/users.component';
 import { GroupsComponent } from 'src/pages/groups/groups.component';
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
-
+import { TestComponent } from 'src/pages/test/test.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -63,6 +63,8 @@ import { MiscService } from 'src/services/misc.service';
 import { StaticticsService } from 'src/services/statictics.service';
 import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
+import { PaymentsService } from 'src/services/payments.service';
+
 
 
 export function createHttpLoader(http: HttpClient) {
@@ -97,7 +99,8 @@ export function createHttpLoader(http: HttpClient) {
     ChangeComponent,
     PackageDetailsComponent,
     BlogDetailsComponent,
-    ContestDetailsComponent
+    ContestDetailsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -138,7 +141,8 @@ export function createHttpLoader(http: HttpClient) {
     StaticticsService,
     BlogsService,
     PackagesService,
-    MiscService
+    MiscService,
+    PaymentsService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MembersComponent]

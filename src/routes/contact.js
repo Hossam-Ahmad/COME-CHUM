@@ -1,6 +1,7 @@
-var connection = require('./enviroment.js');
+var enviroment = require('./enviroment.js');
 var express = require('express');
 var router = express.Router();
+var connection = enviroment.connection;
 
 /* GET contact chats listing. */
 router.get('/all/:pageId', function(req, res, next) {

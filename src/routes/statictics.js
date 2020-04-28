@@ -1,7 +1,7 @@
-var connection = require('./enviroment.js');
-
+var enviroment = require('./enviroment.js');
 var express = require('express');
 var router = express.Router();
+var connection = enviroment.connection;
 
 /* GET statictics listing. */
 router.get('/all', function(req, res, next) {
