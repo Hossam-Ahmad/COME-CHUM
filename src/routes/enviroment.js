@@ -22,7 +22,7 @@ var stripe_key = 'sk_test_E8ix1UwimY0qvL1oTbdqYK5T001ALXjDea';
 var twitterConsumerKey = 'yA1IE48zVHNGIn2MndYAPhL5V';
 var twitterConsumerSecret = '7jg6EhZq5oGS9wVxvMAMMGvZWMJW1bmOwlw537q77wGbQd3Vma';
 // var twitterCallback = 'http://localhost:4200/api/social/callbackTwitter';
-var twitterCallback = 'https://chumtravel.herokuapp.com/api/social/callbackTwitter';
+var twitterCallback = 'http://chumtravel.herokuapp.com/api/social/callbackTwitter';
 
 var instaClientId = "0206abaa454a4858b1b2254cf71dfdf0";
 var instaRedirectionUrl = "https://www.market-followers.com/logininstagramProcess";
