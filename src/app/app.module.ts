@@ -29,12 +29,7 @@ import { UsersComponent } from 'src/pages/users/users.component';
 import { GroupsComponent } from 'src/pages/groups/groups.component';
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 import { TestComponent } from 'src/pages/test/test.component';
-
-// Components
-import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
-import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
+import { LoginWebsiteComponent } from 'src/pages/login-website/login-website.component';
 import { EventsComponent } from 'src/pages/events/events.component';
 import { StaticticsComponent } from 'src/pages/statictics/statictics.component';
 import { FinanceComponent } from 'src/pages/finance/finance.component';
@@ -42,13 +37,20 @@ import { ContactComponent } from 'src/pages/contact/contact.component';
 import { ContestsComponent } from 'src/pages/contests/contests.component';
 import { UserProfileComponent } from 'src/pages/user-profile/user-profile.component';
 import { ChatContactComponent } from 'src/pages/chat-contact/chat-contact.component';
-import { MembersComponent } from 'src/components/members/members.component';
 import { BlogsComponent } from 'src/pages/blogs/blogs.component';
 import { PackagesComponent } from 'src/pages/packages/packages.component';
 import { ForgetComponent } from 'src/pages/forget/forget.component';
 import { ChangeComponent } from 'src/pages/change/change.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
+
+// Components
+import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
+import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
+import { MembersComponent } from 'src/components/members/members.component';
+
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -64,6 +66,7 @@ import { StaticticsService } from 'src/services/statictics.service';
 import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
 import { PaymentsService } from 'src/services/payments.service';
+
 
 
 
@@ -100,7 +103,8 @@ export function createHttpLoader(http: HttpClient) {
     PackageDetailsComponent,
     BlogDetailsComponent,
     ContestDetailsComponent,
-    TestComponent
+    TestComponent,
+    LoginWebsiteComponent
   ],
   imports: [
     BrowserModule,

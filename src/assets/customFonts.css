@@ -40,3 +40,11 @@
     font-family: optima-medium;
     src: url("/assets/fonts/OPTIMA Medium.ttf");
 }
+@font-face {
+    font-family: vip-bold;
+    src: url("/assets/fonts/VIP Hala Bold.otf");
+}
+@font-face {
+    font-family: cocon;
+    src: url("/assets/fonts/Cocon Next Arabic-Light.otf");
+}

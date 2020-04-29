@@ -21,6 +21,7 @@ import { PackageDetailsComponent } from 'src/pages/package-details/package-detai
 import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.component';
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
 import { TestComponent } from 'src/pages/test/test.component';
+import { LoginWebsiteComponent } from 'src/pages/login-website/login-website.component';
 
 
 const routes: Routes = [
@@ -128,6 +129,10 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestComponent
+  },
+  {
+    path: 'login',
+    component: LoginWebsiteComponent
   }
 ];
 

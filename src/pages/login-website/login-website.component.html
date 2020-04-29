@@ -1,0 +1,113 @@
+<div>
+      <div class="pageContent">
+		  <div class="container-fluid">
+		     <div class="row" [ngStyle]="{'height': height}">	 
+				 <div class="col-md-8 logHeight">
+					 <div class="row">
+					     <div class="col offset-sm-1">		
+				    <div class="loginLogo">
+						<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+					</div>
+				 </div>
+					 </div>
+				 
+					 <div class="row">
+						 <div class="col">
+							  <div class="login-title">
+						   <h5>تسجيل دخول</h5>
+						    <div class="social-login">
+                                    <button type="button" class="btn btn-primary facebook-login" onclick="location.href = '/loginfb';">
+									<i class="fab fa-facebook-f"></i>
+									 Login With Facebook
+								    </button>
+                                    <button type="button" class="btn btn-primary twitter-login" onclick="location.href = '/logintwitter';">
+									   <i class="fab fa-twitter"></i>
+								    </button>
+                                    <button type="button" class="btn btn-primary insta-login" onclick="location.href = '/logininstagram';">
+									   <i class="fab fa-instagram"></i>
+								    </button>
+							 </div>
+						</div>
+							 
+						 </div>
+					  
+					 </div>
+					 
+					  <form class="register-form" method="post" action="checkLogin" id="form1">
+						  <div class="or">
+							
+								<div class="row">
+									<div class="col col-sm-5">
+										<hr>
+									</div>
+									<div class="col">
+										<span>أو</span>
+									</div>
+									<div class="col col-sm-5">
+										<hr>
+									</div>
+								</div>
+						</div>
+	
+						  
+						  
+					  	<div class="row upper-border">
+					
+						<div class="col">
+						  <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control" id="email" lang="en">
+						</div>
+						</div>
+						  
+						<div class="row lower-border second-row">
+						<div class="col col-sm-7 first-col">
+						  <input placeholder="كلمة المرور" name="pass" type="password" class="form-control" id="password" lang="en">
+						</div>
+					   <div class="col col-sm-5">
+                           
+                           <button class="btn btn-primary login-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
+                                            data-animate-enter="" data-animate-exit="" data-color-name="bg-black">
+                            دخول
+                           </button>
+                           
+						   </div>
+						</div>
+						<a class="forget-div" href="/forget/user"><p>نسيت كلمة المرور ؟</p></a>  
+					</form>
+				 
+				 </div>	
+				 
+				 
+				 
+				 
+				 <div class="col-md-4 side">
+				   <div class="loginSlider">
+					   <div class="container">
+						  <div class="absHeading">
+                              <h2>مميزات</h2>
+                              <h2>الاشتـــراك</h2>
+						  </div>
+					    <div id="carouselExampleSlidesOnly" class="carousel slide shifting" data-ride="carousel">
+				  <div class="carousel-inner">
+					<div class="carousel-item active">
+					  <h1 class="count">01</h1>
+					  <p class="details">
+                     - ابجد هوز ابجد هوز ابجد هوز
+                     ابجد هوز ابجد هوز ابجد هوز
+					</p>
+					</div>
+					</div>
+				  </div>
+						<div class="termLink">
+						   <i class="fas fa-align-left"></i>
+						   <a href="/terms">الشروط و الاحكام</a>
+						</div>
+				</div>
+	   
+				   </div>
+				 
+				 </div>
+				 
+			 </div>
+		  </div>
+	  </div>
+</div>

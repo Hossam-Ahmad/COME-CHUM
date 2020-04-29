@@ -1,0 +1,159 @@
+.side{
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    color: white;
+}
+
+.login-title{
+    margin-top: 4em;
+    h5{
+        color: #64828c;
+        font-family: vip-bold;
+    }
+    .facebook-login{
+        background-color: #496bb7;
+        border: 1px solid #496bb7;
+        text-transform: capitalize;
+        padding: 0.5em;
+        i{
+            padding-right: 1em;
+            padding-left: 1em;
+        }
+    }
+    .twitter-login{
+        width: 100px;
+        background-color: #31bff5;
+        border: 1px solid #31bff5;
+        padding: 0.5em;
+        margin: 0.5em;
+    }
+    .insta-login{
+        width: 100px;
+        background: linear-gradient(60deg, #ab70e8 0%, #f255b5 100%);
+        padding: 0.5em;
+        border: 0px;
+    }
+}
+
+.loginLogo{
+    img{
+        width: 100px;
+        float: left;
+        margin-top: 2em;
+    }
+}
+
+.count{
+    font-size: 7em;
+    opacity: 0.3;
+    font-family: vip-bold;
+}
+
+.shifting{
+    margin-top: -13em;
+}
+
+.details{
+    font-family: cocon;
+    direction: rtl;
+    margin-top: 7em;
+}
+
+.pageContent{
+    text-align: right;
+}
+
+.absHeading{
+    margin-top: 10em;
+    h2{
+        font-family: vip-bold;
+        font-size: 3em;
+    }
+}
+
+.termLink{
+    position: absolute;
+    bottom: 10%;
+    left: 25%;
+    a{
+        opacity: 0.5;
+        color: white;
+        text-decoration: underline;
+        font-family: cocon;
+    }
+}
+
+.or{
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+    font-family: vip-bold;
+    color: #d9d9d9;
+    font-size: 0.8em;
+    padding: 1em;
+    span{
+        text-align: center;
+        display: block;
+    }
+}
+
+#email{
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#password{
+    // width: 50%;
+    // margin: auto;
+    // margin-left: 14em;
+}
+
+#email::-webkit-input-placeholder , #password::-webkit-input-placeholder { 
+    font-family: cocon;
+    opacity: 0.5;
+    text-align: right;
+}
+  
+#email:-ms-input-placeholder ,  #password::-ms-input-placeholder {
+    font-family: cocon;
+    opacity: 0.5;
+    text-align: right;
+}
+  
+#email::placeholder ,  #password::placeholder {
+    font-family: cocon;
+    opacity: 0.5;
+    text-align: right;
+}
+
+.login-btn{
+    float: left;
+    width: 100%;
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    border-radius: 25px;
+    font-family: cairo-black;
+}
+
+.forget-div{
+    width: 50%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    p{
+        text-align: left;
+        text-decoration: underline;
+        font-family: vip-bold;
+        color: #64828c;
+        font-size: 0.7em;
+    }
+}
+
+.second-row{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    .first-col{
+        padding: 0px;
+    }
+}
