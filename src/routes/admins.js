@@ -19,7 +19,7 @@ router.post('/auth', function(req, res, next) {
                   token : '123456789'
               });
           } else {
-              res.send({status : 'failed'});
+            res.send({status : 'failed'});
           }
       });
     }

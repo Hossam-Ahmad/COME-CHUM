@@ -4,6 +4,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+var cors = require('cors')
 
 const groups = require('./src/routes/groups');
 const admins = require('./src/routes/admins');
@@ -21,6 +22,7 @@ const app = express();
 const port = process.env.PORT || 4200;
 
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
