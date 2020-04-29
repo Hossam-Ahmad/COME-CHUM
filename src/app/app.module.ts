@@ -66,7 +66,7 @@ import { StaticticsService } from 'src/services/statictics.service';
 import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
 import { PaymentsService } from 'src/services/payments.service';
-
+import { SocialService } from 'src/services/social.service';
 
 
 
@@ -146,7 +146,8 @@ export function createHttpLoader(http: HttpClient) {
     BlogsService,
     PackagesService,
     MiscService,
-    PaymentsService
+    PaymentsService,
+    SocialService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MembersComponent]
