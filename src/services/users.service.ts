@@ -24,4 +24,10 @@ export class UsersService {
       return this.httpClient.get(`${environment.api}users/user/${userId}`);
     }
 
+    forget(email): any {
+      return this.httpClient.post(`${environment.api}users/forget`, {
+        email
+      });
+    }
+
 }
