@@ -14,12 +14,14 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
@@ -43,6 +45,7 @@ import { ForgetComponent } from 'src/pages/forget/forget.component';
 import { ChangeComponent } from 'src/pages/change/change.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
+import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -69,12 +72,51 @@ import { PaymentsService } from 'src/services/payments.service';
 import { SocialService } from 'src/services/social.service';
 
 
-
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
   declarations: [
@@ -104,7 +146,8 @@ export function createHttpLoader(http: HttpClient) {
     BlogDetailsComponent,
     ContestDetailsComponent,
     TestComponent,
-    LoginWebsiteComponent
+    LoginWebsiteComponent,
+    ForgetWebsiteComponent
   ],
   imports: [
     BrowserModule,
@@ -119,12 +162,14 @@ export function createHttpLoader(http: HttpClient) {
     MatSelectModule,
     MatTooltipModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     NgbModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     HttpClientJsonpModule,
+    NotifierModule.withConfig(customNotifierOptions),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

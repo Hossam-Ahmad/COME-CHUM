@@ -22,6 +22,7 @@ import { BlogDetailsComponent } from 'src/pages/blog-details/blog-details.compon
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
 import { TestComponent } from 'src/pages/test/test.component';
 import { LoginWebsiteComponent } from 'src/pages/login-website/login-website.component';
+import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.component';
 
 
 const routes: Routes = [
@@ -133,7 +134,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginWebsiteComponent
-  }
+  },
+  {
+    path: 'forget',
+    component: ForgetWebsiteComponent
+  },
+
 ];
 
 @NgModule({
