@@ -18,6 +18,8 @@ const blogs = require('./src/routes/blogs');
 const packages = require('./src/routes/packages');
 const payments = require('./src/routes/payments');
 const social = require('./src/routes/social');
+const faq = require('./src/routes/faq');
+
 const app = express();
 const port = process.env.PORT || 4200;
 
@@ -42,6 +44,7 @@ app.use('/api/blogs', blogs);
 app.use('/api/packages', packages);
 app.use('/api/payments', payments);
 app.use('/api/social', social);
+app.use('/api/faq', faq);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

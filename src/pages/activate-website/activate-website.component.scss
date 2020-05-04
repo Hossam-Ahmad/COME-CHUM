@@ -104,13 +104,12 @@
     text-align: right;
 }
 
-.forget-btn{
-    margin: auto;
-    display: block;
-    width: 50%;
-    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+.email-btn{
+    background: white;
     border-radius: 25px;
-    font-family: cairo-black;
+    font-family: cocon;
+    color: #000;
+    margin: 1em;
 }
 
 .forget-div{
@@ -133,6 +132,20 @@
     text-align: center;
     .first-col{
         padding: 0px;
+    }
+}
+
+.activeCard{
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    color: white;
+    border-radius: 15px;
+    width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    .title{
+        font-family: cocon;
+        margin: 1em;
+        color: white;
     }
 }
 

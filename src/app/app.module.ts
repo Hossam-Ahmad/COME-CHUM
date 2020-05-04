@@ -23,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
+
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { LoginComponent } from '../pages/login/login.component';
@@ -46,6 +47,10 @@ import { ChangeComponent } from 'src/pages/change/change.component';
 import { PackageDetailsComponent } from 'src/pages/package-details/package-details.component';
 import { ContestDetailsComponent } from 'src/pages/contest-details/contest-details.component';
 import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.component';
+import { FaqComponent } from 'src/pages/faq/faq.component';
+import { RegisterWebsiteComponent } from 'src/pages/register-website/register-website.component';
+import { ActivateWebsiteComponent } from 'src/pages/activate-website/activate-website.component';
+
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -70,6 +75,8 @@ import { PackagesService } from 'src/services/packages.service';
 import { BlogsService } from 'src/services/blogs.service';
 import { PaymentsService } from 'src/services/payments.service';
 import { SocialService } from 'src/services/social.service';
+import { FaqService } from 'src/services/faq.service';
+
 
 
 export function createHttpLoader(http: HttpClient) {
@@ -147,7 +154,10 @@ const customNotifierOptions: NotifierOptions = {
     ContestDetailsComponent,
     TestComponent,
     LoginWebsiteComponent,
-    ForgetWebsiteComponent
+    ForgetWebsiteComponent,
+    FaqComponent,
+    RegisterWebsiteComponent,
+    ActivateWebsiteComponent
   ],
   imports: [
     BrowserModule,
@@ -192,7 +202,8 @@ const customNotifierOptions: NotifierOptions = {
     PackagesService,
     MiscService,
     PaymentsService,
-    SocialService
+    SocialService,
+    FaqService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MembersComponent]

@@ -18,7 +18,7 @@
 						    <div class="social-login">
                                     <button type="button" class="btn btn-primary facebook-login" (click)="loginFB()">
 									<i class="fab fa-facebook-f"></i>
-									 Login With Facebook
+									<span style="margin-right: 1em;">Login With Facebook</span>
 								    </button>
                                     <button type="button" class="btn btn-primary twitter-login" (click)="loginTwitter()">
 									   <i class="fab fa-twitter"></i>
@@ -54,19 +54,26 @@
 					  	<div class="row upper-border">
 					
 						<div class="col">
-						  <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control" id="email" lang="en">
+						  <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control" id="email" lang="en" [(ngModel)]="email">
 						</div>
 						</div>
 						  
 						<div class="row lower-border second-row">
 						<div class="col col-sm-7 first-col">
-						  <input placeholder="كلمة المرور" name="pass" type="password" class="form-control" id="password" lang="en">
+						  <input placeholder="كلمة المرور" name="pass" type="password" class="form-control" id="password" lang="en" [(ngModel)]="password">
 						</div>
 					   <div class="col col-sm-5">
                            
                            <button class="btn btn-primary login-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
-                                            data-animate-enter="" data-animate-exit="" data-color-name="bg-black">
-                            دخول
+                                            data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="login()">
+										<mat-progress-spinner *ngIf="loading"
+											style="margin: auto;"
+											diameter="30"
+											class = "tp-margin"
+											[color] = "color"
+											[mode] = "mode">
+										</mat-progress-spinner>
+										<span *ngIf="!loading">دخول</span>
                            </button>
                            
 						   </div>
@@ -111,3 +118,4 @@
 		  </div>
 	  </div>
 </div>
+<notifier-container style="font-family: cocon;"></notifier-container>

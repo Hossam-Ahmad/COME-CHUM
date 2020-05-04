@@ -3,7 +3,28 @@ var express = require('express');
 var router = express.Router();
 var connection = enviroment.connection;
 
-/* GET users listing. */
+router.post('/auth', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    if(err) {
+      console.log(err);
+    } else {
+      var email = req.body['email'];
+      var password = req.body['password'];
+      conn.query(`SELECT * FROM users where email like '${email}' and password like '${password}'`, function(error,results,fields){
+        conn.release();  
+        if(results.length > 0){
+              res.send({
+                  status : 'success',
+                  token : '123456789'
+              });
+          } else {
+            res.send({status : 'failed'});
+          }
+      });
+    }
+  });
+});
+
 router.get('/all/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var pageId = req.params['pageId'];

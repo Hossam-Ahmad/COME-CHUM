@@ -1,0 +1,90 @@
+.term-body{
+    background: #f3f5f7;
+}
+
+.termTitle {
+    background-image: url('../../assets/images/faq-background.jpg');
+}
+
+.website-Logo{
+    width: 7%;
+    margin-top: 1em;
+}
+
+.faq-title{
+    text-align: right;
+    font-family: cocon;
+    font-weight: normal;
+    color: white;
+    font-size: 1.5em;
+}
+
+.termTitle{
+    height: 11em;
+}
+
+.query{
+    padding-right: 5em;
+    margin: auto;
+    display: block;
+    width: 80%;
+    text-align: right;
+    border-radius: 3px;
+    border: 0px;
+    height: 3em;
+    box-shadow: 0px 0px 10px #00000063;
+}
+
+.query::placeholder{
+    font-family: cocon;
+    line-height: 2.5em;
+    color: #9fa0a8;
+}
+
+// .query::placeholder{
+//     font-family: cocon;
+// }
+
+// .query::placeholder{
+//     font-family: cocon;
+// }
+
+.container{
+    width: 75%;
+}
+
+.search{
+    position: absolute;
+    right: 8em;
+    top: 3em;
+    color: #c3328d;
+}
+
+.mark{
+    position: absolute;
+    right: 5em;
+    top: 1em;
+    color: #c3328d;
+    font-size: 2em;
+    background: transparent;
+    padding: 0px;
+}
+
+#faqAccordion{
+    background-color: white;
+    border: 1px solid #d4dadf;
+    margin: 1em;
+    padding: 1em;
+    text-align: right;
+    direction: rtl;
+}
+
+.question{
+    font-family: cairo-black;
+    font-size: 0.7em;
+}
+
+.answer{
+    font-family: cocon;
+    color: #9fa0a8;
+}

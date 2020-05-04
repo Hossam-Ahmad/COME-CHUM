@@ -9,6 +9,29 @@
         color: #64828c;
         font-family: vip-bold;
     }
+    .facebook-login{
+        background-color: #496bb7;
+        border: 1px solid #496bb7;
+        text-transform: capitalize;
+        padding: 0.5em;
+        i{
+            padding-right: 1em;
+            padding-left: 1em;
+        }
+    }
+    .twitter-login{
+        width: 100px;
+        background-color: #31bff5;
+        border: 1px solid #31bff5;
+        padding: 0.5em;
+        margin: 0.5em;
+    }
+    .insta-login{
+        width: 100px;
+        background: linear-gradient(60deg, #ab70e8 0%, #f255b5 100%);
+        padding: 0.5em;
+        border: 0px;
+    }
 }
 
 .loginLogo{
@@ -104,10 +127,9 @@
     text-align: right;
 }
 
-.forget-btn{
-    margin: auto;
-    display: block;
-    width: 50%;
+.login-btn{
+    float: left;
+    width: 100%;
     background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
     border-radius: 25px;
     font-family: cairo-black;
@@ -128,13 +150,45 @@
 }
 
 .second-row{
-    width: 50%;
+    width: 80%;
     margin: auto;
     text-align: center;
+    margin-bottom: 2em;
     .first-col{
         padding: 0px;
+        padding-right: 2em;
+    }
+    .input{
+        text-align: center;
+        font-family: cocon;
+    }
+    .input::placeholder{
+        font-size: 0.8em;
+        line-height: 2em;
+        color: #00000042;
+    }
+    .non-selected{
+        font-size: 0.8em;
+        color: #00000042;
+    }
+    .select-icon{
+        position: absolute;
+        top: 0.5em;
+        left: 0.5em;
+        color: #bb3794;
     }
 }
+
+
+.forget-btn{
+    margin: auto;
+    display: block;
+    width: 50%;
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    border-radius: 25px;
+    font-family: cairo-black;
+}
+
 
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
     stroke: #fff !important;

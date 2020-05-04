@@ -6,14 +6,18 @@ import { NotifierService } from 'angular-notifier';
 
 
 @Component({
-  selector: 'app-login-website',
-  templateUrl: './login-website.component.html',
-  styleUrls: ['./login-website.component.scss']
+  selector: 'app-register-website',
+  templateUrl: './register-website.component.html',
+  styleUrls: ['./register-website.component.scss']
 })
-export class LoginWebsiteComponent implements OnInit {
+export class RegisterWebsiteComponent implements OnInit {
 
   public email = '';
+  public name = '';
   public password = '';
+  public repassword = '';
+  public gender = '';
+  public country = '';
   public height;
   public loading = false;
 

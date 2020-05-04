@@ -23,6 +23,9 @@ import { ContestDetailsComponent } from 'src/pages/contest-details/contest-detai
 import { TestComponent } from 'src/pages/test/test.component';
 import { LoginWebsiteComponent } from 'src/pages/login-website/login-website.component';
 import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.component';
+import { FaqComponent } from 'src/pages/faq/faq.component';
+import { RegisterWebsiteComponent } from 'src/pages/register-website/register-website.component';
+import { ActivateWebsiteComponent } from 'src/pages/activate-website/activate-website.component';
 
 
 const routes: Routes = [
@@ -138,6 +141,18 @@ const routes: Routes = [
   {
     path: 'forget',
     component: ForgetWebsiteComponent
+  },
+  {
+    path: 'faq',
+    component: FaqComponent
+  },
+  {
+    path: 'register',
+    component: RegisterWebsiteComponent
+  },
+  {
+    path: 'activate',
+    component: ActivateWebsiteComponent
   },
 
 ];

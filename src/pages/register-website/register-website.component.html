@@ -1,0 +1,145 @@
+<div>
+      <div class="pageContent">
+		  <div class="container-fluid">
+		     <div class="row" [ngStyle]="{'height': height}">	 
+				 <div class="col-md-8 logHeight">
+					 <div class="row">
+					     <div class="col offset-sm-1">		
+				    <div class="loginLogo">
+						<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+					</div>
+				 </div>
+					 </div>
+				 
+					 <div class="row">
+						 <div class="col">
+							  <div class="login-title">
+						   <h5>إنشاء حساب</h5>
+						    <div class="social-login">
+                                    <button type="button" class="btn btn-primary facebook-login" (click)="loginFB()">
+									<i class="fab fa-facebook-f"></i>
+									 <span style="margin-right: 1em;">Login With Facebook</span>
+								    </button>
+                                    <button type="button" class="btn btn-primary twitter-login" (click)="loginTwitter()">
+									   <i class="fab fa-twitter"></i>
+								    </button>
+                                    <button type="button" class="btn btn-primary insta-login" (click)="loginInsta()">
+									   <i class="fab fa-instagram"></i>
+								    </button>
+							 </div>
+						</div>
+							 
+						 </div>
+					  
+					 </div>
+					 
+					  <form class="register-form" method="post" action="checkLogin" id="form1">
+						  <div class="or">
+							
+								<div class="row">
+									<div class="col col-sm-5">
+										<hr>
+									</div>
+									<div class="col">
+										<span>أو</span>
+									</div>
+									<div class="col col-sm-5">
+										<hr>
+									</div>
+								</div>
+						</div>
+	
+						  
+						<div class="row lower-border second-row">
+							<div class="col col-sm-6 first-col">
+								<input placeholder="الاسم الشخصي" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+							</div>
+							<div class="col col-sm-6 first-col">
+								<input placeholder="البريد الالكتروني" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+							</div>
+						</div>
+
+						<div class="row lower-border second-row">
+							<div class="col col-sm-6 first-col">
+								<input placeholder="كلمة المرور" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
+							</div>
+							<div class="col col-sm-6 first-col">
+								<input placeholder="تكرار كلمة المرور" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
+							</div>
+						</div>
+
+						<div class="row lower-border second-row">
+							<div class="col col-sm-6 first-col">
+								<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+									<option value="" disabled selected>النوع</option>
+                                    <option value="0">ذكر</option>
+                                    <option value="1">انثى</option>
+								</select>
+								<i class="fas fa-caret-down select-icon"></i>
+							</div>
+							<div class="col col-sm-6 first-col">
+								<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+									<option value="" disabled selected>الدولة</option>
+                                    <option value="0">مصر</option>
+                                    <option value="1">السعودية</option>
+								</select>
+								<i class="fas fa-caret-down select-icon"></i>
+							</div>
+						</div>
+
+						<div class="upper-border">
+							 	<div>
+								  <button class="btn btn-primary forget-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
+									  data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="forget()">
+									  <mat-progress-spinner *ngIf="loading"
+										  style="margin: auto;"
+										  diameter="30"
+										  class = "tp-margin"
+										  [color] = "color"
+										  [mode] = "mode">
+									  </mat-progress-spinner>
+										  <span *ngIf="!loading">استكمال</span>
+									  </button>
+							  	</div>
+						  </div>
+
+					</form>
+				 
+				 </div>	
+				 
+				 
+				 
+				 
+				 <div class="col-md-4 side">
+				   <div class="loginSlider">
+					   <div class="container">
+						  <div class="absHeading">
+                              <h2>مميزات</h2>
+                              <h2>الاشتـــراك</h2>
+						  </div>
+					    <div id="carouselExampleSlidesOnly" class="carousel slide shifting" data-ride="carousel">
+				  <div class="carousel-inner">
+					<div class="carousel-item active">
+					  <h1 class="count">01</h1>
+					  <p class="details">
+                     - ابجد هوز ابجد هوز ابجد هوز
+                     ابجد هوز ابجد هوز ابجد هوز
+					</p>
+					</div>
+					</div>
+				  </div>
+						<div class="termLink">
+						   <i class="fas fa-align-left"></i>
+						   <a href="/terms">الشروط و الاحكام</a>
+						</div>
+				</div>
+	   
+				   </div>
+				 
+				 </div>
+				 
+			 </div>
+		  </div>
+	  </div>
+</div>
+<notifier-container style="font-family: cocon;"></notifier-container>

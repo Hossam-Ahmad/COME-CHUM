@@ -1,0 +1,60 @@
+
+
+<div class="term-body" [ngStyle]="{'height': height}">
+
+	<!--start title-->
+	<div class="termTitle">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="termsLogo">
+						<img class="website-Logo" src="../../../assets/images/logo.png">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+                    <h3 class="faq-title">الاسئلة المتكررة على منصتنا</h3>
+                    <i class="fas fa-search search"></i>
+                    <span class="mark">|</span>
+                    <input class="query" type="text" placeholder="ابحث هنا" (keyup)="search($event.target.value)">
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="termsContent">
+		   <div class="container" infiniteScroll
+           [infiniteScrollDistance]="2"
+           [infiniteScrollThrottle]="50"
+           (scrolled)="getQuestions()">
+                <div *ngFor="let question of questions; let index = i" class="panel-group" id="faqAccordion">
+                    
+                    <div class="panel panel-default">
+                        <div (click)="question1.toggle()" mdbWavesEffect>
+                            <h4 class="panel-title">
+                                <i class="far fa-bookmark fa-lg" style="padding: 1em;
+                                background: -webkit-linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+                                background-clip: text;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;"></i>
+                                <a class="question">{{question.question}}</a>
+                                <i class="fas fa-sort-down" style="float: left;padding: 1em;"></i>
+                        </h4>
+                        </div>
+                        <div mdbCollapse #question1="bs-collapse">
+                            <div class="panel-body">
+                                <p class="answer">{{question.answer}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+		</div>
+		
+		
+    </div>
+    
+
+</div>

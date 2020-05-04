@@ -47,6 +47,13 @@ export class AuthService implements CanActivate {
       });
     }
 
+    loginUser(email, password) {
+      return this.httpClient.post(`${environment.api}users/auth`, {
+        'email' : email,
+        'password': password
+      });
+    }
+
     changeCredentials(email, oldPassword, newPassword) {
       return this.httpClient.post(`${environment.api}admins/auth`, {
         'email' : email,
