@@ -1,0 +1,44 @@
+
+
+<div class="term-body" [ngStyle]="{'height': height}">
+
+	<!--start title-->
+	<div class="termTitle">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="termsLogo">
+						<img class="website-Logo" src="../../../assets/images/logo.png">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+                    <h3 class="faq-title">الشروط و الاحكام</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="termsContent">
+		   <div class="container">
+                <div class="panel-group" id="faqAccordion">
+                    
+                    <div class="panel panel-default">
+                        <div>
+                        </div>
+                        <div>
+                            <div class="panel-body">
+                                <p class="answer">{{term ? term : ''}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+		</div>
+		
+		
+    </div>
+    
+
+</div>

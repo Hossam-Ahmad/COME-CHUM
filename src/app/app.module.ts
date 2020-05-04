@@ -50,7 +50,9 @@ import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.
 import { FaqComponent } from 'src/pages/faq/faq.component';
 import { RegisterWebsiteComponent } from 'src/pages/register-website/register-website.component';
 import { ActivateWebsiteComponent } from 'src/pages/activate-website/activate-website.component';
-
+import { TermsComponent } from 'src/pages/terms/terms.component';
+import { HomeComponent } from 'src/pages/home/home.component';
+import { ChatComponent } from 'src/pages/chat/chat.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -76,6 +78,10 @@ import { BlogsService } from 'src/services/blogs.service';
 import { PaymentsService } from 'src/services/payments.service';
 import { SocialService } from 'src/services/social.service';
 import { FaqService } from 'src/services/faq.service';
+import { SettingsService } from 'src/services/settings.service';
+
+
+
 
 
 
@@ -157,7 +163,10 @@ const customNotifierOptions: NotifierOptions = {
     ForgetWebsiteComponent,
     FaqComponent,
     RegisterWebsiteComponent,
-    ActivateWebsiteComponent
+    ActivateWebsiteComponent,
+    TermsComponent,
+    HomeComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -203,7 +212,8 @@ const customNotifierOptions: NotifierOptions = {
     MiscService,
     PaymentsService,
     SocialService,
-    FaqService
+    FaqService,
+    SettingsService
   ],
   bootstrap: [AppComponent],
   entryComponents: [MembersComponent]

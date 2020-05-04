@@ -26,6 +26,9 @@ import { ForgetWebsiteComponent } from 'src/pages/forget-website/forget-website.
 import { FaqComponent } from 'src/pages/faq/faq.component';
 import { RegisterWebsiteComponent } from 'src/pages/register-website/register-website.component';
 import { ActivateWebsiteComponent } from 'src/pages/activate-website/activate-website.component';
+import { TermsComponent } from 'src/pages/terms/terms.component';
+import { HomeComponent } from 'src/pages/home/home.component';
+import { ChatComponent } from 'src/pages/chat/chat.component';
 
 
 const routes: Routes = [
@@ -154,6 +157,19 @@ const routes: Routes = [
     path: 'activate',
     component: ActivateWebsiteComponent
   },
+  {
+    path: 'terms',
+    component: TermsComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
+  },
+
 
 ];
 
