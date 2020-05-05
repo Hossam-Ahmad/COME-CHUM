@@ -117,15 +117,12 @@ img {
  max-width: 100%;
 }
 
-body {
+.page {
+ box-sizing: border-box;
+ -webkit-font-smoothing: antialiased;
  background-color: var(--body-bg-color);
  font-family: var(--body-font);
  color: var(--body-color);
-}
-
-html {
- box-sizing: border-box;
- -webkit-font-smoothing: antialiased;
 }
 
 .app {

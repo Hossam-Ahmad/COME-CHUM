@@ -1,6 +1,8 @@
 {
   "language" : "اللغة",
   "home_nav" : "الرئيسية",
+  "groups_nav" : "الجروبات",
+  "events_nav" : "الايفينتات",
   "about_nav" : "عن الشركة",
   "services_nav" : "الخدمات",
   "contact_nav" : "تواصل معنا",

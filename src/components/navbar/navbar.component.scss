@@ -21,9 +21,45 @@ mdb-navbar{
     .navbar-toggler{
         background-color: #fff !important;
     }
+    .navbar-nav{
+        margin: 0px !important;
+        padding: 0px !important;
+    }
 }
 .items-style{
     padding-right: 20px !important;
     padding-left: 20px !important;
     border-radius: 25px;
 } 
+
+.logo{
+    width: 3em;
+}
+
+.search{
+    border-radius: 25px;
+    border: 0px;
+    line-height: 1.5;
+    padding-top: .5em;
+    text-align: left;
+    padding-left: 2em;
+    width: 30%;
+    box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
+    margin: auto;
+}
+
+.icon{
+    margin: 1em;
+    opacity: 0.7;
+}
+
+.profile-icon{
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 1em;
+}
+
+.iconLink{
+    color: black;
+}

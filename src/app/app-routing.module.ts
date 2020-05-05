@@ -29,6 +29,8 @@ import { ActivateWebsiteComponent } from 'src/pages/activate-website/activate-we
 import { TermsComponent } from 'src/pages/terms/terms.component';
 import { HomeComponent } from 'src/pages/home/home.component';
 import { ChatComponent } from 'src/pages/chat/chat.component';
+import { FeedComponent } from 'src/pages/feed/feed.component';
+import { MasterComponent } from 'src/pages/master/master.component';
 
 
 const routes: Routes = [
@@ -166,11 +168,24 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'chat',
-    component: ChatComponent
+    path: '',
+    component: MasterComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'feed',
+        pathMatch: 'full'
+      },
+      {
+        path: 'chat',
+        component: ChatComponent
+      },
+      {
+        path: 'feed',
+        component: FeedComponent
+      }
+    ]
   },
-
-
 ];
 
 @NgModule({

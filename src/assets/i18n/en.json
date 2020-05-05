@@ -1,6 +1,8 @@
 {
   "language" : "Language",
   "home_nav" : "Home",
+  "groups_nav" : "Groups",
+  "events_nav" : "Events",
   "about_nav" : "About",
   "services_nav" : "Services",
   "contact_nav" : "Contact us",
