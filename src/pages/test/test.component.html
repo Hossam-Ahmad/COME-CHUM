@@ -1,4 +1,4 @@
-<form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
+<!-- <form #checkout="ngForm" (ngSubmit)="onSubmit(checkout)" class="checkout">
     <div class="form-row">
       <label for="card-info">Card Info</label>
       <div id="card-info" #cardInfo></div>
@@ -7,4 +7,29 @@
     </div>
   
     <button type="submit">Pay $777</button>
-  </form>
+  </form> -->
+
+  <form id="myCCForm" action="/order" method="post">
+    <input id="token" name="token" type="hidden" value="">
+    <div>
+        <label>
+            <span>Card Number</span>
+        </label>
+        <input id="ccNo" type="text" size="20" value="" autocomplete="off" required [(ngModel)]="ccNo" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <div>
+        <label>
+            <span>Expiration Date (MM/YYYY)</span>
+        </label>
+        <input type="text" size="2" id="expMonth" required [(ngModel)]="expMonth" [ngModelOptions]="{standalone: true}" />
+        <span> / </span>
+        <input type="text" size="2" id="expYear" required [(ngModel)]="expYear" [ngModelOptions]="{standalone: true}"/>
+    </div>
+    <div>
+        <label>
+            <span>CVC</span>
+        </label>
+        <input id="cvv" size="4" type="text" value="" autocomplete="off" required [(ngModel)]="cvv" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <input type="submit" value="Submit Payment">
+</form>

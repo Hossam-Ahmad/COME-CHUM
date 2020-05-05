@@ -6,10 +6,8 @@ export const environment = {
   production: false,
   host : 'http://localhost:4200/',
   api : 'http://localhost:4200/api/',
-  dbHost     : 'localhost',
-  dbUser     : 'root',
-  dbPassword : '',
-  dbDatabase : 'travel'
+  tco_sellerId : '901423527',
+  tco_publishableKey : '6E800B98-97CD-4460-AAA7-01697C90D3FB'
 };
 
 /*

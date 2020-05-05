@@ -43,6 +43,16 @@ var mail = {
 
 var domain = "https://chumtravel.herokuapp.com";
 
+var twoCheckout = {
+    Publishable : "6E800B98-97CD-4460-AAA7-01697C90D3FB",
+    Private : "9C880AF0-B6C8-4943-9E02-E6CD84B5CAE1",
+    sellerId : "901423527",
+    secretWord : "MWVlZmFlMjktNTcxOS00MzI5LWJmMzEtNjE0NGI5Y2I0YjY2",
+    sandbox : true
+}
+
+
+
 module.exports = {
     connection,
     stripe_key,
@@ -52,6 +62,7 @@ module.exports = {
     instaClientId,
     instaRedirectionUrl,
     mail,
-    domain
+    domain,
+    twoCheckout
 };
 

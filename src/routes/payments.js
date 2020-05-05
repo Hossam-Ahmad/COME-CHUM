@@ -125,4 +125,51 @@ router.post('/stripe/charge', function(req, res, next) {
 
 
 
+router.post('/tco/charge', function(req, res, next) {
+
+    var Twocheckout = require('2checkout-node');
+
+    var tco = new Twocheckout({
+        secretWord: enviroment.twoCheckout.secretWord,
+        sellerId: enviroment.twoCheckout.sellerId,         // Seller ID, required for all non Admin API bindings 
+        privateKey: enviroment.twoCheckout.Private,     // Payment API private key, required for checkout.authorize binding
+        demo: true,  
+        sandbox: true                          // Uses 2Checkout sandbox URL for all bindings
+    });
+
+    const params = {
+        "merchantOrderId": "124",
+        "token": req.body.token,
+        "currency": "USD",
+        "total": "10.00",
+        "billingAddr": {
+            "name": "Testing Tester",
+            "addrLine1": "123 Test St",
+            "city": "Columbus",
+            "state": "Ohio",
+            "zipCode": "43123",
+            "country": "USA",
+            "email": "example@2co.com",
+            "phoneNumber": "5555555555"
+        }
+    };
+  
+    tco.checkout.authorize(params, function (error, data) {
+        if (error) {
+            res.send({error : error.message});
+        } else {
+            res.send({sucess : data.response.responseMsg});
+        }
+    });
+
+
+
+});
+
+
+
+
+
+
+
 module.exports = router;
