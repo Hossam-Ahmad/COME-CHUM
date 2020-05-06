@@ -36,17 +36,30 @@ mdb-navbar{
     width: 3em;
 }
 
-.search{
-    border-radius: 25px;
-    border: 0px;
-    line-height: 1.5;
-    padding-top: .5em;
-    text-align: left;
-    padding-left: 2em;
-    width: 30%;
-    box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
-    margin: auto;
+.search-container{
+    width: 45%;
+    .search{
+        border-radius: 25px;
+        border: 0px;
+        line-height: 1.5;
+        padding-top: .5em;
+        text-align: left;
+        padding-left: 2em;
+        width: 80%;
+        box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.21);
+        margin: auto;
+    }
+    p{
+        position: absolute;
+        top: 1.5em;
+        left: 60%;
+        color: #c5348e;
+        border-left: 1px solid;
+        padding-left: 1em;
+        cursor: pointer;
+    }
 }
+
 
 .icon{
     margin: 1em;

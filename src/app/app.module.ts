@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
 // Pages
@@ -131,6 +134,10 @@ const customNotifierOptions: NotifierOptions = {
   }
 };
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -186,6 +193,7 @@ const customNotifierOptions: NotifierOptions = {
     MatDialogModule,
     MatProgressSpinnerModule,
     NgbModule,
+    PerfectScrollbarModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
@@ -216,7 +224,11 @@ const customNotifierOptions: NotifierOptions = {
     PaymentsService,
     SocialService,
     FaqService,
-    SettingsService
+    SettingsService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [MembersComponent]
