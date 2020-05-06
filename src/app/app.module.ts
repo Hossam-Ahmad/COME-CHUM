@@ -62,6 +62,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
 import { MembersComponent } from 'src/components/members/members.component';
+import { SidebarWebsiteComponent } from 'src/components/sidebar-website/sidebar-website.component';
 
 
 // Services
@@ -167,7 +168,8 @@ const customNotifierOptions: NotifierOptions = {
     HomeComponent,
     ChatComponent,
     FeedComponent,
-    MasterComponent
+    MasterComponent,
+    SidebarWebsiteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+.navigation{
+    height: 15em;
+    width: 12em;
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+    margin: 1em;
+    overflow-y: scroll;
+    ul{
+        list-style: none;
+    }
+    li{
+        margin-bottom: 1em;
+        padding-top: 1em;
+    }
+    i{
+        vertical-align: middle;
+        color: rgb(209,209,211);
+    }
+    p{
+        display: inline;
+        vertical-align: middle
+    }
+    .active{
+        color:rgb(251,42,161);
+    }
+}
