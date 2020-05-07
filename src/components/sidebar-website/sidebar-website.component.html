@@ -1,94 +1,96 @@
-<perfect-scrollbar style="height: auto;width: auto;">
-    <div class="navigation">
+<div class="sidebar">
+    <perfect-scrollbar style="height: auto;width: auto;">
+        <div class="navigation">
+            <ul>
+                <li class="active">
+                    <a routerLinkActive="on"  [routerLink]="[ '/' ]">
+                        <i class="material-icons">home</i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/groups' ]">
+                        <i class="material-icons">group</i>
+                        <p>Groups</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/chat' ]">
+                        <i class="material-icons">chat</i>
+                        <p>Messages</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/events' ]">
+                        <i class="material-icons">event_note</i>
+                        <p>Events</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/blogs' ]">
+                        <i class="material-icons">event_note</i>
+                        <p>Blogs</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/contest' ]">
+                        <i class="material-icons">emoji_events</i>
+                        <p>Contests</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
+                        <i class="material-icons">credit_card</i>
+                        <p>Packages</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+    
+    <div class="other">
+        <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
+            <div class="row">
+                    <img src="../../../assets/images/package.png"/>
+                    <div>
+                        <p class="title">Update Package</p>
+                        <p class="subtitle">Get more updates</p>
+                    </div>
+                
+            </div>
+        </a>
+    </div>
+    
+    
+    <div class="other">
+        <a routerLinkActive="on"  [routerLink]="[ '/profile' ]">
+            <div class="row">
+                <img src="../../../assets/images/marc.jpg"/>
+                <div>
+                    <p class="title">Hossam Ahmad</p>
+                    <p class="subtitle">@Hossam</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+    
+    <div class="other support">
         <ul>
-            <li class="active">
-                <a routerLinkActive="on"  [routerLink]="[ '/' ]">
-                    <i class="material-icons">home</i>
-                    <p>Home</p>
+            <li>
+                <a routerLinkActive="on"  [routerLink]="[ '/faq' ]">
+                    <i class="material-icons active">help</i>
+                    <p>Help & Support</p>
                 </a>
             </li>
+            <hr style="margin: 0px;
+            width: 12em;">
             <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/groups' ]">
-                    <i class="material-icons">group</i>
-                    <p>Groups</p>
-                </a>
-            </li>
-            <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/chat' ]">
-                    <i class="material-icons">chat</i>
-                    <p>Messages</p>
-                </a>
-            </li>
-            <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/events' ]">
-                    <i class="material-icons">event_note</i>
-                    <p>Events</p>
-                </a>
-            </li>
-            <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/blogs' ]">
-                    <i class="material-icons">event_note</i>
-                    <p>Blogs</p>
-                </a>
-            </li>
-            <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/contest' ]">
-                    <i class="material-icons">emoji_events</i>
-                    <p>Contests</p>
-                </a>
-            </li>
-            <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
-                    <i class="material-icons">credit_card</i>
-                    <p>Packages</p>
+                <a routerLinkActive="on"  [routerLink]="[ '/settings' ]">
+                    <i class="material-icons">settings</i>
+                    <p>Settings</p>
                 </a>
             </li>
         </ul>
     </div>
-</perfect-scrollbar>
-
-<div class="other">
-    <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
-        <div class="row">
-                <img src="../../../assets/images/package.png"/>
-                <div>
-                    <p class="title">Update Package</p>
-                    <p class="subtitle">Get more updates</p>
-                </div>
-            
-        </div>
-    </a>
-</div>
-
-
-<div class="other">
-    <a routerLinkActive="on"  [routerLink]="[ '/profile' ]">
-        <div class="row">
-            <img src="../../../assets/images/marc.jpg"/>
-            <div>
-                <p class="title">Hossam Ahmad</p>
-                <p class="subtitle">@Hossam</p>
-            </div>
-        </div>
-    </a>
-</div>
-
-
-<div class="other support">
-    <ul>
-        <li>
-            <a routerLinkActive="on"  [routerLink]="[ '/faq' ]">
-                <i class="material-icons active">help</i>
-                <p>Help & Support</p>
-            </a>
-        </li>
-        <hr style="margin: 0px;
-        width: 12em;">
-        <li>
-            <a routerLinkActive="on"  [routerLink]="[ '/settings' ]">
-                <i class="material-icons">settings</i>
-                <p>Settings</p>
-            </a>
-        </li>
-    </ul>
 </div>

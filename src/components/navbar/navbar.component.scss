@@ -2,6 +2,8 @@
 
 mdb-navbar{
     direction: rtl;
+    position: fixed;
+    width: 100%;
     // position: relative;
     .nav-link {
         font-family: cairo-semibold;

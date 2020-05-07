@@ -1,3 +1,9 @@
+.sidebar{
+    position: fixed;
+    background: transparent;
+    box-shadow: none;
+    margin-top: 5em;
+}
 .navigation{
     height: 10em;
     width: 12em;
@@ -64,7 +70,7 @@
 
 .support{
     position: absolute;
-    bottom: 4em;
+    bottom: 0em;
     height: 5em;
     ul{
         list-style: none;
