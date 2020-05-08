@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
@@ -21,7 +21,7 @@ export class LoginWebsiteComponent implements OnInit {
   mode = 'indeterminate';
 
   constructor(
-    public authService: AuthService,
+    public authService: AuthUserService,
     public router: Router,
     private social: SocialService,
     private notifierService: NotifierService) {
@@ -54,10 +54,11 @@ export class LoginWebsiteComponent implements OnInit {
   login() {
     if (this.email !== '' && this.password !== '') {
       this.loading = true;
-      this.authService.loginUser(this.email, this.password).subscribe(result => {
+      this.authService.login(this.email, this.password).subscribe(result => {
         if (result['status'] === 'success') {
           this.loading = false;
           this.authService.setToken(result['token']);
+          this.authService.setUserData(result);
           this.router.navigateByUrl('/feed');
         } else {
           this.loading = false;

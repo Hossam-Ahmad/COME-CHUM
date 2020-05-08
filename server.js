@@ -20,6 +20,7 @@ const payments = require('./src/routes/payments');
 const social = require('./src/routes/social');
 const faq = require('./src/routes/faq');
 const settings = require('./src/routes/settings');
+const chat = require('./src/routes/chat');
 
 const app = express();
 const port = process.env.PORT || 4200;
@@ -47,6 +48,7 @@ app.use('/api/payments', payments);
 app.use('/api/social', social);
 app.use('/api/faq', faq);
 app.use('/api/settings', settings);
+app.use('/api/chat', chat);
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

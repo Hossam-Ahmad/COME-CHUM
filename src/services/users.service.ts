@@ -24,6 +24,10 @@ export class UsersService {
       return this.httpClient.get(`${environment.api}users/user/${userId}`);
     }
 
+    getByToken(token): any {
+      return this.httpClient.get(`${environment.api}users/user/token/${token}`);
+    }
+
     forget(email): any {
       return this.httpClient.post(`${environment.api}users/forget`, {
         email

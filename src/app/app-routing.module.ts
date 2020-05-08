@@ -31,6 +31,7 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { ChatComponent } from 'src/pages/chat/chat.component';
 import { FeedComponent } from 'src/pages/feed/feed.component';
 import { MasterComponent } from 'src/pages/master/master.component';
+import { AuthUserService } from 'src/services/authUser.service';
 
 
 const routes: Routes = [
@@ -141,31 +142,38 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginWebsiteComponent
+    component: LoginWebsiteComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'forget',
-    component: ForgetWebsiteComponent
+    component: ForgetWebsiteComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'faq',
-    component: FaqComponent
+    component: FaqComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'register',
-    component: RegisterWebsiteComponent
+    component: RegisterWebsiteComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'activate',
-    component: ActivateWebsiteComponent
+    component: ActivateWebsiteComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'terms',
-    component: TermsComponent
+    component: TermsComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthUserService]
   },
   {
     path: '',
@@ -178,11 +186,13 @@ const routes: Routes = [
       },
       {
         path: 'chat',
-        component: ChatComponent
+        component: ChatComponent,
+        canActivate: [AuthUserService]
       },
       {
         path: 'feed',
-        component: FeedComponent
+        component: FeedComponent,
+        canActivate: [AuthUserService]
       }
     ]
   },

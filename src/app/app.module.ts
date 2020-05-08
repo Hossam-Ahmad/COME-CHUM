@@ -85,6 +85,8 @@ import { PaymentsService } from 'src/services/payments.service';
 import { SocialService } from 'src/services/social.service';
 import { FaqService } from 'src/services/faq.service';
 import { SettingsService } from 'src/services/settings.service';
+import { ChatService } from 'src/services/chat.service';
+import { AuthUserService } from 'src/services/authUser.service';
 
 
 
@@ -210,6 +212,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   providers: [
     AuthService,
+    AuthUserService,
     ContentService,
     UsersService,
     GroupsService,
@@ -225,6 +228,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SocialService,
     FaqService,
     SettingsService,
+    ChatService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

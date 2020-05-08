@@ -15,7 +15,13 @@ router.post('/auth', function(req, res, next) {
         if(results.length > 0){
               res.send({
                   status : 'success',
-                  token : '123456789'
+                  token : results[0]['token'],
+                  name : results[0]['name'],
+                  id : results[0]['id'],
+                  image : results[0]['image'],
+                  email : results[0]['email'],
+                  cover : results[0]['cover'],
+                  about : results[0]['about'],
               });
           } else {
             res.send({status : 'failed'});
@@ -41,6 +47,16 @@ router.get('/user/:userId', function(req, res, next) {
     connection.query(`SELECT * FROM users where id = ${userId}`, function(error,results,fields){
       conn.release();  
       res.send(results);
+    });
+  });
+});
+
+router.get('/user/token/:token', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var token = req.params['token'];
+    connection.query(`SELECT * FROM users where token = '${token}'`, function(error,results,fields){
+      conn.release();  
+      res.send(results[0]);
     });
   });
 });
