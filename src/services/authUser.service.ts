@@ -28,14 +28,14 @@ export class AuthUserService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (this.isAuthenticated()) {
-          if (route.url.toString() === 'login' || route.url.toString() === 'activate' || route.url.toString() === 'forget' || route.url.toString() === 'register' || route.url.toString() === 'faq' || route.url.toString() === 'terms') {
+          if (route.url.toString() === 'login' || route.url.toString() === 'activate' || route.url.toString() === 'forget' || route.url.toString() === 'register' || route.url.toString() === 'home') {
             this.router.navigate(['/feed']);
             return false;
           } else {
             return true;
           }
         } else {
-            if (route.url.toString() !== 'login' && route.url.toString() !== 'activate' && route.url.toString() !== 'forget' && route.url.toString() !== 'register' && route.url.toString() !== 'faq' && route.url.toString() !== 'terms') {
+            if (route.url.toString() !== 'login' && route.url.toString() !== 'activate' && route.url.toString() !== 'forget' && route.url.toString() !== 'register' && route.url.toString() !== 'faq' && route.url.toString() !== 'terms' && route.url.toString() !== 'home') {
             this.router.navigate(['/login']);
             return false;
           } else {
