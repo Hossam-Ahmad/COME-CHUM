@@ -66,7 +66,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
 import { MembersComponent } from 'src/components/members/members.component';
 import { SidebarWebsiteComponent } from 'src/components/sidebar-website/sidebar-website.component';
-
+import { SliderComponent } from 'src/components/slider/slider.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -178,7 +178,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ChatComponent,
     FeedComponent,
     MasterComponent,
-    SidebarWebsiteComponent
+    SidebarWebsiteComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

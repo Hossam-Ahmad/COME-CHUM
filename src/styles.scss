@@ -28,3 +28,11 @@ $footerFont: #a5a7aa;
     background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%); 
     height: 70px;
 }
+
+.carousel-indicators{
+    li{
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+    }
+}

@@ -10,13 +10,15 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  public email = '';
-  public password = '';
-  public height;
+  public h;
+  public m;
   public status_chat = false;
 
   constructor(public authService: AuthService, public router: Router) {
-    this.height = window.outerHeight + 'px';
+    this.h = window.innerHeight;
+    this.m = ((this.h) * ( 2 / 3)) + 'px';
+    this.h += 'px';
+    console.log(this.h);
   }
 
   ngOnInit() {

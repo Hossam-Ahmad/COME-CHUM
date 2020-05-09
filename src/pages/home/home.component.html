@@ -1,74 +1,399 @@
+<!-- first section -->
+<div class="home" [ngStyle]="{'height': h}">
+  <div class="homeDetails">
+      <div class="container">
+          <div class="row">
+              <div class="col col-sm-4 menu">
+                  <i class="fas fa-bars"></i>
+              </div>
+              <div class="col col-sm-4">
+                  <p><span>come </span><span>chum</span></p>
+              </div>
+              <div class="col col-sm-4 icons">
+                  <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-twitter"></i>
+              </div>
+          </div>
+          <div class="row">
+              <div class="logAndRegist" [ngStyle]="{'margin-top': m}">
+                  <span class="right-border">login</span>
+                  <span>register</span>
+              </div>
+          </div>
+         
+  </div>
+</div>
+</div>
 
-  <div class="fabs">
-  <div class="chat" [ngClass]="{'is-visible': status_chat}">
-    <div class="chat_header">
-      <div class="chat_option">
-      <div class="header_img">
-        <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+<!--second section  -->
+<div class="second-section">
+   <div class="container">
+       <div class="search-box">
+          <div class="container">
+              <div class="row">
+                  <div class="col col-md-2">
+                      <div class="form-group col-md-4">
+                          <label for="inputState">Country</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>United States</option>
+                            <option>Egypt</option>
+                            <option>Morocco</option>
+                          </select>
+                        </div>
+                  </div>
+                  <div class="col col-md-2 borderOne">
+                      <div class="form-group col-md-4">
+                          <label for="inputState">City</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>New York</option>
+                            <option>Cairo</option>
+                            <option>Casablanca</option>
+                            <option>washangeton</option>
+                          </select>
+                        </div>
+                  </div>
+
+                  <div class="col col-md-2">
+                      <div class="form-group col-md-4">
+                          <label for="inputState">Travelers</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>1 person</option>
+                            <option>2 persones</option>
+                            <option>3 persons</option>
+                          </select>
+                        </div>
+                  </div>
+
+                  <div class="col col-md-2 borderOne">
+                      <div class="form-group col-md-4">
+                          <label for="inputState">Time</label>
+                          <input type="date" />
+                        </div>
+                  </div>
+                  
+                  <div class="col col-md-3">
+                      <button type="button" class="btn btn-light">Advanced Search</button>
+                  </div>
+                  <div class="col col-md-1 search2">
+                      <button type="button" class="btn btn-secondary">Search</button>
+                  </div>
+
+              </div>
+          </div>
+       </div>
+       <!-- available places -->
+       <div class="row">
+            <div class="col col-md-3">
+              <h3 class="tittle">Available places  to rent </h3>
+              <hr class="horizon">
+       </div>
+         <!-- carousel -->
+          <div class="col col-md-9" style="overflow-x: hidden;position: relative;">
+          <div class="slider2">
+            <div class="row specialRow">
+              <i class="fas fa-angle-left"></i>
+              <div class="col col-md-4">
+                 <div class="innerSlide2">
+                    <div class="image">
+                      <img src="../../../assets/images/img1.jpg">
+                    </div>
+                    <button type="button" class="btn btn-primary">Free</button>
+                    <h4>Tailandia</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                       sed</p>
+                 </div>
+              </div>
+              <div class="col col-md-4">
+                <div class="innerSlide2">
+                   <div class="image">
+                     <img src="../../../assets/images/img2.jpg">
+                   </div>
+                   <button type="button" class="btn btn-primary">Free</button>
+                   <h4>rio de janeiro</h4>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed</p>
+                </div>
+             </div>
+             <div class="col col-md-4">
+              <div class="innerSlide2">
+                 <div class="image">
+                   <img src="../../../assets/images/img3.jpg">
+                 </div>
+                 <button type="button" class="btn btn-primary">Free</button>
+                 <h4>madrid</h4>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed</p>
+              </div>
+           </div>
+           <div class="col col-md-4">
+            <div class="innerSlide2">
+               <div class="image">
+                 <img src="../../../assets/images/img1.jpg">
+               </div>
+               <button type="button" class="btn btn-primary">Free</button>
+               <h4>madrid</h4>
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed</p>
+            </div>
+         </div>
+            </div>
+          </div>  
+          </div>
+   </div>
+
+   <div class="row">
+    <div class="col col-md-8 offset-md-4">
+      <div class="row">
+      <div class="col col-md-6 test">
+        <div class="imagePng">
+          <h5>Teleferico</h5>
+          <p>Lurem ipsum is simply dummy text.</p>
+          <i class="fas fa-chevron-circle-left prevIcon"></i>
+          <i class="fas fa-chevron-circle-right nextIcon"></i>
         </div>
-        <span id="chat_head">Jane Doe</span> <br> <span class="agent">Agent</span> <span class="online">(Online)</span>
-       <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i class="fullscreen zmdi zmdi-window-maximize"></i></span>
+      </div>
+      <div class="col col-md-6">
+        <div class="events">
+          <h3 class="tittle2">Great Events</h3>
+          <hr class="horizon2">
+          <p>Lurem ipsum is simply dummy text,Lurem ipsum is simply dummy text,Lurem ipsum is simply dummy text.</p>
+      </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6">
+         <button type="button" class="btn btn-light viewBtn">View</button>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+</div>
+<!--benefits -->
+<div class="benefits">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6">
+        <h3 class="tittle">Benefits </h3>
+        <hr class="horizon">
+        <p>Lurem ipsum is simply dummy text, simply dummy text.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-4">
+        <div class="benefit">
+          <i class="fas fa-wallet"></i>
+          <h5>Lurem ipsum is simply dummy</h5>
+          <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <div class="benefit">
+          <i class="fas fa-shopping-cart"></i>
+          <h5>Lurem ipsum is simply </h5>
+          <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+        </div>
+      </div>
+      <div class="col col-md-4">
+        <div class="benefit">
+          <i class="fas fa-headset"></i> 
+          <h5>Lurem ipsum is </h5>
+          <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Reviews -->
+<div class="reviews">
+  <div class="container">
+    <h2>Client Reviews</h2>
+    <app-slider></app-slider>
+    <!-- carousel -->
+    
+  </div>
+</div>
+
+<!-- contact -->
+<div class="contact">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col col-md-6 mapInner">
+        <!-- map -->
+        <div class="map">
+          <img src="../../../assets/images/map.jpg">
+        </div>
+      </div>
+      <div class="col col-md-6 contactCol">
+       <div class="row">
+         <div class="col col-md-4">
+           <p class="contactTitl">Address</p>
+         </div>
+         <div class="col col-md-8">
+           <p>Text text text text text text text text text text text text 
+              TeText text text text text text text text text text text text  Te</p>
+         </div>
+       </div>
+       <div class="row">
+        <div class="col col-md-4">
+          <p class="contactTitl">Fax</p>
+        </div>
+        <div class="col col-md-8">
+          <p>+1 323 555 1234</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-4">
+          <p class="contactTitl">Phone</p>
+        </div>
+        <div class="col col-md-8">
+          <p>+1 323 555 1234 copy</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-4">
+          <p class="contactTitl">Whatsapp</p>
+        </div>
+        <div class="col col-md-8">
+          <p>+7 898 323 23 23</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md-4">
+          <p class="contactTitl">E-Mail</p>
+        </div>
+        <div class="col col-md-8">
+          <p>alex.tour@gmail.com</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-md">
+          <button type="button" class="btn btn-primary contactBtn">Contact Us</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- navigation -->
+<div class="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-2">
+        <h4>Navigation</h4>
+        <ul>
+          <li>Login</li>
+          <li>Register</li>
+          <li>Contacts</li>
+          <li>Services</li>
+          <li>Testimonials</li>
+        </ul>
+      </div>
+
+      <div class="col col-md-2">
+        <h4>Info</h4>
+        <ul>
+          <li>Terms & Conditions</li>
+          <li>FAQ</li>
+        </ul>
       </div>
 
     </div>
-      <div id="chat_fullscreen" class="chat_conversion chat_converse" style="display: block;">
-      <span class="chat_msg_item chat_msg_item_admin">
-            <div class="chat_avatar">
-               <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
-            </div>Hey there! Any question?</span>
-      <span class="chat_msg_item chat_msg_item_user">
-            Hello!</span>
-            <div class="status">20m ago</div>
-      <span class="chat_msg_item chat_msg_item_admin">
-            <div class="chat_avatar">
-               <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
-            </div>Hey! Would you like to talk sales, support, or anyone?</span>
-      <span class="chat_msg_item chat_msg_item_user">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-      <span class="chat_msg_item chat_msg_item_admin">
-            <div class="chat_avatar">
-               <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
-             </div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-      <span class="chat_msg_item chat_msg_item_user">
-            Where can I get some?</span>
-      <span class="chat_msg_item chat_msg_item_admin">
-            <div class="chat_avatar">
-               <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
-             </div>The standard chuck...</span>
-      <span class="chat_msg_item chat_msg_item_user">
-            There are many variations of passages of Lorem Ipsum available</span>
-            <div class="status2">Just now, Not seen yet</div>
-      <span class="chat_msg_item ">
-          <ul class="tags">
-            <li>Hats</li>
-            <li>T-Shirts</li>
-            <li>Pants</li>
-          </ul>
-      </span>
-    </div>
-    <div class="fab_field">
-      <a id="fab_camera" class="fab" [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-camera"></i></a>
-      <a id="fab_send" class="fab"  [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-mail-send"></i></a>
-      <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message"></textarea>
+    <div class="row">
+      <div class="col offset-md-6 Newsletter">
+        <p>Newsletter</p>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </div>
     </div>
   </div>
-
-  <div class="chat2" [ngClass]="{'active': status_chat}" (click)="show()">
-      <div class="background"></div>
-      <svg class="chat-bubble" width="75" height="75" viewBox="0 0 100 100">
-        <g class="bubble">
-          <path class="line line1" d="M 30.7873,85.113394 30.7873,46.556405 C 30.7873,41.101961
-          36.826342,35.342 40.898074,35.342 H 59.113981 C 63.73287,35.342
-          69.29995,40.103201 69.29995,46.784744" />
-          <path class="line line2" d="M 13.461999,65.039335 H 58.028684 C
-            63.483128,65.039335
-            69.243089,59.000293 69.243089,54.928561 V 45.605853 C
-            69.243089,40.986964 65.02087,35.419884 58.339327,35.419884" />
-        </g>
-        <circle class="circle circle1" r="1.9" cy="50.7" cx="42.5" />
-        <circle class="circle circle2" cx="49.9" cy="50.7" r="1.9" />
-        <circle class="circle circle3" r="1.9" cy="50.7" cx="57.3" />
-      </svg>
+  <div class="footer">
+    <div class="container">
+    <div class="row">
+      <div class="col col-md-9 div-row">
+        <img src="../../../assets/images/logo.png">
+        <span>Copyright &copy; 2020 Come Chum <span class="click4bsnes"> | Click4bussiness</span></span>
+      </div>
+      <div class="col col-md-3">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+      
+      </div>
+    </div>
+   
   </div>
 </div>
+</div>
+  
+<span class="support-chat">
+  <div class="fabs">
+    <div class="chat" [ngClass]="{'is-visible': status_chat}">
+      <div class="chat_header">
+        <div class="chat_option">
+        <div class="header_img">
+          <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+          </div>
+          <span id="chat_head">Jane Doe</span> <br> <span class="agent">Agent</span> <span class="online">(Online)</span>
+         <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i class="fullscreen zmdi zmdi-window-maximize"></i></span>
+  
+        </div>
+  
+      </div>
+        <div id="chat_fullscreen" class="chat_conversion chat_converse" style="display: block;">
+        <span class="chat_msg_item chat_msg_item_admin">
+              <div class="chat_avatar">
+                 <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+              </div>Hey there! Any question?</span>
+        <span class="chat_msg_item chat_msg_item_user">
+              Hello!</span>
+              <div class="status">20m ago</div>
+        <span class="chat_msg_item chat_msg_item_admin">
+              <div class="chat_avatar">
+                 <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+              </div>Hey! Would you like to talk sales, support, or anyone?</span>
+        <span class="chat_msg_item chat_msg_item_user">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+        <span class="chat_msg_item chat_msg_item_admin">
+              <div class="chat_avatar">
+                 <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+               </div>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+        <span class="chat_msg_item chat_msg_item_user">
+              Where can I get some?</span>
+        <span class="chat_msg_item chat_msg_item_admin">
+              <div class="chat_avatar">
+                 <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
+               </div>The standard chuck...</span>
+        <span class="chat_msg_item chat_msg_item_user">
+              There are many variations of passages of Lorem Ipsum available</span>
+        <div class="status2">Just now, Not seen yet</div>
+      </div>
+      <div class="fab_field">
+        <a id="fab_camera" class="fab" [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-camera"></i></a>
+        <a id="fab_send" class="fab"  [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-mail-send"></i></a>
+        <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message"></textarea>
+      </div>
+    </div>
+  
+    <div class="chat2" [ngClass]="{'active': status_chat}" (click)="show()">
+        <div class="background"></div>
+        <svg class="chat-bubble" width="75" height="75" viewBox="0 0 100 100">
+          <g class="bubble">
+            <path class="line line1" d="M 30.7873,85.113394 30.7873,46.556405 C 30.7873,41.101961
+            36.826342,35.342 40.898074,35.342 H 59.113981 C 63.73287,35.342
+            69.29995,40.103201 69.29995,46.784744" />
+            <path class="line line2" d="M 13.461999,65.039335 H 58.028684 C
+              63.483128,65.039335
+              69.243089,59.000293 69.243089,54.928561 V 45.605853 C
+              69.243089,40.986964 65.02087,35.419884 58.339327,35.419884" />
+          </g>
+          <circle class="circle circle1" r="1.9" cy="50.7" cx="42.5" />
+          <circle class="circle circle2" cx="49.9" cy="50.7" r="1.9" />
+          <circle class="circle circle3" r="1.9" cy="50.7" cx="57.3" />
+        </svg>
+    </div>
+  </div>
+</span>
+

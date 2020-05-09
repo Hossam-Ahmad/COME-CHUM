@@ -1,0 +1,59 @@
+ngb-carousel{
+    height: 22em;
+}
+.picsum-img-wrapper{
+    img{
+      width: 120px !important;
+      height: 120px !important;
+        border-radius: 50%;
+    }
+}
+.innerSlider{
+    padding: 2em 0;
+    background-color: #000000a8;
+    border-radius: 10px;
+    width: 15%;
+    text-align: center;
+    color: #f7f7f7;
+    p{
+        font-family: lato-light;
+        padding-top: 1em;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        font-size: 1.3em;
+    }
+    span{
+        color: #ee3b95;
+        font-family: lato-bold;
+    }
+}
+.carousel-caption {
+    right: 0%;
+    bottom: 0px;
+    left: 40%;
+    padding-top: 0px;
+    p{
+        text-align: left;
+        padding: 0 6em;
+        font-family: lato-light;
+    }
+}
+
+.carousel-caption::before{
+    line-height: .1;
+    content: ",,";
+    font-size: 7em;
+    padding: 0;
+    margin-right: 4em;
+    transform: rotate(180deg);
+    display: block;
+    font-weight: bold;
+}
+.carousel-caption::after{
+    line-height: .2;
+    content: ",,";
+    font-size: 7em;
+    padding: 0;
+    margin-left: 4em;
+    font-weight: bold;
+}
