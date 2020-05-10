@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { AuthUserService } from 'src/services/authUser.service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(public translate: TranslateService,
               public router: Router,
+              public auth: AuthUserService
               ) {
                }
 
@@ -36,8 +38,9 @@ export class NavbarComponent implements OnInit {
     localStorage.setItem('language', language);
   }
 
-  login() {
-    this.router.navigateByUrl('https://www.gecc-ksa.co/login.aspx');
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 
 }

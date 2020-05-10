@@ -48,4 +48,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  getMessages() {
+    
+  }
+
 }

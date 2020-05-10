@@ -170,6 +170,18 @@ router.post('/forget', function(req, res, next) {
   });
 });
 
+router.post('/logout', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var userId = req.body['userId'];
+    connection.query('UPDATE users SET online = 0 where id = ' + userId, function(error,results,fields){
+      conn.release();  
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
 router.get('/user/:profileId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var profileId = req.params['profileId'];

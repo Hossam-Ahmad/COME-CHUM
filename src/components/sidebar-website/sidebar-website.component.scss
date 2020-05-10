@@ -30,14 +30,6 @@
         vertical-align: middle;
         color: #d1d1d3;
     }
-    .active{
-        i{
-            color:rgb(251,42,161);
-        }
-        p{
-            color: #000;
-        }
-    }
 }
 
 .other{
@@ -88,5 +80,14 @@
         float: left;
         color: #d1d1d3;
         margin-right: 1em;
+    }
+}
+
+.active{
+    i{
+        color:rgb(251,42,161) !important;
+    }
+    p{
+        color: #000 !important;
     }
 }

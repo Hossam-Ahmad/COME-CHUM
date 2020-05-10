@@ -4,17 +4,52 @@
   <!-- Collapsible content -->
   <links>
 
-      <img class="profile-icon" src="../../../assets/images/marc.jpg" />
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <img class="profile-icon" src="../../../assets/images/marc.jpg" />
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect >Proile</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect >My Groups</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect >My Events</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
 
-      <a class="iconLink" routerLinkActive="on"  [routerLink]="[ '/faq' ]">
-        <i class="material-icons icon" style="font-size: 28px;">error</i>
-      </a>
 
-      <a class="iconLink" href="#">
-        <i class="material-icons icon" style="font-size: 28px;">notifications</i>
-      </a>
+    <ul class="navbar-nav mr-auto no-distance">
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link waves-light" mdbWavesEffect>
+          <a class="iconLink">
+            <i class="material-icons icon" style="font-size: 28px;">notifications</i>
+          </a>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary notifications" role="menu">
+          <div class="notification">
+            <img class="notification-icon" src="../../../assets/images/calendar.svg"/>
+            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is successfuly uploaded </a>
+          </div>
 
-      <a class="iconLink" routerLinkActive="on"  [routerLink]="[ '/chat' ]">
+          <div class="notification">
+            <img class="notification-icon" src="../../../assets/images/money.svg"/>
+            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is successfuly uploaded </a>
+            <span class="unread"></span>
+          </div>
+
+          <div class="notification">
+            <img class="notification-icon" src="../../../assets/images/comments.svg"/>
+            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is <br> successfuly uploaded </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+      
+
+      <a class="iconLink distance" routerLinkActive="on"  [routerLink]="[ '/chat' ]">
         <i class="fas fa-comment-dots icon" style="font-size: 23px;"></i>
       </a>
 

@@ -58,6 +58,7 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { ChatComponent } from 'src/pages/chat/chat.component';
 import { FeedComponent } from 'src/pages/feed/feed.component';
 import { MasterComponent } from 'src/pages/master/master.component';
+import { SettingsComponent } from 'src/pages/settings/settings.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -179,7 +180,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FeedComponent,
     MasterComponent,
     SidebarWebsiteComponent,
-    SliderComponent
+    SliderComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

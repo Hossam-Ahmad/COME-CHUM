@@ -24,6 +24,18 @@ export class UsersService {
       return this.httpClient.get(`${environment.api}users/user/${userId}`);
     }
 
+    getMessages(userId, pageId): any {
+      return this.httpClient.get(`${environment.api}users/contact/${userId}/${pageId}`);
+    }
+
+    send(data, type, userId): any {
+      return this.httpClient.post(`${environment.api}users/send`, {
+        data,
+        type,
+        userId
+      });
+    }
+
     getByToken(token): any {
       return this.httpClient.get(`${environment.api}users/user/token/${token}`);
     }

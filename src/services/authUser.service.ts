@@ -88,7 +88,11 @@ export class AuthUserService implements CanActivate {
 
     logout() {
         localStorage.clear();
-        this.router.navigate(['/login']);
+        this.httpClient.post(`${environment.api}users/logout`, {
+          userId : this.userData.id,
+        }).subscribe( data => {
+          this.router.navigate(['/login']);
+        });
     }
 
 }

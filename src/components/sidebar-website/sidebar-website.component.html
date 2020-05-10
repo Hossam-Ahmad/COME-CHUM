@@ -42,7 +42,7 @@
     <div class="other support">
         <ul>
             <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/faq' ]">
+                <a routerLinkActive="on"  [routerLink]="[ '/faq' ]" [ngClass]="{'active': router.url == '/faq'}">
                     <i class="material-icons active">help</i>
                     <p>Help & Support</p>
                 </a>
@@ -50,7 +50,7 @@
             <hr style="margin: 0px;
             width: 12em;">
             <li>
-                <a routerLinkActive="on"  [routerLink]="[ '/settings' ]">
+                <a routerLinkActive="on"  [routerLink]="[ '/settings' ]" [ngClass]="{'active': router.url == '/settings'}" >
                     <i class="material-icons">settings</i>
                     <p>Settings</p>
                 </a>

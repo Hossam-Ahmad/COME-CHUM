@@ -32,6 +32,7 @@ import { ChatComponent } from 'src/pages/chat/chat.component';
 import { FeedComponent } from 'src/pages/feed/feed.component';
 import { MasterComponent } from 'src/pages/master/master.component';
 import { AuthUserService } from 'src/services/authUser.service';
+import { SettingsComponent } from 'src/pages/settings/settings.component';
 
 
 const routes: Routes = [
@@ -193,6 +194,11 @@ const routes: Routes = [
       {
         path: 'feed',
         component: FeedComponent,
+        canActivate: [AuthUserService]
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
         canActivate: [AuthUserService]
       }
     ]
