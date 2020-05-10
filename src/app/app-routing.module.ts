@@ -182,7 +182,8 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'feed',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [AuthUserService]
       },
       {
         path: 'chat',

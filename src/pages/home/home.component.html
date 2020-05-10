@@ -16,8 +16,12 @@
           </div>
           <div class="row">
               <div class="logAndRegist" [ngStyle]="{'margin-top': m}">
-                  <span class="right-border">login</span>
-                  <span>register</span>
+                  <span class="right-border">
+                    <a href="/login">login</a>
+                  </span>
+                  <span>
+                    <a href="/register">register</a>
+                  </span>
               </div>
           </div>
          
@@ -31,7 +35,8 @@
        <div class="search-box">
           <div class="container">
               <div class="row">
-                  <div class="col col-md-2">
+
+                  <div class="col col-md-2 overOther">
                       <div class="form-group col-md-4">
                           <label for="inputState">Country</label>
                           <select id="inputState" class="form-control">
@@ -41,7 +46,8 @@
                           </select>
                         </div>
                   </div>
-                  <div class="col col-md-2 borderOne">
+
+                  <div class="col col-md-2 borderOne overOther">
                       <div class="form-group col-md-4">
                           <label for="inputState">City</label>
                           <select id="inputState" class="form-control">
@@ -53,7 +59,7 @@
                         </div>
                   </div>
 
-                  <div class="col col-md-2">
+                  <div class="col col-md-2 overOther">
                       <div class="form-group col-md-4">
                           <label for="inputState">Travelers</label>
                           <select id="inputState" class="form-control">
@@ -64,17 +70,18 @@
                         </div>
                   </div>
 
-                  <div class="col col-md-2 borderOne">
+                  <div class="col col-md-2 borderOne overOther">
                       <div class="form-group col-md-4">
                           <label for="inputState">Time</label>
                           <input type="date" />
                         </div>
                   </div>
                   
-                  <div class="col col-md-3">
+                  <div class="col col-md-3 overOther">
                       <button type="button" class="btn btn-light">Advanced Search</button>
                   </div>
-                  <div class="col col-md-1 search2">
+
+                  <div class="col col-md-1 search2 overOther">
                       <button type="button" class="btn btn-secondary">Search</button>
                   </div>
 
@@ -169,6 +176,54 @@
  </div>
 </div>
 </div>
+
+<!-- Registration -->
+
+<div class="registerDiv">
+  <div class="background container-fluid">
+   <div class="row">
+      <div class="col-md-7">
+        <div class="comeNow">
+          <h3>Getting Started</h3>
+        <p>With us , you can easily rent and search for available places in the countries of the world .</p>
+      </div>
+    </div>
+     <div class="col-md-4">
+        <div class="regist-form text-center">
+      <img alt="logo" src="../../../assets/images/logo.jpg">
+ 
+       <form method="post" action="/homeRegister" id="form1">
+         <div class="form-group">
+         <input name="email" type="text" class="form-control" id="formGroupExampleInput" placeholder="E-mail">
+         </div>
+         <div class="form-group">
+         <input name="pass" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+         </div>
+           
+                         <p class="details">
+                              when you click on "Create Account", this means thata you agree to process your personal data and on the
+            <a href="/terms">terms and conditions</a>
+         </p>
+          <button type="submit" class="btn btn-primary background btn-register" form="form1">Create Account</button>
+         <div class="twoSpans">
+                         <a href="\login">
+                             <span class="ry8Span">Already have an account? </span>
+                             <span class="leftSpan">Login</span>
+                         </a>
+         </div>
+     </form> 
+ 
+      
+      </div>
+     </div>
+     <div class="col-md-1">
+     </div>
+   </div>
+ </div>			 
+</div>
+
+<!-- End Registration -->
+
 <!--benefits -->
 <div class="benefits">
   <div class="container">

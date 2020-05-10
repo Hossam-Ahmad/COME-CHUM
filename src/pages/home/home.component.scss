@@ -11,7 +11,7 @@
     position: fixed;
     margin: 1em;
     right: 0;
-    z-index: 9999999;
+    z-index: 999999999999;
   }
 
   .fab {
@@ -893,6 +893,10 @@
               font-size: 14px;
               margin-top: 2em;
               display: inline-block;
+              cursor: pointer;
+              a{
+                color: white;
+              }
           }
               .right-border{border-right: 2px solid #fff;}
       }
@@ -914,6 +918,9 @@
         position: absolute;
         width: 82%;
         bottom: -6%;
+        .overOther{
+          z-index: 999999999999;
+        }
         .borderOne{
           border-right: 1px solid rgba(0, 0, 0, 0.1);
           height: 4em !important;
@@ -1156,7 +1163,7 @@ padding-bottom: 5em;
  position: relative;
  h2{
    position: absolute;
-   padding-left: 6em;
+   padding-left: 9em;
    top: 20%;
    color: #f8f9fa;
    font-family: lato-bold;
@@ -1275,5 +1282,65 @@ position: absolute;
     padding: 0.5em;
     font-size: 1.2em;
 
+  }
+}
+
+.registerDiv{
+  padding-top: 7em;
+  padding-bottom: 7em;
+  background: #f7f5f8;
+  .background{
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+  }
+  .regist-form{
+    height: 32em;
+    position: absolute;
+    background: white;
+    top: -15%;
+    width: 90%;
+    box-shadow: 0px 10px 15px #00000030;
+    input{
+      width: 80%;
+    }
+    img{
+      margin-top: 2em;
+      margin-bottom: 2em;
+      width: 6em;
+    }
+    .ry8Span{
+      color: #9c27b0;
+    }
+    .details{
+      color: #00000040;
+      padding: 0.5em;
+    }
+    .twoSpans{
+      margin-top: 1em;
+    }
+    .leftSpan{
+      color: #9c27b0;
+    }
+    .btn-register{
+      width: 90%;
+      text-transform: capitalize;
+    }
+  }
+  .comeNow{
+    vertical-align: middle;
+    display: table-cell;
+    height: 20em;
+    h3{
+      font-family: lato-black;
+      font-size: 2em;
+      margin-bottom: 1.5em;
+    }
+    p{
+      font-family: lato-light;
+      font-size: 1.5em;
+    }
+    h3,p{
+      color: white;
+      margin-left: 2em;
+    }
   }
 }

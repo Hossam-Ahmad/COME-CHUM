@@ -36,7 +36,7 @@ export class AuthUserService implements CanActivate {
           }
         } else {
             if (route.url.toString() !== 'login' && route.url.toString() !== 'activate' && route.url.toString() !== 'forget' && route.url.toString() !== 'register' && route.url.toString() !== 'faq' && route.url.toString() !== 'terms' && route.url.toString() !== 'home') {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
             return false;
           } else {
             return true;

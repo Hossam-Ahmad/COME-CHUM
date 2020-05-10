@@ -7,8 +7,8 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  public h : any;
-  public m : any;
+  public h;
+  public m;
 
   showNavigationArrows = false;
   showNavigationIndicators = true;
