@@ -30,6 +30,9 @@ export class RegisterWebsiteComponent implements OnInit {
     private social: SocialService,
     private notifierService: NotifierService) {
     this.height = window.innerHeight + 'px';
+    const navigation = this.router.getCurrentNavigation();
+    this.email = navigation.extras.state ? navigation.extras.state.email : '';
+    this.password = navigation.extras.state ? navigation.extras.state.password : '';
   }
 
   ngOnInit() {

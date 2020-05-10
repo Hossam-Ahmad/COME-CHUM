@@ -194,17 +194,17 @@
  
        <form method="post" action="/homeRegister" id="form1">
          <div class="form-group">
-         <input name="email" type="text" class="form-control" id="formGroupExampleInput" placeholder="E-mail">
+         <input name="email" type="text" class="form-control" id="formGroupExampleInput" placeholder="E-mail" [(ngModel)]="email">
          </div>
          <div class="form-group">
-         <input name="pass" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+         <input name="pass" type="password" class="form-control" id="formGroupExampleInput2" placeholder="Password" [(ngModel)]="password">
          </div>
            
                          <p class="details">
                               when you click on "Create Account", this means thata you agree to process your personal data and on the
             <a href="/terms">terms and conditions</a>
          </p>
-          <button type="submit" class="btn btn-primary background btn-register" form="form1">Create Account</button>
+          <button type="submit" class="btn btn-primary background btn-register" form="form1" (click)="register()">Create Account</button>
          <div class="twoSpans">
                          <a href="\login">
                              <span class="ry8Span">Already have an account? </span>
@@ -384,7 +384,7 @@
 </div>
   
 <span class="support-chat">
-  <div class="fabs">
+  <div class="fabs" [ngStyle]="{'z-index': z_index}">
     <div class="chat" [ngClass]="{'is-visible': status_chat}">
       <div class="chat_header">
         <div class="chat_option">
@@ -452,3 +452,4 @@
   </div>
 </span>
 
+<notifier-container style="font-family: cocon;"></notifier-container>

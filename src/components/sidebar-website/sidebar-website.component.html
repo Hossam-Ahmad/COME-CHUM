@@ -2,46 +2,10 @@
     <perfect-scrollbar style="height: auto;width: auto;">
         <div class="navigation">
             <ul>
-                <li class="active">
-                    <a routerLinkActive="on"  [routerLink]="[ '/' ]">
-                        <i class="material-icons">home</i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/groups' ]">
-                        <i class="material-icons">group</i>
-                        <p>Groups</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/chat' ]">
-                        <i class="material-icons">chat</i>
-                        <p>Messages</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/events' ]">
-                        <i class="material-icons">event_note</i>
-                        <p>Events</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/blogs' ]">
-                        <i class="material-icons">event_note</i>
-                        <p>Blogs</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/contest' ]">
-                        <i class="material-icons">emoji_events</i>
-                        <p>Contests</p>
-                    </a>
-                </li>
-                <li>
-                    <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
-                        <i class="material-icons">credit_card</i>
-                        <p>Packages</p>
+                <li *ngFor="let item of routes" [ngClass]="{'active': router.url == item.path}">
+                    <a routerLinkActive="on"  [routerLink]="[ item.path ]">
+                        <i class="material-icons">{{item.icon}}</i>
+                        <p>{{item.title}}</p>
                     </a>
                 </li>
             </ul>
