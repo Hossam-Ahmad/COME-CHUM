@@ -22,9 +22,9 @@ export class ContactService {
         return this.httpClient.get(`${environment.api}contact/${contactId}/${pageId}`);
     }
 
-    send(data, type , contactId): any {
+    send(data, type , contactId, sender): any {
         return this.httpClient.post(`${environment.api}contact/send` , {
-            data, type, contactId
+            data, type, contactId, sender
         });
     }
 

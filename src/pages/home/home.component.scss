@@ -443,6 +443,13 @@
     color: #666;
   }
 
+  .intial-msg{
+    text-align: center;
+    margin: auto !important;
+    float: initial !important;
+    top: 2em;
+  }
+
   .chat .chat_converse .chat_msg_item.chat_msg_item_user {
     margin-right: 20px;
     float: right;
@@ -1053,6 +1060,9 @@ text-align: center;
  color: #f4f6fa;
  text-shadow: 0 0 8px #6c757d;
  font-family: josefin;
+ h5{
+   color: white;
+ }
 }
 .test::before{
 content: url('../../assets/images/shape.png');

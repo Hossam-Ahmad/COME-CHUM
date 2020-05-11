@@ -398,29 +398,23 @@
   
       </div>
         <div id="chat_fullscreen" class="chat_conversion chat_converse" style="display: block;">
-        <span class="chat_msg_item chat_msg_item_admin">
-              Hey there! Any question?</span>
-        <span class="chat_msg_item chat_msg_item_user">
+        <span class="chat_msg_item chat_msg_item_admin intial-msg" *ngIf="messages.length == 0">
+              Hey there! Any question?
+        </span>
+
+        <span class="chat_msg_item" [ngClass]="{'chat_msg_item_admin': message.sender == 1 , 'chat_msg_item_user' : message.sender == 0}" *ngFor="let message of messages">
+          {{message.data}}
+        </span>
+
+        <!-- <span class="chat_msg_item chat_msg_item_user">
               Hello!</span>
-              <div class="status">20m ago</div>
-        <span class="chat_msg_item chat_msg_item_admin">
-              Hey! Would you like to talk sales, support, or anyone?</span>
-        <span class="chat_msg_item chat_msg_item_user">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-        <span class="chat_msg_item chat_msg_item_admin">
-               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-        <span class="chat_msg_item chat_msg_item_user">
-              Where can I get some?</span>
-        <span class="chat_msg_item chat_msg_item_admin">
-               The standard chuck...</span>
-        <span class="chat_msg_item chat_msg_item_user">
-              There are many variations of passages of Lorem Ipsum available</span>
-        <div class="status2">Just now, Not seen yet</div>
+        <div class="status">20m ago</div>
+        <div class="status2">Just now, Not seen yet</div> -->
       </div>
       <div class="fab_field">
         <a id="fab_camera" class="fab" [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-camera"></i></a>
-        <a id="fab_send" class="fab"  [ngClass]="{'is-visible': status_chat}"><i class="zmdi zmdi-mail-send"></i></a>
-        <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message"></textarea>
+        <a id="fab_send" class="fab"  [ngClass]="{'is-visible': status_chat}" (click)="send()"><i class="zmdi zmdi-mail-send"></i></a>
+        <textarea id="chatSend" name="chat_message" placeholder="Send a message" class="chat_field chat_message" [(ngModel)]="text"></textarea>
       </div>
     </div>
   

@@ -54,10 +54,8 @@ export class AuthUserService implements CanActivate {
 
     getData() {
       if (this.userData.id !== '') {
-        console.log('from storage');
         return of(this.userData);
       } else {
-        console.log('from api');
         return this.users.getByToken(this.getToken());
       }
     }
@@ -93,6 +91,21 @@ export class AuthUserService implements CanActivate {
         }).subscribe( data => {
           this.router.navigate(['/login']);
         });
+    }
+
+    getIpAddress() {
+      return this.httpClient.get(`http://api.ipify.org/?format=json`);
+    }
+
+    getUnAuthentiated(ip, token) {
+      return this.httpClient.get(`${environment.api}users/unauthenticated/${ip}/${token}`);
+    }
+
+    createUnAuthentiated(ip, token) {
+      return this.httpClient.post(`${environment.api}users/unauthenticated`, {
+        ip,
+        token
+      });
     }
 
 }

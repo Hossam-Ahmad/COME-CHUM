@@ -11,14 +11,13 @@ export class AppComponent {
 
   constructor(public translate: TranslateService) {
     translate.addLangs(['ar', 'en']);
-    // translate.setDefaultLang('ar');
-    // const language = localStorage.getItem('language');
-    // if (language == null) {
-    //   translate.use('ar');
-    // } else {
-    //   translate.use(language);
-    // }
-    translate.use('en');
+    translate.setDefaultLang('en');
+    const language = localStorage.getItem('language');
+    if (language == null) {
+      translate.use('en');
+    } else {
+      translate.use(language);
+    }
   }
 
 }

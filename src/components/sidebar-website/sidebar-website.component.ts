@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthUserService } from '../../services/authUser.service';
 
 
 declare const $: any;
@@ -12,6 +12,9 @@ declare const $: any;
 })
 export class SidebarWebsiteComponent implements OnInit {
 
+  public userName = '';
+  public userId = '';
+  public userImage = '';
   public status = '/';
   public routes = [
     { path: '/feed', title: 'Home',  icon: 'home', class: ''},
@@ -23,10 +26,11 @@ export class SidebarWebsiteComponent implements OnInit {
     { path: '/packages', title: 'Packages',  icon: 'payment', class: ''},
 ];
 
-  constructor(public router: Router, public authService: AuthService) { }
+  constructor(public router: Router, public authService: AuthUserService) { }
 
   ngOnInit() {
     this.status = this.router.url;
+    this.getUserData();
   }
 
   isMobileMenu() {
@@ -39,4 +43,14 @@ export class SidebarWebsiteComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  getUserData() {
+    this.authService.getData().subscribe( data => {
+      console.log(data);
+      this.userName = data.name;
+      this.userImage = data.image;
+      this.userId = data.profile_id;
+    });
+  }
+
 }

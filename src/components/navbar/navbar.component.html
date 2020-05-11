@@ -7,12 +7,13 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <img class="profile-icon" src="../../../assets/images/marc.jpg" />
+          <img class="profile-icon" src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" />
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect >Proile</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/profile' , userId ]" >Proile</a>
           <a class="dropdown-item waves-light" mdbWavesEffect >My Groups</a>
           <a class="dropdown-item waves-light" mdbWavesEffect >My Events</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="changeLang()">Switch Language</a>
           <div class="divider dropdown-divider"></div>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Logout</a>
         </div>

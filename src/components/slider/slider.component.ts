@@ -14,11 +14,10 @@ export class SliderComponent implements OnInit {
   showNavigationIndicators = true;
   images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(config: NgbCarouselConfig) { 
+  constructor(config: NgbCarouselConfig) {
     this.h = window.innerHeight;
-    this.m = ((this.h)*(2/3)) + 'px';
+    this.m = ((this.h) * ( 2 / 3)) + 'px';
     this.h += 'px';
-    console.log(this.h);
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
   }

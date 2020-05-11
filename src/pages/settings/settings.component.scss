@@ -1,0 +1,103 @@
+.container-style{
+    background-color: white;
+    width: 80%;
+    height: 40em;
+    border-radius: 25px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    .title{
+        margin: 0px;
+        color: black;
+        font-family: lato-light;
+        padding: 2em;
+        span{
+            font-family: lato-bold;
+        }
+    }
+    .tabs{
+        // border-bottom: 1px solid #000;
+        width: 90%;
+        .tab{
+            display: inline-block;
+            margin: 2em;
+            color: grey;
+            padding-bottom: 2em;
+            margin-bottom: 0px;
+            padding-bottom: 1em;
+            margin-bottom: 0px;
+            padding-right: 1em;
+            padding-left: 1em;
+            margin-top: 1em;
+        }
+        .active{
+            color: black;
+            border-bottom: 1px solid rgb(24,118,242);
+            font-weight: bolder;
+        }
+    }
+    .line{
+        margin: 0;
+    }
+    .upload-image{
+        width: 6em;
+        margin: auto;
+        margin-top: 2em;
+        cursor: pointer;
+        img{
+            width: 100%;
+            border-radius: 50%;
+        }
+        i{
+            color: #fff;
+            border-radius: 50%;
+            position: relative;
+            bottom: 1em;
+            left: 2.5em;
+            padding: 4px;
+            background-color: rgb(24,118,242);
+        }
+    }
+
+    .second-row{
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        margin-bottom: 2em;
+        .first-col{
+            padding: 0px;
+            padding-right: 2em;
+        }
+        .input{
+            text-align: center;
+            font-family: cocon;
+        }
+        .input::placeholder{
+            font-size: 0.8em;
+            line-height: 2em;
+            color: #00000042;
+        }
+        .non-selected{
+            font-size: 0.8em;
+            color: #00000042;
+        }
+        .select-icon{
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            color: #bb3794;
+        }
+    }
+
+    .forget-btn{
+        margin: auto;
+        display: block;
+        width: 20%;
+        background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+        border-radius: 25px;
+        font-family: cairo-black;
+    }
+}
+
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+    stroke: #fff !important;
+}

@@ -27,12 +27,12 @@
     
     
     <div class="other">
-        <a routerLinkActive="on"  [routerLink]="[ '/profile' ]">
+        <a routerLinkActive="on"  [routerLink]="[ '/profile' , userId ]">
             <div class="row">
-                <img src="../../../assets/images/marc.jpg"/>
+                <img src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';"/>
                 <div>
-                    <p class="title">Hossam Ahmad</p>
-                    <p class="subtitle">@Hossam</p>
+                    <p class="title">{{userName}}</p>
+                    <p class="subtitle">@{{userId}}</p>
                 </div>
             </div>
         </a>

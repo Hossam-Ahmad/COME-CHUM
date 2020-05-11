@@ -25,7 +25,7 @@ export class UsersService {
     }
 
     getMessages(userId, pageId): any {
-      return this.httpClient.get(`${environment.api}users/contact/${userId}/${pageId}`);
+      return this.httpClient.get(`${environment.api}contact/unauthenticated/${userId}/${pageId}`);
     }
 
     send(data, type, userId): any {
@@ -43,6 +43,13 @@ export class UsersService {
     forget(email): any {
       return this.httpClient.post(`${environment.api}users/forget`, {
         email
+      });
+    }
+
+    update(token, data) {
+      return this.httpClient.post(`${environment.api}users/update`, {
+        data,
+        token
       });
     }
 

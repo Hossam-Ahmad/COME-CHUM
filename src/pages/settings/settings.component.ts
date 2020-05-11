@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
-import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
+import { UsersService } from 'src/services/users.service';
 
 
 @Component({
@@ -12,72 +12,56 @@ import { NotifierService } from 'angular-notifier';
 })
 export class SettingsComponent implements OnInit {
 
-  public email = '';
-  public password = '';
-  public height;
-  public loading = false;
+  public activeId = 0;
+  public country = '';
+  public city = '';
+  public gender = '';
 
-  color = 'white';
-  mode = 'indeterminate';
+  public userData;
 
   constructor(
     public authService: AuthUserService,
     public router: Router,
-    private social: SocialService,
-    private notifierService: NotifierService) {
-    this.height = window.innerHeight + 'px';
+    private notifierService: NotifierService,
+    private users: UsersService) {
   }
 
   ngOnInit() {
+    this.getGeneralData();
   }
 
-  loginTwitter() {
-    this.social.loginTwitter().subscribe(data => {
+  changeTab(id) {
+    this.activeId = id;
+  }
 
-      const d = new Date();
-      d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
-      const expires = `expires=${d.toUTCString()}`;
-      document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
-      document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
-      window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
+  select() {
+    document.getElementById('upload').click();
+  }
+
+  onFileChanged(event) {
+    const file = event.target.files[0];
+  }
+
+  getGeneralData() {
+    this.authService.getData().subscribe( data => {
+      this.userData = data;
     });
   }
 
-  loginFB() {
-
-  }
-
-  loginInsta() {
-
-  }
-
-  login() {
-    if (this.email !== '' && this.password !== '') {
-      this.loading = true;
-      this.authService.login(this.email, this.password).subscribe(result => {
-        if (result['status'] === 'success') {
-          this.loading = false;
-          this.authService.setToken(result['token']);
-          this.authService.setUserData(result);
-          this.router.navigateByUrl('/feed');
-        } else {
-          this.loading = false;
-          this.notifierService.show({
-            type : 'error',
-            message: 'هناك خطأ في البريد الالكتروني او كلمة المرور',
-          });
-        }
+  update() {
+    if (this.userData.name !== '') {
+      this.users.update(this.authService.getToken(), this.userData).subscribe( data => {
+        this.notifierService.show({
+          type : 'success',
+          message: 'لقم تم تعديل بيانات الحساب',
+        });
       });
     } else {
       this.notifierService.show({
         type : 'error',
-        message: 'ادخل كل البيانات',
+        message: 'ادخل بيانات الحساب كامله',
       });
     }
-  }
-
-  forget() {
-    this.router.navigateByUrl('/cpanel/forget');
   }
 
 }

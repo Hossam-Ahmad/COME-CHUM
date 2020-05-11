@@ -49,7 +49,7 @@ export class ChatContactComponent implements OnInit {
 
   send() {
     if (this.text.trim() !== '') {
-      this.contactService.send(this.text, 0, this.contactId).subscribe( data => {
+      this.contactService.send(this.text, 0, this.contactId, 1).subscribe( data => {
         this.messages.push({
           contact_id: this.contactId,
           created_at: '',

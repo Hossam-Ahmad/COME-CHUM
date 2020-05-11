@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { AuthUserService } from 'src/services/authUser.service';
+import { UsersService } from 'src/services/users.service';
+import { ContactService } from 'src/services/contact.service';
 
 @Component({
   selector: 'app-home',
@@ -16,16 +18,24 @@ export class HomeComponent implements OnInit {
   public z_index = 0;
   public email = '';
   public password = '';
+  public text = '';
+  public messages = [];
+  private page = 1;
+  private userData;
 
-  constructor(public authService: AuthService, public router: Router, private notifierService: NotifierService) {
+  constructor(
+    public authService: AuthUserService,
+    public router: Router,
+    private notifierService: NotifierService,
+    private users: UsersService,
+    private contact: ContactService) {
     this.h = window.innerHeight;
     this.m = ((this.h) * ( 2 / 3)) + 'px';
     this.h += 'px';
-    console.log(this.h);
   }
 
   ngOnInit() {
-
+    this.identifyUser();
   }
 
   register() {
@@ -48,8 +58,46 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  identifyUser() {
+    const token = localStorage.getItem('tokenUnauthenticated');
+    this.authService.getIpAddress().subscribe( data => {
+      const ip = data['ip'];
+      this.authService.getUnAuthentiated(ip, token).subscribe( data => {
+        console.log(data);
+        if (data['length'] === 0) {
+          if (token != null) {
+            const generatedToken = Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('tokenUnauthenticated' , generatedToken);
+          }
+          this.authService.createUnAuthentiated(ip, token).subscribe(data => {
+            console.log(data);
+            this.userData = data[0];
+          });
+        } else {
+          this.userData = data[0];
+          this.getMessages();
+        }
+      });
+    });
+  }
+
   getMessages() {
-    
+    this.users.getMessages(this.userData.id, this.page).subscribe( data => {
+      this.messages = data;
+      console.log(data);
+    });
+    this.page++;
+  }
+
+  send() {
+    this.contact.send(this.text, 0, this.userData.contact_id, 0).subscribe( data => {
+      this.messages.push({
+        data : this.text,
+        type : 0,
+        sender : 0
+      });
+      this.text = '';
+    });
   }
 
 }

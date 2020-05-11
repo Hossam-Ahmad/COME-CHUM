@@ -192,4 +192,41 @@ router.get('/user/:profileId', function(req, res, next) {
   });
 });
 
+router.get('/unauthenticated/:ip/:token', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var ip = req.params['ip'];
+    var token = req.params['token'];
+    conn.query(`SELECT c.id contact_id , u.id , u.token , u.ip , u.last_time
+    FROM unsigned_users u , contact c  
+    where (ip = '${ip}' OR token = '${token}') AND (u.id = c.user_id) AND (c.type = 0)`, function(error,results,fields){
+      if(results.length > 0){
+        conn.query(`UPDATE unsigned_users SET last_time = CURRENT_TIMESTAMP()`, function(error,results2,fields){
+          conn.release();
+          res.send(results);
+        });
+      }else{
+        conn.release();
+        res.send(results);
+      }
+    });
+  });
+});
+
+router.post('/unauthenticated', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var ip = req.body['ip'];
+    var token = req.body['token'];
+    connection.query(`INSERT INTO unsigned_users (ip, token) VALUES ('${ip}', '${token}')`, function(error,results,fields){
+      connection.query(`INSERT INTO contact (user_id, type) VALUES ('${results.insertId}', 0)`, function(error,results2,fields){
+        connection.query(`SELECT c.id contact_id , u.id , u.token , u.ip , u.last_time
+        FROM unsigned_users u , contact c  
+        where (ip = '${ip}' OR token = '${token}') AND (u.id = c.user_id) AND (c.type = 0)`, function(error,results3,fields){
+          conn.release();  
+          res.send(results3);
+        });
+      });
+    });
+  });
+});
+
 module.exports = router;

@@ -12,6 +12,11 @@ $darkGrey: #90a3b2;
 $footer : #29313c;
 $footerFont: #a5a7aa;
 
+body{
+    height: 100% !important;
+    background-color: #f3f7f8 !important;
+}
+
 .main-content{
     background-color: #eeeeee;
 }

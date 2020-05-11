@@ -12,10 +12,9 @@ export class NavbarComponent implements OnInit {
 
   status = '/';
   language = '';
-  interval;
-  sixthPage = false;
-  sixthPageAr = '';
-  sixthPageEn = '';
+  public userName = '';
+  public userImage = '';
+  public userId = '';
 
   clickEvent(e) {
       this.status = e;
@@ -30,6 +29,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.status = this.router.url;
     this.language = localStorage.getItem('language');
+    this.getUserData();
   }
 
   changeLanguage(language) {
@@ -41,6 +41,22 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.auth.logout();
     this.router.navigate(['/login']);
+  }
+
+  getUserData() {
+    this.auth.getData().subscribe( data => {
+      this.userName = data.name;
+      this.userImage = data.image;
+      this.userId = data.profile_id;
+    });
+  }
+
+  changeLang() {
+    if (this.translate.getBrowserLang() === 'en') {
+      this.translate.use('ar');
+    } else {
+      this.translate.use('en');
+    }
   }
 
 }

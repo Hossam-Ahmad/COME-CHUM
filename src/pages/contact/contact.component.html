@@ -37,7 +37,7 @@
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
                                                 <td>{{misc.formatDate(contact.created_at)}}</td>
                                                 <td>{{contact.data}}</td>
-                                                <td>{{contact.name}}</td>
+                                                <td>{{contact.name? contact.name : 'غير مسجل'}}</td>
                                                 <td class="text-primary">
                                                     {{i+1}}
                                                 </td>
