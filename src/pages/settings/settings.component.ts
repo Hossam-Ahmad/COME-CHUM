@@ -16,6 +16,12 @@ export class SettingsComponent implements OnInit {
   public country = '';
   public city = '';
   public gender = '';
+  public phone = '';
+  public postal = '';
+  public name = '';
+  public email = '';
+  public mode = 'indeterminate';
+  public loading = false;
 
   public userData;
 
