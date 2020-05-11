@@ -22,6 +22,7 @@ export class SettingsComponent implements OnInit {
   public email = '';
   public mode = 'indeterminate';
   public loading = false;
+  public color = 'white';
 
   public userData;
 
