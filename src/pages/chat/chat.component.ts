@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/services/chat.service';
 
@@ -20,7 +20,7 @@ export class ChatComponent implements OnInit {
   public activeIndex = 0;
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthUserService,
     private router: Router,
     private chat: ChatService) {
   }
@@ -41,11 +41,14 @@ export class ChatComponent implements OnInit {
   }
 
   getChats() {
-    this.chat.getAll(this.type, this.pageChats, this.userId).subscribe( data => {
-      this.chats = data;
-      this.pageChats++;
+    this.authService.getData().subscribe( data => {
       console.log(data);
-      this.getMessages(0, false);
+      this.chat.getAll(this.type, this.pageChats, data.id).subscribe( data2 => {
+        this.chats = data2;
+        this.pageChats++;
+        console.log(data2);
+        this.getMessages(0, false);
+      });
     });
   }
 

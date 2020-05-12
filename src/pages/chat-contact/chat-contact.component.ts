@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-chat-contact',
@@ -21,7 +22,8 @@ export class ChatContactComponent implements OnInit {
   constructor(
     public contactService: ContactService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private socket: Socket
     ) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
@@ -35,6 +37,17 @@ export class ChatContactComponent implements OnInit {
           this.userData = data[0];
           console.log(this.userData);
           this.getMessages();
+          this.socket.fromEvent('sent').subscribe( data2 => {
+            console.log(data2);
+            this.messages.push({
+              data : data2['data'],
+              type : data2['type'],
+              sender : data2['sender'],
+              contact_id : data2['contactId'],
+              created_at: '',
+            });
+            this.text = '';
+          });
         });
       });
   }
@@ -50,22 +63,12 @@ export class ChatContactComponent implements OnInit {
   send() {
     if (this.text.trim() !== '') {
       this.contactService.send(this.text, 0, this.contactId, 1).subscribe( data => {
-        this.messages.push({
-          contact_id: this.contactId,
-          created_at: '',
-          data: this.text,
-          seen: 1,
-          sender: 1,
-          type: 0
-        });
-        this.text = '';
-        console.log(data);
       });
     }
   }
 
   onScroll() {
-    this.getMessages();
+    // this.getMessages();
   }
 
   select() {

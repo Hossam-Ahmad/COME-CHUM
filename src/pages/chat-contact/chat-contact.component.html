@@ -15,7 +15,8 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
-                                            <tr *ngFor="let message of messages;let i = index;">
+                                            <tr *ngFor="let message of messages;">
+
                                                 <div class="bubble client" *ngIf="message.sender == 0 && message.type == 0">
                                                     <p style="margin: 0;">
                                                         {{message.data}}

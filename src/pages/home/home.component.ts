@@ -4,6 +4,7 @@ import { NotifierService } from 'angular-notifier';
 import { AuthUserService } from 'src/services/authUser.service';
 import { UsersService } from 'src/services/users.service';
 import { ContactService } from 'src/services/contact.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-home',
@@ -28,13 +29,17 @@ export class HomeComponent implements OnInit {
     public router: Router,
     private notifierService: NotifierService,
     private users: UsersService,
-    private contact: ContactService) {
+    private contact: ContactService,
+    private socket: Socket) {
     this.h = window.innerHeight;
     this.m = ((this.h) * ( 2 / 3)) + 'px';
     this.h += 'px';
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
     this.identifyUser();
   }
 
@@ -60,24 +65,21 @@ export class HomeComponent implements OnInit {
 
   identifyUser() {
     const token = localStorage.getItem('tokenUnauthenticated');
-    this.authService.getIpAddress().subscribe( data => {
-      const ip = data['ip'];
-      this.authService.getUnAuthentiated(ip, token).subscribe( data => {
-        console.log(data);
-        if (data['length'] === 0) {
-          if (token != null) {
-            const generatedToken = Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('tokenUnauthenticated' , generatedToken);
-          }
-          this.authService.createUnAuthentiated(ip, token).subscribe(data => {
-            console.log(data);
-            this.userData = data[0];
-          });
-        } else {
+    this.authService.getUnAuthentiated(token).subscribe( data => {
+      console.log(data);
+      if (data['length'] === 0) {
+        if (token != null) {
+          const generatedToken = Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('tokenUnauthenticated' , generatedToken);
+        }
+        this.authService.createUnAuthentiated(token).subscribe(data => {
+          console.log(data);
+          this.userData = data[0];
+        });
+      } else {
           this.userData = data[0];
           this.getMessages();
-        }
-      });
+      }
     });
   }
 
@@ -86,16 +88,19 @@ export class HomeComponent implements OnInit {
       this.messages = data;
       console.log(data);
     });
+    this.socket.fromEvent('sent').subscribe( data => {
+      console.log(data);
+      this.messages.push({
+        data : data['data'],
+        type : data['type'],
+        sender : data['sender']
+      });
+    });
     this.page++;
   }
 
   send() {
     this.contact.send(this.text, 0, this.userData.contact_id, 0).subscribe( data => {
-      this.messages.push({
-        data : this.text,
-        type : 0,
-        sender : 0
-      });
       this.text = '';
     });
   }

@@ -4,7 +4,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-var cors = require('cors')
+const cors = require('cors')
 
 const groups = require('./src/routes/groups');
 const admins = require('./src/routes/admins');
@@ -50,10 +50,19 @@ app.use('/api/faq', faq);
 app.use('/api/settings', settings);
 app.use('/api/chat', chat);
 
+
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');
 });
 
 const server = http.createServer(app);
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
+
+app.locals.io = io
 
 server.listen(port, () => console.log('Running ...'));

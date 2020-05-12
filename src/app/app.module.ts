@@ -25,7 +25,7 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
@@ -88,6 +88,7 @@ import { FaqService } from 'src/services/faq.service';
 import { SettingsService } from 'src/services/settings.service';
 import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -140,6 +141,8 @@ const customNotifierOptions: NotifierOptions = {
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
+
+const config: SocketIoConfig = { url: environment.host, options: {} };
 
 @NgModule({
   declarations: [
@@ -204,6 +207,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     HttpClientJsonpModule,
+    SocketIoModule.forRoot(config),
     NotifierModule.withConfig(customNotifierOptions),
     TranslateModule.forRoot({
       loader: {

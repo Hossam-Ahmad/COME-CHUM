@@ -91,10 +91,14 @@ router.get('/unauthenticated/:userId/:pageId', function(req, res, next) {
       where c.user_id = ${userId} and m.contact_id = c.id and c.type = 0
       ORDER by m.created_at ASC
       limit ${10*pageId}`, function(error,results,fields){
-      conn.query(`UPDATE messages_contact SET seen = 1 where contact_id = ${results[0].contact_id} ORDER BY created_at ASC LIMIT ${10*pageId}`, function(error,results2,fields){
-        conn.release();
+      if(results.length > 0){
+        conn.query(`UPDATE messages_contact SET seen = 1 where contact_id = ${results[0].contact_id} ORDER BY created_at ASC LIMIT ${10*pageId}`, function(error,results2,fields){
+          conn.release();
+          res.send(results);
+        });
+      } else {
         res.send(results);
-      });
+      }
     });
   });
 });
@@ -107,6 +111,8 @@ router.post('/send', function(req, res, next) {
     var sender = req.body['sender'];
     conn.query(`INSERT INTO messages_contact(contact_id, type, data, seen, sender) VALUES (${contactId}, ${type}, '${data}', 1, ${sender})`, function(error,results,fields){
       conn.release();
+      const io = req.app.locals.io
+      io.emit('sent', { data, type, contactId, sender });
       res.send({
         status : 'success'
       });

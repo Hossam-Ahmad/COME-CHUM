@@ -15,6 +15,8 @@ export class AuthUserService implements CanActivate {
     email : '',
     cover : '',
     about : '',
+    profile_id : '',
+    token : ''
   };
 
     constructor(public httpClient: HttpClient,
@@ -74,6 +76,8 @@ export class AuthUserService implements CanActivate {
       this.userData.image = data.image;
       this.userData.cover = data.cover;
       this.userData.about = data.about;
+      this.userData.profile_id = data.profile_id;
+      this.userData.token = data.token;
     }
 
     changeCredentials(email, oldPassword, newPassword) {
@@ -97,13 +101,12 @@ export class AuthUserService implements CanActivate {
       return this.httpClient.get(`http://api.ipify.org/?format=json`);
     }
 
-    getUnAuthentiated(ip, token) {
-      return this.httpClient.get(`${environment.api}users/unauthenticated/${ip}/${token}`);
+    getUnAuthentiated(token) {
+      return this.httpClient.get(`${environment.api}users/unauthenticated/${token}`);
     }
 
-    createUnAuthentiated(ip, token) {
+    createUnAuthentiated(token) {
       return this.httpClient.post(`${environment.api}users/unauthenticated`, {
-        ip,
         token
       });
     }
