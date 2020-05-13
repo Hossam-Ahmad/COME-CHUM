@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { UsersService } from './users.service';
 import { Observable, of } from 'rxjs';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable()
 export class AuthUserService implements CanActivate {
@@ -19,9 +20,12 @@ export class AuthUserService implements CanActivate {
     token : ''
   };
 
+  private interval = null;
+
     constructor(public httpClient: HttpClient,
                 public router: Router,
-                private users: UsersService
+                private users: UsersService,
+                private socket: Socket
        ) {}
 
     isAuthenticated() {
@@ -93,8 +97,25 @@ export class AuthUserService implements CanActivate {
         this.httpClient.post(`${environment.api}users/logout`, {
           userId : this.userData.id,
         }).subscribe( data => {
+          this.stopheartBeatOnline();
           this.router.navigate(['/login']);
         });
+    }
+
+    heartBeatOnline() {
+      if (this.interval == null) {
+          this.interval = setInterval(() => {
+            if (this.userData.id !== '') {
+              this.socket.emit('heartbeat' , { user_id : this.userData.id});
+              console.log('sent heart beat');
+            }
+          }, 5000);
+      }
+    }
+
+    stopheartBeatOnline() {
+      clearInterval(this.interval);
+      this.interval = null;
     }
 
     getIpAddress() {

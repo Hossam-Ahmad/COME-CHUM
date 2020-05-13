@@ -3,7 +3,12 @@ import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
-
+import { UsersService } from 'src/services/users.service';
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
 
 @Component({
   selector: 'app-login-website',
@@ -24,7 +29,10 @@ export class LoginWebsiteComponent implements OnInit {
     public authService: AuthUserService,
     public router: Router,
     private social: SocialService,
-    private notifierService: NotifierService) {
+    private notifierService: NotifierService,
+    private users: UsersService,
+    private socialAuthService: AuthService
+    ) {
     this.height = window.innerHeight + 'px';
   }
 
@@ -43,18 +51,24 @@ export class LoginWebsiteComponent implements OnInit {
     });
   }
 
-  loginFB() {
-
+  signInWithGoogle(): void {
+    // this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  loginInsta() {
-
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        console.log('facebook sign in data : ' , userData);
+      }
+    );
+    // this.authSocialService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   login() {
     if (this.email !== '' && this.password !== '') {
       this.loading = true;
       this.authService.login(this.email, this.password).subscribe(result => {
+        console.log(result);
         if (result['status'] === 'success') {
           this.loading = false;
           this.authService.setToken(result['token']);

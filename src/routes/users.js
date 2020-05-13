@@ -11,8 +11,9 @@ router.post('/auth', function(req, res, next) {
       var email = req.body['email'];
       var password = req.body['password'];
       conn.query(`SELECT * FROM users where email like '${email}' and password like '${password}'`, function(error,results,fields){
-        conn.release();  
-        if(results.length > 0){
+        conn.query(`UPDATE users SET online = 1 where email like '${email}' and password like '${password}'`, function(error,results2,fields){
+          conn.release();  
+          if(results.length > 0){
               res.send({
                   status : 'success',
                   token : results[0]['token'],
@@ -27,6 +28,7 @@ router.post('/auth', function(req, res, next) {
           } else {
             res.send({status : 'failed'});
           }
+        });
       });
     }
   });
@@ -36,6 +38,16 @@ router.get('/all/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var pageId = req.params['pageId'];
     conn.query(`SELECT * FROM users where status = 1 LIMIT ${10*pageId}`, function(error,results,fields){
+      conn.release();  
+      res.send(results);
+    });
+  });
+});
+
+router.get('/online/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var pageId = req.params['pageId'];
+    conn.query(`SELECT * FROM users where status = 1 AND online = 1 LIMIT ${10*pageId}`, function(error,results,fields){
       conn.release();  
       res.send(results);
     });
@@ -56,8 +68,10 @@ router.get('/user/token/:token', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var token = req.params['token'];
     connection.query(`SELECT * FROM users where token = '${token}'`, function(error,results,fields){
-      conn.release();  
-      res.send(results[0]);
+      connection.query(`UPDATE users SET online = 1 where token = '${token}'`, function(error,results2,fields){
+        conn.release();  
+        res.send(results[0]);
+      });
     });
   });
 });

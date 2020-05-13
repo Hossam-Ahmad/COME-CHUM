@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/services/users.service';
+import { AuthUserService } from 'src/services/authUser.service';
 
 @Component({
   selector: 'app-master',
@@ -8,9 +10,14 @@ import { Router } from '@angular/router';
 })
 export class MasterComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(
+    public router: Router,
+    private users: UsersService,
+    private auth: AuthUserService) { }
 
   ngOnInit() {
+    console.log('master here');
+    this.auth.heartBeatOnline();
   }
 
   isLogin() {

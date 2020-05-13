@@ -37,7 +37,7 @@ export class ChatContactComponent implements OnInit {
           this.userData = data[0];
           console.log(this.userData);
           this.getMessages();
-          this.socket.fromEvent('sent').subscribe( data2 => {
+          this.socket.fromEvent(`sent${this.contactId}`).subscribe( data2 => {
             console.log(data2);
             this.messages.push({
               data : data2['data'],

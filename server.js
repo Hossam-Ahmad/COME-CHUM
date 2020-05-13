@@ -4,7 +4,10 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const cors = require('cors')
+const cors = require('cors');
+const axios = require('axios');
+const enviroment = require('./src/routes/enviroment.js');
+const connection = enviroment.connection;
 
 const groups = require('./src/routes/groups');
 const admins = require('./src/routes/admins');
@@ -61,6 +64,27 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    let interval = null;
+    const socketId = socket.id;
+    socket.on('heartbeat', function(data) {
+        console.log('received heart beat user !');
+        clearInterval(interval);
+        interval = setInterval(() => {
+            console.log('user disconnected');
+
+            connection.getConnection(function (err, conn) {
+                var userId = data.user_id;
+                console.log('update offline to database');
+                connection.query('UPDATE users SET online = 0 where id = ' + userId, function(error,results,fields){
+                  conn.release();
+                });
+            });
+            if(io.sockets.connected[socketId]) {
+                io.sockets.sockets[socketId].disconnect();
+            }
+            clearInterval(interval);
+        }, 6000);
+    });
 });
 
 app.locals.io = io

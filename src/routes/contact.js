@@ -111,8 +111,8 @@ router.post('/send', function(req, res, next) {
     var sender = req.body['sender'];
     conn.query(`INSERT INTO messages_contact(contact_id, type, data, seen, sender) VALUES (${contactId}, ${type}, '${data}', 1, ${sender})`, function(error,results,fields){
       conn.release();
-      const io = req.app.locals.io
-      io.emit('sent', { data, type, contactId, sender });
+      const io = req.app.locals.io;
+      io.emit(`sent${contactId}`, { data, type, contactId, sender });
       res.send({
         status : 'success'
       });

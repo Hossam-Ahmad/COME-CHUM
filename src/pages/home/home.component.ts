@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { AuthUserService } from 'src/services/authUser.service';
@@ -11,7 +11,7 @@ import { Socket } from 'ngx-socket-io';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , OnDestroy {
 
   public h;
   public m;
@@ -31,9 +31,11 @@ export class HomeComponent implements OnInit {
     private users: UsersService,
     private contact: ContactService,
     private socket: Socket) {
+
     this.h = window.innerHeight;
     this.m = ((this.h) * ( 2 / 3)) + 'px';
     this.h += 'px';
+
   }
 
   ngOnInit() {
@@ -63,32 +65,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  identifyUser() {
-    const token = localStorage.getItem('tokenUnauthenticated');
-    this.authService.getUnAuthentiated(token).subscribe( data => {
-      console.log(data);
-      if (data['length'] === 0) {
-        if (token != null) {
-          const generatedToken = Math.random().toString(36).substr(2, 9);
-          localStorage.setItem('tokenUnauthenticated' , generatedToken);
-        }
-        this.authService.createUnAuthentiated(token).subscribe(data => {
-          console.log(data);
-          this.userData = data[0];
-        });
-      } else {
-          this.userData = data[0];
-          this.getMessages();
-      }
-    });
-  }
-
-  getMessages() {
-    this.users.getMessages(this.userData.id, this.page).subscribe( data => {
-      this.messages = data;
-      console.log(data);
-    });
-    this.socket.fromEvent('sent').subscribe( data => {
+  getNotifiedMessages() {
+    this.socket.fromEvent(`sent${this.userData.contact_id}`).subscribe( data => {
       console.log(data);
       this.messages.push({
         data : data['data'],
@@ -96,7 +74,49 @@ export class HomeComponent implements OnInit {
         sender : data['sender']
       });
     });
+  }
+
+  identifyUser() {
+    const token = localStorage.getItem('tokenUnauthenticated');
+    if (token == null) {
+      console.log(token);
+      const generatedToken = Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('tokenUnauthenticated' , generatedToken);
+      this.authService.createUnAuthentiated(generatedToken).subscribe(data => {
+        console.log(data);
+        this.userData = data[0];
+        this.getNotifiedMessages();
+      });
+    } else {
+      this.authService.getUnAuthentiated(token).subscribe( data => {
+        console.log(data);
+        if (data['length'] === 0) {
+          const generatedToken = Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('tokenUnauthenticated' , generatedToken);
+          this.authService.createUnAuthentiated(generatedToken).subscribe(data => {
+            console.log(data);
+            this.userData = data[0];
+            this.getNotifiedMessages();
+          });
+        } else {
+            this.userData = data[0];
+            this.getNotifiedMessages();
+            this.getMessages();
+        }
+      });
+    }
+  }
+
+  getMessages() {
+    this.users.getMessages(this.userData.id, this.page).subscribe( data => {
+      this.messages = data;
+      console.log(data);
+    });
     this.page++;
+  }
+
+  ngOnDestroy() {
+    this.socket.removeAllListeners();
   }
 
   send() {

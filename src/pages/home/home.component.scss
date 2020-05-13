@@ -874,6 +874,9 @@
       font-family: lato-black;
       text-align: center;
       .menu{ text-align: left;
+        .menu-icon{
+          cursor: pointer;
+        }
       }
       p{
           text-transform: uppercase;
@@ -1353,4 +1356,56 @@ position: absolute;
       margin-left: 2em;
     }
   }
+}
+
+
+
+
+
+
+mat-sidenav{
+  width: 17em;
+  padding: 1em;
+}
+
+mat-nav-list{
+  margin-top: 1em;
+}
+
+.mat-list-item{
+  border-radius: 25px !important;
+  p{
+    margin: auto;
+  }
+}
+
+.mat-list-item:hover{
+  background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%) !important;
+  border-radius: 25px !important;
+  color: white !important;
+}
+
+
+.logo{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2em;
+}
+
+.logo-img{
+  text-align: center;
+}
+
+.logout_btn{
+  border: 1px solid #be3692;
+  border-radius: 25px;
+  padding: 0.5em;
+  font-size: 15px !important;
+  color:#be3692 !important;
+  margin-left: 65px !important;
+  margin-right: 15px !important;
+}
+
+.scrollable_list{
+  overflow-y: scroll;
+  height: 80%;    
 }

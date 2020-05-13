@@ -15,7 +15,11 @@ import {
   MatTooltipModule,
   MatSelectModule,
   MatDialogModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatListModule
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +30,13 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular-6-social-login';
+
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
@@ -144,6 +155,24 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 const config: SocketIoConfig = { url: environment.host, options: {} };
 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('1150761991943638')
+        }
+        // ,
+        // {
+        //   id: GoogleLoginProvider.PROVIDER_ID,
+        //   provider: new GoogleLoginProvider("Your-Google-Client-Id")
+        // }
+      ]
+  );
+  return config;
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -200,6 +229,10 @@ const config: SocketIoConfig = { url: environment.host, options: {} };
     MatTooltipModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatListModule,
     NgbModule,
     PerfectScrollbarModule,
     BrowserAnimationsModule,
@@ -209,6 +242,7 @@ const config: SocketIoConfig = { url: environment.host, options: {} };
     HttpClientJsonpModule,
     SocketIoModule.forRoot(config),
     NotifierModule.withConfig(customNotifierOptions),
+    SocialLoginModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -239,6 +273,10 @@ const config: SocketIoConfig = { url: environment.host, options: {} };
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
     }
   ],
   bootstrap: [AppComponent],
