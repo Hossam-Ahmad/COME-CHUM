@@ -53,6 +53,9 @@ app.use('/api/faq', faq);
 app.use('/api/settings', settings);
 app.use('/api/chat', chat);
 
+app.get('/googlec2d96c9b2c4b2245.html', (request, response) => {
+    response.send('google-site-verification: googlec2d96c9b2c4b2245.html');
+});
 
 app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');

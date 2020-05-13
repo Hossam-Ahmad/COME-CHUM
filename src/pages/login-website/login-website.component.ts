@@ -52,7 +52,11 @@ export class LoginWebsiteComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    // this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        console.log('google sign in data : ' , userData);
+      }
+    );
   }
 
   signInWithFB(): void {
@@ -61,7 +65,6 @@ export class LoginWebsiteComponent implements OnInit {
         console.log('facebook sign in data : ' , userData);
       }
     );
-    // this.authSocialService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   login() {
