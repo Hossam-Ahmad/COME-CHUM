@@ -14,11 +14,12 @@
     </div>
     <mat-nav-list>
 
-      <a mat-list-item [routerLink]="'/'"> <p>Home</p> </a>
-      <a mat-list-item href="/login"> <p>Login</p></a>
-      <a mat-list-item href="/register"> <p>Register</p></a>
-      <a mat-list-item href="/faq"> <p>FAQ</p></a>
-      <a mat-list-item href="/terms"> <p>Terms & Conditions</p></a>
+      <a mat-list-item [routerLink]="'/'" (click)="sidenav.toggle()"> <p>{{ 'home_nav' | translate }}</p> </a>
+      <a mat-list-item href="/login" (click)="sidenav.toggle()"> <p>{{ 'login' | translate }}</p></a>
+      <a mat-list-item href="/register" (click)="sidenav.toggle()"> <p>{{ 'register' | translate }}</p></a>
+      <a mat-list-item href="/faq" (click)="sidenav.toggle()"> <p>{{ 'faq' | translate }}</p></a>
+      <a mat-list-item href="/terms" (click)="sidenav.toggle()"> <p>{{ 'terms' | translate }}</p></a>
+      <a mat-list-item (click)="userService.switchLanguage();sidenav.toggle();"> <p>{{ 'language' | translate }}</p></a>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -42,10 +43,10 @@
                 <div class="row">
                     <div class="logAndRegist" [ngStyle]="{'margin-top': m}">
                         <span class="right-border">
-                          <a href="/login">login</a>
+                          <a href="/login">{{ 'login' | translate }}</a>
                         </span>
                         <span>
-                          <a href="/register">register</a>
+                          <a href="/register">{{ 'register' | translate }}</a>
                         </span>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
       
                         <div class="col col-md-2 overOther">
                             <div class="form-group col-md-4">
-                                <label for="inputState">Country</label>
+                                <label for="inputState">{{'country' | translate}}</label>
                                 <select id="inputState" class="form-control">
                                   <option selected>United States</option>
                                   <option>Egypt</option>
@@ -74,7 +75,7 @@
       
                         <div class="col col-md-2 borderOne overOther">
                             <div class="form-group col-md-4">
-                                <label for="inputState">City</label>
+                                <label for="inputState">{{'city' | translate}}</label>
                                 <select id="inputState" class="form-control">
                                   <option selected>New York</option>
                                   <option>Cairo</option>
@@ -86,28 +87,28 @@
       
                         <div class="col col-md-2 overOther">
                             <div class="form-group col-md-4">
-                                <label for="inputState">Travelers</label>
+                                <label for="inputState">{{'travelers' | translate}}</label>
                                 <select id="inputState" class="form-control">
-                                  <option selected>1 person</option>
-                                  <option>2 persones</option>
-                                  <option>3 persons</option>
+                                  <option selected>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
                                 </select>
                               </div>
                         </div>
       
                         <div class="col col-md-2 borderOne overOther">
                             <div class="form-group col-md-4">
-                                <label for="inputState">Time</label>
+                                <label for="inputState">{{'time' | translate}}</label>
                                 <input type="date" />
                               </div>
                         </div>
                         
                         <div class="col col-md-3 overOther">
-                            <button type="button" class="btn btn-light">Advanced Search</button>
+                            <button type="button" class="btn btn-light">{{'advanced_search' | translate}}</button>
                         </div>
       
                         <div class="col col-md-1 search2 overOther">
-                            <button type="button" class="btn btn-secondary">Search</button>
+                            <button type="button" class="btn btn-secondary">{{'search' | translate}}</button>
                         </div>
       
                     </div>
@@ -116,7 +117,7 @@
              <!-- available places -->
              <div class="row">
                   <div class="col col-md-3">
-                    <h3 class="tittle">Available places  to rent </h3>
+                    <h3 class="tittle">{{'available_rent' | translate}}</h3>
                     <hr class="horizon">
              </div>
                <!-- carousel -->
@@ -129,7 +130,7 @@
                           <div class="image">
                             <img src="../../../assets/images/img1.jpg">
                           </div>
-                          <button type="button" class="btn btn-primary">Free</button>
+                          <button type="button" class="btn btn-primary">{{'free' | translate}}</button>
                           <h4>Tailandia</h4>
                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                              sed</p>
@@ -140,7 +141,7 @@
                          <div class="image">
                            <img src="../../../assets/images/img2.jpg">
                          </div>
-                         <button type="button" class="btn btn-primary">Free</button>
+                         <button type="button" class="btn btn-primary">{{'free' | translate}}</button>
                          <h4>rio de janeiro</h4>
                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed</p>
@@ -151,7 +152,7 @@
                        <div class="image">
                          <img src="../../../assets/images/img3.jpg">
                        </div>
-                       <button type="button" class="btn btn-primary">Free</button>
+                       <button type="button" class="btn btn-primary">{{'free' | translate}}</button>
                        <h4>madrid</h4>
                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                           sed</p>
@@ -162,7 +163,7 @@
                      <div class="image">
                        <img src="../../../assets/images/img1.jpg">
                      </div>
-                     <button type="button" class="btn btn-primary">Free</button>
+                     <button type="button" class="btn btn-primary">{{'free' | translate}}</button>
                      <h4>madrid</h4>
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed</p>
@@ -186,15 +187,15 @@
             </div>
             <div class="col col-md-6">
               <div class="events">
-                <h3 class="tittle2">Great Events</h3>
+                <h3 class="tittle2">{{'great_events' | translate}}</h3>
                 <hr class="horizon2">
-                <p>Lurem ipsum is simply dummy text,Lurem ipsum is simply dummy text,Lurem ipsum is simply dummy text.</p>
+                <p>{{'events_subtitle' | translate}}</p>
             </div>
             </div>
           </div>
           <div class="row">
             <div class="col col-md-6">
-               <button type="button" class="btn btn-light viewBtn">View</button>
+               <button type="button" class="btn btn-light viewBtn">{{'view' | translate}}</button>
             </div>
           </div>
         </div>
@@ -209,8 +210,8 @@
          <div class="row">
             <div class="col-md-7">
               <div class="comeNow">
-                <h3>Getting Started</h3>
-              <p>With us , you can easily rent and search for available places in the countries of the world .</p>
+                <h3>{{'getting_started' | translate}}</h3>
+              <p>{{'getting_started_subtitle' | translate}}</p>
             </div>
           </div>
            <div class="col-md-4">
@@ -226,14 +227,14 @@
                </div>
                  
                                <p class="details">
-                                    when you click on "Create Account", this means thata you agree to process your personal data and on the
-                  <a href="/terms">terms and conditions</a>
+                                    {{'register_home_subtitle' | translate}}
+                  <a href="/terms">{{'terms' | translate}}</a>
                </p>
-                <button type="submit" class="btn btn-primary background btn-register" form="form1" (click)="register()">Create Account</button>
+                <button type="submit" class="btn btn-primary background btn-register" form="form1" (click)="register()">{{'register' | translate}}</button>
                <div class="twoSpans">
                                <a href="\login">
-                                   <span class="ry8Span">Already have an account? </span>
-                                   <span class="leftSpan">Login</span>
+                                   <span class="ry8Span">{{'already_login' | translate}}</span>
+                                   <span class="leftSpan">{{'login' | translate}}</span>
                                </a>
                </div>
            </form> 
@@ -254,9 +255,9 @@
         <div class="container">
           <div class="row">
             <div class="col col-md-6">
-              <h3 class="tittle">Benefits </h3>
+              <h3 class="tittle">{{'benefits' | translate}} </h3>
               <hr class="horizon">
-              <p>Lurem ipsum is simply dummy text, simply dummy text.</p>
+              <p>{{'benefits_subtitle' | translate}}</p>
             </div>
           </div>
           <div class="row">
@@ -288,7 +289,7 @@
       <!-- Reviews -->
       <div class="reviews">
         <div class="container">
-          <h2>Client Reviews</h2>
+          <h2>{{'client_reviews' | translate}}</h2>
           <app-slider></app-slider>
           <!-- carousel -->
           
@@ -308,7 +309,7 @@
             <div class="col col-md-6 contactCol">
              <div class="row">
                <div class="col col-md-4">
-                 <p class="contactTitl">Address</p>
+                 <p class="contactTitl">{{'address' | translate}}</p>
                </div>
                <div class="col col-md-8">
                  <p>Text text text text text text text text text text text text 
@@ -317,7 +318,7 @@
              </div>
              <div class="row">
               <div class="col col-md-4">
-                <p class="contactTitl">Fax</p>
+                <p class="contactTitl">{{'fax' | translate}}</p>
               </div>
               <div class="col col-md-8">
                 <p>+1 323 555 1234</p>
@@ -325,7 +326,7 @@
             </div>
             <div class="row">
               <div class="col col-md-4">
-                <p class="contactTitl">Phone</p>
+                <p class="contactTitl">{{'phone' | translate}}</p>
               </div>
               <div class="col col-md-8">
                 <p>+1 323 555 1234 copy</p>
@@ -333,7 +334,7 @@
             </div>
             <div class="row">
               <div class="col col-md-4">
-                <p class="contactTitl">Whatsapp</p>
+                <p class="contactTitl">{{'whatsapp' | translate}}</p>
               </div>
               <div class="col col-md-8">
                 <p>+7 898 323 23 23</p>
@@ -341,7 +342,7 @@
             </div>
             <div class="row">
               <div class="col col-md-4">
-                <p class="contactTitl">E-Mail</p>
+                <p class="contactTitl">{{'email' | translate}}</p>
               </div>
               <div class="col col-md-8">
                 <p>alex.tour@gmail.com</p>
@@ -349,7 +350,7 @@
             </div>
             <div class="row">
               <div class="col col-md">
-                <button type="button" class="btn btn-primary contactBtn">Contact Us</button>
+                <button type="button" class="btn btn-primary contactBtn">{{'contact_nav' | translate}}</button>
               </div>
             </div>
             </div>
@@ -362,30 +363,30 @@
         <div class="container">
           <div class="row">
             <div class="col col-md-2">
-              <h4>Navigation</h4>
+              <h4>{{'navigation' | translate}}</h4>
               <ul>
-                <li>Login</li>
-                <li>Register</li>
-                <li>Contacts</li>
-                <li>Services</li>
-                <li>Testimonials</li>
+                <li>{{'login' | translate}}</li>
+                <li>{{'register' | translate}}</li>
+                <li>{{'benefits' | translate}}</li>
+                <li>{{'client_reviews' | translate}}</li>
+                <li>{{'contact_nav' | translate}}</li>
               </ul>
             </div>
       
             <div class="col col-md-2">
-              <h4>Info</h4>
+              <h4>{{'info' | translate}}</h4>
               <ul>
-                <li>Terms & Conditions</li>
-                <li>FAQ</li>
+                <li>{{'terms' | translate}}</li>
+                <li>{{'faq' | translate}}</li>
               </ul>
             </div>
       
           </div>
           <div class="row">
             <div class="col offset-md-6 Newsletter">
-              <p>Newsletter</p>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
-              <button type="submit" class="btn btn-primary">Subscribe</button>
+              <p>{{'news_letter' | translate}}</p>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{'enter_email' | translate}}">
+              <button type="submit" class="btn btn-primary">{{'subscribe' | translate}}</button>
             </div>
           </div>
         </div>
@@ -416,7 +417,7 @@
               <div class="header_img">
                 <img src="http://res.cloudinary.com/dqvwa7vpe/image/upload/v1496415051/avatar_ma6vug.jpg"/>
                 </div>
-                <span id="chat_head">Customer Service</span> <br> <span class="online">(Online)</span>
+                <span id="chat_head">{{'customer_service' | translate}}</span> <br> <span class="online">({{'online' | translate}})</span>
                <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i class="fullscreen zmdi zmdi-window-maximize"></i></span>
         
               </div>
@@ -424,7 +425,7 @@
             </div>
               <div id="chat_fullscreen" class="chat_conversion chat_converse" style="display: block;">
               <span class="chat_msg_item chat_msg_item_admin intial-msg" *ngIf="messages.length == 0">
-                    Hey there! Any question?
+                {{'any_questions' | translate}}
               </span>
       
               <span class="chat_msg_item" [ngClass]="{'chat_msg_item_admin': message.sender == 1 , 'chat_msg_item_user' : message.sender == 0}" *ngFor="let message of messages">

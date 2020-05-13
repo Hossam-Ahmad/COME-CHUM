@@ -6,7 +6,9 @@
 					 <div class="row">
 					     <div class="col offset-sm-1">		
 				    <div class="loginLogo">
-						<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+						<a href="/"> 
+							<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+						</a>
 					</div>
 				 </div>
 					 </div>
@@ -14,11 +16,11 @@
 					 <div class="row">
 						 <div class="col">
 							  <div class="login-title">
-						   <h5>إنشاء حساب</h5>
+						   <h5>{{'register' | translate}}</h5>
 						    <div class="social-login">
                                     <button type="button" class="btn btn-primary facebook-login" (click)="loginFB()">
 									<i class="fab fa-facebook-f"></i>
-									 <span style="margin-right: 1em;">Login With Facebook</span>
+									 <span style="margin-right: 1em;">{{'login_with_facebook' | translate}}</span>
 								    </button>
                                     <button type="button" class="btn btn-primary twitter-login" (click)="loginTwitter()">
 									   <i class="fab fa-twitter"></i>
@@ -41,7 +43,7 @@
 										<hr>
 									</div>
 									<div class="col">
-										<span>أو</span>
+										<span>{{'or' | translate}}</span>
 									</div>
 									<div class="col col-sm-5">
 										<hr>
@@ -52,26 +54,26 @@
 						  
 						<div class="row lower-border second-row">
 							<div class="col col-sm-6 first-col">
-								<input placeholder="الاسم الشخصي" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+								<input placeholder="{{'personal_name' | translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
 							</div>
 							<div class="col col-sm-6 first-col">
-								<input placeholder="البريد الالكتروني" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+								<input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
 							</div>
 						</div>
 
 						<div class="row lower-border second-row">
 							<div class="col col-sm-6 first-col">
-								<input placeholder="كلمة المرور" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
+								<input placeholder="{{'password' | translate}}" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
 							</div>
 							<div class="col col-sm-6 first-col">
-								<input placeholder="تكرار كلمة المرور" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
+								<input placeholder="{{'repeat_password' | translate}}" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
 							</div>
 						</div>
 
 						<div class="row lower-border second-row">
 							<div class="col col-sm-6 first-col">
 								<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
-									<option value="" disabled selected>النوع</option>
+									<option value="" disabled selected>{{'gender' | translate}}</option>
                                     <option value="0">ذكر</option>
                                     <option value="1">انثى</option>
 								</select>
@@ -79,7 +81,7 @@
 							</div>
 							<div class="col col-sm-6 first-col">
 								<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
-									<option value="" disabled selected>الدولة</option>
+									<option value="" disabled selected>{{'country' | translate}}</option>
                                     <option value="0">مصر</option>
                                     <option value="1">السعودية</option>
 								</select>
@@ -98,7 +100,7 @@
 										  [color] = "color"
 										  [mode] = "mode">
 									  </mat-progress-spinner>
-										  <span *ngIf="!loading">استكمال</span>
+										  <span *ngIf="!loading">{{'continue' | translate}}</span>
 									  </button>
 							  	</div>
 						  </div>
@@ -114,8 +116,8 @@
 				   <div class="loginSlider">
 					   <div class="container">
 						  <div class="absHeading">
-                              <h2>مميزات</h2>
-                              <h2>الاشتـــراك</h2>
+                              <h2>{{'advnatages' | translate}}</h2>
+                              <h2>{{'registration' | translate}}</h2>
 						  </div>
 					    <div id="carouselExampleSlidesOnly" class="carousel slide shifting" data-ride="carousel">
 				  <div class="carousel-inner">
@@ -130,7 +132,7 @@
 				  </div>
 						<div class="termLink">
 						   <i class="fas fa-align-left"></i>
-						   <a href="/terms">الشروط و الاحكام</a>
+						   <a href="/terms">{{'terms' | translate }}</a>
 						</div>
 				</div>
 	   

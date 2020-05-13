@@ -10,14 +10,6 @@ export class SocialService {
                 public router: Router
        ) {}
 
-    loginInstagram() {
-        return this.httpClient.get(`${environment.api}social/loginInsta`);
-    }
-
-    loginFacebook() {
-
-    }
-
     loginTwitter() {
         return this.httpClient.get(`${environment.api}social/loginTwitter`);
     }

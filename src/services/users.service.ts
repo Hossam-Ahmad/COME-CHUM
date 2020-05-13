@@ -2,12 +2,14 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class UsersService {
 
     constructor(public httpClient: HttpClient,
-                public router: Router
+                public router: Router,
+                private translate: TranslateService
        ) {}
 
     getAll(pageId): any {
@@ -51,6 +53,16 @@ export class UsersService {
         data,
         token
       });
+    }
+
+    switchLanguage() {
+      if (this.translate.currentLang === 'en') {
+        this.translate.use('ar');
+        localStorage.setItem('language', 'ar');
+      } else {
+        this.translate.use('en');
+        localStorage.setItem('language', 'en');
+      }
     }
 
 }

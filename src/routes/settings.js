@@ -14,12 +14,20 @@ router.get('/key/:name', function(req, res, next) {
   });
 });
 
-router.get('/terms', function(req, res, next) {
+router.get('/terms/:language', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    connection.query(`SELECT * FROM settings where name = 'terms_ar' or name = 'terms_en'`, function(error,results,fields){
-      conn.release();
-      res.send(results);
-    });
+    var language = req.params['language'];
+    if(language == 'ar'){
+      connection.query(`SELECT * FROM settings where name = 'terms_ar'`, function(error,results,fields){
+        conn.release();
+        res.send(results);
+      });
+    }else{
+      connection.query(`SELECT * FROM settings where name = 'terms_en'`, function(error,results,fields){
+        conn.release();
+        res.send(results);
+      });
+    }
   });
 });
 

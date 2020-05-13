@@ -5,7 +5,7 @@
                 <li *ngFor="let item of routes" [ngClass]="{'active': router.url == item.path}">
                     <a routerLinkActive="on"  [routerLink]="[ item.path ]">
                         <i class="material-icons">{{item.icon}}</i>
-                        <p>{{item.title}}</p>
+                        <p>{{item.title | translate}}</p>
                     </a>
                 </li>
             </ul>
@@ -17,8 +17,8 @@
             <div class="row">
                     <img src="../../../assets/images/package.png"/>
                     <div>
-                        <p class="title">Update Package</p>
-                        <p class="subtitle">Get more updates</p>
+                        <p class="title">{{'update_package' | translate}}</p>
+                        <p class="subtitle">{{'get_more_privleges' | translate }}</p>
                     </div>
                 
             </div>
@@ -44,7 +44,7 @@
             <li>
                 <a routerLinkActive="on"  [routerLink]="[ '/faq' ]" [ngClass]="{'active': router.url == '/faq'}">
                     <i class="material-icons active">help</i>
-                    <p>Help & Support</p>
+                    <p>{{'help' | translate}}</p>
                 </a>
             </li>
             <hr style="margin: 0px;
@@ -52,7 +52,7 @@
             <li>
                 <a routerLinkActive="on"  [routerLink]="[ '/settings' ]" [ngClass]="{'active': router.url == '/settings'}" >
                     <i class="material-icons">settings</i>
-                    <p>Settings</p>
+                    <p>{{'settings' | translate}}</p>
                 </a>
             </li>
         </ul>

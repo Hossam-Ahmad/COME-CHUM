@@ -17,13 +17,13 @@ export class SidebarWebsiteComponent implements OnInit {
   public userImage = '';
   public status = '/';
   public routes = [
-    { path: '/feed', title: 'Home',  icon: 'home', class: ''},
-    { path: '/groups', title: 'Groups',  icon: 'person', class: ''},
-    { path: '/chat', title: 'Messages',  icon: 'group', class: ''},
-    { path: '/events', title: 'Events',  icon: 'event', class: ''},
-    { path: '/blogs', title: 'Blogs',  icon: 'emoji_events', class: ''},
-    { path: '/contests', title: 'Contests',  icon: 'assignment', class: ''},
-    { path: '/packages', title: 'Packages',  icon: 'payment', class: ''},
+    { path: '/feed', title: 'home_nav',  icon: 'home', class: ''},
+    { path: '/groups', title: 'groups_nav',  icon: 'person', class: ''},
+    { path: '/chat', title: 'messages',  icon: 'group', class: ''},
+    { path: '/events', title: 'events_nav',  icon: 'event', class: ''},
+    { path: '/blogs', title: 'blogs',  icon: 'emoji_events', class: ''},
+    { path: '/contests', title: 'contests',  icon: 'assignment', class: ''},
+    { path: '/packages', title: 'packages',  icon: 'payment', class: ''},
 ];
 
   constructor(public router: Router, public authService: AuthUserService) { }

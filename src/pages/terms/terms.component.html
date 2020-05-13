@@ -14,7 +14,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
-                    <h3 class="faq-title">الشروط و الاحكام</h3>
+                    <h3 class="faq-title">{{'terms' | translate}}</h3>
 				</div>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
                         </div>
                         <div>
                             <div class="panel-body">
-                                <p class="answer">{{term ? term : ''}}</p>
+                                <p class="answer" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">{{term ? term : ''}}</p>
                             </div>
                         </div>
                     </div>

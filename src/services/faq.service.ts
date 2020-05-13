@@ -10,8 +10,8 @@ export class FaqService {
                 public router: Router
        ) {}
 
-    getAll(pageId): any {
-      return this.httpClient.get(`${environment.api}faq/all/${pageId}`);
+    getAll(language, pageId): any {
+      return this.httpClient.get(`${environment.api}faq/all/${language}/${pageId}`);
     }
 
     get(faqId): any {

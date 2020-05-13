@@ -5,6 +5,7 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { UsersService } from 'src/services/users.service';
 import { ContactService } from 'src/services/contact.service';
 import { Socket } from 'ngx-socket-io';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit , OnDestroy {
     private notifierService: NotifierService,
     private users: UsersService,
     private contact: ContactService,
-    private socket: Socket) {
+    private socket: Socket,
+    public userService: UsersService) {
 
     this.h = window.innerHeight;
     this.m = ((this.h) * ( 2 / 3)) + 'px';

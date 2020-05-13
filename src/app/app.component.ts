@@ -15,6 +15,7 @@ export class AppComponent {
     const language = localStorage.getItem('language');
     if (language == null) {
       translate.use('en');
+      localStorage.setItem('language', 'en');
     } else {
       translate.use(language);
     }

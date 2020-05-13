@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from 'src/services/authUser.service';
+import { UsersService } from 'src/services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(public translate: TranslateService,
               public router: Router,
-              public auth: AuthUserService
+              public auth: AuthUserService,
+              private users: UsersService
               ) {
                }
 
@@ -30,12 +32,6 @@ export class NavbarComponent implements OnInit {
     this.status = this.router.url;
     this.language = localStorage.getItem('language');
     this.getUserData();
-  }
-
-  changeLanguage(language) {
-    this.language = language;
-    this.translate.use(language);
-    localStorage.setItem('language', language);
   }
 
   logout() {
@@ -52,11 +48,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeLang() {
-    if (this.translate.getBrowserLang() === 'en') {
-      this.translate.use('ar');
-    } else {
-      this.translate.use('en');
-    }
+    this.users.switchLanguage();
   }
 
 }

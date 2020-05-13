@@ -160,11 +160,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('1150761991943638')
+          provider: new FacebookLoginProvider(environment.facebook_client_id)
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('797651050350-feulri2e97b1qutcpd35e87trq6h37fp.apps.googleusercontent.com')
+          provider: new GoogleLoginProvider(environment.google_client_id)
         }
       ]
   );

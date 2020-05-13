@@ -6,7 +6,9 @@
 					 <div class="row">
 					     <div class="col offset-sm-1">		
 				    <div class="loginLogo">
-						<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+						<a href="/"> 
+							<img alt="Website Logo" src="../../../assets/images/logo_website.png">
+						</a>
 					</div>
 				 </div>
 					 </div>
@@ -14,11 +16,11 @@
 					 <div class="row">
 						 <div class="col">
 							  <div class="login-title">
-						   <h5>تسجيل دخول</h5>
+						   <h5>{{'login' | translate}}</h5>
 						    <div class="social-login">
                                     <button type="button" class="btn btn-primary facebook-login" (click)="signInWithFB()">
 									<i class="fab fa-facebook-f"></i>
-									<span style="margin-right: 1em;">Login With Facebook</span>
+									<span style="margin-right: 1em;">{{'login_with_facebook' | translate}}</span>
 								    </button>
                                     <button type="button" class="btn btn-primary twitter-login" (click)="loginTwitter()">
 									   <i class="fab fa-twitter"></i>
@@ -41,7 +43,7 @@
 										<hr>
 									</div>
 									<div class="col">
-										<span>أو</span>
+										<span>{{'or' | translate}}</span>
 									</div>
 									<div class="col col-sm-5">
 										<hr>
@@ -54,13 +56,13 @@
 					  	<div class="row upper-border">
 					
 						<div class="col">
-						  <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control" id="email" lang="en" [(ngModel)]="email">
+						  <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control" id="email" lang="en" [(ngModel)]="email">
 						</div>
 						</div>
 						  
 						<div class="row lower-border second-row">
 						<div class="col col-sm-7 first-col">
-						  <input placeholder="كلمة المرور" name="pass" type="password" class="form-control" id="password" lang="en" [(ngModel)]="password">
+						  <input placeholder="{{'password' | translate}}" name="pass" type="password" class="form-control" id="password" lang="en" [(ngModel)]="password">
 						</div>
 					   <div class="col col-sm-5">
                            
@@ -73,12 +75,12 @@
 											[color] = "color"
 											[mode] = "mode">
 										</mat-progress-spinner>
-										<span *ngIf="!loading">دخول</span>
+										<span *ngIf="!loading">{{'login' | translate}}</span>
                            </button>
                            
 						   </div>
 						</div>
-						<a class="forget-div" href="/forget"><p>نسيت كلمة المرور ؟</p></a>  
+						<a class="forget-div" href="/forget"><p>{{'forget_your_password' | translate }}</p></a>  
 					</form>
 				 
 				 </div>	
@@ -90,8 +92,8 @@
 				   <div class="loginSlider">
 					   <div class="container">
 						  <div class="absHeading">
-                              <h2>مميزات</h2>
-                              <h2>الاشتـــراك</h2>
+                              <h2>{{'registration' | translate}}</h2>
+                              <h2>{{'advnatages' | translate}}</h2>
 						  </div>
 					    <div id="carouselExampleSlidesOnly" class="carousel slide shifting" data-ride="carousel">
 				  <div class="carousel-inner">
@@ -106,7 +108,7 @@
 				  </div>
 						<div class="termLink">
 						   <i class="fas fa-align-left"></i>
-						   <a href="/terms">الشروط و الاحكام</a>
+						   <a href="/terms">{{'terms' | translate}}</a>
 						</div>
 				</div>
 	   

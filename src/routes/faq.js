@@ -4,11 +4,12 @@ var router = express.Router();
 var connection = enviroment.connection;
 
 /* GET groups listing. */
-router.get('/all/:pageId', function(req, res, next) {
+router.get('/all/:language/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var pageId = req.params['pageId'];
+    var language = req.params['language'];
     conn.query(`
-    SELECT * FROM faq WHERE status = 1
+    SELECT * FROM faq WHERE status = 1 AND language = ${language}
     LIMIT ${10*pageId}
     `, function(error,results,fields){
       conn.release();
@@ -21,8 +22,8 @@ router.get('/all/:pageId', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
-    conn.query(`INSERT INTO faq(question, answer) VALUES
-     ('${data.question}' , '${data.answer}' )`, function(error,results,fields){
+    conn.query(`INSERT INTO faq(question, answer, language) VALUES
+     ('${data.question}' , '${data.answer}' , ${data.language} )`, function(error,results,fields){
       conn.release();
       res.send({
         status : 'success'

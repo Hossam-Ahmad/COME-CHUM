@@ -14,10 +14,10 @@
 			</div>
 			<div class="row">
 				<div class="col">
-                    <h3 class="faq-title">الاسئلة المتكررة على منصتنا</h3>
+                    <h3 class="faq-title">{{'faq' | translate}}</h3>
                     <i class="fas fa-search search"></i>
                     <span class="mark">|</span>
-                    <input class="query" type="text" placeholder="ابحث هنا" (keyup)="search($event.target.value)">
+                    <input class="query" type="text" placeholder="{{'search' | translate}}" (keyup)="search($event.target.value)">
 				</div>
 
 			</div>
@@ -30,8 +30,8 @@
            [infiniteScrollThrottle]="50"
            (scrolled)="getQuestions()">
                 <div *ngFor="let question of questions; let index = i" class="panel-group" id="faqAccordion">
-                    
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" [ngStyle]="{'text-align': question.language != 1 ? 'left' : 'right' , 
+                    'direction': question.language != 1 ? 'ltr' : 'rtl'}">
                         <div (click)="question1.toggle()" mdbWavesEffect>
                             <h4 class="panel-title">
                                 <i class="far fa-bookmark fa-lg" style="padding: 1em;
@@ -40,7 +40,7 @@
                                 -webkit-background-clip: text;
                                 -webkit-text-fill-color: transparent;"></i>
                                 <a class="question">{{question.question}}</a>
-                                <i class="fas fa-sort-down" style="float: left;padding: 1em;"></i>
+                                <i class="fas fa-sort-down" style="padding: 1em;" [ngStyle]="{'float': question.language != 1 ? 'right' : 'left'}"></i>
                         </h4>
                         </div>
                         <div mdbCollapse #question1="bs-collapse">

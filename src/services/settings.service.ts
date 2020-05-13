@@ -14,8 +14,8 @@ export class SettingsService {
       return this.httpClient.get(`${environment.api}settings/key/${name}`);
     }
 
-    getTerms(): any {
-        return this.httpClient.get(`${environment.api}settings/terms`);
+    getTerms(language): any {
+        return this.httpClient.get(`${environment.api}settings/terms/${language}`);
     }
 
 }
