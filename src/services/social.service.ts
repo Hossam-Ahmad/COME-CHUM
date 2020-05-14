@@ -20,13 +20,8 @@ export class SocialService {
         return this.httpClient.get(`${environment.api}social/loginGoogle/${id}`);
     }
 
-    loginFb(): any {
-        this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-            (userData) => {
-              console.log('facebook sign in data : ' , userData);
-              return this.httpClient.get(`${environment.api}social/loginFb/${userData.id}`);
-            }
-          );
+    loginFb(id): any {
+        return this.httpClient.get(`${environment.api}social/loginFb/${id}`);
     }
 
     loginTwitter(): any {

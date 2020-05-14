@@ -76,21 +76,25 @@ export class LoginWebsiteComponent implements OnInit {
   }
 
   signInWithFB(): void {
-    this.social.loginFb().subscribe( data => {
-      console.log(data);
-      if (data['status'] === 'success') {
-          this.loading = false;
-          this.authService.setToken(data['token']);
-          this.authService.setUserData(data);
-          this.router.navigateByUrl('/feed');
-      } else {
-          this.loading = false;
-          this.notifierService.show({
-            type : 'error',
-            message: 'ليس هناك حساب مربوط بهذه البيانات',
-          });
-      }
-    });
+
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        this.social.loginFb(userData.id).subscribe( data => {
+          console.log(data);
+          if (data['status'] === 'success') {
+              this.loading = false;
+              this.authService.setToken(data['token']);
+              this.authService.setUserData(data);
+              this.router.navigateByUrl('/feed');
+          } else {
+              this.loading = false;
+              this.notifierService.show({
+                type : 'error',
+                message: 'ليس هناك حساب مربوط بهذه البيانات',
+              });
+          }
+        });
+      });
   }
 
   login() {
