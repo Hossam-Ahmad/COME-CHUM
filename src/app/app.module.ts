@@ -79,6 +79,7 @@ import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboa
 import { MembersComponent } from 'src/components/members/members.component';
 import { SidebarWebsiteComponent } from 'src/components/sidebar-website/sidebar-website.component';
 import { SliderComponent } from 'src/components/slider/slider.component';
+import { MapComponent } from 'src/components/map/map.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -100,6 +101,7 @@ import { SettingsService } from 'src/services/settings.service';
 import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
+
 
 
 
@@ -212,7 +214,8 @@ export function getAuthServiceConfigs() {
     MasterComponent,
     SidebarWebsiteComponent,
     SliderComponent,
-    SettingsComponent
+    SettingsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

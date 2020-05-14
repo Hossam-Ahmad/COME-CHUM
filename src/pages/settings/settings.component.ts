@@ -3,6 +3,7 @@ import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { UsersService } from 'src/services/users.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class SettingsComponent implements OnInit {
     public authService: AuthUserService,
     public router: Router,
     private notifierService: NotifierService,
-    private users: UsersService) {
+    private users: UsersService,
+    public translate: TranslateService) {
   }
 
   ngOnInit() {

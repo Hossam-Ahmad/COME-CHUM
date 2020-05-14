@@ -1,9 +1,15 @@
 <div class="container container-style">
-    <h5 class="title"> <span>Account</span> Settings</h5>
-    <div class="tabs">
-        <p class="tab" [ngClass]="{'active': activeId == 0}" (click)="changeTab(0)">General</p>
-        <p class="tab" [ngClass]="{'active': activeId == 1}" (click)="changeTab(1)">Billing</p>
-        <p class="tab" [ngClass]="{'active': activeId == 2}" (click)="changeTab(2)">Security</p>
+    <h5 class="title" *ngIf="translate.currentLang == 'en'"> <span>{{'account' | translate}}</span> {{'settings2' | translate}}</h5>
+    <h5 class="title" *ngIf="translate.currentLang == 'ar'" style="text-align:right;"> <span>{{'settings2' | translate}}</span> {{'account' | translate}} </h5>
+    <div class="tabs" *ngIf="translate.currentLang == 'en'">
+        <p class="tab" [ngClass]="{'active': activeId == 0}" (click)="changeTab(0)">{{'general' | translate}}</p>
+        <p class="tab" [ngClass]="{'active': activeId == 1}" (click)="changeTab(1)">{{'billing' | translate}}</p>
+        <p class="tab" [ngClass]="{'active': activeId == 2}" (click)="changeTab(2)">{{'security' | translate}}</p>
+    </div>
+    <div class="tabs" *ngIf="translate.currentLang == 'ar'" style="text-align: right;">
+        <p class="tab" [ngClass]="{'active': activeId == 2}" (click)="changeTab(2)">{{'security' | translate}}</p>
+        <p class="tab" [ngClass]="{'active': activeId == 1}" (click)="changeTab(1)">{{'billing' | translate}}</p>
+        <p class="tab" [ngClass]="{'active': activeId == 0}" (click)="changeTab(0)">{{'general' | translate}}</p>
     </div>
     <hr class="line">
     <div *ngIf="activeId == 0">
@@ -15,25 +21,25 @@
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <input placeholder="الاسم الشخصي" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+                <input placeholder="{{'personal_name'| translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
             </div>
             <div class="col col-sm-6 first-col">
-                <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
                 <select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled selected>النوع</option>
-                    <option value="0">ذكر</option>
-                    <option value="1">انثى</option>
+                    <option value="" disabled selected>{{'gender' | translate}}</option>
+                    <option value="0">{{'male'|translate}}</option>
+                    <option value="1">{{'female' | translate}}</option>
                 </select>
                 <i class="fas fa-caret-down select-icon"></i>
             </div>
             <div class="col col-sm-6 first-col">
                 <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled selected>الدولة</option>
+                    <option value="" disabled selected>{{'country' | translate}}</option>
                     <option value="0">مصر</option>
                     <option value="1">السعودية</option>
                 </select>
@@ -43,10 +49,10 @@
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <input placeholder="رقم التليفون" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone">
+                <input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone">
             </div>
             <div class="col col-sm-6 first-col">
-                <input placeholder="رقم البريد" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal" [ngModelOptions]="{standalone: true}">
+                <input placeholder="{{'postal_code' | translate}}" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 
@@ -61,7 +67,7 @@
                           [color] = "color"
                           [mode] = "mode">
                       </mat-progress-spinner>
-                          <span *ngIf="!loading">تعديل</span>
+                          <span *ngIf="!loading">{{'update' | translate}}</span>
                       </button>
                   </div>
         </div>

@@ -1,19 +1,30 @@
 <div class="page">
   <div class="app">
-    <div class="header">
+
+    <div class="header" *ngIf="translate.currentLang == 'en'">
      <div class="logo">
-        <p>Inbox</p>
+        <p>{{'inbox' | translate}}</p>
      </div>
      <div class="search-bar">
-      <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="{{'search' | translate}}..." />
      </div>
     </div>
+
+    <div class="header" *ngIf="translate.currentLang == 'ar'">
+      <div class="search-bar" style="width: 51em;">
+        <input type="text" style="text-align: right;" placeholder="... {{'search' | translate}}" />
+       </div>
+      <div class="logo">
+         <p>{{'inbox' | translate}}</p>
+      </div>
+     </div>
+    
     <div class="wrapper">
-     <div class="conversation-area">
+     <div class="conversation-area" *ngIf="translate.currentLang == 'en'">
        <div class="row">
-         <button [ngClass]="{'active': type == 0}" (click)="changeType(0)">Direct Messages</button>
-         <button [ngClass]="{'active': type == 1}" (click)="changeType(1)">Groups</button>
-         <button [ngClass]="{'active': type == 2}" (click)="changeType(2)">All</button>
+         <button [ngClass]="{'active': type == 0}" (click)="changeType(0)">{{'direct_Messages' | translate }}</button>
+         <button [ngClass]="{'active': type == 1}" (click)="changeType(1)">{{'groups_nav' | translate}}</button>
+         <button [ngClass]="{'active': type == 2}" (click)="changeType(2)">{{'all' | translate}}</button>
        </div>
       <div *ngFor="let chat of chats;let i = index" class="msg active" [ngClass]="{'online': chat.online , 'active' : activeIndex == i}" (click)="select(i)">
        <img class="msg-profile" src="{{chat.image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
@@ -47,7 +58,6 @@
        <div class="chat-msg">
         <div class="chat-msg-profile">
          <!-- <img class="chat-msg-img" src="{{chats[activeIndex].image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" /> -->
-         <div class="chat-msg-date">Message seen 1.22pm</div>
         </div>
         <div class="chat-msg-content">
          <div class="chat-msg-text">Luctus et ultrices posuere cubilia curae.</div>
@@ -80,7 +90,7 @@
         <path d="M12 8v8M8 12h8" /></svg>
        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-paperclip">
         <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" /></svg>
-       <input type="text" placeholder="Type something here..." />
+       <input type="text" placeholder="{{'type_something' | translate}}" [ngStyle]="{'text-align': translate.currentLang == 'en' ? 'left' : 'right'}" />
        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile">
         <circle cx="12" cy="12" r="10" />
         <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" /></svg>
@@ -88,6 +98,25 @@
         <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" /></svg>
       </div>
      </div>
+     <div class="conversation-area" *ngIf="translate.currentLang == 'ar'">
+      <div class="row">
+        <button [ngClass]="{'active': type == 0}" (click)="changeType(0)">{{'direct_Messages' | translate }}</button>
+        <button [ngClass]="{'active': type == 1}" (click)="changeType(1)">{{'groups_nav' | translate}}</button>
+        <button [ngClass]="{'active': type == 2}" (click)="changeType(2)">{{'all' | translate}}</button>
+      </div>
+     <div *ngFor="let chat of chats;let i = index" class="msg active" [ngClass]="{'online': chat.online , 'active' : activeIndex == i}" (click)="select(i)">
+      <img class="msg-profile" src="{{chat.image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
+      <div class="msg-detail">
+       <div class="msg-username">{{chat.name}}</div>
+       <div class="msg-content">
+        <span class="msg-message">{{chat.data}}</span>
+        <span class="msg-date">20m</span>
+       </div>
+      </div>
+     </div>
+     <button class="add"></button>
+     <div class="overlay"></div>
+    </div>
     </div>
    </div>  
 </div>
