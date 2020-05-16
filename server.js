@@ -24,6 +24,7 @@ const social = require('./src/routes/social');
 const faq = require('./src/routes/faq');
 const settings = require('./src/routes/settings');
 const chat = require('./src/routes/chat');
+const feed = require('./src/routes/feed');
 
 const app = express();
 const port = process.env.PORT || 4200;
@@ -52,6 +53,7 @@ app.use('/api/social', social);
 app.use('/api/faq', faq);
 app.use('/api/settings', settings);
 app.use('/api/chat', chat);
+app.use('/api/feed', feed);
 
 app.get('/googlec2d96c9b2c4b2245.html', (request, response) => {
     response.send('google-site-verification: googlec2d96c9b2c4b2245.html');
@@ -78,13 +80,13 @@ io.on('connection', (socket) => {
             connection.getConnection(function (err, conn) {
                 var userId = data.user_id;
                 console.log('update offline to database');
-                connection.query('UPDATE users SET online = 0 where id = ' + userId, function(error,results,fields){
+                connection.query('UPDATE users SET online = 0 , last_logout = CURRENT_TIMESTAMP()  where id = ' + userId, function(error,results,fields){
                   conn.release();
                 });
             });
-            if(io.sockets.connected[socketId]) {
-                io.sockets.sockets[socketId].disconnect();
-            }
+            // if(io.sockets.connected[socketId]) {
+            //     io.sockets.sockets[socketId].disconnect();
+            // }
             clearInterval(interval);
         }, 6000);
     });

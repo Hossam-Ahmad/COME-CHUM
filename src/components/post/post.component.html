@@ -1,0 +1,93 @@
+<input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
+<div class="posted">
+  <div class="container">
+    <!-- data of poster -->
+    <div class="row">
+    <div class="col col-md-1 nameAndDate imageOfPoster">
+      <img src="{{post.image}}">
+    </div>
+    <div class="col col-md-3 nameAndDate">
+      <span>{{post.name}}</span>
+      <p>{{post.created_at | timeAgo}}</p>
+    </div>
+  </div>
+  <!-- content of post -->
+  <div class="row">
+    <div class="col">
+      <p>{{post.body}}</p>
+    </div>
+  </div>
+  <div *ngIf="post.images.length > 0" class="row imagesOfPoster">
+    <div class="col col-md-12 firstImg" *ngIf="post.images.length == 1">
+      <img src="{{post.images[0].path}}">
+    </div>
+    <div class="col col-md-6 firstImg" *ngIf="post.images.length > 1">
+      <img src="{{post.images[0].path}}">
+    </div>
+    <div class="col col-md-6 firstImg" *ngIf="post.images.length == 2">
+      <img src="{{post.images[1].path}}">
+    </div>
+    <div class="col col-md-6 restImags" *ngIf="post.images.length > 2">
+      <img *ngIf="post.images.length > 1" src="{{post.images[1].path}}">
+      <img *ngIf="post.images.length > 2" src="{{post.images[2].path}}">
+    </div>
+  </div>
+  <hr>
+
+<!-- comment  -->
+  <div class="row">
+    <div class="col col-md-2">
+      <button type="button" class="btn btn-primary">Chat</button>
+    </div>
+
+    <div class="col col-md-10">
+      <div class="commentIssues">
+      <div class="row">
+
+        <div class="col col-md-2" style="padding: 0;">
+            <div class="issueInner">
+              <i class="fa-heart" (click)="like()" [ngClass]="{'fas': post.isliked , 'far': !post.isliked}"></i>
+              <span>{{post.likes}}</span>
+            </div>
+          </div>
+
+            <div class="col col-md-2" style="padding: 0;">
+              <div class="issueInner">
+                <i class="far fa-comment"></i>
+                <span>{{post.comments}}</span>
+              </div>
+            </div>
+            <div class="col col-md-5">
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Write a Comment.." [(ngModel)]="comment_text">
+            </div>
+            <div class="col col-md-3">
+              <div class="sendOrCamera">
+                <i class="fas fa-camera" (click)="upload_image()"></i>
+                <i class="far fa-paper-plane sendIt" (click)="comment()"></i>
+              </div>
+            </div>
+         </div> 
+        </div>
+      </div>
+  </div>
+<!-- posted comment -->
+  <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of post.comments_arr">
+
+    <div class="col col-md-2">
+      <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
+        <img src="{{comment.user_image}}">
+      </div>
+    </div>
+
+    <div class="col col-md-9">
+      <div class="contentCommented">
+        <p class="user_comment">{{comment.user_name}}</p>
+        <p>{{comment.text}}</p>
+        <img *ngIf="comment.image != null && comment.image != ''" src="{{comment.image}}" />
+        <span>{{comment.created_at | timeAgo}}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>

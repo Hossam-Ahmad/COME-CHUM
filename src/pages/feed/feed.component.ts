@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { AuthUserService } from 'src/services/authUser.service';
-
+import { BlogsService } from 'src/services/blogs.service';
+import { FeedService } from 'src/services/feed.servie';
+import { ChatService } from 'src/services/chat.service';
 
 @Component({
   selector: 'app-feed',
@@ -11,12 +12,19 @@ import { AuthUserService } from 'src/services/authUser.service';
 })
 export class FeedComponent implements OnInit {
 
-  public email = '';
-  public password = '';
   public height;
-  public status_chat = false;
+  private page = 1;
+  private pageChats = 1;
+  public blogs = [];
+  public posts = [];
+  public images = [];
+  public chats = [];
 
-  constructor(public authService: AuthUserService, public router: Router) {
+  constructor(public authService: AuthUserService,
+              public router: Router,
+              private blogsService: BlogsService,
+              private feedService: FeedService,
+              private chat: ChatService) {
     this.height = window.outerHeight + 'px';
   }
 
@@ -24,11 +32,18 @@ export class FeedComponent implements OnInit {
     this.authService.getData().subscribe( data => {
         console.log(data);
         this.authService.setUserData(data);
+        this.getFeed();
     });
   }
 
-  show() {
-    this.status_chat = !this.status_chat;
+  getFeed() {
+    this.authService.getData().subscribe( data => {
+      this.feedService.getAll(data.id, this.page).subscribe(data => {
+        this.posts = data;
+        this.page++;
+        console.log(this.posts);
+      });
+    });
   }
 
 }

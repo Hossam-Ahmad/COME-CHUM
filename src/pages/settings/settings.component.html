@@ -14,23 +14,23 @@
     <hr class="line">
     <div *ngIf="activeId == 0">
         <div class="upload-image" (click)="select()">
-            <img src="../../../assets/images/marc.jpg"/>
+            <img src="{{userData? userData.image : ''}}"/>
             <i class="material-icons">camera_alt</i>
             <input id="upload" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onFileChanged($event)">
         </div>
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <input placeholder="{{'personal_name'| translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+                <input placeholder="{{'personal_name'| translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name" value="{{userData != undefined? userData.name: ''}}">
             </div>
             <div class="col col-sm-6 first-col">
-                <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" value="{{userData != undefined? userData.email : ''}}" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+                <select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" value="{{userData != undefined? userData.gender : ''}}" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>{{'gender' | translate}}</option>
                     <option value="0">{{'male'|translate}}</option>
                     <option value="1">{{'female' | translate}}</option>
@@ -38,7 +38,7 @@
                 <i class="fas fa-caret-down select-icon"></i>
             </div>
             <div class="col col-sm-6 first-col">
-                <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+                <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" value="{{userData != undefined? userData.country : ''}}" [ngModelOptions]="{standalone: true}">
                     <option value="" disabled selected>{{'country' | translate}}</option>
                     <option value="0">مصر</option>
                     <option value="1">السعودية</option>
@@ -49,10 +49,10 @@
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone">
+                <input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone" value="{{userData != undefined? userData.phone : ''}}">
             </div>
             <div class="col col-sm-6 first-col">
-                <input placeholder="{{'postal_code' | translate}}" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal" [ngModelOptions]="{standalone: true}">
+                <input placeholder="{{'postal_code' | translate}}" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal" value="{{userData != undefined? userData.postal_code : ''}}" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 

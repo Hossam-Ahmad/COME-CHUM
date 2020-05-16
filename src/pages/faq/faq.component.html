@@ -39,13 +39,13 @@
                                 background-clip: text;
                                 -webkit-background-clip: text;
                                 -webkit-text-fill-color: transparent;"></i>
-                                <a class="question">{{question.question}}</a>
+                                <a class="question" [ngStyle]="{'font-family': question.language != 1 ? 'lato-bold' : ''}">{{question.question}}</a>
                                 <i class="fas fa-sort-down" style="padding: 1em;" [ngStyle]="{'float': question.language != 1 ? 'right' : 'left'}"></i>
                         </h4>
                         </div>
                         <div mdbCollapse #question1="bs-collapse">
                             <div class="panel-body">
-                                <p class="answer">{{question.answer}}</p>
+                                <p class="answer" [ngStyle]="{'font-family': question.language != 1 ? 'lato-regular' : ''}">{{question.answer}}</p>
                             </div>
                         </div>
                     </div>

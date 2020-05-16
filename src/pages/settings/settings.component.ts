@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
   public loading = false;
   public color = 'white';
 
-  public userData;
+  public userData = undefined;
 
   constructor(
     public authService: AuthUserService,
@@ -54,6 +54,8 @@ export class SettingsComponent implements OnInit {
   getGeneralData() {
     this.authService.getData().subscribe( data => {
       this.userData = data;
+      console.log(this.userData);
+      this.name = this.userData.name;
     });
   }
 

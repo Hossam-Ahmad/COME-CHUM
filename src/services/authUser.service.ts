@@ -94,12 +94,12 @@ export class AuthUserService implements CanActivate {
 
     logout() {
         localStorage.clear();
-        this.httpClient.post(`${environment.api}users/logout`, {
-          userId : this.userData.id,
-        }).subscribe( data => {
-          this.stopheartBeatOnline();
-          this.router.navigate(['/login']);
-        });
+        this.stopheartBeatOnline();
+        this.router.navigate(['/login']);
+        // this.httpClient.post(`${environment.api}users/logout`, {
+        //   userId : this.userData.id,
+        // }).subscribe( data => {
+        // });
     }
 
     heartBeatOnline() {
@@ -107,7 +107,7 @@ export class AuthUserService implements CanActivate {
           this.interval = setInterval(() => {
             if (this.userData.id !== '') {
               this.socket.emit('heartbeat' , { user_id : this.userData.id});
-              console.log('sent heart beat');
+              // console.log('sent heart beat');
             }
           }, 5000);
       }

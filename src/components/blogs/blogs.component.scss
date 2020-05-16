@@ -1,0 +1,53 @@
+.blogs{
+    border-radius: 10px;
+    padding: 1em;
+    background: white;
+    margin-top: 1em;
+    p{
+        font-family: lato-bold;
+        span{font-family: lato-regular;}
+    }
+    .card,.card2{
+        background: url('../../assets/images/blog.png');
+        background-repeat: no-repeat no-repeat;
+        background-position: center;
+        background-size: cover !important;
+        height: 10em;
+        border-radius: 15px;
+        padding: 1em;
+        color: #fff;
+        font-family: lato-regular;
+        margin-bottom: .5em;
+        h5{
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+        .btn{
+            border-radius: 20px;
+            height: 26px;
+             padding: 0em 1.5em;
+             font-size: 14px;
+             box-shadow: 0 0 5px #ced4da;
+        }
+    }
+    .card2{
+        background: url('../../assets/images/blog2.png') no-repeat no-repeat center;
+        height: 12em;
+        text-align: center;
+    }
+   .card .butnDiv{
+       text-align: right;
+       margin-top: 20%;
+   }
+  .card2 .btn{
+      margin-top: 97%;
+  } 
+  .seeAll{
+      text-align: center;
+      display: block;
+      font-family: lato-regular;
+      font-size: 16px;
+      cursor: pointer;
+  }
+}
+  

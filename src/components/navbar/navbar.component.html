@@ -9,12 +9,17 @@
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <img class="profile-icon" src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" />
         </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu" 
+        [ngStyle]="{'left': translate.currentLang == 'ar' ? '0em' : '-3em',
+        'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : '',
+        'text-align': translate.currentLang == 'ar' ? 'right' : ''}">
+
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/profile' , userId ]" >{{'profile' | translate}}</a>
           <a class="dropdown-item waves-light" mdbWavesEffect >{{'my_groups' | translate}}</a>
           <a class="dropdown-item waves-light" mdbWavesEffect >{{'my_events' | translate}}</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="changeLang()">{{'language' | translate}}</a>
           <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/terms']">{{'terms' | translate}}</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">{{'logout' | translate}}</a>
         </div>
       </li>
@@ -58,7 +63,8 @@
         <input class="search" type="text" placeholder="{{'search' | translate}}" 
         [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left', 
         'padding-left': translate.currentLang == 'ar' ? '0em' : '2em', 
-        'padding-right': translate.currentLang == 'ar' ? '2em' : '0em'}" />
+        'padding-right': translate.currentLang == 'ar' ? '2em' : '0em',
+        'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : ''}" />
 
         <p 
         [ngStyle]="{'border-right': translate.currentLang == 'ar' ? '1px solid' : '0px' , 
@@ -66,7 +72,8 @@
         'right': translate.currentLang == 'ar' ? 'unset' : '32%' ,  
         'left': translate.currentLang != 'ar' ? 'unset' : '23%' ,  
         'border-left': translate.currentLang != 'ar' ? '1px solid' : '0' , 
-        'padding-left': translate.currentLang != 'ar' ? '1em' : '0em'}">{{'advanced' | translate}}</p>
+        'padding-left': translate.currentLang != 'ar' ? '1em' : '0em',
+        'font-family': translate.currentLang == 'ar' ? 'cairo-light' : ''}">{{'advanced' | translate}}</p>
         
       </div>
 

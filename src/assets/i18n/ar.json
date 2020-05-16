@@ -99,5 +99,9 @@
   "general" : "عامة",
   "billing" : "الدفع",
   "security" : "الامان",
-  "postal_code" : "رقم البريد"
+  "postal_code" : "رقم البريد",
+  "see_all" : "عرض الكل",
+  "create_post" : "إنشاء منشور",
+  "write_post" : "اكتب منشورك هنا",
+  "post" : "نشر"
 }

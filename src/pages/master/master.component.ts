@@ -16,7 +16,6 @@ export class MasterComponent implements OnInit {
     private auth: AuthUserService) { }
 
   ngOnInit() {
-    console.log('master here');
     this.auth.heartBeatOnline();
   }
 

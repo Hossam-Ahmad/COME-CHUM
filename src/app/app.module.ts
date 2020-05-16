@@ -36,7 +36,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angular-6-social-login';
-
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
@@ -80,6 +80,11 @@ import { MembersComponent } from 'src/components/members/members.component';
 import { SidebarWebsiteComponent } from 'src/components/sidebar-website/sidebar-website.component';
 import { SliderComponent } from 'src/components/slider/slider.component';
 import { MapComponent } from 'src/components/map/map.component';
+import { PostComponent } from 'src/components/post/post.component';
+import { CreatePostComponent } from 'src/components/create-post/create-post.component';
+import { coverComponent } from 'src/components/cover/cover.component';
+import { MessagesComponent } from 'src/components/Messages/Messages.component';
+import { blogsComponent } from 'src/components/blogs/blogs.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -101,6 +106,7 @@ import { SettingsService } from 'src/services/settings.service';
 import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
+import { FeedService } from 'src/services/feed.servie';
 
 
 
@@ -215,7 +221,13 @@ export function getAuthServiceConfigs() {
     SidebarWebsiteComponent,
     SliderComponent,
     SettingsComponent,
-    MapComponent
+    MapComponent,
+    PostComponent,
+    CreatePostComponent,
+    coverComponent,
+    MessagesComponent,
+    blogsComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
@@ -272,6 +284,7 @@ export function getAuthServiceConfigs() {
     FaqService,
     SettingsService,
     ChatService,
+    FeedService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

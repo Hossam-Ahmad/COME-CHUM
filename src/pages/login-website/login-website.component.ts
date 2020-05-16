@@ -77,7 +77,7 @@ export class LoginWebsiteComponent implements OnInit {
 
   signInWithFB(): void {
 
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       (userData) => {
         this.social.loginFb(userData.id).subscribe( data => {
           console.log(data);

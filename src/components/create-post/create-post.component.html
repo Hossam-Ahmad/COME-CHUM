@@ -1,0 +1,25 @@
+<div class="post" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
+  <div class="container">
+      <p [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : '',
+      'text-align': translate.currentLang == 'ar' ? 'right' : ''}">{{'create_post' | translate}}</p>
+      <div class="row">
+          <div class="col col-md-1">
+              <img src="../../../assets/images/image1.jpg">
+          </div>
+          <div class="col col-md-11">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{'write_post' | translate}}" [(ngModel)]="post_data.body"></textarea>
+          </div>
+      </div>
+     <hr>
+     <div class="row">
+         <div class="col" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left'}">
+            <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : ''}" (click)="send()">{{'post' | translate}}</button>
+            <button type="button" class="btn btn-light" (click)="upload_image()"><i class="far fa-image"></i></button>
+            <button type="button" class="btn btn-light" (click)="upload_video()"><i class="fas fa-video"></i></button>
+            <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
+            <input id="upload_video" accept="video/*" type="file" style="visibility: hidden;width:50px;" (change)="onVideoChanged($event)">
+         </div>
+     </div>
+  </div>
+</div>
+<notifier-container style="font-family: cocon;"></notifier-container>

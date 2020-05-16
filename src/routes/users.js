@@ -185,10 +185,23 @@ router.post('/forget', function(req, res, next) {
   });
 });
 
+router.post('/update', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var token = req.body['token'];
+    var data = req.body['data'];
+    connection.query(`UPDATE users SET name = '${data.name}' , email = '${data.email}' , phone = '${data.phone}' , gender = ${data.gender} , country = ${data.country} , postal_code = '${data.postal_code}' where token = '${token}'`, function(error,results,fields){
+      conn.release();  
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
 router.post('/logout', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var userId = req.body['userId'];
-    connection.query('UPDATE users SET online = 0 where id = ' + userId, function(error,results,fields){
+    connection.query('UPDATE users SET online = 0 , last_logout = CURRENT_TIMESTAMP() where id = ' + userId, function(error,results,fields){
       conn.release();  
       res.send({
         status : 'success'

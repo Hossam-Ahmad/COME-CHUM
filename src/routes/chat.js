@@ -9,7 +9,7 @@ router.get('/all/:type/:pageId/:userId', function(req, res, next) {
     var type = req.params['type'];
     var pageId = req.params['pageId'];
     var userId = req.params['userId'];
-    conn.query(`SELECT * FROM (SELECT c.id , c.user1_id , c.user2_id , m.type, m.data , m.created_at , m.seen , m.chat_id , u.name , u.online , u.image FROM chat c , messages_chat m , users u WHERE c.id = m.chat_id AND (c.user1_id = ${userId} OR c.user2_id = ${userId}) AND ((u.id = c.user1_id AND u.id != ${userId})OR (u.id = c.user2_id AND u.id != ${userId})) ORDER BY m.created_at DESC LIMIT ${10*pageId}) AS t1 group by chat_id`, function(error,results,fields){
+    conn.query(`SELECT * FROM (SELECT c.id , c.user1_id , c.user2_id , m.type, m.data , m.created_at , m.seen , m.chat_id , u.name , u.online , u.image, u.last_logout FROM chat c , messages_chat m , users u WHERE c.id = m.chat_id AND (c.user1_id = ${userId} OR c.user2_id = ${userId}) AND ((u.id = c.user1_id AND u.id != ${userId})OR (u.id = c.user2_id AND u.id != ${userId})) ORDER BY m.created_at DESC LIMIT ${10*pageId}) AS t1 group by chat_id`, function(error,results,fields){
       conn.release();
       res.send(results);
     });
@@ -47,10 +47,14 @@ router.post('/send', function(req, res, next) {
     var data = req.body['data'];
     var type = req.body['type'];
     var chatId = req.body['chatId'];
-    conn.query(`INSERT INTO messages_chat(chat_id, type, data, seen, sender) VALUES (${chatId},${type},'${data}',1,1)`, function(error,results,fields){
+    var userId = req.body['userId'];
+    conn.query(`INSERT INTO messages_chat(chat_id, type, data, seen, sender_id) VALUES (${chatId},${type},'${data}',0,${userId})`, function(error,results,fields){
       conn.release();
+      const io = req.app.locals.io;
+      io.emit(`chat${chatId}`, { data, type, chatId, userId });
       res.send({
-        status : 'success'
+        status : 'success',
+        query : `INSERT INTO messages_chat(chat_id, type, data, seen, sender) VALUES (${chatId},${type},'${data}',0,${userId})`
       });
     });
   });
