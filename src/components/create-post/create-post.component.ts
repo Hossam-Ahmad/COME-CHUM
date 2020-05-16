@@ -52,4 +52,12 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
+  onImageChanged(event) {
+    const file = event.target.files[0];
+  }
+
+  onVideoChanged(event) {
+    const file = event.target.files[0];
+  }
+
 }

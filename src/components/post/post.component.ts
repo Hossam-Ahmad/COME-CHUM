@@ -64,4 +64,8 @@ export class PostComponent implements OnInit {
     });
   }
 
+  onImageChanged(event) {
+    const file = event.target.files[0];
+  }
+
 }

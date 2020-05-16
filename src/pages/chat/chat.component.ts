@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
   public type = 0; // 0 direct , 1 group , 2 all
   private pageChats = 1;
   private pageMessages = 1;
-  private userId;
+  public userId;
   public activeIndex = 0;
   public text = '';
 
