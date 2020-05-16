@@ -108,6 +108,7 @@ import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
+import { packagesComponent } from 'src/components/packages/packages.component';
 
 
 
@@ -229,7 +230,8 @@ export function getAuthServiceConfigs() {
     MessagesComponent,
     blogsComponent,
     TimeAgoPipe,
-    asideProfileComponent
+    asideProfileComponent,
+    packagesComponent
   ],
   imports: [
     BrowserModule,
