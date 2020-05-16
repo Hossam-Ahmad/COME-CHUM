@@ -19,7 +19,8 @@ import {
   MatSidenavModule,
   MatIconModule,
   MatToolbarModule,
-  MatListModule
+  MatListModule,
+  MatSlideToggleModule
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -108,7 +109,7 @@ import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
-import { packagesComponent } from 'src/components/packages/packages.component';
+import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
 
 
 
@@ -231,7 +232,7 @@ export function getAuthServiceConfigs() {
     blogsComponent,
     TimeAgoPipe,
     asideProfileComponent,
-    packagesComponent
+    PackagesWebsiteComponent
   ],
   imports: [
     BrowserModule,
@@ -251,6 +252,7 @@ export function getAuthServiceConfigs() {
     MatIconModule,
     MatToolbarModule,
     MatListModule,
+    MatSlideToggleModule,
     NgbModule,
     PerfectScrollbarModule,
     BrowserAnimationsModule,

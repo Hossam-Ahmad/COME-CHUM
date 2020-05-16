@@ -33,6 +33,7 @@ import { FeedComponent } from 'src/pages/feed/feed.component';
 import { MasterComponent } from 'src/pages/master/master.component';
 import { AuthUserService } from 'src/services/authUser.service';
 import { SettingsComponent } from 'src/pages/settings/settings.component';
+import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
 
 
 const routes: Routes = [
@@ -199,6 +200,10 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent,
+        canActivate: [AuthUserService]
+      },{
+        path: 'packages',
+        component: PackagesWebsiteComponent,
         canActivate: [AuthUserService]
       }
     ]

@@ -1,7 +1,7 @@
 <div class="sidebar">
     <perfect-scrollbar style="height: auto;width: auto;">
         <div class="navigation">
-            <ul>
+            <ul [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}">
                 <li *ngFor="let item of routes" [ngClass]="{'active': router.url == item.path}">
                     <a routerLinkActive="on"  [routerLink]="[ item.path ]">
                         <i class="material-icons">{{item.icon}}</i>
@@ -16,7 +16,7 @@
         <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
             <div class="row">
                     <img src="../../../assets/images/package.png"/>
-                    <div>
+                    <div [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}">
                         <p class="title">{{'update_package' | translate}}</p>
                         <p class="subtitle">{{'get_more_privleges' | translate }}</p>
                     </div>
@@ -40,7 +40,7 @@
     
     
     <div class="other support">
-        <ul>
+        <ul [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}">
             <li>
                 <a routerLinkActive="on"  [routerLink]="[ '/faq' ]" [ngClass]="{'active': router.url == '/faq'}">
                     <i class="material-icons active">help</i>

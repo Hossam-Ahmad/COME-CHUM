@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from '../../services/authUser.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 declare const $: any;
@@ -26,7 +27,7 @@ export class SidebarWebsiteComponent implements OnInit {
     { path: '/packages', title: 'packages',  icon: 'payment', class: ''},
 ];
 
-  constructor(public router: Router, public authService: AuthUserService) { }
+  constructor(public router: Router, public authService: AuthUserService, public translate : TranslateService) { }
 
   ngOnInit() {
     this.status = this.router.url;

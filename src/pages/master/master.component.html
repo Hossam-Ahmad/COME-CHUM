@@ -1,10 +1,15 @@
 <div class="wrapper">
     <app-navbar></app-navbar>
-    <div class="row" style="height: 100%;">
+    <div class="row" style="height: 100%;" *ngIf="!isMobile()">
         <div class="col-2" style="margin-top: 5em;">
             <app-sidebar-website></app-sidebar-website>
         </div>
         <div class="col-10" style="margin-top: 5em;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>    
+    <div class="row" style="height: 100%;" *ngIf="isMobile()">
+        <div class="col-12" style="margin-top: 5em;">
             <router-outlet></router-outlet>
         </div>
     </div>    

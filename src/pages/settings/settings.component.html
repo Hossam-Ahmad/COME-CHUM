@@ -1,6 +1,6 @@
 <div class="container container-style">
     <h5 class="title" *ngIf="translate.currentLang == 'en'"> <span>{{'account' | translate}}</span> {{'settings2' | translate}}</h5>
-    <h5 class="title" *ngIf="translate.currentLang == 'ar'" style="text-align:right;"> <span>{{'settings2' | translate}}</span> {{'account' | translate}} </h5>
+    <h5 class="title" *ngIf="translate.currentLang == 'ar'" style="text-align:right;font-family: cairo-bold;"> <span style="font-family: cairo-regular;">{{'settings2' | translate}}</span> {{'account' | translate}} </h5>
     <div class="tabs" *ngIf="translate.currentLang == 'en'">
         <p class="tab" [ngClass]="{'active': activeId == 0}" (click)="changeTab(0)">{{'general' | translate}}</p>
         <p class="tab" [ngClass]="{'active': activeId == 1}" (click)="changeTab(1)">{{'billing' | translate}}</p>

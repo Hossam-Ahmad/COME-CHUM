@@ -3,10 +3,20 @@
     margin: 2em;
     padding: 1em;
     // deleted
-    background-color: #ddd;
+    background-color: #fff;
+    border-radius: 25px;
     p{
         font-family: lato-bold;
         span{font-family: lato-regular;}
+    }
+    .title{
+        margin: 0px;
+        color: black;
+        font-family: lato-light;
+        padding: 1em;
+        span{
+            font-family: lato-bold;
+        }
     }
     .togle{
         padding: 1em 0;
