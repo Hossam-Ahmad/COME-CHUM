@@ -27,7 +27,7 @@ router.get('/all/:userId/:pageId', function(req, res, next) {
           });
         });
         conn.query(`
-        SELECT c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+        SELECT c.id comment_id, c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
         FROM comments c , users u
         where post_id in (${posts_ids.toString()}) and u.id = c.user_id
         GROUP by post_id
@@ -65,7 +65,6 @@ router.get('/all/:userId/:pageId', function(req, res, next) {
   });
 });
 
-
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
@@ -95,6 +94,24 @@ router.post('/create_comment', function(req, res, next) {
           status : 'success'
         });
       });
+    });
+  });
+});
+
+router.get('/load_comments/:postId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var postId = req.params['postId'];
+    var pageId = req.params['pageId'];
+    conn.query(`
+    SELECT c.id comment_id , c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+    FROM comments c , users u
+    where post_id = ${postId} and u.id = c.user_id
+    limit ${10*pageId}
+    `, function(error,results,fields){
+      conn.release();
+        res.send({
+          results
+        });
     });
   });
 });

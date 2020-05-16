@@ -24,6 +24,12 @@ export class ChatService {
         });
     }
 
+    create(userId, userId2 , message): any {
+        return this.httpClient.post(`${environment.api}chat/create` , {
+            userId, userId2, message
+        });
+    }
+
     search(query, pageId): any {
         return this.httpClient.get(`${environment.api}chat/search/${query}/${pageId}`);
     }

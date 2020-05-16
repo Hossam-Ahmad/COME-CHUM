@@ -139,3 +139,11 @@
     }
 }
 }
+
+.more-comments{
+    background: -webkit-linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: auto;
+    font-size: 0.9em;
+}

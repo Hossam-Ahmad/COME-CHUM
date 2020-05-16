@@ -110,6 +110,7 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
 import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
+import { NewMessageComponent } from 'src/components/new-message/new-message.component';
 
 
 
@@ -232,7 +233,8 @@ export function getAuthServiceConfigs() {
     blogsComponent,
     TimeAgoPipe,
     asideProfileComponent,
-    PackagesWebsiteComponent
+    PackagesWebsiteComponent,
+    NewMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -301,6 +303,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent]
+  entryComponents: [MembersComponent, NewMessageComponent]
 })
 export class AppModule { }

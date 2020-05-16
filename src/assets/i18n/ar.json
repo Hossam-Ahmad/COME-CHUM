@@ -104,5 +104,7 @@
   "create_post" : "إنشاء منشور",
   "write_post" : "اكتب منشورك هنا",
   "post" : "نشر",
-  "pricing" : "اسعار"
+  "pricing" : "اسعار",
+  "chat" : "محادثه",
+  "write_comment" : ".. اكتب تعليقك هنا"
 }

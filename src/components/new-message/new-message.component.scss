@@ -1,0 +1,54 @@
+.btn-primary{
+    text-transform: capitalize;
+    background-image: linear-gradient(to right, #c3348f , #7b49b7);
+    font-size: 14px;
+    border-radius: 10px;
+    padding: .5em 2em;
+    box-shadow: 0px 9px 13px #fec5e6;
+    border: none;
+}
+
+img{
+    border-radius: 50%;
+    width: 3em;
+    margin-bottom: 1em;
+}
+
+textarea{
+    width: 100%;
+    border: none;
+    color: gray;
+}
+
+.center{
+    text-align: center;
+    margin: auto;
+}
+
+.link-style{
+    color: #4873a8;
+}
+
+.footer{
+    padding: 0px;
+    background-color: #eee;
+}
+
+.profile-img{
+    width: 5em;
+    border-radius: 50%;
+    height: 5em;
+}
+
+.centerBtn{
+    display: block !important;
+    margin: auto !important;
+}
+
+.table-responsive{
+    overflow: hidden !important;
+}
+
+.card-title{
+    text-align: center;
+}

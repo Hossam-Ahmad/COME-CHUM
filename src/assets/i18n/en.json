@@ -104,5 +104,7 @@
   "create_post" : "Create Post",
   "write_post" : "Write a post",
   "post" : "Post",
-  "pricing" : "Pricing"
+  "pricing" : "Pricing",
+  "chat" : "Chat",
+  "write_comment" : "Write a comment .."
 }

@@ -61,4 +61,8 @@ export class FeedService {
       });
     }
 
+    load_comments(postId, pageId): any {
+      return this.httpClient.get(`${environment.api}feed/load_comments/${postId}/${pageId}`);
+    }
+
 }

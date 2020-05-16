@@ -39,7 +39,41 @@ router.get('/search/:query/:pageId', function(req, res, next) {
             res.send(results);
       });
     });
+});
+
+router.post('/create', function(req, res, next) {
+  connection.getConnection(function (err, conn) {  
+    var userId = req.body['userId'];
+    var userId2 = req.body['userId2'];
+    var message = req.body['message'];
+    var chatId = 0;
+    conn.query(`SELECT * FROM chat where (user1_id = ${userId} AND user2_id = ${userId2}) OR (user1_id = ${userId2} AND user2_id = ${userId})`, function(error,results,fields){
+      console.log(results);
+      if(results) {
+        console.log('not found');
+        conn.query(`INSERT INTO chat(user1_id, user2_id) VALUES (${userId},${userId2});
+        `, function(error,results2,fields){
+          console.log(results2)
+          chatId = results2.insertId;
+          conn.query(`INSERT INTO messages_chat(chat_id, type, data, seen, sender_id) VALUES (${chatId},0,'${message}',0,${userId})`, function(error,results2,fields){
+            conn.release();
+            res.send({
+              status : 'success',
+            });
+          });
+        });
+      } else {
+        chatId = results[0].id;
+        conn.query(`INSERT INTO messages_chat(chat_id, type, data, seen, sender_id) VALUES (${chatId},0,'${message}',0,${userId})`, function(error,results2,fields){
+          conn.release();
+          res.send({
+            status : 'success',
+          });
+        });
+      }
+    });
   });
+});
 
 
 router.post('/send', function(req, res, next) {

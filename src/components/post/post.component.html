@@ -2,13 +2,13 @@
 <div class="posted">
   <div class="container">
     <!-- data of poster -->
-    <div class="row">
+    <div class="row" [ngStyle]="{'direction': translate.currentLang == 'ar'? 'rtl' : 'ltr'}">
     <div class="col col-md-1 nameAndDate imageOfPoster">
       <img src="{{post.image}}">
     </div>
-    <div class="col col-md-3 nameAndDate">
+    <div class="col col-md-3 nameAndDate" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
       <span>{{post.name}}</span>
-      <p>{{post.created_at | timeAgo}}</p>
+      <p [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'unset'}">{{post.created_at | timeAgo}}</p>
     </div>
   </div>
   <!-- content of post -->
@@ -37,7 +37,7 @@
 <!-- comment  -->
   <div class="row">
     <div class="col col-md-2">
-      <button type="button" class="btn btn-primary">Chat</button>
+      <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
     </div>
 
     <div class="col col-md-10">
@@ -46,7 +46,7 @@
 
         <div class="col col-md-2" style="padding: 0;">
             <div class="issueInner">
-              <i class="fa-heart" (click)="like()" [ngClass]="{'fas': post.isliked , 'far': !post.isliked}"></i>
+              <i class="fa-heart" (click)="like()" [ngClass]="{'fas': post.isliked , 'far': !post.isliked}" [ngStyle]="{'color': post.isliked ? '#c7338d' : '#000'}"></i>
               <span>{{post.likes}}</span>
             </div>
           </div>
@@ -58,12 +58,15 @@
               </div>
             </div>
             <div class="col col-md-5">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Write a Comment.." [(ngModel)]="comment_text">
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+              [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
+              'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
+              }">
             </div>
             <div class="col col-md-3">
               <div class="sendOrCamera">
-                <i class="fas fa-camera" (click)="upload_image()"></i>
-                <i class="far fa-paper-plane sendIt" (click)="comment()"></i>
+                <i class="material-icons" (click)="upload_image()">camera_alt</i>
+                <i class="material-icons" (click)="comment()">send</i>
               </div>
             </div>
          </div> 
@@ -89,5 +92,10 @@
     </div>
 
   </div>
+
+  <div class="row">
+    <span class="more-comments" *ngIf="post.comments_arr.length != post.comments" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="load_comments()">{{'see_all' | translate}}</span>
+  </div>
+  
 </div>
 </div>

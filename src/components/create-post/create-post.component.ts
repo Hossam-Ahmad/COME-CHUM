@@ -17,6 +17,7 @@ export class CreatePostComponent implements OnInit {
     images : {},
     videos : {}
   };
+  userImage = '';
 
   constructor(
     public translate: TranslateService,
@@ -28,6 +29,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
     this.auth.getData().subscribe(data => {
       this.post_data.user_id = data.id;
+      this.userImage = data.image;
     });
   }
 
@@ -40,16 +42,23 @@ export class CreatePostComponent implements OnInit {
   }
 
   send() {
-    this.feed.create(this.post_data).subscribe( data => {
-      console.log(data);
-      this.post_data.body = '';
-      this.post_data.images = {};
-      this.post_data.videos = {};
-      this.notifierService.show({
-        type : 'success',
-        message: 'تم نشر المنشور بنجاح',
+    if (this.post_data.body !== '') {
+      this.feed.create(this.post_data).subscribe( data => {
+        console.log(data);
+        this.post_data.body = '';
+        this.post_data.images = {};
+        this.post_data.videos = {};
+        this.notifierService.show({
+          type : 'success',
+          message: 'تم نشر المنشور بنجاح',
+        });
       });
-    });
+    } else {
+      this.notifierService.show({
+        type : 'error',
+        message: 'المنشور فارغ',
+      });
+    }
   }
 
   onImageChanged(event) {

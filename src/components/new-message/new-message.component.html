@@ -1,0 +1,29 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">New Message</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-12" class="center">
+                                    <img src="{{image}}" />
+                                    <p>{{otherName}}</p>
+                                </div>
+                            </div>
+                            <textarea placeholder="write a messsage" rows="5" cols="40" [(ngModel)]="message">
+                            </textarea>
+                            <div class="center">
+                                <button class="btn-primary" (click)="send()">Send</button>
+                            </div>                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

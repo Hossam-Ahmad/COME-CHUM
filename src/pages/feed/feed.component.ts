@@ -4,6 +4,8 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { BlogsService } from 'src/services/blogs.service';
 import { FeedService } from 'src/services/feed.servie';
 import { ChatService } from 'src/services/chat.service';
+import { NewMessageComponent } from 'src/components/new-message/new-message.component';
+import {MatDialog, MatDialogConfig} from '@angular/material';
 
 @Component({
   selector: 'app-feed',
@@ -24,7 +26,8 @@ export class FeedComponent implements OnInit {
               public router: Router,
               private blogsService: BlogsService,
               private feedService: FeedService,
-              private chat: ChatService) {
+              private chat: ChatService,
+              private dialog: MatDialog) {
     this.height = window.outerHeight + 'px';
   }
 
@@ -44,6 +47,10 @@ export class FeedComponent implements OnInit {
         console.log(this.posts);
       });
     });
+  }
+
+  isMobile() {
+    return window.innerWidth < 800;
   }
 
 }
