@@ -85,6 +85,7 @@ import { CreatePostComponent } from 'src/components/create-post/create-post.comp
 import { coverComponent } from 'src/components/cover/cover.component';
 import { MessagesComponent } from 'src/components/Messages/Messages.component';
 import { blogsComponent } from 'src/components/blogs/blogs.component';
+import { asideProfileComponent } from 'src/components/aside-profile/aside-profile.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -227,7 +228,8 @@ export function getAuthServiceConfigs() {
     coverComponent,
     MessagesComponent,
     blogsComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    asideProfileComponent
   ],
   imports: [
     BrowserModule,

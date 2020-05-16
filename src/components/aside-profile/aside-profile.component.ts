@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aside-profile.component.scss']
 })
 export class asideProfileComponent implements OnInit {
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {
