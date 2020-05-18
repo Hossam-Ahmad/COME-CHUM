@@ -18,7 +18,7 @@ export class EventsWebsiteComponent implements OnInit {
 
   constructor(public authService: AuthUserService,
               public router: Router,
-              private translate: TranslateService,
+              public translate: TranslateService,
               private eventsService: EventsService) {
     this.height = window.outerHeight + 'px';
   }
