@@ -71,6 +71,9 @@ import { ChatComponent } from 'src/pages/chat/chat.component';
 import { FeedComponent } from 'src/pages/feed/feed.component';
 import { MasterComponent } from 'src/pages/master/master.component';
 import { SettingsComponent } from 'src/pages/settings/settings.component';
+import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
+import { BlogsWebsiteComponent } from 'src/pages/blogs-website/blogs-website.component';
+import { EventsWebsiteComponent } from 'src/pages/events-website/events-website.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -87,6 +90,9 @@ import { coverComponent } from 'src/components/cover/cover.component';
 import { MessagesComponent } from 'src/components/Messages/Messages.component';
 import { blogsComponent } from 'src/components/blogs/blogs.component';
 import { asideProfileComponent } from 'src/components/aside-profile/aside-profile.component';
+import { NewMessageComponent } from 'src/components/new-message/new-message.component';
+import { BlogComponent } from 'src/components/blog/blog.component';
+import { CheckoutComponent } from 'src/components/checkout/checkout.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -109,9 +115,10 @@ import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
-import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
-import { NewMessageComponent } from 'src/components/new-message/new-message.component';
-
+import { EventComponent } from 'src/components/event/event.component';
+import { GroupComponent } from 'src/components/group/group.component';
+import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
+import { ProfileComponent } from 'src/pages/profile/profile.component';
 
 
 
@@ -234,7 +241,15 @@ export function getAuthServiceConfigs() {
     TimeAgoPipe,
     asideProfileComponent,
     PackagesWebsiteComponent,
-    NewMessageComponent
+    NewMessageComponent,
+    BlogsWebsiteComponent,
+    BlogComponent,
+    CheckoutComponent,
+    EventsWebsiteComponent,
+    EventComponent,
+    GroupComponent,
+    GroupsWebsiteComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -303,6 +318,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent, NewMessageComponent]
+  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent]
 })
 export class AppModule { }

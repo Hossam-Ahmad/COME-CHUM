@@ -1,0 +1,17 @@
+<div class="row" *ngIf="!isMobile()">
+    <div class="col-1"></div>
+    <div class="col-6">
+        <app-blog *ngFor="let blog of blogs" [blog]="blog"></app-blog>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-4">
+        <app-blogs-component></app-blogs-component>
+        <app-Messages></app-Messages>
+    </div>
+</div>
+
+<div class="row" *ngIf="isMobile()">
+    <div class="col-12">
+        <app-blog *ngFor="let blog of blogs" [blog]="blog"></app-blog>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { BlogsService } from '../../services/blogs.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MiscService } from 'src/services/misc.service';
+import { AuthUserService } from 'src/services/authUser.service';
 
 @Component({
   selector: 'app-blogs',
@@ -18,7 +19,8 @@ export class BlogsComponent implements OnInit {
   constructor(
     public blogsService: BlogsService,
     public router: Router,
-    public misc: MiscService) {
+    public misc: MiscService,
+    private auth: AuthUserService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -31,10 +33,12 @@ export class BlogsComponent implements OnInit {
   }
 
   getBlogs() {
-    this.blogsService.getAll(this.pageId).subscribe(data => {
-      this.blogs = data;
-      console.log(data);
-      this.pageId++;
+    this.auth.getData().subscribe( data => {
+      this.blogsService.getAll(this.pageId, data.id).subscribe(data2 => {
+        this.blogs = data2;
+        console.log(data2);
+        this.pageId++;
+      });
     });
   }
 

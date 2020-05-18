@@ -4,13 +4,14 @@ var router = express.Router();
 var connection = enviroment.connection;
 
 /* GET groups listing. */
-router.get('/all/:pageId', function(req, res, next) {
+router.get('/all/:pageId/:userId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var pageId = req.params['pageId'];
+    var userId = req.params['userId'];
     conn.query(`
     
     SELECT * FROM (
-      SELECT b.id , b.title , b.created_at , b.created_by , b.likes , b.comments , b.seen , b.blog_id , u.name created_by_name
+      SELECT b.id , b.title , b.created_at, b.image , b.created_by , b.likes , b.comments , b.seen , b.blog_id , u.name created_by_name
       FROM blogs b , users u
       where b.status = 1 and b.created_by = u.id
       LIMIT ${5*pageId}
@@ -19,17 +20,47 @@ router.get('/all/:pageId', function(req, res, next) {
     UNION
 
     SELECT * FROM (
-      SELECT b.id , b.title , b.created_at , b.created_by , b.likes , b.comments , b.seen , b.blog_id , 'admin' created_by_name
+      SELECT b.id , b.title , b.created_at , b.image , b.created_by , b.likes , b.comments , b.seen , b.blog_id , 'admin' created_by_name
       FROM blogs b
       where b.status = 1 and b.created_by = -1
       LIMIT ${5*pageId}
     ) AS t2
-
-
-
     `, function(error,results,fields){
-      conn.release();
-      res.send(results);
+      let blogs_ids = [];
+      results.forEach(result => blogs_ids.push(result.id));
+      conn.query(`
+        SELECT c.id comment_id, c.blog_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+        FROM comments_blogs c , users u
+        where blog_id in (${blogs_ids.toString()}) and u.id = c.user_id
+        GROUP by blog_id
+        `, function(error,results3,fields){
+          results.forEach(result => {
+            result.comments_arr = [];
+            results3.forEach(result3 => {
+              if(result3.post_id == result.id) {
+                result.comments_arr.push(result3);
+              }
+            });
+          });
+
+          conn.query(`
+          SELECT blog_id FROM likes_blogs
+          where blog_id in (${blogs_ids.toString()}) and user_id = ${userId}
+          `, function(error,results4,fields){
+
+            results.forEach(result => {
+              result.isliked = false;
+              results4.forEach(result4 => {
+                if(result4.blog_id == result.id) {
+                  result.isliked = true;
+                }
+              });
+            });
+
+            conn.release();
+            res.send(results);
+          });
+        });
     });
   });
 });

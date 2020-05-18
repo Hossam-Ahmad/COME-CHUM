@@ -1,0 +1,52 @@
+<div class="outerBlog">
+<div class="bloged" [ngStyle]="{'background-image': 'url(' + blog.image + ')'}">
+    <!-- data of bloger --> 
+
+    <div class="row titleandbutton">
+    <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+      <p><span>{{blog.title}}</span></p>
+    </div>
+    <div class="col col-6" style="width: 50%;text-align: right;">
+      <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" [routerLink]="['/blog/',blog.blog_id]">{{'view' | translate}}</button>
+    </div>
+  </div>
+  <!-- content of blog -->
+
+<!-- comment  -->
+
+  
+</div>
+
+<div class="row">
+
+  <div class="col col-md-12">
+    <div class="commentIssues">
+    <div class="row">
+
+      <div class="col col-md-4" style="padding: 0;">
+          <div class="issueInner">
+            <i class="fa-heart" (click)="like()" [ngClass]="{'fas': blog.isliked , 'far': !blog.isliked}" [ngStyle]="{'color': blog.isliked ? '#c7338d' : '#000'}"></i>
+            <span>{{blog.likes}}</span>
+          </div>
+        </div>
+
+          <div class="col col-md-4" style="padding: 0;">
+            <div class="issueInner">
+              <i class="far fa-comment"></i>
+              <span>{{blog.comments}}</span>
+            </div>
+          </div>
+
+          <div class="col col-md-4" style="padding: 0;">
+            <div class="issueInner" style="border: none;">
+              <i class="far fa-eye"></i>
+              <span>{{blog.seen}}</span>
+            </div>
+          </div>
+
+       </div> 
+      </div>
+  </div>
+
+</div>
+</div>

@@ -34,6 +34,10 @@ import { MasterComponent } from 'src/pages/master/master.component';
 import { AuthUserService } from 'src/services/authUser.service';
 import { SettingsComponent } from 'src/pages/settings/settings.component';
 import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
+import { BlogsWebsiteComponent } from 'src/pages/blogs-website/blogs-website.component';
+import { EventsWebsiteComponent } from 'src/pages/events-website/events-website.component';
+import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
+import { ProfileComponent } from 'src/pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -201,9 +205,25 @@ const routes: Routes = [
         path: 'settings',
         component: SettingsComponent,
         canActivate: [AuthUserService]
-      },{
+      }, {
         path: 'packages',
         component: PackagesWebsiteComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'blogs',
+        component: BlogsWebsiteComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'events',
+        component: EventsWebsiteComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'groups',
+        component: GroupsWebsiteComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [AuthUserService]
       }
     ]

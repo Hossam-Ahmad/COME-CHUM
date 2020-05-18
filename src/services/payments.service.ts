@@ -10,9 +10,9 @@ export class PaymentsService {
                 public router: Router
        ) {}
 
-    chargeTCO(token): any {
+    chargeTCO(token, name, email, country, city, phone, price): any {
         return this.httpClient.post(`${environment.api}payments/tco/charge`, {
-          token,
+          token, name, email, country, city, phone, price
         });
     }
 

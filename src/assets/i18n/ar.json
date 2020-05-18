@@ -106,5 +106,12 @@
   "post" : "نشر",
   "pricing" : "اسعار",
   "chat" : "محادثه",
-  "write_comment" : ".. اكتب تعليقك هنا"
+  "write_comment" : ".. اكتب تعليقك هنا",
+  "write_message" : ".. اكتب رسالتك هنا",
+  "new-message" : "رسالة جديدة",
+  "payment" : "الدفع",
+  "this_week" : "هذا الاسبوع",
+  "this_month" : "هذا الشهر",
+  "this_year" : "هذه السنه",
+  "find_more_events" : "ابحث عن المزيد من الأحداث"
 }

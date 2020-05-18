@@ -57,9 +57,9 @@ export class TestComponent implements OnInit {
       // Make the token request
       TCO.requestToken(success => {
         console.log(success.response.token.token);
-        this.payment.chargeTCO(success.response.token.token).subscribe(data => {
-          console.log(data);
-        });
+        // this.payment.chargeTCO(success.response.token.token).subscribe(data => {
+        //   console.log(data);
+        // });
       }, error => {
         console.log(error);
       }, args);

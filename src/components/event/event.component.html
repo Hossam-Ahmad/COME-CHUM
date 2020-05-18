@@ -1,0 +1,36 @@
+<div class="outerevent">
+<div class="evented" [ngStyle]="{'background-image': 'url(' + event.cover + ')'}">
+    <!-- data of eventer --> 
+
+    <div class="row titleandbutton">
+    <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+      <p><span>{{event.name}}</span></p>
+    </div>
+  </div>
+  <!-- content of event -->
+
+<!-- comment  -->
+
+  
+</div>
+
+<div class="row">
+
+  <div class="col col-md-12">
+    <div class="commentIssues">
+    <div class="row">
+          <div class="col col-md-9" style="padding: 0;">
+            <div class="issueInner" style="border: none;">
+              <span>{{event.members}} Joined</span>
+              <p>{{event.about}}</p>
+            </div>
+          </div>
+          <div class="col col-md-3">
+            <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" [routerLink]="['/event/',event.event_id]">{{'view' | translate}}</button>
+          </div>
+       </div> 
+      </div>
+  </div>
+
+</div>
+</div>

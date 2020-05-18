@@ -9,7 +9,7 @@ router.get('/all/:type/:pageId/:userId', function(req, res, next) {
     var type = req.params['type'];
     var pageId = req.params['pageId'];
     var userId = req.params['userId'];
-    conn.query(`SELECT * FROM (SELECT c.id , c.user1_id , c.user2_id , m.type, m.data , m.created_at , m.seen , m.chat_id , u.name , u.online , u.image, u.last_logout FROM chat c , messages_chat m , users u WHERE c.id = m.chat_id AND (c.user1_id = ${userId} OR c.user2_id = ${userId}) AND ((u.id = c.user1_id AND u.id != ${userId})OR (u.id = c.user2_id AND u.id != ${userId})) ORDER BY m.created_at DESC LIMIT ${10*pageId}) AS t1 group by chat_id`, function(error,results,fields){
+    conn.query(`SELECT * FROM (SELECT c.id , c.user1_id , c.user2_id , m.type, m.data , m.created_at , m.seen , m.chat_id , u.name , u.online , u.image, u.last_logout FROM chat c , messages_chat m , users u WHERE c.id = m.chat_id AND (c.user1_id = ${userId} OR c.user2_id = ${userId}) AND ((u.id = c.user1_id AND u.id != ${userId})OR (u.id = c.user2_id AND u.id != ${userId})) ORDER BY m.created_at DESC LIMIT ${10*pageId}) AS t1 group by chat_id ORDER BY created_at DESC`, function(error,results,fields){
       conn.release();
       res.send(results);
     });
@@ -74,7 +74,6 @@ router.post('/create', function(req, res, next) {
     });
   });
 });
-
 
 router.post('/send', function(req, res, next) {
   connection.getConnection(function (err, conn) {  

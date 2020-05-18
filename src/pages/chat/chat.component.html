@@ -32,7 +32,7 @@
         <div class="msg-username">{{chat.name}}</div>
         <div class="msg-content">
          <span class="msg-message">{{chat.data}}</span>
-         <span class="msg-date">20m</span>
+         <span class="msg-date">{{chat.created_at | timeAgo}}</span>
         </div>
        </div>
       </div>
@@ -108,7 +108,7 @@
        <div class="msg-username">{{chat.name}}</div>
        <div class="msg-content">
         <span class="msg-message">{{chat.data}}</span>
-        <span class="msg-date">20m</span>
+        <span class="msg-date">{{chat.created_at | timeAgo}}</span>
        </div>
       </div>
      </div>

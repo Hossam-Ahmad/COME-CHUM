@@ -14,6 +14,10 @@ export class EventsService {
       return this.httpClient.get(`${environment.api}events/all/${pageId}`);
     }
 
+    getAllWebsite(pageId, userId): any {
+      return this.httpClient.get(`${environment.api}events/all/${pageId}/${userId}`);
+    }
+
     remove(userId): any {
       return this.httpClient.post(`${environment.api}events/remove`, {
         userId

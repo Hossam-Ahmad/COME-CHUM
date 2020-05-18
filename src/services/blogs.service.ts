@@ -10,8 +10,8 @@ export class BlogsService {
                 public router: Router
        ) {}
 
-    getAll(pageId): any {
-      return this.httpClient.get(`${environment.api}blogs/all/${pageId}`);
+    getAll(pageId, userId): any {
+      return this.httpClient.get(`${environment.api}blogs/all/${pageId}/${userId}`);
     }
 
     getTop(): any {

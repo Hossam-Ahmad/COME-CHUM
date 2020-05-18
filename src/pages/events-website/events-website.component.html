@@ -1,0 +1,34 @@
+<div class="row" *ngIf="!isMobile()">
+    <div class="col-1"></div>
+    <div class="col-6">
+        <p [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
+        'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
+        }">{{'find_more_events' | translate}}</p>
+        <div class="row" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
+            <div class="col col-3">
+                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 0}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(0)">{{'this_week' | translate}}</button>
+            </div>
+            <div class="col col-3">
+                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 1}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(1)">{{'this_month' | translate}}</button>
+            </div>
+            <div class="col col-3">
+                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 2}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(2)">{{'this_year' | translate}}</button>
+            </div>
+            <div class="col col-3">
+                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 3}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(3)">{{'advanced' | translate}}</button>
+            </div>
+        </div>
+        <app-event *ngFor="let event of events" [event]="event"></app-event>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-4">
+        <app-blogs-component></app-blogs-component>
+        <app-Messages></app-Messages>
+    </div>
+</div>
+
+<div class="row" *ngIf="isMobile()">
+    <div class="col-12">
+        <app-event *ngFor="let event of events" [event]="event"></app-event>
+    </div>
+</div>

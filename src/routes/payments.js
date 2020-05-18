@@ -129,6 +129,15 @@ router.post('/tco/charge', function(req, res, next) {
 
     var Twocheckout = require('2checkout-node');
 
+    var name = req.body['name'];
+    var country = req.body['country'];
+    var city = req.body['city'];
+    var email = req.body['email'];
+    var phone = req.body['phone'];
+    var price = req.body['price'];
+
+    console.log(price);
+
     var tco = new Twocheckout({
         secretWord: enviroment.twoCheckout.secretWord,
         sellerId: enviroment.twoCheckout.sellerId,         // Seller ID, required for all non Admin API bindings 
@@ -138,19 +147,19 @@ router.post('/tco/charge', function(req, res, next) {
     });
 
     const params = {
-        "merchantOrderId": "124",
+        "merchantOrderId": "129",
         "token": req.body.token,
         "currency": "USD",
-        "total": "10.00",
+        "total": price,
         "billingAddr": {
-            "name": "Testing Tester",
+            "name": name,
             "addrLine1": "123 Test St",
             "city": "Columbus",
             "state": "Ohio",
             "zipCode": "43123",
             "country": "USA",
-            "email": "example@2co.com",
-            "phoneNumber": "5555555555"
+            "email": email,
+            "phoneNumber": phone
         }
     };
   

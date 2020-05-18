@@ -1,0 +1,19 @@
+.btn-primary{
+    height: 2em;
+    padding: 0em 2em 0em 2em;
+    text-transform: capitalize;
+    background-color: #fff !important;
+    color: #000;
+    border: none;
+    font-size: 11px;
+    border-radius: 10px;
+}
+
+.btn-primary:hover{
+    color: #000;
+}
+
+.active{
+    background-image: linear-gradient(to right, #c3348f , #7b49b7);
+    color: #fff;
+}

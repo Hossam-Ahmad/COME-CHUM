@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/services/chat.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-message',
@@ -20,6 +21,7 @@ export class NewMessageComponent implements OnInit {
   constructor(
     private chat: ChatService,
     private router: Router,
+    public translate: TranslateService,
     private dialogRef: MatDialogRef<NewMessageComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.id = data.id;

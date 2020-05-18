@@ -1,0 +1,189 @@
+.outerBlog{
+    background-color: white;
+    margin-bottom: 2em;
+    border-radius: 10px;
+    padding-bottom: 1em;
+}
+.bloged{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: white;
+    padding: 1em 0em 1em 0em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-size: cover;
+    background-position: center;
+    height: 20em;
+    position: relative;
+    .titleandbutton{
+        position: absolute;
+        width: 100%;
+        top: 17em;
+    }
+    .title{
+        display: flex;
+        align-items: center;
+        p{
+            background: #fff;
+            border-radius: 0px 25px 25px 0px;
+        }
+        span{
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #c3348f, #7b49b7);
+            font-weight: bold;
+            margin-right: 1em;
+            margin-left: 1em;
+        }
+    }
+    .button{
+        width: 50% !important;
+        text-align: right !important;
+    }
+    .nameAndDate{
+    padding: 0;
+    margin: 0;
+    font-family: lato-regular;
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 7px;
+    }
+    p{
+        font-size: 12px;
+        color: #b4b8c1;
+    }
+ }
+ .imageOfbloger{text-align: center;margin-right: 1em;
+    margin-left: 1em;} 
+ p{
+     font-family: lato-light;
+ }
+ .imagesOfPoster{
+     img{
+        width: 100%;
+     }
+     .firstImg{
+         height: 14em;
+         img{
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            height: 100%;
+            width: 100%;
+         }
+     }
+     .restImags{
+         img{
+             border-radius: 20px;
+             margin-bottom: 1em;
+             height: 6.5em;
+         }
+     }
+    
+ }
+
+ .btn-primary{
+    margin-right: 1em;
+    margin-left: 1em;
+    height: 2em;
+    padding: 0em 2em 0em 2em;
+    text-transform: capitalize;
+    background-image: linear-gradient(to right, #c3348f , #7b49b7);
+    border: none;
+    font-size: 11px;
+    border-radius: 10px;
+}
+    input{
+        display: inline;
+        border: none;
+        background-image: none;
+    }
+    input:focus{
+        outline: none;
+        border: none !important;
+        box-shadow: none;
+    }
+    .sendOrCamera{
+        text-align: center;
+        padding: .3em 0;
+        i{
+            padding: 0 0.2em;
+            font-size: 1.2em;
+            color:#b9b9b9;
+        }
+        .sendIt{
+            color: #7198fe;
+        }
+    }
+.photoComment{
+    text-align: right;
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: relative;
+    }
+}
+.photoCommentOnline::after{
+    content: ' \25CF';
+    position: absolute;
+    color: #75df87;
+    top: -10%;
+    margin-left: -.7em;
+}
+.contentCommented{
+    padding: 0.5em;
+    background-color: #f4f7f9;
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+    border-bottom-left-radius:20px;
+    font-size: 14px;
+    font-family: lato-bold;
+    font-weight: bold;
+    color: #939fad;
+    p{margin: 0;font-weight: normal;color: #4d4848;}
+    .user_comment{
+        color: black;
+        font-weight: bold;
+    }
+    img{
+        width: 100%;
+        border-radius: 25px;
+    }
+    span{
+      text-align: right;
+      display: block;
+      font-family: lato-light;
+      font-weight: lighter;
+    }
+}
+}
+
+.more-comments{
+    background: -webkit-linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: auto;
+    font-size: 0.9em;
+}
+.commentIssues{
+    text-align: center;
+    border: 1px solid #0000003b;
+    padding: 0.3em;
+    border-radius: 13px;
+    width: 85%;
+    margin: .5em auto 1em;
+    .issueInner{
+        text-align: center;
+        padding-top: 2px;
+         border-right: 1px solid #e9ebef;
+         color: #000;
+         i{
+             padding: 0 .5em;
+         }
+         span{
+             font-family: lato-bold;
+         }
+    }
+}
