@@ -1,17 +1,25 @@
-<div class="row specialCoverRow">
+<div class="row specialCoverRow" *ngIf="!isMobile()">
     <div class="col-12 cover">
-        <app-cover></app-cover>
-    </div>
-    <div class="col-2"></div>
-    <div class="col-6">
-        <app-create-post></app-create-post>
-        <app-post></app-post>
-        <app-post></app-post>
-        <app-post></app-post>
+        <app-cover [userData]="userData"></app-cover>
     </div>
     <div class="col-1"></div>
-    <div class="col-3">
-        <app-aside-profile></app-aside-profile>
+    <div class="col-6">
+        <app-create-post *ngIf="myProfileId == userId"></app-create-post>
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-4">
+        <app-aside-profile [userData]="userData"></app-aside-profile>
+    </div>
+</div>
+
+<div class="row" *ngIf="isMobile()">
+    <div class="col-12 cover">
+        <app-cover [userData]="userData"></app-cover>
+    </div>
+    <div class="col-12">
+        <app-create-post></app-create-post>
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
     </div>
 </div>
 

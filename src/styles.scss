@@ -5,6 +5,10 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~leaflet/dist/leaflet.css";
 
+#navbarCollapse{
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%) !important;
+}
+
 .basic-container {
     padding: 30px;
 }

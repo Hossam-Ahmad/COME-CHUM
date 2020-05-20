@@ -1,12 +1,12 @@
 <div class="cover">
-  <div class="coverImg">
+  <div class="coverImg" [ngStyle]="{'background-image': 'url(' + userData.cover + ')'}" *ngIf="userData">
     <div class="profileImg">
-      <img src="../../../assets/images/profile-pic.png">
+      <img src="{{userData? userData.image : ''}}" style="border-radius: 50%;">
     </div>
   </div>
   <div class="container">
-    <p>Hossam Ahmed</p>
-    <button type="button" class="btn btn-light updateProfile">Update</button>
+    <p>{{userData? userData.name : ''}}</p>
+    <button type="button" class="btn btn-light updateProfile">{{'update' | translate}}</button>
     <hr>
     <div class="toggleDiv">
       <div class="row">

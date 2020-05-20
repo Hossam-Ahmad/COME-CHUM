@@ -26,6 +26,10 @@ export class UsersService {
       return this.httpClient.get(`${environment.api}users/user/${userId}`);
     }
 
+    getByProfile(profileId): any {
+      return this.httpClient.get(`${environment.api}users/user/profileId/${profileId}`);
+    }
+
     getMessages(userId, pageId): any {
       return this.httpClient.get(`${environment.api}contact/unauthenticated/${userId}/${pageId}`);
     }

@@ -27,7 +27,7 @@
     
     
     <div class="other">
-        <a routerLinkActive="on"  [routerLink]="[ '/profile' , userId ]">
+        <a routerLinkActive="on"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: userId }">
             <div class="row">
                 <img src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';"/>
                 <div>

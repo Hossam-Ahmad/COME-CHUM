@@ -1,6 +1,12 @@
 <!--Navbar-->
 <mdb-navbar #navbarid id="navbarid" SideClass="navbar navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'rtl'}">
 
+  <mdb-navbar-brand *ngIf="isMobile()">
+    <a class="navbar-brand" href="/">
+      <img class="logo" src="../../../assets/images/logo.png">
+    </a>
+  </mdb-navbar-brand>
+
   <!-- Collapsible content -->
   <links>
 
@@ -14,9 +20,9 @@
         'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : '',
         'text-align': translate.currentLang == 'ar' ? 'right' : ''}">
 
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/profile' , userId ]" >{{'profile' | translate}}</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect >{{'my_groups' | translate}}</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect >{{'my_events' | translate}}</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/profile' ]" [queryParams]="{userId: userId}" >{{'profile' | translate}}</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/groups' ]" >{{'my_groups' | translate}}</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/events' ]" >{{'my_events' | translate}}</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="changeLang()">{{'language' | translate}}</a>
           <div class="divider dropdown-divider"></div>
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="[ '/terms']">{{'terms' | translate}}</a>
@@ -59,7 +65,7 @@
         <i class="fas fa-comment-dots icon" style="font-size: 23px;"></i>
       </a>
 
-      <div class="search-container">
+      <div class="search-container" *ngIf="!isMobile()">
         <input class="search" type="text" placeholder="{{'search' | translate}}" 
         [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left', 
         'padding-left': translate.currentLang == 'ar' ? '0em' : '2em', 
@@ -95,7 +101,7 @@
         </ul>
         <!-- Links -->
 
-        <mdb-navbar-brand>
+        <mdb-navbar-brand *ngIf="!isMobile()">
           <a class="navbar-brand" href="/">
             <img class="logo" src="../../../assets/images/logo.png">
           </a>

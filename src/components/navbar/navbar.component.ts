@@ -51,4 +51,11 @@ export class NavbarComponent implements OnInit {
     this.users.switchLanguage();
   }
 
+  isMobile() {
+    if (window.screen.width > 991) {
+      return false;
+    }
+    return true;
+  }
+
 }

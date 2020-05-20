@@ -3,10 +3,10 @@
   <div class="container">
     <!-- data of poster -->
     <div class="row" [ngStyle]="{'direction': translate.currentLang == 'ar'? 'rtl' : 'ltr'}">
-    <div class="col col-md-1 nameAndDate imageOfPoster">
+    <div class="col col-md-1 nameAndDate imageOfPoster cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: post.profile_id }">
       <img src="{{post.image}}">
     </div>
-    <div class="col col-md-3 nameAndDate" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+    <div class="col col-md-3 nameAndDate cursor" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: post.profile_id }">
       <span>{{post.name}}</span>
       <p [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'unset'}">{{post.created_at | timeAgo}}</p>
     </div>
@@ -76,7 +76,7 @@
 <!-- posted comment -->
   <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of post.comments_arr">
 
-    <div class="col col-md-2">
+    <div class="col col-md-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
       <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
         <img src="{{comment.user_image}}">
       </div>
@@ -84,7 +84,7 @@
 
     <div class="col col-md-9">
       <div class="contentCommented">
-        <p class="user_comment">{{comment.user_name}}</p>
+        <p class="user_comment cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">{{comment.user_name}}</p>
         <p>{{comment.text}}</p>
         <img *ngIf="comment.image != null && comment.image != ''" src="{{comment.image}}" />
         <span>{{comment.created_at | timeAgo}}</span>

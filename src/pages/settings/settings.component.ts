@@ -56,6 +56,11 @@ export class SettingsComponent implements OnInit {
       this.userData = data;
       console.log(this.userData);
       this.name = this.userData.name;
+      this.email = this.userData.email;
+      this.gender = this.userData.gender;
+      this.country = this.userData.country;
+      this.phone = this.userData.phone;
+      this.postal = this.userData.postal_code;
     });
   }
 

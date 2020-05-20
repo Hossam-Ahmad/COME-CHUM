@@ -64,6 +64,16 @@ router.get('/user/:userId', function(req, res, next) {
   });
 });
 
+router.get('/user/profileId/:profileId', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var profileId = req.params['profileId'];
+    connection.query(`SELECT * FROM users where profile_id = '${profileId}'`, function(error,results,fields){
+      conn.release();  
+      res.send(results);
+    });
+  });
+});
+
 router.get('/user/token/:token', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var token = req.params['token'];

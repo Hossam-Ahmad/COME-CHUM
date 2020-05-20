@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-aside-profile',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aside-profile.component.scss']
 })
 export class asideProfileComponent implements OnInit {
+  @Input() userData;
+
   constructor() {
   }
 

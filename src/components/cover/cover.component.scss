@@ -1,6 +1,7 @@
 .cover{
        border-radius: 15px;
        border: 1px solid #fefeff;
+       background: white;
     .coverImg{
         background: url('../../assets/images/cover.jpg') no-repeat no-repeat center center;
         background-size: cover;
@@ -27,6 +28,7 @@
         font-family: lato-bold;
     }
     .updateProfile{
+        text-transform: capitalize;
         float: right;
         color: #fff;
         background-image: linear-gradient(to right, #c3348f , #7b49b7);

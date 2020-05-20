@@ -65,6 +65,67 @@ router.get('/all/:userId/:pageId', function(req, res, next) {
   });
 });
 
+router.get('/user/:userId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var pageId = req.params['pageId'];
+    var userId = req.params['userId'];
+    conn.query(`
+    SELECT * FROM (SELECT p.id , p.title , p.body , p.created_at , p.user_id , p.likes , p.comments , p.persons , p.date_from , p.date_to , p.country ,p.city, u.name, u.image, u.profile_id , u.online 
+    FROM posts p , users u where p.status = 1 AND p.user_id = u.id  AND p.status = 1 AND p.user_id = ${userId} ORDER BY p.created_at DESC
+    LIMIT ${10*pageId}) AS t1
+    `, function(error,results,fields){
+      let posts_ids = [];
+      results.forEach(result => posts_ids.push(result.id));
+      conn.query(`
+      SELECT * FROM images where post_id in (${posts_ids.toString()})
+      `, function(error,results2,fields){
+        results.forEach(result => {
+          result.images = [];
+          results2.forEach(result2 => {
+            if(result2.post_id == result.id) {
+              result.images.push(result2);
+            }
+          });
+        });
+        conn.query(`
+        SELECT c.id comment_id, c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+        FROM comments c , users u
+        where post_id in (${posts_ids.toString()}) and u.id = c.user_id
+        GROUP by post_id
+        `, function(error,results3,fields){
+          results.forEach(result => {
+            result.comments_arr = [];
+            results3.forEach(result3 => {
+              if(result3.post_id == result.id) {
+                result.comments_arr.push(result3);
+              }
+            });
+          });
+
+          conn.query(`
+          SELECT post_id
+          FROM likes
+          where post_id in (${posts_ids.toString()}) and user_id = ${userId}
+          `, function(error,results4,fields){
+
+            results.forEach(result => {
+              result.isliked = false;
+              results4.forEach(result4 => {
+                if(result4.post_id == result.id) {
+                  result.isliked = true;
+                }
+              });
+            });
+
+            conn.release();
+            res.send(results);
+          });
+        });
+      });
+    });
+  });
+});
+
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
