@@ -24,8 +24,7 @@
               <span>{{group.members}} members</span>
             </div>
           </div>
-          <div class="col col-md-5" style="padding: 0;"></div>
-          <div class="col col-md-3">
+          <div class="col col-md-3 offset-md-5">
             <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" [routerLink]="['/group/',group.group_id]">{{'view' | translate}}</button>
           </div>
        </div> 

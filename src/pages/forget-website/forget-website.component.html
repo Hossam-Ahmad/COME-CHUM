@@ -14,7 +14,7 @@
 					 <div class="row">
 						 <div class="col">
 							  <div class="login-title">
-						   <h5>استعادة كلمة المرور</h5>
+						   <h5>{{'forget_your_password' | translate}}</h5>
 						</div>
 							 
 						 </div>
@@ -27,7 +27,7 @@
 						  
 					  	<div class="upper-border">
 					
-						  <input placeholder="البريد الالكتروني" name="email" type="email" class="form-control" id="email" [(ngModel)]="email" lang="en">
+						  <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control" id="email" [(ngModel)]="email" lang="en">
 							<div>
 								<button class="btn btn-primary forget-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
 									data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="forget()">
@@ -38,7 +38,7 @@
 										[color] = "color"
 										[mode] = "mode">
 									</mat-progress-spinner>
-										<span *ngIf="!loading">إرسال</span>
+										<span *ngIf="!loading">{{'send' | translate}}</span>
 									</button>
 							</div>
 						</div>
@@ -53,8 +53,8 @@
 				   <div class="loginSlider">
 					   <div class="container">
 						  <div class="absHeading">
-                              <h2>مميزات</h2>
-                              <h2>الاشتـــراك</h2>
+							<h2>{{'registration' | translate}}</h2>
+							<h2>{{'advnatages' | translate}}</h2>
 						  </div>
 					    <div id="carouselExampleSlidesOnly" class="carousel slide shifting" data-ride="carousel">
 				  <div class="carousel-inner">
@@ -69,7 +69,7 @@
 				  </div>
 						<div class="termLink">
 						   <i class="fas fa-align-left"></i>
-						   <a href="/terms">الشروط و الاحكام</a>
+						   <a href="/terms">{{'terms' | translate}}</a>
 						</div>
 				</div>
 	   

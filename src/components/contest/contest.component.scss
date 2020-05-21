@@ -1,12 +1,11 @@
-.outerevent{
+.outerBlog{
     background-color: white;
     margin-bottom: 2em;
     border-radius: 10px;
     padding-bottom: 1em;
 }
-.evented{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.bloged{
+    border-radius: 10px;
     background: white;
     padding: 1em 0em 1em 0em;
     margin-top: 1em;
@@ -54,7 +53,7 @@
         color: #b4b8c1;
     }
  }
- .imageOfeventer{text-align: center;margin-right: 1em;
+ .imageOfbloger{text-align: center;margin-right: 1em;
     margin-left: 1em;} 
  p{
      font-family: lato-light;
@@ -82,6 +81,16 @@
      }
     
  }
+
+ .btn-primary{
+    height: 2em;
+    padding: 0em 2em 0em 2em;
+    text-transform: capitalize;
+    background-image: linear-gradient(to right, #c3348f , #7b49b7);
+    border: none;
+    font-size: 11px;
+    border-radius: 10px;
+}
     input{
         display: inline;
         border: none;
@@ -157,8 +166,11 @@
 }
 .commentIssues{
     text-align: center;
+    border: 1px solid #0000003b;
+    padding: 0.3em;
     border-radius: 13px;
     width: 100%;
+    margin: .5em auto 1em;
     .issueInner{
         text-align: center;
         padding-top: 2px;
@@ -169,20 +181,6 @@
          }
          span{
              font-family: lato-bold;
-             margin-right: 1em;
-             margin-left: 1em;
          }
     }
-}
-
-.btn-primary{
-    margin-right: 1em;
-    margin-left: 1em;
-    height: 2em;
-    padding: 0em 2em 0em 2em;
-    text-transform: capitalize;
-    background-image: linear-gradient(to right, #c3348f , #7b49b7);
-    border: none;
-    font-size: 11px;
-    border-radius: 10px;
 }

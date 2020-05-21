@@ -119,6 +119,8 @@ import { EventComponent } from 'src/components/event/event.component';
 import { GroupComponent } from 'src/components/group/group.component';
 import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
 import { ProfileComponent } from 'src/pages/profile/profile.component';
+import { ContestWebsiteComponent } from 'src/pages/contest-website/contest-website.component';
+import { ContestComponent } from 'src/components/contest/contest.component';
 
 
 
@@ -249,7 +251,9 @@ export function getAuthServiceConfigs() {
     EventComponent,
     GroupComponent,
     GroupsWebsiteComponent,
-    ProfileComponent
+    ProfileComponent,
+    ContestWebsiteComponent,
+    ContestComponent
   ],
   imports: [
     BrowserModule,

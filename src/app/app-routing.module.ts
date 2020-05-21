@@ -38,6 +38,7 @@ import { BlogsWebsiteComponent } from 'src/pages/blogs-website/blogs-website.com
 import { EventsWebsiteComponent } from 'src/pages/events-website/events-website.component';
 import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
 import { ProfileComponent } from 'src/pages/profile/profile.component';
+import { ContestWebsiteComponent } from 'src/pages/contest-website/contest-website.component';
 
 
 const routes: Routes = [
@@ -224,6 +225,10 @@ const routes: Routes = [
       }, {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'contests',
+        component: ContestWebsiteComponent,
         canActivate: [AuthUserService]
       }
     ]
