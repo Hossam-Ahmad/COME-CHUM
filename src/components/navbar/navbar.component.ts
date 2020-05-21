@@ -17,10 +17,6 @@ export class NavbarComponent implements OnInit {
   public userImage = '';
   public userId = '';
 
-  clickEvent(e) {
-      this.status = e;
-  }
-
   constructor(public translate: TranslateService,
               public router: Router,
               public auth: AuthUserService,

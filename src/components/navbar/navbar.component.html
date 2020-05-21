@@ -86,15 +86,15 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item" (click)="clickEvent('/events')"  [ngClass]="status == '/events' ? 'active' : 'in-active'">
+        <li class="nav-item"  [ngClass]="router.url == '/events' ? 'active' : 'in-active'">
           <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/events'">{{'events_nav' | translate}}</a>
         </li>
 
-        <li class="nav-item"  (click)="clickEvent('/groups')"  [ngClass]="status == '/groups' ? 'active' : 'in-active'">
+        <li class="nav-item"  [ngClass]="router.url == '/groups' ? 'active' : 'in-active'">
           <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/groups'">{{'groups_nav' | translate}}</a>
         </li>
 
-        <li class="nav-item"  (click)="clickEvent('/feed')"  [ngClass]="status == '/feed' ? 'active' : 'in-active'">
+        <li class="nav-item"  [ngClass]="router.url == '/feed' ? 'active' : 'in-active'">
           <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/feed'">{{'home_nav' | translate}}</a>
         </li>
             

@@ -12,7 +12,7 @@
     .numOfActive{
         position: absolute;
         z-index: 9999;
-        top: 19%;
+        top: -40%;
         right: 15%;
         background-image: linear-gradient(to right, #c3348f , #7b49b7);
         padding: 5px 30px;
@@ -21,7 +21,6 @@
         color: #fff;
     }
     .list-group{
-        margin-top: 3em;
         margin-bottom: 1em;
         .list-group-item:first-child , .list-group-item + .list-group-item{
             border: none;
