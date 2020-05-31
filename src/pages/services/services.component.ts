@@ -25,9 +25,10 @@ export class ServicesComponent implements OnInit {
   }
 
   getSerivces() {
-    this.contentService.getServices().subscribe(data => {
+    this.contentService.getServices(this.pageId).subscribe(data => {
       this.services = data;
       console.log(data);
+      this.pageId++;
     });
   }
 

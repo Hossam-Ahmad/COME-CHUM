@@ -12,8 +12,8 @@ export class ContentService {
         private httpClient: HttpClient
     ) {}
 
-    getServices() {
-        return this.httpClient.get(`${environment.api}content/services`);
+    getServices(pageId) {
+        return this.httpClient.get(`${environment.api}content/services/${pageId}`);
     }
 
     getService(serviceId) {
@@ -26,12 +26,12 @@ export class ContentService {
         });
     }
 
-    getAdvantages() {
-        return this.httpClient.get(`${environment.api}content/advantages`);
+    getAdvantages(pageId) {
+        return this.httpClient.get(`${environment.api}content/advantages/${pageId}`);
     }
 
     getAdvantage(advantageId) {
-        return this.httpClient.get(`${environment.api}content/advantages/${advantageId}`);
+        return this.httpClient.get(`${environment.api}content/advantages/advantage/${advantageId}`);
     }
 
     updateAdvantage(data) {

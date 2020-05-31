@@ -40,4 +40,10 @@ export class FaqDashboardComponent implements OnInit {
     this.router.navigate(['/cpanel/faq-details'], { queryParams: { faqId: this.faqs[index].id } });
   }
 
+  remove(index) {
+    this.faqService.remove(this.faqs[index].id).subscribe( data => {
+      this.faqs.splice(index, 1);
+    });
+  }
+
 }

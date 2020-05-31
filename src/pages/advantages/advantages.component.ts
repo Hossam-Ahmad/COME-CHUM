@@ -24,10 +24,15 @@ export class AdvantagesComponent implements OnInit {
     this.getAdvantages();
   }
 
+  onScroll() {
+    this.getAdvantages();
+  }
+
   getAdvantages() {
-    this.contentService.getAdvantages().subscribe(data => {
+    this.contentService.getAdvantages(this.pageId).subscribe(data => {
       this.advantages = data;
       console.log(data);
+      this.pageId++;
     });
   }
 

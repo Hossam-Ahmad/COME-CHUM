@@ -4,9 +4,10 @@ var router = express.Router();
 var connection = enviroment.connection;
 
 /* GET contact chats listing. */
-router.get('/services', function(req, res, next) {
+router.get('/services/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    conn.query(`SELECT * FROM services`, function(error,results,fields){
+    var pageId = req.params['pageId'];
+    conn.query(`SELECT * FROM services limit ${10*pageId}`, function(error,results,fields){
       conn.release();
       res.send(results);
     });
@@ -36,16 +37,17 @@ router.post('/services', function(req, res, next) {
     });
   });
 
-  router.get('/advantages', function(req, res, next) {
+  router.get('/advantages/:pageId', function(req, res, next) {
     connection.getConnection(function (err, conn) { 
-      conn.query(`SELECT * FROM advantages`, function(error,results,fields){
+      var pageId = req.params['pageId'];
+      conn.query(`SELECT * FROM advantages limit ${10*pageId}`, function(error,results,fields){
         conn.release();
         res.send(results);
       });
     });
   });
   
-  router.get('/advantages/:advantageId', function(req, res, next) {
+  router.get('/advantages/advantage/:advantageId', function(req, res, next) {
     connection.getConnection(function (err, conn) { 
       var advantageId = req.params['advantageId'];
       conn.query(`SELECT * FROM advantages where id = ${advantageId}`, function(error,results,fields){
