@@ -24,6 +24,10 @@ export class ServicesComponent implements OnInit {
     this.getSerivces();
   }
 
+  onScroll() {
+    this.getSerivces();
+  }
+
   getSerivces() {
     this.contentService.getServices(this.pageId).subscribe(data => {
       this.services = data;
