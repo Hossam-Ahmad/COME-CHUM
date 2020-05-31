@@ -20,8 +20,4 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {}
 
-  remove() {
-    this.contentService.removeSixthPage();
-  }
-
 }

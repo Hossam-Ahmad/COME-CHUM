@@ -1,0 +1,40 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">اسئله متكررة</h4>
+                      <p class="card-category">بيانات</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+
+                        <div class="row">
+                              <div class="col-md-4 offset-md-8">
+                                  <label class="placeholder">السؤال</label>
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput style="text-align: right;"  value="{{faqData != undefined ? faqData.question : ''}}" [(ngModel)]="question" [ngModelOptions]="{standalone: true}">
+                                  </mat-form-field>
+                              </div>
+                        </div>
+                          
+                        <div class="row">
+                              <div class="col-md-12">
+                                <label class="placeholder">الاجابه</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea rows="10" matInput style="text-align: right;" [(ngModel)]="answer" [ngModelOptions]="{standalone: true}" value="{{faqData != undefined ? faqData.answer : ''}}"></textarea>
+                                 </mat-form-field>
+                              </div>
+                        </div>
+
+                          <div class="clearfix"></div>
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right btn-create" (click)="update()">تعديل</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>

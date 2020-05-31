@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   public userName = '';
   public userImage = '';
   public userId = '';
+  public isAuthenticated = false;
 
   constructor(public translate: TranslateService,
               public router: Router,
@@ -27,7 +28,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.status = this.router.url;
     this.language = localStorage.getItem('language');
-    this.getUserData();
+    if (this.auth.isAuthenticated()) {
+      this.getUserData();
+      this.isAuthenticated = true;
+    }
   }
 
   logout() {

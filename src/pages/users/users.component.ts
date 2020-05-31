@@ -39,7 +39,7 @@ export class UsersComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}profile/${this.users[index].profile_id}`, '_blank');
+    const win = window.open(`${environment.host}profile?userId=${this.users[index].profile_id}`, '_blank');
     win.focus();
   }
 

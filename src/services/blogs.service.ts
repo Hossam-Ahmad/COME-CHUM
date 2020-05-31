@@ -14,6 +14,10 @@ export class BlogsService {
       return this.httpClient.get(`${environment.api}blogs/all/${pageId}/${userId}`);
     }
 
+    getAllDashboard(pageId): any {
+      return this.httpClient.get(`${environment.api}blogs/all/${pageId}`);
+    }
+
     getTop(): any {
       return this.httpClient.get(`${environment.api}blogs/top`);
     }

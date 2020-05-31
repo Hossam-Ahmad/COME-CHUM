@@ -10,7 +10,7 @@
   <!-- Collapsible content -->
   <links>
 
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" *ngIf="isAuthenticated">
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <img class="profile-icon" src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" />
@@ -32,7 +32,7 @@
     </ul>
 
 
-    <ul class="navbar-nav mr-auto no-distance">
+    <ul class="navbar-nav mr-auto no-distance" *ngIf="isAuthenticated">
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link waves-light" mdbWavesEffect>
           <a class="iconLink">
@@ -61,11 +61,11 @@
 
       
 
-      <a class="iconLink distance" routerLinkActive="on"  [routerLink]="[ '/chat' ]">
+      <a class="iconLink distance" routerLinkActive="on"  [routerLink]="[ '/chat' ]" *ngIf="isAuthenticated">
         <i class="fas fa-comment-dots icon" style="font-size: 23px;"></i>
       </a>
 
-      <div class="search-container" *ngIf="!isMobile()">
+      <div class="search-container" *ngIf="!isMobile() && isAuthenticated">
         <input class="search" type="text" placeholder="{{'search' | translate}}" 
         [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left', 
         'padding-left': translate.currentLang == 'ar' ? '0em' : '2em', 

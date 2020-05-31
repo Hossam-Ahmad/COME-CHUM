@@ -4,6 +4,20 @@ var router = express.Router();
 var connection = enviroment.connection;
 
 /* GET groups listing. */
+
+router.get('/all/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var pageId = req.params['pageId'];
+    conn.query(`
+    SELECT * FROM faq WHERE status = 1
+    LIMIT ${10*pageId}
+    `, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
 router.get('/all/:language/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var pageId = req.params['pageId'];

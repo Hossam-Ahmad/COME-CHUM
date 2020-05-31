@@ -1,0 +1,55 @@
+
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">قائمه الاسئلة المتكررة</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                حذف
+                                            </th>
+                                            <th>
+                                                تعديل
+                                            </th>
+                                            <th>
+                                                الاجابه
+                                            </th>
+                                            <th>
+                                                السؤال 
+                                            </th>
+                                            <th>
+                                                الرقم
+                                            </th>
+                                        </thead>
+                                        <tbody 
+                                            infiniteScroll
+                                            [infiniteScrollDistance]="2"
+                                            [infiniteScrollThrottle]="50"
+                                            (scrolled)="onScroll()"
+                                        >
+                                            <tr *ngFor="let faq of faqs;let i = index;">
+                                                <td><button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="remove(i)">حذف</button></td>
+                                                <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">فتح</button></td>
+                                                <td>{{faq.answer}}</td>
+                                                <td>{{faq.question}}</td>
+                                                <td class="text-primary">
+                                                    {{i+1}}
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <app-dasboard-footer></app-dasboard-footer>

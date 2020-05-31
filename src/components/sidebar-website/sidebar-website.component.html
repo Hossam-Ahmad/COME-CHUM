@@ -12,7 +12,7 @@
         </div>
     </perfect-scrollbar>
     
-    <div class="other">
+    <div class="other" *ngIf="isAuthenticated">
         <a routerLinkActive="on"  [routerLink]="[ '/packages' ]">
             <div class="row">
                     <img src="../../../assets/images/package.png"/>
@@ -26,7 +26,7 @@
     </div>
     
     
-    <div class="other">
+    <div class="other" *ngIf="isAuthenticated">
         <a routerLinkActive="on"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: userId }">
             <div class="row">
                 <img src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';"/>
@@ -37,9 +37,21 @@
             </div>
         </a>
     </div>
+
+
+    <div class="other support" *ngIf="!isAuthenticated" style="height: 3em;">
+        <ul [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}">
+            <li>
+                <a routerLinkActive="on"  [routerLink]="[ '/faq' ]" [ngClass]="{'active': router.url == '/faq'}">
+                    <i class="material-icons active">help</i>
+                    <p>{{'help' | translate}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
     
     
-    <div class="other support">
+    <div class="other support" *ngIf="isAuthenticated">
         <ul [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}">
             <li>
                 <a routerLinkActive="on"  [routerLink]="[ '/faq' ]" [ngClass]="{'active': router.url == '/faq'}">

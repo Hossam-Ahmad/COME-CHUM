@@ -1,0 +1,41 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">الميزة</h4>
+                      <p class="card-category">بيانات</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+
+                          
+                        <div class="row">
+                              <div class="col-md-12">
+                                <label class="placeholder">العنوان بالعربية</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput style="text-align: right;" [(ngModel)]="ar" [ngModelOptions]="{standalone: true}" value="{{advantageData != undefined ? advantageData.ar : ''}}"></textarea>
+                                 </mat-form-field>
+                              </div>
+                        </div>
+                        
+                        <div class="row">
+                                <div class="col-md-12">
+                                <label class="placeholder">العنوان بالانجليزية</label>
+                                <mat-form-field class="example-full-width">
+                                    <textarea matInput [(ngModel)]="en" [ngModelOptions]="{standalone: true}" value="{{advantageData != undefined ? advantageData.en : ''}}"></textarea>
+                                </mat-form-field>
+                                </div>
+                        </div>
+
+                          <div class="clearfix"></div>
+                          <button mat-raised-button type="submit" class="btn btn-primary pull-right btn-create" (click)="update()">تعديل</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>

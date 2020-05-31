@@ -74,6 +74,21 @@ import { SettingsComponent } from 'src/pages/settings/settings.component';
 import { PackagesWebsiteComponent } from 'src/pages/packages-website/packages-website.component';
 import { BlogsWebsiteComponent } from 'src/pages/blogs-website/blogs-website.component';
 import { EventsWebsiteComponent } from 'src/pages/events-website/events-website.component';
+import { EventComponent } from 'src/components/event/event.component';
+import { GroupComponent } from 'src/components/group/group.component';
+import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
+import { ProfileComponent } from 'src/pages/profile/profile.component';
+import { ContestWebsiteComponent } from 'src/pages/contest-website/contest-website.component';
+import { ContestComponent } from 'src/components/contest/contest.component';
+import { ServicesComponent } from 'src/pages/services/services.component';
+import { ServiceDetailsComponent } from 'src/pages/service-details/service-details.component';
+import { AdvantagesDetailsComponent } from 'src/pages/advantages-details/advantages-details.component';
+import { AdvantagesComponent } from 'src/pages/advantages/advantages.component';
+import { AboutComponent } from 'src/pages/about/about.component';
+import { FaqDashboardComponent } from 'src/pages/faq-dashboard/faq-dashboard.component';
+import { FaqDetailsComponent } from 'src/pages/faq-details/faq-details.component';
+import { InterestsComponent } from 'src/pages/interests/interests.component';
+import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -115,14 +130,7 @@ import { ChatService } from 'src/services/chat.service';
 import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
-import { EventComponent } from 'src/components/event/event.component';
-import { GroupComponent } from 'src/components/group/group.component';
-import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
-import { ProfileComponent } from 'src/pages/profile/profile.component';
-import { ContestWebsiteComponent } from 'src/pages/contest-website/contest-website.component';
-import { ContestComponent } from 'src/components/contest/contest.component';
-
-
+import { InterestsService } from 'src/services/interests.service';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -253,7 +261,16 @@ export function getAuthServiceConfigs() {
     GroupsWebsiteComponent,
     ProfileComponent,
     ContestWebsiteComponent,
-    ContestComponent
+    ContestComponent,
+    ServicesComponent,
+    ServiceDetailsComponent,
+    AdvantagesComponent,
+    AdvantagesDetailsComponent,
+    AboutComponent,
+    FaqDashboardComponent,
+    FaqDetailsComponent,
+    InterestsComponent,
+    InterestDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -312,6 +329,7 @@ export function getAuthServiceConfigs() {
     SettingsService,
     ChatService,
     FeedService,
+    InterestsService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

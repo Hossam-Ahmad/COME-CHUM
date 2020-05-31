@@ -13,3 +13,19 @@
     float: right !important;
     font-family: cairo-semibold !important;
 }
+
+.interest{
+    border: 1px solid #b03a99;
+    border-radius: 25px;
+    padding: 1em;
+    height: 1em;
+    line-height: 0em;
+    font-family: cairo-semibold;
+    color: #b03a99;
+    margin: 1em;
+}
+
+mat-form-field{
+    text-align: right;
+    font-family: cairo-regular;
+}

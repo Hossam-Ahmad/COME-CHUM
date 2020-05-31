@@ -65,6 +65,41 @@ router.get('/all/:pageId/:userId', function(req, res, next) {
   });
 });
 
+router.get('/all/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var pageId = req.params['pageId'];
+    conn.query(`
+    
+    
+    SELECT * FROM (
+      SELECT b.id , b.title , b.created_at , b.created_by , b.likes , b.comments , b.seen , b.blog_id, b.image , u.name created_by_name
+      FROM blogs b , users u
+      where b.status = 1 and b.created_by = u.id
+      order by b.seen DESC
+      LIMIT 5
+    ) AS t1
+    UNION
+
+    SELECT * FROM (
+      SELECT b.id , b.title , b.created_at , b.created_by , b.likes , b.comments , b.seen , b.blog_id , b.image , 'admin' created_by_name
+      FROM blogs b
+      where b.status = 1 and b.created_by = -1
+      order by b.seen DESC
+      LIMIT 5
+    ) AS t2
+
+    ORDER by seen DESC
+    limit ${10*pageId}
+
+
+
+    `, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
 router.get('/top', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     conn.query(`

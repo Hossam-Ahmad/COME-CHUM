@@ -39,6 +39,15 @@ import { EventsWebsiteComponent } from 'src/pages/events-website/events-website.
 import { GroupsWebsiteComponent } from 'src/pages/groups-website/groups-website.component';
 import { ProfileComponent } from 'src/pages/profile/profile.component';
 import { ContestWebsiteComponent } from 'src/pages/contest-website/contest-website.component';
+import { ServicesComponent } from 'src/pages/services/services.component';
+import { ServiceDetailsComponent } from 'src/pages/service-details/service-details.component';
+import { AdvantagesComponent } from 'src/pages/advantages/advantages.component';
+import { AdvantagesDetailsComponent } from 'src/pages/advantages-details/advantages-details.component';
+import { AboutComponent } from 'src/pages/about/about.component';
+import { FaqDashboardComponent } from 'src/pages/faq-dashboard/faq-dashboard.component';
+import { FaqDetailsComponent } from 'src/pages/faq-details/faq-details.component';
+import { InterestsComponent } from 'src/pages/interests/interests.component';
+import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 
 
 const routes: Routes = [
@@ -112,13 +121,28 @@ const routes: Routes = [
         canActivate: [AuthService]
       },
       {
+        path: 'services',
+        component: ServicesComponent,
+        canActivate: [AuthService]
+      },
+      {
         path: 'blogs',
         component: BlogsComponent,
         canActivate: [AuthService]
       },
       {
+        path: 'advantages',
+        component: AdvantagesComponent,
+        canActivate: [AuthService]
+      },
+      {
         path: 'user-details',
         component: UserProfileComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'service-details',
+        component: ServiceDetailsComponent,
         canActivate: [AuthService]
       },
       {
@@ -132,6 +156,11 @@ const routes: Routes = [
         canActivate: [AuthService]
       },
       {
+        path: 'advantages-details',
+        component: AdvantagesDetailsComponent,
+        canActivate: [AuthService]
+      },
+      {
         path: 'blog-details',
         component: BlogDetailsComponent,
         canActivate: [AuthService]
@@ -139,6 +168,31 @@ const routes: Routes = [
       {
         path: 'contest-details',
         component: ContestDetailsComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'faq-dashboard',
+        component: FaqDashboardComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'faq-details',
+        component: FaqDetailsComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'interests',
+        component: InterestsComponent,
+        canActivate: [AuthService]
+      },
+      {
+        path: 'interest-details',
+        component: InterestDetailsComponent,
         canActivate: [AuthService]
       }
     ]
@@ -225,7 +279,7 @@ const routes: Routes = [
       }, {
         path: 'profile',
         component: ProfileComponent,
-        canActivate: [AuthUserService]
+        // canActivate: [AuthUserService]
       }, {
         path: 'contests',
         component: ContestWebsiteComponent,

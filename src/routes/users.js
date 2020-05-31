@@ -57,9 +57,17 @@ router.get('/online/:pageId', function(req, res, next) {
 router.get('/user/:userId', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var userId = req.params['userId'];
-    connection.query(`SELECT * FROM users where id = ${userId}`, function(error,results,fields){
-      conn.release();  
-      res.send(results);
+
+    connection.query(`SELECT * , u.name user_name , p.name package_name , c.name_ar country_name , cc.name_ar city_name
+    FROM users u , packages p , countries c , cities cc
+    where u.id = ${userId} AND u.package = p.id AND u.country = c.id AND u.city = cc.id`, function(error,results,fields){
+      connection.query(`SELECT i.name_ar
+      FROM users u , interests i , interests_users iu 
+      where u.id = ${userId} AND u.id = iu.user_id AND iu.interest_id = i.id`, function(error,results2,fields){
+        conn.release();  
+        results[0].interests = results2;
+        res.send(results);
+      });
     });
   });
 });

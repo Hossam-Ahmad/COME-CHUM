@@ -1,0 +1,22 @@
+.btn_title{
+    font-family: cairo-semibold;
+    color: #9c27b0;
+    border: 1px solid #9c27b0;
+    background-color: transparent;
+}
+
+.mat-input-element:disabled{
+    color: #000;
+}
+
+.placeholder {
+    float: right !important;
+    font-family: cairo-semibold !important;
+}
+
+.btn-create{
+    margin: auto !important;
+    display: block;
+    margin-top: 1em !important;
+    font-family: cairo-semibold;
+}

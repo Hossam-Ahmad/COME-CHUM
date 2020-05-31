@@ -16,6 +16,7 @@ export class SidebarWebsiteComponent implements OnInit {
   public userName = '';
   public userId = '';
   public userImage = '';
+  public isAuthenticated = false;
   public status = '/';
   public routes = [
     { path: '/feed', title: 'home_nav',  icon: 'home', class: ''},
@@ -27,11 +28,14 @@ export class SidebarWebsiteComponent implements OnInit {
     { path: '/packages', title: 'packages',  icon: 'payment', class: ''},
 ];
 
-  constructor(public router: Router, public authService: AuthUserService, public translate : TranslateService) { }
+  constructor(public router: Router, public authService: AuthUserService, public translate: TranslateService) { }
 
   ngOnInit() {
     this.status = this.router.url;
-    this.getUserData();
+    if (this.authService.isAuthenticated()) {
+      this.getUserData();
+      this.isAuthenticated = true;
+    }
   }
 
   isMobileMenu() {

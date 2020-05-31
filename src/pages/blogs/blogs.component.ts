@@ -34,7 +34,7 @@ export class BlogsComponent implements OnInit {
 
   getBlogs() {
     this.auth.getData().subscribe( data => {
-      this.blogsService.getAll(this.pageId, data.id).subscribe(data2 => {
+      this.blogsService.getAllDashboard(this.pageId).subscribe(data2 => {
         this.blogs = data2;
         console.log(data2);
         this.pageId++;

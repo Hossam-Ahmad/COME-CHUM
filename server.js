@@ -25,6 +25,8 @@ const faq = require('./src/routes/faq');
 const settings = require('./src/routes/settings');
 const chat = require('./src/routes/chat');
 const feed = require('./src/routes/feed');
+const content = require('./src/routes/content');
+const interests = require('./src/routes/interests');
 
 const app = express();
 const port = process.env.PORT || 4200;
@@ -54,6 +56,8 @@ app.use('/api/faq', faq);
 app.use('/api/settings', settings);
 app.use('/api/chat', chat);
 app.use('/api/feed', feed);
+app.use('/api/content', content);
+app.use('/api/interests', interests);
 
 app.get('/googlec2d96c9b2c4b2245.html', (request, response) => {
     response.send('google-site-verification: googlec2d96c9b2c4b2245.html');
