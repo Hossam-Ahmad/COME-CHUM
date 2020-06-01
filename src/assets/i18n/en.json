@@ -116,5 +116,8 @@
   "find_more_events" : "Find more events",
   "activate" : "Actiuate Accovnt",
   "check_your_email" : "Check your email .. We have sent you an activation email",
-  "send_email" : "Send email again"
+  "send_email" : "Send email again",
+  "from" : "From",
+  "to" : "To",
+  "interests" : "Interests"
 }

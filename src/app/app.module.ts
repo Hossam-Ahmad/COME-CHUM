@@ -20,7 +20,9 @@ import {
   MatIconModule,
   MatToolbarModule,
   MatListModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -108,6 +110,7 @@ import { asideProfileComponent } from 'src/components/aside-profile/aside-profil
 import { NewMessageComponent } from 'src/components/new-message/new-message.component';
 import { BlogComponent } from 'src/components/blog/blog.component';
 import { CheckoutComponent } from 'src/components/checkout/checkout.component';
+import { SearchComponent } from 'src/components/search/search.component';
 
 // Services
 import { AuthService } from '../services/auth.service';
@@ -270,7 +273,8 @@ export function getAuthServiceConfigs() {
     FaqDashboardComponent,
     FaqDetailsComponent,
     InterestsComponent,
-    InterestDetailsComponent
+    InterestDetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -291,6 +295,8 @@ export function getAuthServiceConfigs() {
     MatToolbarModule,
     MatListModule,
     MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgbModule,
     PerfectScrollbarModule,
     BrowserAnimationsModule,
@@ -330,6 +336,7 @@ export function getAuthServiceConfigs() {
     ChatService,
     FeedService,
     InterestsService,
+    MatDatepickerModule,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
@@ -340,6 +347,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent]
+  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, SearchComponent]
 })
 export class AppModule { }

@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from 'src/services/authUser.service';
 import { UsersService } from 'src/services/users.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +23,8 @@ export class NavbarComponent implements OnInit {
   constructor(public translate: TranslateService,
               public router: Router,
               public auth: AuthUserService,
-              private users: UsersService
+              private users: UsersService,
+              private dialog: MatDialog,
               ) {
                }
 
@@ -56,6 +59,17 @@ export class NavbarComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  advancedSearch() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        id: this.userId
+    };
+    dialogConfig.panelClass = 'colorize-background';
+    this.dialog.open(SearchComponent, dialogConfig);
   }
 
 }
