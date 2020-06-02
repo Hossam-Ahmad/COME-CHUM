@@ -12,6 +12,10 @@ export class ContentService {
         private httpClient: HttpClient
     ) {}
 
+    getHome() {
+        return this.httpClient.get(`${environment.api}content/home`);
+    }
+
     getServices(pageId) {
         return this.httpClient.get(`${environment.api}content/services/${pageId}`);
     }

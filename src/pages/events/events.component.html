@@ -51,7 +51,8 @@
                                                 <!-- <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td> -->
                                                 <td>{{misc.formatDate(event.created_at)}}</td>
                                                 <td>{{event.about}}</td>
-                                                <td><a [routerLink]="['/cpanel/user-details']" [queryParams]="{ userId: event.owner_id }">{{event.owner_name}}</a></td>
+                                                <td *ngIf="event.owner_id != -1"><a [routerLink]="['/cpanel/user-details']" [queryParams]="{ userId: event.owner_id }">{{event.owner_name}}</a></td>
+                                                <td *ngIf="event.owner_id == -1">{{event.owner_name}}</td>
                                                 <td>{{event.members}}</td>
                                                 <td>{{event.name}}</td>
                                                 <td class="text-primary">

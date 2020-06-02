@@ -4,6 +4,27 @@ var router = express.Router();
 var connection = enviroment.connection;
 
 /* GET contact chats listing. */
+
+router.get('/home', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    let response = {};
+    conn.query(`SELECT * FROM settings where name IN ('map', 'address', 'Fax', 'Phone', 'Whatsapp', 'Email', 'facebook', 'twitter', 'instagram')`, function(error,results,fields){
+      response.data = results
+      conn.query(`SELECT * FROM events limit 3`, function(error,results2,fields){
+        response.events = results2
+        conn.query(`SELECT * FROM services`, function(error,results3,fields){
+          response.benefits = results3
+          conn.query(`SELECT * FROM client_reviews`, function(error,results4,fields){
+            response.reviews = results4
+            conn.release();
+            res.send(response);
+          });
+        });
+      });
+    });
+  });
+});
+
 router.get('/services/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var pageId = req.params['pageId'];

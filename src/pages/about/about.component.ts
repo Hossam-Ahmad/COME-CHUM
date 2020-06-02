@@ -67,4 +67,8 @@ export class AboutComponent implements OnInit {
     }
   }
 
+  onChangeMap(location) {
+    this.map = location;
+  }
+
 }

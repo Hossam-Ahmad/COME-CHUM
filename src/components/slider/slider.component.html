@@ -1,14 +1,14 @@
-<ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-  <ng-template ngbSlide *ngFor="let image of images">
+<ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+  <ng-template ngbSlide *ngFor="let slide of data">
     <div class="picsum-img-wrapper carousel-indicators--round">
       <div class="innerSlider">
-      <img [src]="image" alt="Random slide">
-      <p>MR.Ahmed Ali</p>
-      <span>CEO Addids</span>
+      <img [src]="slide.image" alt="Random slide">
+      <p>{{slide.name}}</p>
+      <span>{{slide.title}}</span>
     </div>
     </div>
     <div class="carousel-caption">
-      <p>This carousel hides navigation arrows and indicators, This carousel hides navigation arrows and indicators</p>
+      <p>{{slide.body}}</p>
     </div>
     
   </ng-template>

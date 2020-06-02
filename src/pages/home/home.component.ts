@@ -6,6 +6,7 @@ import { UsersService } from 'src/services/users.service';
 import { ContactService } from 'src/services/contact.service';
 import { Socket } from 'ngx-socket-io';
 import { TranslateService } from '@ngx-translate/core';
+import { ContentService } from 'src/services/content.service';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +23,10 @@ export class HomeComponent implements OnInit , OnDestroy {
   public password = '';
   public text = '';
   public messages = [];
+  public eventIndex = 0;
   private page = 1;
   private userData;
+  public homeData;
 
   constructor(
     public authService: AuthUserService,
@@ -32,7 +35,9 @@ export class HomeComponent implements OnInit , OnDestroy {
     private users: UsersService,
     private contact: ContactService,
     private socket: Socket,
-    public userService: UsersService) {
+    public userService: UsersService,
+    private contentService: ContentService,
+    public translate: TranslateService) {
 
     this.h = window.innerHeight;
     this.m = ((this.h) * ( 2 / 3)) + 'px';
@@ -41,6 +46,10 @@ export class HomeComponent implements OnInit , OnDestroy {
   }
 
   ngOnInit() {
+    this.contentService.getHome().subscribe( data => {
+      console.log(data);
+      this.homeData = data;
+    });
   }
 
   ngAfterViewInit() {
@@ -125,6 +134,18 @@ export class HomeComponent implements OnInit , OnDestroy {
     this.contact.send(this.text, 0, this.userData.contact_id, 0).subscribe( data => {
       this.text = '';
     });
+  }
+
+  nextEvent() {
+    if (this.eventIndex < this.homeData.events.length - 1) {
+      this.eventIndex++;
+    }
+  }
+
+  prevEvent() {
+    if (this.eventIndex > 0) {
+      this.eventIndex--;
+    }
   }
 
 }

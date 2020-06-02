@@ -35,9 +35,13 @@
                     <div class="col col-sm-4">
                         <p><span>come </span><span>chum</span></p>
                     </div>
-                    <div class="col col-sm-4 icons">
-                        <i class="fab fa-facebook-f"></i>
+                    <div class="col col-sm-4 icons" *ngIf="homeData != undefined">
+                      <a [href]="[ homeData.data[6].value ]">
+                        <i class="fab fa-facebook-f" ></i>
+                      </a>
+                      <a [href]="[homeData.data[7].value]">
                         <i class="fab fa-twitter"></i>
+                      </a>
                     </div>
                 </div>
                 <div class="row">
@@ -177,12 +181,12 @@
          <div class="row">
           <div class="col col-md-8 offset-md-4">
             <div class="row">
-            <div class="col col-md-6 test">
-              <div class="imagePng">
-                <h5>Teleferico</h5>
-                <p>Lurem ipsum is simply dummy text.</p>
-                <i class="fas fa-chevron-circle-left prevIcon"></i>
-                <i class="fas fa-chevron-circle-right nextIcon"></i>
+            <div class="col col-md-6 test" *ngIf="homeData != undefined">
+              <div class="imagePng" [ngStyle]="{'background-image': 'url(' + homeData.events[eventIndex].cover + ')'}">
+                <h5>{{homeData.events[eventIndex].name}}</h5>
+                <p>{{homeData.events[eventIndex].about}}</p>
+                <i class="fas fa-chevron-circle-left prevIcon" (click)="prevEvent()"></i>
+                <i class="fas fa-chevron-circle-right nextIcon" (click)="nextEvent()"></i>
               </div>
             </div>
             <div class="col col-md-6">
@@ -264,22 +268,28 @@
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-wallet"></i>
-                <h5>Lurem ipsum is simply dummy</h5>
-                <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[0].title_ar : ''}}</h5>
+                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[0].title_en : ''}}</h5>
+                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[0].subtitle_ar : ''}}</p>
+                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[0].subtitle_en : ''}}</p>
               </div>
             </div>
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-shopping-cart"></i>
-                <h5>Lurem ipsum is simply </h5>
-                <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[1].title_ar : ''}}</h5>
+                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[1].title_en : ''}}</h5>
+                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[1].subtitle_ar : ''}}</p>
+                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[1].subtitle_en : ''}}</p>
               </div>
             </div>
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-headset"></i> 
-                <h5>Lurem ipsum is </h5>
-                <p>Lurem ipsum is simply dummy text, simply dummy text, simply text.</p>
+                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[2].title_ar : ''}}</h5>
+                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[2].title_en : ''}}</h5>
+                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[2].subtitle_ar : ''}}</p>
+                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[2].subtitle_en : ''}}</p>
               </div>
             </div>
           </div>
@@ -287,12 +297,11 @@
       </div>
       
       <!-- Reviews -->
-      <div class="reviews">
+      <div class="reviews" *ngIf="homeData != undefined">
         <div class="container">
           <h2>{{'client_reviews' | translate}}</h2>
-          <app-slider></app-slider>
+          <app-slider [data]="homeData.reviews"></app-slider>
           <!-- carousel -->
-          
         </div>
       </div>
       
@@ -302,8 +311,8 @@
           <div class="row">
             <div class="col col-md-6 mapInner">
               <!-- map -->
-              <div class="map">
-                <app-map></app-map>
+              <div class="map" *ngIf="homeData != undefined">
+                <app-map [location]="homeData.data[0].value.split(',')" [admin]="false"></app-map>
               </div>
             </div>
             <div class="col col-md-6 contactCol">
@@ -312,8 +321,7 @@
                  <p class="contactTitl">{{'address' | translate}}</p>
                </div>
                <div class="col col-md-8">
-                 <p>Text text text text text text text text text text text text 
-                    TeText text text text text text text text text text text text  Te</p>
+                 <p>{{homeData != undefined ? homeData.data[1].value : ''}}</p>
                </div>
              </div>
              <div class="row">
@@ -321,7 +329,7 @@
                 <p class="contactTitl">{{'fax' | translate}}</p>
               </div>
               <div class="col col-md-8">
-                <p>+1 323 555 1234</p>
+                <p>{{homeData != undefined ? homeData.data[2].value : ''}}</p>
               </div>
             </div>
             <div class="row">
@@ -329,7 +337,7 @@
                 <p class="contactTitl">{{'phone' | translate}}</p>
               </div>
               <div class="col col-md-8">
-                <p>+1 323 555 1234 copy</p>
+                <p>{{homeData != undefined ? homeData.data[3].value : ''}}</p>
               </div>
             </div>
             <div class="row">
@@ -337,7 +345,7 @@
                 <p class="contactTitl">{{'whatsapp' | translate}}</p>
               </div>
               <div class="col col-md-8">
-                <p>+7 898 323 23 23</p>
+                <p>{{homeData != undefined ? homeData.data[4].value : ''}}</p>
               </div>
             </div>
             <div class="row">
@@ -345,7 +353,7 @@
                 <p class="contactTitl">{{'email' | translate}}</p>
               </div>
               <div class="col col-md-8">
-                <p>alex.tour@gmail.com</p>
+                <p>{{homeData != undefined ? homeData.data[5].value : ''}}</p>
               </div>
             </div>
             <div class="row">
@@ -395,13 +403,18 @@
           <div class="row">
             <div class="col col-md-9 div-row">
               <img src="../../../assets/images/logo.png">
-              <span>Copyright &copy; 2020 Come Chum <span class="click4bsnes"> | Click4bussiness</span></span>
+              <span>Copyright &copy; 2020 Come Chum <a href="http://www.click4ebusiness.com"> <span class="click4bsnes"> | Click4bussiness</span> </a> </span>
             </div>
-            <div class="col col-md-3">
-              <i class="fab fa-facebook-f"></i>
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-twitter"></i>
-            
+            <div class="col col-md-3 icons" *ngIf="homeData != undefined">
+              <a [href]="[ homeData.data[6].value ]">
+                <i class="fab fa-facebook-f" style="color:white"></i>
+              </a>
+              <a [href]="[ homeData.data[7].value ]">
+                <i class="fab fa-twitter" style="color:white"></i>
+              </a>
+              <a [href]="[ homeData.data[8].value ]">
+                <i class="fab fa-instagram" style="color:white"></i>
+              </a>            
             </div>
           </div>
          

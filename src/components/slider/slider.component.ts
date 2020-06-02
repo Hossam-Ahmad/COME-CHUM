@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,10 +9,10 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 export class SliderComponent implements OnInit {
   public h;
   public m;
+  @Input() data;
 
   showNavigationArrows = false;
   showNavigationIndicators = true;
-  images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   constructor(config: NgbCarouselConfig) {
     this.h = window.innerHeight;
@@ -23,6 +23,7 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }
