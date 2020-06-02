@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
+import { InterestsService } from 'src/services/interests.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -18,8 +20,17 @@ export class RegisterWebsiteComponent implements OnInit {
   public repassword = '';
   public gender = '';
   public country = '';
+  public city = '';
+  public about = '';
+  public postal_code = '';
+  public phone = '';
   public height;
   public loading = false;
+  public phase = 1;
+  public interests = [];
+  selectedInterests = [];
+  page = 1;
+
 
   color = 'white';
   mode = 'indeterminate';
@@ -28,7 +39,9 @@ export class RegisterWebsiteComponent implements OnInit {
     public authService: AuthService,
     public router: Router,
     private social: SocialService,
-    private notifierService: NotifierService) {
+    private notifierService: NotifierService,
+    private interestsService: InterestsService,
+    private translate: TranslateService) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
     this.email = navigation.extras.state ? navigation.extras.state.email : '';
@@ -36,6 +49,7 @@ export class RegisterWebsiteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadInterests();
   }
 
   loginTwitter() {
@@ -58,32 +72,26 @@ export class RegisterWebsiteComponent implements OnInit {
 
   }
 
-  login() {
-    if (this.email !== '' && this.password !== '') {
-      this.loading = true;
-      this.authService.loginUser(this.email, this.password).subscribe(result => {
-        if (result['status'] === 'success') {
-          this.loading = false;
-          this.authService.setToken(result['token']);
-          this.router.navigateByUrl('/feed');
-        } else {
-          this.loading = false;
-          this.notifierService.show({
-            type : 'error',
-            message: 'هناك خطأ في البريد الالكتروني او كلمة المرور',
-          });
-        }
-      });
-    } else {
-      this.notifierService.show({
-        type : 'error',
-        message: 'ادخل كل البيانات',
-      });
-    }
+  continue() {
+    this.phase++;
   }
 
   forget() {
     this.router.navigateByUrl('/cpanel/forget');
+  }
+
+  loadInterests() {
+    this.interestsService.getAll(this.page).subscribe( data => {
+      this.interests = data;
+      console.log(this.interests);
+      this.selectedInterests = new Array<boolean>(this.interests.length).fill(false);
+      console.log(this.selectedInterests);
+      this.page++;
+    });
+  }
+
+  select(index) {
+    this.selectedInterests[index] = !this.selectedInterests[index];
   }
 
 }

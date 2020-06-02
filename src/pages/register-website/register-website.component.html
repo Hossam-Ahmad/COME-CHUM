@@ -51,48 +51,92 @@
 								</div>
 						</div>
 	
-						  
-						<div class="row lower-border second-row">
-							<div class="col col-sm-6 first-col">
-								<input placeholder="{{'personal_name' | translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+						<!-- phase 1 basic information -->
+						<div *ngIf="phase == 1"> 
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'personal_name' | translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+								</div>
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+								</div>
 							</div>
-							<div class="col col-sm-6 first-col">
-								<input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+	
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'password' | translate}}" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
+								</div>
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'repeat_password' | translate}}" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
+								</div>
+							</div>
+	
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+										<option value="" disabled selected>{{'country' | translate}}</option>
+										<option value="0">مصر</option>
+										<option value="1">السعودية</option>
+									</select>
+									<i class="fas fa-caret-down select-icon"></i>
+								</div>
+								<div class="col col-sm-6 first-col">
+									<select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+										<option value="" disabled selected>{{'city' | translate}}</option>
+										<option value="0">القاهرة</option>
+										<option value="1">الاسكندريه</option>
+									</select>
+									<i class="fas fa-caret-down select-icon"></i>
+								</div>
 							</div>
 						</div>
+						<!-- end phase 1 -->
+						
 
-						<div class="row lower-border second-row">
-							<div class="col col-sm-6 first-col">
-								<input placeholder="{{'password' | translate}}" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
+						<!-- phase 2 extra information -->
+						<div *ngIf="phase == 2"> 
+	
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+										<option value="" disabled selected>{{'gender' | translate}}</option>
+										<option value="0">ذكر</option>
+										<option value="1">انثى</option>
+									</select>
+									<i class="fas fa-caret-down select-icon"></i>
+								</div>
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone">
+								</div>
 							</div>
-							<div class="col col-sm-6 first-col">
-								<input placeholder="{{'repeat_password' | translate}}" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
-							</div>
-						</div>
 
-						<div class="row lower-border second-row">
-							<div class="col col-sm-6 first-col">
-								<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
-									<option value="" disabled selected>{{'gender' | translate}}</option>
-                                    <option value="0">ذكر</option>
-                                    <option value="1">انثى</option>
-								</select>
-								<i class="fas fa-caret-down select-icon"></i>
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'postal_code' | translate}}" name="phone" type="text" class="form-control input" lang="en" [(ngModel)]="phone">
+								</div>
 							</div>
-							<div class="col col-sm-6 first-col">
-								<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
-									<option value="" disabled selected>{{'country' | translate}}</option>
-                                    <option value="0">مصر</option>
-                                    <option value="1">السعودية</option>
-								</select>
-								<i class="fas fa-caret-down select-icon"></i>
+
+							<div class="row lower-border second-row">
+								<div class="col col-sm-12 first-col">
+									<textarea placeholder="{{'about' | translate}}" name="about" type="text" class="form-control input" lang="en" [(ngModel)]="about"></textarea>
+								</div>
 							</div>
+
 						</div>
+						<!-- end phase 2 -->
+
+						<!-- phase 3 interests -->
+						<div *ngIf="phase == 3"> 
+							<span *ngFor="let interest of interests; let i = index" class="interest" [ngClass]="{'active': selectedInterests[i]}" (click)="select(i)">
+								{{translate.currentLang == 'ar' ? interest.name_ar : interest.name_en}}
+							</span>
+						</div>
+						<!-- end phase 3 -->
 
 						<div class="upper-border">
 							 	<div>
 								  <button class="btn btn-primary forget-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
-									  data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="forget()">
+									  data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="continue()">
 									  <mat-progress-spinner *ngIf="loading"
 										  style="margin: auto;"
 										  diameter="30"
@@ -103,7 +147,7 @@
 										  <span *ngIf="!loading">{{'continue' | translate}}</span>
 									  </button>
 							  	</div>
-						  </div>
+						</div>
 
 					</form>
 				 

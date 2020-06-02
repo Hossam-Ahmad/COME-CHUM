@@ -196,6 +196,25 @@
     background-color: white !important;
 }
 
+
+.interest{
+    border-radius: 20px;
+    border: 1px solid #c6338e;
+    color: #c6338e;
+    padding: 0.5em;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.interest-title{
+    font-family: cairo-semibold;
+}
+
+.active{
+    color: #fff;
+    background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+}
+
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
     stroke: #fff !important;
 }
