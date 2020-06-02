@@ -41,7 +41,7 @@ export class RegisterWebsiteComponent implements OnInit {
     private social: SocialService,
     private notifierService: NotifierService,
     private interestsService: InterestsService,
-    private translate: TranslateService) {
+    public translate: TranslateService) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
     this.email = navigation.extras.state ? navigation.extras.state.email : '';
