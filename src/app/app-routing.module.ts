@@ -48,7 +48,7 @@ import { FaqDashboardComponent } from 'src/pages/faq-dashboard/faq-dashboard.com
 import { FaqDetailsComponent } from 'src/pages/faq-details/faq-details.component';
 import { InterestsComponent } from 'src/pages/interests/interests.component';
 import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
-
+import { BlogPageComponent } from 'src/pages/blog/blog.component';
 
 const routes: Routes = [
   {
@@ -283,6 +283,10 @@ const routes: Routes = [
       }, {
         path: 'contests',
         component: ContestWebsiteComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path: 'blog',
+        component: BlogPageComponent,
         canActivate: [AuthUserService]
       }
     ]

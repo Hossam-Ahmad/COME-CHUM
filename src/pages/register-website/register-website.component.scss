@@ -196,14 +196,19 @@
     background-color: white !important;
 }
 
+.interests-container{
+    margin-bottom: 2em;
+    text-align: center;
+}
 
 .interest{
     border-radius: 20px;
     border: 1px solid #c6338e;
     color: #c6338e;
     padding: 0.5em;
-    margin: 1em;
+    margin: 0.5em;
     cursor: pointer;
+    display: inline-block;
 }
 
 .interest-title{
@@ -213,6 +218,35 @@
 .active{
     color: #fff;
     background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%);
+}
+
+.distance{
+    margin-top: 6em;
+}
+
+.profile-picture{
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.upload-cover-container{
+    border: 2px dashed #8c45ad;
+    height: 10em;
+    border-radius: 25px;
+    .upload-cover{
+        box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.05);
+        width: 70px;
+        background-color: white;
+        border-radius: 50%;
+        padding: 1em;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
 
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   

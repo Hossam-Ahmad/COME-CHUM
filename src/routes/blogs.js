@@ -182,4 +182,32 @@ router.get('/blog/:blogId', function(req, res, next) {
   });
 });
 
+router.get('/blog/:blogId/:userId', function(req, res, next) {
+  let response = {};
+  connection.getConnection(function (err, conn) { 
+    var blogId = req.params['blogId'];
+    var userId = req.params['userId'];
+    conn.query(`SELECT * FROM blogs where blog_id = '${blogId}'`, function(error,results,fields){
+      conn.query(`
+      SELECT c.id comment_id, c.blog_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+      FROM comments_blogs c , users u
+      where blog_id = ${results[0].id} and u.id = c.user_id
+      GROUP by blog_id
+      `, function(error,results2,fields){
+        conn.query(`
+        SELECT count(*) as total 
+        FROM likes_blogs
+        where blog_id = ${results[0].id} and user_id = ${userId}
+        `, function(error,results3,fields){
+          response.data = results[0];
+          response.data.comments_arr = results2;
+          response.data.isliked = results3[0]['total'] > 0;
+          conn.release();
+          res.send(response);
+      });
+      });
+    });
+  });
+});
+
 module.exports = router;

@@ -119,5 +119,8 @@
   "send_email" : "إرسال الإيميل مجددا",
   "from" : "من",
   "to" : "إلى",
-  "interests" : "الاهتمامات"
+  "interests" : "الاهتمامات",
+  "information":"البيانات",
+  "profile_picture" : "الصورة الشخصية",
+  "cover" : "الغلاف"
 }

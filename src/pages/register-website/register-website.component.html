@@ -13,7 +13,7 @@
 				 </div>
 					 </div>
 				 
-					 <div class="row">
+					 <div class="row" *ngIf="phase == 1">
 						 <div class="col">
 							  <div class="login-title">
 						   <h5>{{'register' | translate}}</h5>
@@ -36,7 +36,8 @@
 					 </div>
 					 
 					  <form class="register-form" method="post" action="checkLogin" id="form1">
-						  <div class="or">
+						
+						<div class="or" *ngIf="phase == 1">
 							
 								<div class="row">
 									<div class="col col-sm-5">
@@ -91,11 +92,10 @@
 							</div>
 						</div>
 						<!-- end phase 1 -->
-						
 
 						<!-- phase 2 extra information -->
-						<div *ngIf="phase == 2"> 
-	
+						<div class="interests-container distance" *ngIf="phase == 2"> 
+							<p>{{'information' | translate }}</p>
 							<div class="row lower-border second-row">
 								<div class="col col-sm-6 first-col">
 									<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
@@ -126,12 +126,29 @@
 						<!-- end phase 2 -->
 
 						<!-- phase 3 interests -->
-						<div *ngIf="phase == 3"> 
+						<div *ngIf="phase == 3" class="interests-container distance"> 
+							<p>{{'interests' | translate }}</p>
 							<span *ngFor="let interest of interests; let i = index" class="interest" [ngClass]="{'active': selectedInterests[i]}" (click)="select(i)">
 								{{translate.currentLang == 'ar' ? interest.name_ar : interest.name_en}}
 							</span>
 						</div>
 						<!-- end phase 3 -->
+
+						<!-- phase 4 profile picture -->
+						<div *ngIf="phase == 4" class="interests-container distance"> 
+							<p>{{'profile_picture' | translate }}</p>
+							<img class="profile-picture" src="../../../assets/images/upload.png">
+						</div>
+						<!-- end phase 4 -->
+
+						<!-- phase 5 cover -->
+						<div *ngIf="phase == 5" class="interests-container distance"> 
+							<p>{{'cover' | translate }}</p>
+							<div class="upload-cover-container">
+								<img class="upload-cover" src="../../../assets/images/upload-cover.png">
+							</div>
+						</div>
+						<!-- end phase 5 -->
 
 						<div class="upper-border">
 							 	<div>

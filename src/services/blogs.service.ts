@@ -26,6 +26,10 @@ export class BlogsService {
       return this.httpClient.get(`${environment.api}blogs/blog/${blogId}`);
     }
 
+    getBlogWebsite(blogId, userId): any {
+      return this.httpClient.get(`${environment.api}blogs/blog/${blogId}/${userId}`);
+    }
+
     create(data): any {
       return this.httpClient.post(`${environment.api}blogs/create`, {
         data
