@@ -273,4 +273,30 @@ router.post('/unauthenticated', function(req, res, next) {
   });
 });
 
+router.post('/create', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var data = req.body['data'];
+    console.log(data);
+    var profile_id = Math.random().toString(36).substr(2, 9);
+    var token = Math.random().toString(36).substr(2, 9);
+    connection.query(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,1,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`, function(error,results,fields){
+      // connection.query(`INSERT INTO interests_users (user_id, interests_id) VALUES ('${results.insertId}', 0)`, function(error,results2,fields){
+          conn.release();
+          // res.send(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,1,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`);
+           res.send({
+            status : 'success',
+            token : token,
+            name : data.name,
+            id : results.insertId,
+            image : data.image,
+            email : data.email,
+            cover : data.cover,
+            about : data.about,
+            profile_id : profile_id,
+        // });
+      });
+    });
+  });
+});
+
 module.exports = router;
