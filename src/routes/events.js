@@ -26,10 +26,10 @@ router.post('/remove', function(req, res, next) {
   });
 });
 
-router.get('/event/:profileId', function(req, res, next) {
+router.get('/event/:eventId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    var profileId = req.params['profileId'];
-    conn.query('SELECT * FROM events where profile_id = ' + profileId, function(error,results,fields){
+    var eventId = req.params['eventId'];
+    conn.query('SELECT * FROM events where event_id = ' + eventId, function(error,results,fields){
       conn.release();
       res.send(results);
     });

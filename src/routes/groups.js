@@ -42,10 +42,10 @@ router.post('/remove', function(req, res, next) {
   });
 });
 
-router.get('/group/:profileId', function(req, res, next) {
+router.get('/group/:groupId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    var profileId = req.params['profileId'];
-    conn.query('SELECT * FROM groups where profile_id = ' + profileId, function(error,results,fields){
+    var groupId = req.params['groupId'];
+    conn.query('SELECT * FROM groups where group_id = ' + groupId, function(error,results,fields){
       conn.release();
       res.send(results);
     });

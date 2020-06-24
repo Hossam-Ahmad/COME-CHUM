@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit {
   select(index) {
     this.socket.removeAllListeners();
     this.activeIndex = index;
-    this.getMessages(this.chats[index].chat_id, true);
+    this.getMessages(this.chats[index].id, true);
   }
 
   changeType(type) {
@@ -55,7 +55,7 @@ export class ChatComponent implements OnInit {
         this.chats = data2;
         this.pageChats++;
         console.log(data2);
-        this.getMessages(this.chats[0].chat_id, false);
+        this.getMessages(this.chats[0].id, false);
       });
     });
   }

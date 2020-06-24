@@ -107,8 +107,8 @@
       <div class="msg-detail">
        <div class="msg-username">{{chat.name}}</div>
        <div class="msg-content">
-        <span class="msg-message">{{chat.data}}</span>
-        <span class="msg-date">{{chat.created_at | timeAgo}}</span>
+        <span class="msg-message">{{chat.last_message}}</span>
+        <span class="msg-date">{{chat.last_message_created_at | timeAgo}}</span>
        </div>
       </div>
      </div>
