@@ -74,9 +74,20 @@ const io = require('socket.io')(server);
 io.on('connection', (socket) => {
     console.log('a user connected');
     let interval = null;
+    let updateStatus = false;
     const socketId = socket.id;
     socket.on('heartbeat', function(data) {
         console.log('received heart beat user !');
+        if(!updateStatus) {
+            connection.getConnection(function (err, conn) {
+                var userId = data.user_id;
+                console.log('update online to database');
+                connection.query('UPDATE users SET online = 1 where id = ' + userId, function(error,results,fields){
+                  updateStatus = true;
+                  conn.release();
+                });
+            });
+        }
         clearInterval(interval);
         interval = setInterval(() => {
             console.log('user disconnected');
