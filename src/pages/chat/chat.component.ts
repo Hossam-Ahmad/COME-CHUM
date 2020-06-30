@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/services/chat.service';
@@ -10,7 +10,9 @@ import { Socket } from 'ngx-socket-io';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked {
+
+  @ViewChild('scrollMe', {static: false}) private myScrollContainer: ElementRef;
 
   public chats = [];
   public messages = [];
@@ -20,6 +22,10 @@ export class ChatComponent implements OnInit {
   public userId;
   public activeIndex = 0;
   public text = '';
+  private flag = true;
+  private notificationSubscribtion = false;
+  private apiCall = true;
+  private hasMore = true;
 
   constructor(
     private authService: AuthUserService,
@@ -34,6 +40,10 @@ export class ChatComponent implements OnInit {
       this.userId = data.id;
     });
     this.getChats();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
   }
 
   select(index) {
@@ -63,13 +73,24 @@ export class ChatComponent implements OnInit {
   getMessages(chatId, changeChat) {
     if (changeChat) {
       this.pageMessages = 1;
+      this.hasMore = true;
+      this.messages = [];
     }
     this.chat.get(chatId, this.pageMessages).subscribe( data => {
-      this.messages = data;
+      this.apiCall = true;
+      if (data.length === 0) {
+        this.hasMore = false;
+      }
+      console.log(data);
+      this.messages = data.concat(this.messages);
       console.log(this.messages);
       this.pageMessages++;
+      this.scrollToBottom();
     });
-    this.getNotifiedMessages();
+    if (!this.notificationSubscribtion) {
+      this.getNotifiedMessages();
+      this.notificationSubscribtion = true;
+    }
   }
 
   searchChats() {
@@ -81,13 +102,15 @@ export class ChatComponent implements OnInit {
   }
 
   getNotifiedMessages() {
-    this.socket.fromEvent(`chat${this.chats[this.activeIndex].chat_id}`).subscribe( data => {
+    this.socket.fromEvent(`chat${this.chats[this.activeIndex].id}`).subscribe( data => {
       console.log(data);
       this.messages.push({
         data : data['data'],
         type : data['type'],
         sender_id : data['userId']
       });
+      this.flag = true;
+      this.scrollToBottom();
     });
   }
 
@@ -96,7 +119,30 @@ export class ChatComponent implements OnInit {
       this.chat.send(this.text, 0 , this.chats[this.activeIndex].id, this.userId).subscribe( data => {
         console.log(data);
         this.text = '';
+        this.scrollToBottom();
       });
+    }
+  }
+
+  scrollToBottom() {
+    try {
+      if (this.flag) {
+        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  onScroll(event) {
+    this.flag = false;
+    console.log(event.target.scrollTop);
+    if (event.target.scrollTop < event.target.offsetHeight * 0.1) {
+      if (this.apiCall && this.hasMore) {
+        this.apiCall = false;
+        this.getMessages(this.chats[this.activeIndex].id, false);
+        console.log('call api');
+      }
     }
   }
 

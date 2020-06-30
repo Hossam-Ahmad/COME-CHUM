@@ -12,7 +12,7 @@ router.get('/all/:type/:pageId/:userId', function(req, res, next) {
     conn.query(`SELECT c.id , c.user1_id , c.user2_id , c.last_message_type, c.last_message, c.last_message_created_at , u.name , u.online , u.image, u.last_logout 
     FROM chat c , users u 
     WHERE (c.user1_id = ${userId} OR c.user2_id = ${userId}) AND ((u.id = c.user1_id AND u.id != ${userId})OR (u.id = c.user2_id AND u.id != ${userId})) 
-    ORDER BY c.last_message_created_at DESC LIMIT ${10*pageId}`, function(error,results,fields){
+    ORDER BY c.last_message_created_at DESC LIMIT 10 OFFSET ${10*(pageId-1)}`, function(error,results,fields){
       conn.release();
       res.send(results);
     });
@@ -23,8 +23,8 @@ router.get('/:chatId/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var chatId = req.params['chatId'];
     var pageId = req.params['pageId'];
-    conn.query(`SELECT * FROM messages_chat where chat_id = ${chatId} ORDER BY created_at ASC LIMIT ${10*pageId}`, function(error,results,fields){
-        conn.query(`UPDATE messages_chat SET seen = 1 where chat_id = ${chatId} ORDER BY created_at ASC LIMIT ${10*pageId}`, function(error,results2,fields){
+    conn.query(`select * FROM (SELECT * FROM messages_chat where chat_id = ${chatId} ORDER BY created_at DESC LIMIT 10 OFFSET ${10*(pageId-1)}) AS result ORDER BY created_at ASC`, function(error,results,fields){
+        conn.query(`UPDATE messages_chat SET seen = 1 where chat_id = ${chatId} ORDER BY created_at DESC LIMIT 10 OFFSET ${10*(pageId-1)}`, function(error,results2,fields){
           conn.release();
           res.send(results);
         });
@@ -36,7 +36,7 @@ router.get('/search/:query/:pageId', function(req, res, next) {
     connection.getConnection(function (err, conn) { 
       var query = req.params['query'];
       var pageId = req.params['pageId'];
-      conn.query(`SELECT * FROM messages_chat where chat_id = ${chatId} ORDER BY created_at ASC LIMIT ${10*pageId}`, function(error,results,fields){
+      conn.query(`SELECT * FROM messages_chat where chat_id = ${chatId} ORDER BY created_at ASC LIMIT 10 OFFSET ${10*(pageId-1)}`, function(error,results,fields){
             conn.release();
             res.send(results);
       });

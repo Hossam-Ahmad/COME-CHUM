@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { UsersService } from 'src/services/users.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LocationsService } from 'src/services/locations.service';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class SettingsComponent implements OnInit {
   public mode = 'indeterminate';
   public loading = false;
   public color = 'white';
+  public countries = [];
+  public cities = [];
 
   public userData = undefined;
 
@@ -32,11 +35,13 @@ export class SettingsComponent implements OnInit {
     public router: Router,
     private notifierService: NotifierService,
     private users: UsersService,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    private locationsService: LocationsService) {
   }
 
   ngOnInit() {
     this.getGeneralData();
+    this.getCountries();
   }
 
   changeTab(id) {
@@ -61,6 +66,20 @@ export class SettingsComponent implements OnInit {
       this.country = this.userData.country;
       this.phone = this.userData.phone;
       this.postal = this.userData.postal_code;
+    });
+  }
+
+  getCountries() {
+    this.locationsService.getCountries(this.translate.currentLang).subscribe( data => {
+      this.countries = data as Array<any>;
+      console.log(data);
+    });
+  }
+
+  getCities(countryId) {
+    this.locationsService.getCities(countryId, this.translate.currentLang).subscribe( data => {
+      this.cities = data as Array<any>;
+      console.log(data);
     });
   }
 

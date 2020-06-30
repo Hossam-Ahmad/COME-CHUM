@@ -54,7 +54,7 @@
        </div> -->
 
       </div>
-      <div class="chat-area-main">
+      <div class="chat-area-main" #scrollMe (scroll)="onScroll($event)">
 
         <span *ngFor="let message of messages">
 

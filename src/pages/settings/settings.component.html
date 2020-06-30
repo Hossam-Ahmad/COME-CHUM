@@ -30,18 +30,16 @@
 
         <div class="row lower-border second-row">
             <div class="col col-sm-6 first-col">
-                <select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" value="{{userData != undefined? userData.gender : ''}}" [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled selected>{{'gender' | translate}}</option>
-                    <option value="0">{{'male'|translate}}</option>
-                    <option value="1">{{'female' | translate}}</option>
+                <select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" value="{{userData != undefined? userData.city : ''}}" [ngModelOptions]="{standalone: true}">
+                    <option value="" disabled selected>{{'city' | translate}}</option>
+                    <option value="{{city.id}}" *ngFor="let city of cities">{{translate.currentLang == 'ar' ? city.name_ar : city.name_en}}</option>
                 </select>
                 <i class="fas fa-caret-down select-icon"></i>
             </div>
             <div class="col col-sm-6 first-col">
-                <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" value="{{userData != undefined? userData.country : ''}}" [ngModelOptions]="{standalone: true}">
+                <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" value="{{userData != undefined? userData.country : ''}}" [ngModelOptions]="{standalone: true}" (change)="getCities($event.target.value)">
                     <option value="" disabled selected>{{'country' | translate}}</option>
-                    <option value="0">مصر</option>
-                    <option value="1">السعودية</option>
+                    <option value="{{country.id}}" *ngFor="let country of countries">{{translate.currentLang == 'ar' ? country.name_ar : country.name_en}}</option>
                 </select>
                 <i class="fas fa-caret-down select-icon"></i>
             </div>
