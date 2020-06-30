@@ -5,6 +5,7 @@ import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
 import { InterestsService } from 'src/services/interests.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LocationsService } from 'src/services/locations.service';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class RegisterWebsiteComponent implements OnInit {
   public loading = false;
   public phase = 1;
   public interests = [];
+  public countries = [];
+  public cities = [];
   selectedInterests = [];
   page = 1;
 
@@ -41,6 +44,7 @@ export class RegisterWebsiteComponent implements OnInit {
     private social: SocialService,
     private notifierService: NotifierService,
     private interestsService: InterestsService,
+    private locationsService: LocationsService,
     public translate: TranslateService) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
@@ -50,6 +54,7 @@ export class RegisterWebsiteComponent implements OnInit {
 
   ngOnInit() {
     this.loadInterests();
+    this.getCountries();
   }
 
   loginTwitter() {
@@ -87,6 +92,20 @@ export class RegisterWebsiteComponent implements OnInit {
       this.selectedInterests = new Array<boolean>(this.interests.length).fill(false);
       console.log(this.selectedInterests);
       this.page++;
+    });
+  }
+
+  getCountries() {
+    this.locationsService.getCountries(this.translate.currentLang).subscribe( data => {
+      this.countries = data as Array<any>;
+      console.log(data);
+    });
+  }
+
+  getCities(countryId) {
+    this.locationsService.getCities(countryId, this.translate.currentLang).subscribe( data => {
+      this.cities = data as Array<any>;
+      console.log(data);
     });
   }
 

@@ -51,7 +51,7 @@ router.get('/city/:cityId/:language', function(req, res, next) {
       var language = 'name_'+req.params['language'];
       conn.query(`
       SELECT id , ${language} FROM cities
-      WHERE ID = ${cityId}
+      WHERE id = ${cityId}
       `, function(error,results,fields){
         conn.release();
         res.send(results);

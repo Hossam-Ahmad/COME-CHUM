@@ -23,18 +23,16 @@
 
                             <div class="row">
                                 <div class="col col-sm-5">
-                                    <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+                                    <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}" (change)="getCities($event.target.value)">
                                         <option value="" disabled selected>{{'country' | translate}}</option>
-                                        <option value="0">مصر</option>
-                                        <option value="1">الامارات</option>
+                                        <option value="{{country.id}}" *ngFor="let country of countries">{{translate.currentLang == 'ar' ? country.name_ar : country.name_en}}</option>
                                     </select>
                                 </div>
                                 <div class="col col-sm-1"></div>
                                 <div class="col col-sm-5">
                                     <select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
                                         <option value="" disabled selected>{{'city' | translate}}</option>
-                                        <option value="0">القاهرة</option>
-                                        <option value="1">الاسكندرية</option>
+                                        <option value="{{city.id}}" *ngFor="let city of cities">{{translate.currentLang == 'ar' ? city.name_ar : city.name_en}}</option>
                                     </select>
                                 </div>
                             </div>

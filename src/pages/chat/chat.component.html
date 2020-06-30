@@ -26,16 +26,16 @@
          <button [ngClass]="{'active': type == 1}" (click)="changeType(1)">{{'groups_nav' | translate}}</button>
          <button [ngClass]="{'active': type == 2}" (click)="changeType(2)">{{'all' | translate}}</button>
        </div> -->
-      <div *ngFor="let chat of chats;let i = index" class="msg active" [ngClass]="{'online': chat.online , 'active' : activeIndex == i}" (click)="select(i)">
-       <img class="msg-profile" src="{{chat.image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
-       <div class="msg-detail">
-        <div class="msg-username">{{chat.name}}</div>
-        <div class="msg-content">
-         <span class="msg-message">{{chat.data}}</span>
-         <span class="msg-date">{{chat.created_at | timeAgo}}</span>
+       <div *ngFor="let chat of chats;let i = index" class="msg active" [ngClass]="{'online': chat.online , 'active' : activeIndex == i}" (click)="select(i)">
+        <img class="msg-profile" src="{{chat.image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
+        <div class="msg-detail">
+         <div class="msg-username">{{chat.name}}</div>
+         <div class="msg-content">
+          <span class="msg-message">{{chat.last_message}}</span>
+          <span class="msg-date">{{chat.last_message_created_at | timeAgo}}</span>
+         </div>
         </div>
        </div>
-      </div>
       <button class="add"></button>
       <div class="overlay"></div>
      </div>

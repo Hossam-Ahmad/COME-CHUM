@@ -135,6 +135,7 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
 import { InterestsService } from 'src/services/interests.service';
+import { LocationsService } from 'src/services/locations.service';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -338,6 +339,7 @@ export function getAuthServiceConfigs() {
     ChatService,
     FeedService,
     InterestsService,
+    LocationsService,
     MatDatepickerModule,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
