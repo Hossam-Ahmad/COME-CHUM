@@ -89,7 +89,7 @@ router.post('/send', function(req, res, next) {
           conn.release();
           const io = req.app.locals.io;
           io.emit(`chat${chatId}`, { data, type, chatId, userId });
-          io.emit(`user${userId}`, { text: 'data', translation : 'send_message_to_you', type : 1, entry_id : chatId, user_id : userId });
+          io.emit(`user${userId}`, { text: data, translation : 'send_message_to_you', type : 1, entry_id : chatId, user_id : userId });
           res.send({
             status : 'success',
           });
