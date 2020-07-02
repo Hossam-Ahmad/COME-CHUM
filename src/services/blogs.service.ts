@@ -36,6 +36,19 @@ export class BlogsService {
       });
     }
 
+    like(blogId, userId): any {
+      return this.httpClient.post(`${environment.api}blogs/like`, 
+        {
+          blogId, userId
+        });
+    }
+
+    dislike(blogId, userId): any {
+      return this.httpClient.post(`${environment.api}blogs/dislike`, {
+        blogId, userId
+      });
+    }
+
     update(blogId, data): any {
       return this.httpClient.post(`${environment.api}blogs/update`, {
         blogId,

@@ -35,7 +35,7 @@
   <hr>
 
 <!-- comment  -->
-  <div class="row">
+  <div class="row" *ngIf="!isMobile()">
     <div class="col col-md-2">
       <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
     </div>
@@ -71,12 +71,54 @@
             </div>
          </div> 
         </div>
-      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="isMobile()">
+
+    <div class="col col-12">
+      <div class="commentIssues">
+      <div class="row">
+
+        <div class="col col-md-2" style="padding: 0;">
+            <div class="issueInner">
+              <i class="fa-heart" (click)="like()" [ngClass]="{'fas': post.isliked , 'far': !post.isliked}" [ngStyle]="{'color': post.isliked ? '#c7338d' : '#000'}"></i>
+              <span>{{post.likes}}</span>
+            </div>
+          </div>
+
+            <div class="col col-md-2" style="padding: 0;">
+              <div class="issueInner">
+                <i class="far fa-comment"></i>
+                <span>{{post.comments}}</span>
+              </div>
+            </div>
+            <div class="col col-md-5">
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+              [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
+              'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
+              }">
+            </div>
+            <div class="col col-md-3">
+              <div class="sendOrCamera">
+                <i class="material-icons" (click)="upload_image()">camera_alt</i>
+                <i class="material-icons" (click)="comment()">send</i>
+              </div>
+            </div>
+         </div> 
+        </div>
+    </div>
+
+    <div class="col col-12" style="text-align: center;">
+      <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
+    </div>
+
+    
   </div>
 <!-- posted comment -->
   <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of post.comments_arr">
 
-    <div class="col col-md-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
+    <div class="col col-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
       <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
         <img src="{{comment.user_image}}">
       </div>

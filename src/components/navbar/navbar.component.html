@@ -1,11 +1,5 @@
 <!--Navbar-->
-<mdb-navbar #navbarid id="navbarid" SideClass="navbar navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'rtl'}">
-
-  <mdb-navbar-brand *ngIf="isMobile()">
-    <a class="navbar-brand" href="/">
-      <img class="logo" src="../../../assets/images/logo.png">
-    </a>
-  </mdb-navbar-brand>
+<mdb-navbar *ngIf="!isMobile()" #navbarid id="navbarid" SideClass="navbar navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'rtl'}">
 
   <!-- Collapsible content -->
   <links>
@@ -65,7 +59,7 @@
         <i class="fas fa-comment-dots icon" style="font-size: 23px;"></i>
       </a>
 
-      <div class="search-container" *ngIf="!isMobile() && isAuthenticated">
+      <div class="search-container" *ngIf="isAuthenticated">
         <input class="search" type="text" placeholder="{{'search' | translate}}" 
         [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left', 
         'padding-left': translate.currentLang == 'ar' ? '0em' : '2em', 
@@ -101,11 +95,85 @@
         </ul>
         <!-- Links -->
 
-        <mdb-navbar-brand *ngIf="!isMobile()">
+        <mdb-navbar-brand>
           <a class="navbar-brand" href="/">
             <img class="logo" src="../../../assets/images/logo.png">
           </a>
         </mdb-navbar-brand>
+
+  </links>
+  <!-- Collapsible content -->
+
+   <!-- Navbar brand -->
+   
+
+</mdb-navbar>
+<!--/.Navbar-->
+
+
+<!--Navbar-->
+<mdb-navbar *ngIf="isMobile()" #navbarid id="navbarid" SideClass="navbar navBarMobile navbar-expand-lg z-depth-0 navbar-dark" [containerInside]="false" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'ltr' : 'rtl'}">
+
+  <mdb-navbar-brand>
+    <a class="navbar-brand" href="/">
+      <img class="logo" src="../../../assets/images/logo.png">
+    </a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <div class="row">
+      <div class="col-4">
+        <a mdbWavesEffect type="button" class="nav-link waves-light" [routerLink]="[ '/profile' ]" [queryParams]="{userId: userId}">
+          <img class="profile-icon" src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" />
+        </a>
+       </div>
+       <div class="col-4">
+        <a class="iconLink" routerLinkActive="on"  [routerLink]="[ '/notifications' ]">
+          <i class="material-icons icon" style="font-size: 27px;margin-top: 0.8em;">notifications</i>
+        </a>
+       </div>
+       <div class="col-4">
+        <a class="iconLink distance" routerLinkActive="on"  [routerLink]="[ '/chat' ]" *ngIf="isAuthenticated">
+          <i class="fas fa-comment-dots icon" style="font-size: 22px;"></i>
+        </a>
+       </div>
+    </div>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item"  [ngClass]="router.url == '/feed' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/feed'">{{'home_nav' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/groups' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/groups'">{{'groups_nav' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/events' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/events'">{{'events_nav' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/blogs' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/blogs'">{{'blogs' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/contests' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/contests'">{{'contests' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/packages' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/packages'">{{'packages' | translate}}</a>
+        </li>
+
+        
+
+        
+            
+        </ul>
+        <!-- Links -->
 
   </links>
   <!-- Collapsible content -->

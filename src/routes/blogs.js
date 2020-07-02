@@ -147,6 +147,62 @@ router.post('/create', function(req, res, next) {
   });
 });
 
+router.post('/like', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var BlogId = req.body['BlogId'];
+    var userId = req.body['userId'];
+
+    conn.query(`select from likes_blogs where user_id = ${userId} AND blog_id = ${BlogId}`
+    , function(error,results,fields){
+      if(results == undefined) {
+        conn.query(`UPDATE blogs SET likes = likes + 1 where id = ${BlogId};
+        INSERT INTO likes_blogs (user_id , blog_id) VALUES (${userId},${BlogId});
+        ` , function(error,results,fields){
+          conn.release();
+          res.send({
+            status : 'success'
+          });
+        });
+
+      } else {
+        conn.release();
+          res.send({
+            status : 'failed'
+          });
+      }
+    }); 
+  });
+});
+
+router.post('/dislike', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var blogId = req.body['blogId'];
+    var userId = req.body['userId'];
+    conn.query(`select from likes_blogs where user_id = ${userId} AND blog_id = ${blogId}
+    `, function(error,results,fields){
+
+      if(results == undefined) {
+
+        conn.query(`UPDATE likes_blogs SET likes = likes - 1 where id = ${blogId};
+        DELETE FROM likes_blogs where user_id = ${userId} AND blog_id = ${blogId}
+        `, function(error,results,fields){
+          conn.release();
+          res.send({
+            status : 'success'
+          });
+        });
+
+      } else {
+        conn.release();
+        res.send({
+          status : 'failed'
+        });
+      }
+
+    });
+  });
+});
+
 router.post('/update', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var blogId = req.body['blogId'];

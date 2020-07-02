@@ -19,12 +19,12 @@
     </div>
 
     <!-- comment  -->
-  <div class="row">
-    <div class="col col-md-2">
+  <div class="row" style="padding-right: 1em;padding-left: 1em;">
+    <div class="col col-md-2" style="background-color: white;">
       <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
     </div>
 
-    <div class="col col-md-10">
+    <div class="col col-md-10" style="background-color: white;">
       <div class="commentIssues">
       <div class="row">
 
@@ -94,84 +94,86 @@
 <div class="row" *ngIf="isMobile()">
   <div class="col-12">
       
-      <!-- blog -->
-      <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
-      <div class="bloged" *ngIf="blog != undefined">
-        <div class="container">
-          <!-- data of bloger -->
-        <!-- content of blog -->
-        <div class="row">
-          <div class="col">
-            <p>{{blog.body}}</p>
-          </div>
+    <!-- blog -->
+    <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
+    <div class="bloged" [ngStyle]="{'background-image': 'url(' + blog.image + ')'}">
+
+      <div class="row titleandbutton">
+        <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+          <p><span>{{blog.title}}</span></p>
         </div>
-        <hr>
+      </div>
+  
+    </div>
 
-      <!-- comment  -->
-        <div class="row">
-          <div class="col col-md-2">
-            <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
+    <div class="row body">
+      <p>{{blog.body}}</p>
+    </div>
+
+    <!-- comment  -->
+  <div class="row" style="padding-right: 1em;padding-left: 1em;">
+    <div class="col col-12" style="background-color: white;">
+      <div class="commentIssues">
+      <div class="row">
+
+        <div class="col col-md-2" style="padding: 0;">
+            <div class="issueInner">
+              <i class="fa-heart" (click)="like()" [ngClass]="{'fas': blog.isliked , 'far': !blog.isliked}" [ngStyle]="{'color': blog.isliked ? '#c7338d' : '#000'}"></i>
+              <span>{{blog.likes}}</span>
+            </div>
           </div>
 
-          <div class="col col-md-10">
-            <div class="commentIssues">
-            <div class="row">
-
-              <div class="col col-md-2" style="padding: 0;">
-                  <div class="issueInner">
-                    <i class="fa-heart" (click)="like()" [ngClass]="{'fas': blog.isliked , 'far': !blog.isliked}" [ngStyle]="{'color': blog.isliked ? '#c7338d' : '#000'}"></i>
-                    <span>{{blog.likes}}</span>
-                  </div>
-                </div>
-
-                  <div class="col col-md-2" style="padding: 0;">
-                    <div class="issueInner">
-                      <i class="far fa-comment"></i>
-                      <span>{{blog.comments}}</span>
-                    </div>
-                  </div>
-                  <div class="col col-md-5">
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
-                    [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
-                    'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
-                    }">
-                  </div>
-                  <div class="col col-md-3">
-                    <div class="sendOrCamera">
-                      <i class="material-icons" (click)="upload_image()">camera_alt</i>
-                      <i class="material-icons" (click)="comment()">send</i>
-                    </div>
-                  </div>
-              </div> 
+            <div class="col col-md-2" style="padding: 0;">
+              <div class="issueInner">
+                <i class="far fa-comment"></i>
+                <span>{{blog.comments}}</span>
               </div>
             </div>
-        </div>
-      <!-- bloged comment -->
-        <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of blog.comments_arr">
-
-          <div class="col col-md-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
-            <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
-              <img src="{{comment.user_image}}">
+            <div class="col col-md-5">
+              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+              [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
+              'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
+              }">
             </div>
-          </div>
-
-          <div class="col col-md-9">
-            <div class="contentCommented">
-              <p class="user_comment cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">{{comment.user_name}}</p>
-              <p>{{comment.text}}</p>
-              <img *ngIf="comment.image != null && comment.image != ''" src="{{comment.image}}" />
-              <span>{{comment.created_at | timeAgo}}</span>
+            <div class="col col-md-3">
+              <div class="sendOrCamera">
+                <i class="material-icons" (click)="upload_image()">camera_alt</i>
+                <i class="material-icons" (click)="comment()">send</i>
+              </div>
             </div>
-          </div>
-
+         </div> 
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-          <span class="more-comments" *ngIf="blog.comments_arr.length != blog.comments" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="load_comments()">{{'see_all' | translate}}</span>
-        </div>
-        
+  <div class="col col-12" style="background-color: white;text-align: center;">
+    <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
+  </div>
+<!-- posted comment -->
+  <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of blog.comments_arr">
+
+    <div class="col col-md-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
+      <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
+        <img src="{{comment.user_image}}">
       </div>
+    </div>
+
+    <div class="col col-md-9">
+      <div class="contentCommented">
+        <p class="user_comment cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">{{comment.user_name}}</p>
+        <p>{{comment.text}}</p>
+        <img *ngIf="comment.image != null && comment.image != ''" src="{{comment.image}}" />
+        <span>{{comment.created_at | timeAgo}}</span>
       </div>
-      <!-- end blog -->
+    </div>
+
+  </div>
+
+  <div class="row">
+    <span class="more-comments" *ngIf="blog.comments_arr.length != blog.comments" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="load_comments()">{{'see_all' | translate}}</span>
+  </div>
+    
+    <!-- end blog -->
+
   </div>
 </div>

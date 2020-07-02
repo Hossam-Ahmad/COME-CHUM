@@ -103,4 +103,11 @@ export class PostComponent implements OnInit {
     });
   }
 
+  isMobile() {
+    if (window.screen.width > 991) {
+      return false;
+    }
+    return true;
+  }
+
 }

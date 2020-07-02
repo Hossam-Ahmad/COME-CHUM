@@ -68,7 +68,7 @@ export class BlogPageComponent implements OnInit {
   like() {
     this.auth.getData().subscribe(data => {
       if (this.blog.isliked) {
-          this.feed.dislike(this.blog.id,  data.id).subscribe( data2 => {
+          this.blogsService.dislike(this.blog.id,  data.id).subscribe( data2 => {
             if (data2.status === 'success') {
               this.blog.likes--;
               this.blog.isliked = false;

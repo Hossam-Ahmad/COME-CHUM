@@ -86,7 +86,6 @@ router.post('/send', function(req, res, next) {
     conn.query(`INSERT INTO messages_chat(chat_id, type, data, seen, sender_id) VALUES (${chatId},${type},'${data}',0,${userId})`, function(error,results,fields){
       conn.query(`UPDATE chat SET last_message = '${data}' , last_message_type = ${type} where id = ${chatId};
       select user1_id , user2_id from chat WHERE id = ${chatId};`, function(error,results2,fields){
-        console.log(results2[1][0]);//<--------------------------------------- added line
         var notified_user = results2[1][0].user1_id;
         if(userId == notified_user) {
           notified_user = results2[1][0].user2_id;
@@ -95,7 +94,6 @@ router.post('/send', function(req, res, next) {
           conn.release();
           const io = req.app.locals.io;
           io.emit(`chat${chatId}`, { data, type, chatId, userId });
-          console.log(`user${notified_user}`);//<--------------------------------------- added line
           io.emit(`user${notified_user}`, { text: data, translation : 'send_message_to_you', type : 1, entry_id : chatId, user_id : userId });
           res.send({
             status : 'success',
