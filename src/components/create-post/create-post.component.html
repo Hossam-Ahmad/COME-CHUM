@@ -3,10 +3,10 @@
       <p [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-semibold' : '',
       'text-align': translate.currentLang == 'ar' ? 'right' : ''}">{{'create_post' | translate}}</p>
       <div class="row">
-          <div class="col col-md-1">
+          <div class="col col-2">
               <img src="{{userImage}}">
           </div>
-          <div class="col col-md-11">
+          <div class="col col-10">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{'write_post' | translate}}" [(ngModel)]="post_data.body"></textarea>
           </div>
       </div>
