@@ -110,7 +110,7 @@
     position: absolute;
     color: #75df87;
     top: -10%;
-    margin-left: -.7em;
+    margin-left: -.6em;
 }
 .contentCommented{
     padding: 0.5em;
@@ -150,4 +150,12 @@
 
 .cursor{
     cursor: pointer;
+}
+
+.no-padding{
+    padding: 0em;
+}
+
+.new-comment{
+    font-size: 1em;
 }

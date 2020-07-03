@@ -3,7 +3,7 @@
   <div class="container">
     <!-- data of poster -->
     <div class="row" [ngStyle]="{'direction': translate.currentLang == 'ar'? 'rtl' : 'ltr'}">
-    <div class="col col-md-1 nameAndDate imageOfPoster cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: post.profile_id }">
+    <div class="col col-1 nameAndDate imageOfPoster cursor" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: post.profile_id }">
       <img src="{{post.image}}">
     </div>
     <div class="col col-md-3 nameAndDate cursor" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}" [routerLink]="[ '/profile' ]" [queryParams]="{ userId: post.profile_id }">
@@ -80,26 +80,26 @@
       <div class="commentIssues">
       <div class="row">
 
-        <div class="col col-md-2" style="padding: 0;">
+        <div class="col col-2 no-padding">
             <div class="issueInner">
               <i class="fa-heart" (click)="like()" [ngClass]="{'fas': post.isliked , 'far': !post.isliked}" [ngStyle]="{'color': post.isliked ? '#c7338d' : '#000'}"></i>
               <span>{{post.likes}}</span>
             </div>
           </div>
 
-            <div class="col col-md-2" style="padding: 0;">
+            <div class="col col-2 no-padding" style="padding: 0;">
               <div class="issueInner">
                 <i class="far fa-comment"></i>
                 <span>{{post.comments}}</span>
               </div>
             </div>
-            <div class="col col-md-5">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+            <div class="col col-md-5 no-padding">
+              <input type="text" class="form-control new-comment" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
               [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
               'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
               }">
             </div>
-            <div class="col col-md-3">
+            <div class="col col-3">
               <div class="sendOrCamera">
                 <i class="material-icons" (click)="upload_image()">camera_alt</i>
                 <i class="material-icons" (click)="comment()">send</i>
