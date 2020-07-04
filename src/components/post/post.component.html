@@ -21,12 +21,8 @@
     <div class="col col-md-12 firstImg" *ngIf="post.images.length == 1">
       <img src="{{post.images[0].path}}">
     </div>
-    <div class="col col-md-6 firstImg" *ngIf="post.images.length > 1">
-      <nz-carousel [nzEffect]="effect">
-        <div nz-carousel-content *ngFor="let img of post.images">
-          <img src="{{img.path}}">
-        </div>
-      </nz-carousel>
+    <div class="col col-md-12 firstImg" *ngIf="post.images.length > 1">
+      <angular-image-slider [images]="getPaths(post.images)"></angular-image-slider>
     </div>
   </div>
   <hr>

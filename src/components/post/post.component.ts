@@ -16,6 +16,12 @@ export class PostComponent implements OnInit {
   public comment_text = '';
   private page = 1;
 
+  public imagesUrl = [
+    'https://www.hello.com/img_/hellowithwaves.png',
+    'https://www.hello.com/img_/hellowithwaves.png',
+    'https://www.hello.com/img_/hellowithwaves.png'
+  ];
+
   constructor(
     private feed: FeedService,
     private auth: AuthUserService,
@@ -101,6 +107,14 @@ export class PostComponent implements OnInit {
       dialogConfig.panelClass = 'colorize-background';
       this.dialog.open(NewMessageComponent, dialogConfig);
     });
+  }
+
+  getPaths(images) {
+    let paths = [];
+    images.forEach(img => {
+      paths.push(img.path);
+    });
+    return paths;
   }
 
   isMobile() {
