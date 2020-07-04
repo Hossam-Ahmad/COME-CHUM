@@ -118,19 +118,19 @@
 #email::-webkit-input-placeholder , #password::-webkit-input-placeholder { 
     font-family: cocon;
     opacity: 0.5;
-    text-align: right;
+    text-align: center;
 }
   
 #email:-ms-input-placeholder ,  #password::-ms-input-placeholder {
     font-family: cocon;
     opacity: 0.5;
-    text-align: right;
+    text-align: center;
 }
   
 #email::placeholder ,  #password::placeholder {
     font-family: cocon;
     opacity: 0.5;
-    text-align: right;
+    text-align: center;
 }
 
 .login-btn{

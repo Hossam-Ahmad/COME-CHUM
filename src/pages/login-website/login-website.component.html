@@ -56,15 +56,15 @@
 					  	<div class="row upper-border">
 					
 						<div class="col">
-						  <input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control" id="email" lang="en" [(ngModel)]="email">
+						  <input placeholder="{{'email' | translate}}" [ngStyle]="{'width': isMobile()? '100%' : '50%'}" name="email" type="email" class="form-control" id="email" lang="en" [(ngModel)]="email">
 						</div>
 						</div>
 						  
-						<div class="row lower-border second-row">
-						<div class="col col-sm-7 first-col">
+						<div class="row lower-border second-row" [ngStyle]="{'width': isMobile()? '100%' : '50%'}">
+						<div class="col col-7 first-col">
 						  <input placeholder="{{'password' | translate}}" name="pass" type="password" class="form-control" id="password" lang="en" [(ngModel)]="password">
 						</div>
-					   <div class="col col-sm-5">
+					   <div class="col col-5">
                            
                            <button class="btn btn-primary login-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
                                             data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="login()">

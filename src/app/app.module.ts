@@ -40,6 +40,8 @@ import {
   FacebookLoginProvider,
 } from 'angular-6-social-login';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 // Pages
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
@@ -136,6 +138,7 @@ import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
 import { InterestsService } from 'src/services/interests.service';
 import { LocationsService } from 'src/services/locations.service';
+import { A11yModule } from '@angular/cdk/a11y';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -300,6 +303,9 @@ export function getAuthServiceConfigs() {
     MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgZorroAntdModule,
+    A11yModule,
+    NzSliderModule,
     NgbModule,
     PerfectScrollbarModule,
     BrowserAnimationsModule,

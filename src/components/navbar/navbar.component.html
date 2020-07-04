@@ -144,6 +144,10 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
 
+        <li class="nav-item">
+          <a class="nav-link waves-light items-style" mdbWavesEffect (click)="advancedSearch();navbarid.toggle();">{{'search' | translate}}</a>
+        </li>
+
         <li class="nav-item"  [ngClass]="router.url == '/feed' ? 'active' : 'in-active'">
           <a class="nav-link waves-light items-style" mdbWavesEffect  href="#" routerLinkActive="on" [routerLink]="'/feed'">{{'home_nav' | translate}}</a>
         </li>
@@ -168,7 +172,9 @@
           <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/packages'">{{'packages' | translate}}</a>
         </li>
 
-        
+        <li class="nav-item">
+          <a class="nav-link waves-light items-style" mdbWavesEffect (click)="logout()">{{'logout' | translate}}</a>
+        </li>
 
         
             

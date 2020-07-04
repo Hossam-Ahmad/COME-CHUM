@@ -22,14 +22,11 @@
       <img src="{{post.images[0].path}}">
     </div>
     <div class="col col-md-6 firstImg" *ngIf="post.images.length > 1">
-      <img src="{{post.images[0].path}}">
-    </div>
-    <div class="col col-md-6 firstImg" *ngIf="post.images.length == 2">
-      <img src="{{post.images[1].path}}">
-    </div>
-    <div class="col col-md-6 restImags" *ngIf="post.images.length > 2">
-      <img *ngIf="post.images.length > 1" src="{{post.images[1].path}}">
-      <img *ngIf="post.images.length > 2" src="{{post.images[2].path}}">
+      <nz-carousel [nzEffect]="effect">
+        <div nz-carousel-content *ngFor="let img of post.images">
+          <img src="{{img.path}}">
+        </div>
+      </nz-carousel>
     </div>
   </div>
   <hr>

@@ -44,4 +44,11 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/cpanel/forget');
   }
 
+  isMobile() {
+    if (window.screen.width > 991) {
+      return false;
+    }
+    return true;
+  }
+
 }
