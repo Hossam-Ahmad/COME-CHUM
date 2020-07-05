@@ -5,7 +5,7 @@
 
      <div class="chat-area">
       <div class="chat-area-header" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
-       <div class="chat-area-title" *ngIf="chats.length > 0">
+       <div class="chat-area-title">
           <img class="chat-area-profile" style="margin-right: 1em;margin-left: 1em;" src="{{image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
           <p style="display: inline;">{{name}}</p>
         </div>
@@ -31,7 +31,7 @@
     
            <div class="chat-msg owner" *ngIf="message.sender_id == userId">
             <div class="chat-msg-profile">
-             <img class="chat-msg-img" src="{{chats.length > 0 ? image : ''}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
+             <img class="chat-msg-img" src="{{image}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
              <!-- <div class="chat-msg-date">Message seen 1.22pm</div> -->
             </div>
             <div class="chat-msg-content">
