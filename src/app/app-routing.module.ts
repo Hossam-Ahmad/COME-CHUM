@@ -50,6 +50,7 @@ import { InterestsComponent } from 'src/pages/interests/interests.component';
 import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 import { BlogPageComponent } from 'src/pages/blog/blog.component';
 import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-website.component';
+import { NotificationComponent } from 'src/pages/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -255,6 +256,11 @@ const routes: Routes = [
       {
         path: 'messages',
         component: MessagesWebsiteComponent,
+        canActivate: [AuthUserService]
+      },
+      {
+        path: 'notifications',
+        component: NotificationComponent,
         canActivate: [AuthUserService]
       },
       {

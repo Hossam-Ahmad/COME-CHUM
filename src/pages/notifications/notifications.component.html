@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="app">
+
+    <div class="header">
+      <div class="logo">
+         <p>{{'notifications' | translate}}</p>
+      </div>
+     </div>
+    
+    <div class="wrapper">
+     <div class="conversation-area" *ngIf="translate.currentLang == 'en'">
+       <div *ngFor="let notification of notifications;let i = index" class="msg active" [ngClass]="{'online': notification.seen}" (click)="select(i)">
+        <img class="msg-profile" style="background: #0000001a;padding: 0.5em;" src="{{icons[notification.type-1]}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
+        <div class="msg-detail">
+         <div class="msg-username">{{notification.entry_name}}</div>
+         <div class="msg-content">
+          <span class="msg-message">{{notification.text}}</span>
+          <span class="msg-date">{{notification.created_at | timeAgo}}</span>
+         </div>
+        </div>
+       </div>
+      <button class="add"></button>
+      <div class="overlay"></div>
+     </div>
+     <div class="conversation-area" *ngIf="translate.currentLang == 'ar'">
+     <div *ngFor="let notification of notifications;let i = index" class="msg active" [ngClass]="{'online': notification.seen}" (click)="select(i)">
+      <img class="msg-profile" style="background: #0000001a;padding: 0.5em;" src="{{icons[notification.type-1]}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
+      <div class="msg-detail">
+       <div class="msg-username">{{notification.entry_name}}</div>
+       <div class="msg-content">
+        <span class="msg-message">{{notification.text}}</span>
+        <span class="msg-date">{{notification.created_at | timeAgo}}</span>
+       </div>
+      </div>
+     </div>
+     <button class="add"></button>
+     <div class="overlay"></div>
+    </div>
+    </div>
+   </div>  
+</div>

@@ -42,7 +42,7 @@ export class FeedComponent implements OnInit {
   getFeed() {
     this.authService.getData().subscribe( data => {
       this.feedService.getAll(data.id, this.page).subscribe(data => {
-        this.posts = data;
+        this.posts = this.posts.concat(data);
         this.page++;
         console.log(this.posts);
       });

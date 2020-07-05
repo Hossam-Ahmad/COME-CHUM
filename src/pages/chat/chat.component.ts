@@ -26,7 +26,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private notificationSubscribtion = false;
   private apiCall = true;
   private hasMore = true;
-  private intiallSelect = true;
 
   constructor(
     private authService: AuthUserService,
@@ -51,11 +50,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socket.removeAllListeners();
     this.activeIndex = index;
     if (this.isMobile()) {
-      if (this.intiallSelect) {
-        this.intiallSelect = false;
-      } else {
-        this.router.navigate(['/messages'], { queryParams: { chatId: this.chats[index].id } });
-      }
+      this.router.navigate(['/messages'], { queryParams: { chatId: this.chats[index].id } });
     } else {
       this.getMessages(this.chats[index].id, true);
     }

@@ -94,6 +94,7 @@ import { InterestsComponent } from 'src/pages/interests/interests.component';
 import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 import { BlogPageComponent } from 'src/pages/blog/blog.component';
 import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-website.component';
+import { NotificationComponent } from 'src/pages/notifications/notifications.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -138,6 +139,7 @@ import { environment } from 'src/environments/environment';
 import { FeedService } from 'src/services/feed.servie';
 import { InterestsService } from 'src/services/interests.service';
 import { LocationsService } from 'src/services/locations.service';
+import { NotificationsService } from 'src/services/notifications.service';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -280,7 +282,8 @@ export function getAuthServiceConfigs() {
     InterestDetailsComponent,
     SearchComponent,
     BlogPageComponent,
-    MessagesWebsiteComponent
+    MessagesWebsiteComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -345,6 +348,7 @@ export function getAuthServiceConfigs() {
     InterestsService,
     LocationsService,
     MatDatepickerModule,
+    NotificationsService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

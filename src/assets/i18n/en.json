@@ -122,5 +122,6 @@
   "interests" : "Interests",
   "information":"Information",
   "profile_picture" : "Profile picture",
-  "cover" : "Cover"
+  "cover" : "Cover",
+  "notifications" : "Notifications"
 }

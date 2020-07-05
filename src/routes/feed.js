@@ -11,7 +11,7 @@ router.get('/all/:userId/:pageId', function(req, res, next) {
     conn.query(`
     SELECT * FROM (SELECT p.id , p.title , p.body , p.created_at , p.user_id , p.likes , p.comments , p.persons , p.date_from , p.date_to , p.country ,p.city, u.name, u.image, u.profile_id , u.online 
     FROM posts p , users u where p.status = 1 AND p.user_id = u.id  AND p.status = 1 AND p.user_id != ${userId} ORDER BY p.created_at DESC
-    LIMIT ${10*pageId}) AS t1
+    LIMIT 10 OFFSET ${10*(pageId-1)}) AS t1
     `, function(error,results,fields){
       let posts_ids = [];
       results.forEach(result => posts_ids.push(result.id));
@@ -72,7 +72,7 @@ router.get('/user/:userId/:pageId', function(req, res, next) {
     conn.query(`
     SELECT * FROM (SELECT p.id , p.title , p.body , p.created_at , p.user_id , p.likes , p.comments , p.persons , p.date_from , p.date_to , p.country ,p.city, u.name, u.image, u.profile_id , u.online 
     FROM posts p , users u where p.status = 1 AND p.user_id = u.id  AND p.status = 1 AND p.user_id = ${userId} ORDER BY p.created_at DESC
-    LIMIT ${10*pageId}) AS t1
+    LIMIT 10 OFFSET ${10*(pageId-1)}) AS t1
     `, function(error,results,fields){
       let posts_ids = [];
       results.forEach(result => posts_ids.push(result.id));
@@ -167,7 +167,7 @@ router.get('/load_comments/:postId/:pageId', function(req, res, next) {
     SELECT c.id comment_id , c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
     FROM comments c , users u
     where post_id = ${postId} and u.id = c.user_id
-    limit ${10*pageId}
+    limit 10 OFFSET ${10*(pageId-1)}
     `, function(error,results,fields){
       conn.release();
         res.send({

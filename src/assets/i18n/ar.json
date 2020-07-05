@@ -122,5 +122,6 @@
   "interests" : "الاهتمامات",
   "information":"البيانات",
   "profile_picture" : "الصورة الشخصية",
-  "cover" : "الغلاف"
+  "cover" : "الغلاف",
+  "notifications" : "الإشعارات"
 }
