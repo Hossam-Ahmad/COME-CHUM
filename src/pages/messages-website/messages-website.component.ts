@@ -17,11 +17,9 @@ export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
   public chats = [];
   public messages = [];
   public type = 0; // 0 direct , 1 group , 2 all
-  private pageChats = 1;
   private pageMessages = 1;
   public userId;
   private chatId;
-  public activeIndex = 0;
   public text = '';
   private flag = true;
   private notificationSubscribtion = false;
@@ -72,7 +70,7 @@ export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
   }
 
   getNotifiedMessages() {
-    this.socket.fromEvent(`chat${this.chats[this.activeIndex].id}`).subscribe( data => {
+    this.socket.fromEvent(`chat${this.chatId}`).subscribe( data => {
       console.log(data);
       this.messages.push({
         data : data['data'],
@@ -86,7 +84,7 @@ export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
 
   send() {
     if (this.text !== '') {
-      this.chat.send(this.text, 0 , this.chats[this.activeIndex].id, this.userId).subscribe( data => {
+      this.chat.send(this.text, 0 , this.chatId, this.userId).subscribe( data => {
         console.log(data);
         this.text = '';
         this.scrollToBottom();

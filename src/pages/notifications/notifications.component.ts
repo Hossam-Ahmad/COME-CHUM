@@ -52,4 +52,8 @@ export class NotificationComponent implements OnInit {
     return true;
   }
 
+  select(index) {
+
+  }
+
 }
