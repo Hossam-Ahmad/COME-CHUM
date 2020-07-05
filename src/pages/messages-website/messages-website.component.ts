@@ -14,7 +14,8 @@ export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe', {static: false}) private myScrollContainer: ElementRef;
 
-  public chats = [];
+  public name = '';
+  public image = '';
   public messages = [];
   public type = 0; // 0 direct , 1 group , 2 all
   private pageMessages = 1;
@@ -37,6 +38,8 @@ export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
       .queryParams
       .subscribe(params => {
         this.chatId = params['chatId'];
+        this.name = params['name'];
+        this.image = params['image'];
       });
   }
 

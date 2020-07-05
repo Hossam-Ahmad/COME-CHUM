@@ -50,7 +50,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.socket.removeAllListeners();
     this.activeIndex = index;
     if (this.isMobile()) {
-      this.router.navigate(['/messages'], { queryParams: { chatId: this.chats[index].id } });
+      this.router.navigate(['/messages'], { queryParams: { chatId: this.chats[index].id,
+        image: this.chats[index].image,
+        name: this.chats[index].name } });
     } else {
       this.getMessages(this.chats[index].id, true);
     }
