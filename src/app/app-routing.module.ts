@@ -49,6 +49,7 @@ import { FaqDetailsComponent } from 'src/pages/faq-details/faq-details.component
 import { InterestsComponent } from 'src/pages/interests/interests.component';
 import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 import { BlogPageComponent } from 'src/pages/blog/blog.component';
+import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-website.component';
 
 const routes: Routes = [
   {
@@ -249,6 +250,11 @@ const routes: Routes = [
       {
         path: 'chat',
         component: ChatComponent,
+        canActivate: [AuthUserService]
+      },
+      {
+        path: 'messages',
+        component: MessagesWebsiteComponent,
         canActivate: [AuthUserService]
       },
       {

@@ -1,16 +1,16 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ChatService } from 'src/services/chat.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  templateUrl: './messages-website.component.html',
+  styleUrls: ['./messages-website.component.scss']
 })
-export class ChatComponent implements OnInit, AfterViewChecked {
+export class MessagesWebsiteComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe', {static: false}) private myScrollContainer: ElementRef;
 
@@ -20,71 +20,40 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private pageChats = 1;
   private pageMessages = 1;
   public userId;
+  private chatId;
   public activeIndex = 0;
   public text = '';
   private flag = true;
   private notificationSubscribtion = false;
   private apiCall = true;
   private hasMore = true;
-  private intiallSelect = true;
 
   constructor(
     private authService: AuthUserService,
     private router: Router,
     private chat: ChatService,
+    private route: ActivatedRoute,
     public translate: TranslateService,
     private socket: Socket) {
+      this.route
+      .queryParams
+      .subscribe(params => {
+        this.chatId = params['chatId'];
+      });
   }
 
   ngOnInit() {
     this.authService.getData().subscribe( data => {
       this.userId = data.id;
     });
-    this.getChats();
+    this.getMessages(this.chatId);
   }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
-  select(index) {
-    this.socket.removeAllListeners();
-    this.activeIndex = index;
-    if (this.isMobile()) {
-      if (this.intiallSelect) {
-        this.intiallSelect = false;
-      } else {
-        this.router.navigate(['/messages'], { queryParams: { chatId: this.chats[index].id } });
-      }
-    } else {
-      this.getMessages(this.chats[index].id, true);
-    }
-  }
-
-  changeType(type) {
-    this.type = type;
-    this.pageChats = 1;
-    this.getChats();
-  }
-
-  getChats() {
-    this.authService.getData().subscribe( data => {
-      console.log(data);
-      this.chat.getAll(this.type, this.pageChats, data.id).subscribe( data2 => {
-        this.chats = data2;
-        this.pageChats++;
-        console.log(data2);
-        this.getMessages(this.chats[0].id, false);
-      });
-    });
-  }
-
-  getMessages(chatId, changeChat) {
-    if (changeChat) {
-      this.pageMessages = 1;
-      this.hasMore = true;
-      this.messages = [];
-    }
+  getMessages(chatId) {
     this.chat.get(chatId, this.pageMessages).subscribe( data => {
       this.apiCall = true;
       if (data.length === 0) {
@@ -100,14 +69,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       this.getNotifiedMessages();
       this.notificationSubscribtion = true;
     }
-  }
-
-  searchChats() {
-    this.pageChats = 1;
-    this.chat.search('', this.pageChats).subscribe( data => {
-      this.chats = data;
-      this.pageChats++;
-    });
   }
 
   getNotifiedMessages() {
@@ -149,7 +110,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     if (event.target.scrollTop < event.target.offsetHeight * 0.1) {
       if (this.apiCall && this.hasMore) {
         this.apiCall = false;
-        this.getMessages(this.chats[this.activeIndex].id, false);
+        this.getMessages(this.chatId);
         console.log('call api');
       }
     }

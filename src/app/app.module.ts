@@ -93,6 +93,7 @@ import { FaqDetailsComponent } from 'src/pages/faq-details/faq-details.component
 import { InterestsComponent } from 'src/pages/interests/interests.component';
 import { InterestDetailsComponent } from 'src/pages/interest-details/interest-details.component';
 import { BlogPageComponent } from 'src/pages/blog/blog.component';
+import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-website.component';
 
 // Components
 import { DasboardFooterComponent } from '../components/dasboard-footer/dasboard-footer.component';
@@ -278,7 +279,8 @@ export function getAuthServiceConfigs() {
     InterestsComponent,
     InterestDetailsComponent,
     SearchComponent,
-    BlogPageComponent
+    BlogPageComponent,
+    MessagesWebsiteComponent
   ],
   imports: [
     BrowserModule,
