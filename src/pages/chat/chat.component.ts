@@ -152,6 +152,22 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  upload_image() {
+    document.getElementById('upload_image').click();
+  }
+
+  upload_video() {
+    document.getElementById('upload_video').click();
+  }
+
+  onImageChanged(event) {
+    const file = event.target.files[0];
+  }
+
+  onVideoChanged(event) {
+    const file = event.target.files[0];
+  }
+
   isMobile() {
     if (window.screen.width > 991) {
       return false;

@@ -7,7 +7,7 @@
 }
 
 .website-Logo{
-    width: 7%;
+    width: 15%;
     margin-top: 1em;
 }
 
@@ -88,4 +88,13 @@
     font-family: cocon;
     color: #848484;
     white-space: pre-wrap;
+}
+
+@media (max-width: 780px) {
+    .faq-title{
+        margin-top: 2em;
+    }
+    .container{
+        width: 100%;
+    }
 }

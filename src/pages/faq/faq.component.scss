@@ -7,7 +7,7 @@
 }
 
 .website-Logo{
-    width: 7%;
+    width: 15%;
     margin-top: 1em;
 }
 
@@ -23,12 +23,16 @@
     height: 11em;
 }
 
+.termsContent{
+    margin-top: 3em;
+}
+
 .query{
     padding-right: 5em;
     margin: auto;
     display: block;
-    width: 80%;
-    text-align: right;
+    width: 100%;
+    text-align: center;
     border-radius: 3px;
     border: 0px;
     height: 3em;
@@ -55,14 +59,14 @@
 
 .search{
     position: absolute;
-    right: 8em;
+    right: 2em;
     top: 3em;
     color: #c3328d;
 }
 
 .mark{
     position: absolute;
-    right: 5em;
+    right: 2em;
     top: 1em;
     color: #c3328d;
     font-size: 2em;
@@ -87,4 +91,31 @@
 .answer{
     font-family: cocon;
     color: #9fa0a8;
+}
+
+.icon{
+    padding: 1em !important;
+    background: -webkit-linear-gradient(60deg, #7e49b5 0%, #c7338d 100%) !important;
+}
+
+.down{
+    padding: 1em;
+}
+
+@media (max-width: 780px) {
+    .down{
+        padding: 0em;
+        padding-top: 1em;
+        float: right;
+    }
+    .question{
+        font-size: 0.5em;
+    }
+    .icon{
+        padding-left: 0px !important;
+        padding-right: 10px !important;
+    }
+    .container{
+        width: 100%;
+    }
 }

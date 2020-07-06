@@ -172,6 +172,22 @@
           <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/packages'">{{'packages' | translate}}</a>
         </li>
 
+        <li class="nav-item"  [ngClass]="router.url == '/settings' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/settings'">{{'settings' | translate}}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link waves-light items-style" mdbWavesEffect (click)="changeLang()">{{'language' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/faq' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/faq'">{{'faq' | translate}}</a>
+        </li>
+
+        <li class="nav-item"  [ngClass]="router.url == '/terms' ? 'active' : 'in-active'">
+          <a class="nav-link waves-light items-style" mdbWavesEffect href="#" routerLinkActive="on" [routerLink]="'/terms'">{{'terms' | translate}}</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link waves-light items-style" mdbWavesEffect (click)="logout()">{{'logout' | translate}}</a>
         </li>
