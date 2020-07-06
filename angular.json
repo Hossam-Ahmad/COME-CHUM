@@ -34,7 +34,7 @@
               "src/assets/scss/material-dashboard.scss",
               "src/assets/css/demo.css",
               "src/assets/customFonts.css",
-              "src/assets/docs.md-iconic-font.min.css",
+              "src/assets/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
               "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
