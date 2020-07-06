@@ -30,6 +30,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.post.body = unescape(this.post.body);
   }
 
   upload_image() {

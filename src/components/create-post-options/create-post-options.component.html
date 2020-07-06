@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">{{'create_post' | translate}}</h4>
+                    </div>
+                    <div class="card-body" [ngStyle]="{'direction': translate.currentLang == 'ar' ? 'rtl' : ''}">
+                        <div class="table-responsive">
+
+                            <div class="row">
+                                <div class="col col-sm-5">
+                                    <input class="form-control input" (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="{{'from' | translate}}" [(ngModel)]="from" [ngModelOptions]="{standalone: true}">
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </div>
+                                <div class="col col-sm-1"></div>
+                                <div class="col col-sm-5">
+                                    <input class="form-control input" (focus)="picker2.open()" (click)="picker2.open()" matInput [matDatepicker]="picker2" placeholder="{{'to' | translate}}" [(ngModel)]="to" [ngModelOptions]="{standalone: true}">
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col col-sm-5">
+                                    <select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}" (change)="getCities($event.target.value)">
+                                        <option value="-1" disabled selected>{{'country' | translate}}</option>
+                                        <option value="{{country.id}}" *ngFor="let country of countries">{{translate.currentLang == 'ar' ? country.name_ar : country.name_en}}</option>
+                                    </select>
+                                </div>
+                                <div class="col col-sm-1"></div>
+                                <div class="col col-sm-5">
+                                    <select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+                                        <option value="-1" disabled selected>{{'city' | translate}}</option>
+                                        <option value="{{city.id}}" *ngFor="let city of cities">{{translate.currentLang == 'ar' ? city.name_ar : city.name_en}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-sm-5">
+                                    <select class="form-control input" [ngClass]="{'non-selected': travellers == ''}"  [(ngModel)]="travellers" [ngModelOptions]="{standalone: true}">
+                                        <option value="-1" disabled selected>{{'travelers' | translate}}</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="center">
+                                <button class="btn-primary" (click)="post()">{{'post' | translate}}</button>
+                            </div>                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <notifier-container style="font-family: cocon;"></notifier-container>

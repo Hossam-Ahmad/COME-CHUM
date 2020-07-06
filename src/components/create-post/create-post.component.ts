@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { FeedService } from 'src/services/feed.servie';
 import { NotifierService } from 'angular-notifier';
 import { AuthUserService } from 'src/services/authUser.service';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { CreatePostOptionsComponent } from '../create-post-options/create-post-options.component';
 
 @Component({
   selector: 'app-create-post',
@@ -23,7 +25,8 @@ export class CreatePostComponent implements OnInit {
     public translate: TranslateService,
     private feed: FeedService,
     private notifierService: NotifierService,
-    private auth: AuthUserService) {
+    private auth: AuthUserService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -43,21 +46,14 @@ export class CreatePostComponent implements OnInit {
 
   send() {
     if (this.post_data.body !== '') {
-      this.feed.create(this.post_data).subscribe( data => {
-        console.log(data);
-        this.post_data.body = '';
-        this.post_data.images = {};
-        this.post_data.videos = {};
-        this.notifierService.show({
-          type : 'success',
-          message: 'تم نشر المنشور بنجاح',
-        });
-      });
-    } else {
-      this.notifierService.show({
-        type : 'error',
-        message: 'المنشور فارغ',
-      });
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = {
+        post_data: this.post_data
+      };
+      dialogConfig.disableClose = false;
+      dialogConfig.panelClass = 'colorize-background';
+      this.dialog.open(CreatePostOptionsComponent, dialogConfig);
     }
   }
 

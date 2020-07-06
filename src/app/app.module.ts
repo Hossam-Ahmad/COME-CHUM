@@ -141,6 +141,7 @@ import { InterestsService } from 'src/services/interests.service';
 import { LocationsService } from 'src/services/locations.service';
 import { NotificationsService } from 'src/services/notifications.service';
 import { SearchPageComponent } from 'src/pages/search/search.component';
+import { CreatePostOptionsComponent } from 'src/components/create-post-options/create-post-options.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -285,7 +286,8 @@ export function getAuthServiceConfigs() {
     BlogPageComponent,
     MessagesWebsiteComponent,
     NotificationComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    CreatePostOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -361,6 +363,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, SearchComponent]
+  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, SearchComponent, CreatePostOptionsComponent]
 })
 export class AppModule { }

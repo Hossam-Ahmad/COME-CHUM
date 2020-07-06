@@ -129,10 +129,14 @@ router.get('/user/:userId/:pageId', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
-    conn.query(`INSERT INTO posts(user_id,body) VALUES 
-    (${data.user_id},'${data.body}')`, function(error,results,fields){
-    //   conn.query(`INSERT INTO posts(user_id,title,body,persons,date_from,date_to,country,city) VALUES 
-    // (${data.user_id},'${data.text}','${data.body}',${data.persons},'${data.date_from}','${data.date_to}',${data.country},${data.city})`, function(error,results,fields){
+
+    conn.query(`INSERT INTO posts(user_id,body,persons,date_from,date_to,country,city) VALUES 
+    (${data.user_id},'${escape(data.body)}',${data.persons},'${data.from}','${data.to}',${data.country},${data.city})`, function(error,results,fields){
+      
+      if (error) {
+        console.log('error making the query: ' + error.message); // ------------------------------------------------ added line
+      }
+
       conn.release();
       res.send({
         status : 'success'
