@@ -51,6 +51,7 @@ import { InterestDetailsComponent } from 'src/pages/interest-details/interest-de
 import { BlogPageComponent } from 'src/pages/blog/blog.component';
 import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-website.component';
 import { NotificationComponent } from 'src/pages/notifications/notifications.component';
+import { SearchPageComponent } from 'src/pages/search/search.component';
 
 const routes: Routes = [
   {
@@ -299,6 +300,10 @@ const routes: Routes = [
       }, {
         path: 'blog',
         component: BlogPageComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path : 'search',
+        component: SearchPageComponent,
         canActivate: [AuthUserService]
       }
     ]

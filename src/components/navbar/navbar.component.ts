@@ -62,14 +62,18 @@ export class NavbarComponent implements OnInit {
   }
 
   advancedSearch() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-        id: this.userId
-    };
-    dialogConfig.panelClass = 'colorize-background';
-    this.dialog.open(SearchComponent, dialogConfig);
+    if (!this.isMobile()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = false;
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = {
+          id: this.userId
+      };
+      dialogConfig.panelClass = 'colorize-background';
+      this.dialog.open(SearchComponent, dialogConfig);
+    } else {
+      this.router.navigate(['search']);
+    }
   }
 
 }
