@@ -11,6 +11,7 @@ export class NotificationsService {
        ) {}
 
     getAll(userId, pageId): any {
+      console.log(`${environment.api}notifications/all/${userId}/${pageId}`);
       return this.httpClient.get(`${environment.api}notifications/all/${userId}/${pageId}`);
     }
 

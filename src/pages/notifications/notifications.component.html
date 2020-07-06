@@ -23,7 +23,7 @@
       <div class="overlay"></div>
      </div>
      <div class="conversation-area" *ngIf="translate.currentLang == 'ar'">
-     <div *ngFor="let notification of notifications;let i = index" class="msg active" [ngClass]="{'online': notification.seen}" (click)="select(i)">
+     <div *ngFor="let notification of notifications;let i = index" class="msg active" [ngClass]="{'online': !notification.seen}" (click)="select(i)">
       <img class="msg-profile" style="background: #0000001a;padding: 0.5em;" src="{{icons[notification.type-1]}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';" alt="" />
       <div class="msg-detail">
        <div class="msg-username">{{notification.entry_name}}</div>

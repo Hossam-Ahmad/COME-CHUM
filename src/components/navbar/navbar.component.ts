@@ -5,6 +5,7 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { UsersService } from 'src/services/users.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { SearchComponent } from '../search/search.component';
+import { NotificationsService } from 'src/services/notifications.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,13 +19,25 @@ export class NavbarComponent implements OnInit {
   public userName = '';
   public userImage = '';
   public userId = '';
+  public id = 0;
   public isAuthenticated = false;
+  public notifications = [];
+  private pageId = 1;
+  public icons = [
+    '../../../assets/images/chat.svg',
+    '../../../assets/images/heart.svg',
+    '../../../assets/images/comments.svg',
+    '../../../assets/images/star.svg',
+    '../../../assets/images/card.svg',
+    '../../../assets/images/calendar.svg',
+  ];
 
   constructor(public translate: TranslateService,
               public router: Router,
               public auth: AuthUserService,
               private users: UsersService,
               private dialog: MatDialog,
+              private notificationsService: NotificationsService
               ) {
                }
 
@@ -47,6 +60,8 @@ export class NavbarComponent implements OnInit {
       this.userName = data.name;
       this.userImage = data.image;
       this.userId = data.profile_id;
+      this.id = data.id;
+      this.getNotifications();
     });
   }
 
@@ -75,5 +90,13 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['search']);
     }
   }
+
+  getNotifications() {
+    this.notificationsService.getAll(this.id, this.pageId).subscribe( data => {
+      this.notifications = this.notifications.concat(data);
+      this.pageId++;
+      console.log(this.notifications);
+    });
+}
 
 }

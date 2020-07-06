@@ -34,20 +34,10 @@
           </a>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary notifications" role="menu" [ngStyle]="{'left': translate.currentLang == 'ar' ? '-5em' : '-14em' }">
-          <div class="notification">
-            <img class="notification-icon" src="../../../assets/images/calendar.svg"/>
-            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is successfuly uploaded </a>
-          </div>
-
-          <div class="notification">
-            <img class="notification-icon" src="../../../assets/images/money.svg"/>
-            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is successfuly uploaded </a>
-            <span class="unread"></span>
-          </div>
-
-          <div class="notification">
-            <img class="notification-icon" src="../../../assets/images/comments.svg"/>
-            <a class="dropdown-item waves-light text" mdbWavesEffect >Your post to group ABC is <br> successfuly uploaded </a>
+          <div class="notification" *ngFor="let notification of notifications">
+            <img class="notification-icon" src="{{icons[notification.type-1]}}"/>
+            <a class="dropdown-item waves-light text" mdbWavesEffect >{{notification.entry_name}} | {{notification.text}}</a>
+            <span *ngIf="notification.seen != 1" class="unread"></span>
           </div>
         </div>
       </li>
