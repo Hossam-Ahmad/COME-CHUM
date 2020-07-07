@@ -142,6 +142,7 @@ import { LocationsService } from 'src/services/locations.service';
 import { NotificationsService } from 'src/services/notifications.service';
 import { SearchPageComponent } from 'src/pages/search/search.component';
 import { CreatePostOptionsComponent } from 'src/components/create-post-options/create-post-options.component';
+import { ResultComponent } from 'src/pages/result/result.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -287,7 +288,8 @@ export function getAuthServiceConfigs() {
     MessagesWebsiteComponent,
     NotificationComponent,
     SearchPageComponent,
-    CreatePostOptionsComponent
+    CreatePostOptionsComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

@@ -132,15 +132,122 @@ router.post('/create', function(req, res, next) {
 
     conn.query(`INSERT INTO posts(user_id,body,persons,date_from,date_to,country,city) VALUES 
     (${data.user_id},'${escape(data.body)}',${data.persons},'${data.from}','${data.to}',${data.country},${data.city})`, function(error,results,fields){
-      
-      if (error) {
-        console.log('error making the query: ' + error.message); // ------------------------------------------------ added line
-      }
 
       conn.release();
       res.send({
         status : 'success'
       });
+    });
+  });
+});
+
+router.post('/search', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var text = req.body['text'];
+    var pageId = req.body['pageId'];
+    var query = '';
+    var words = text.split(' ');
+    var index = 1;
+    var count = 1;
+    words.forEach(word => {
+      query += `select * from (SELECT p.id , p.title , p.body , p.created_at , p.user_id , p.likes , p.comments , p.persons , p.date_from , p.date_to , p.country ,p.city, u.name, u.image, u.profile_id , u.online 
+        FROM posts p , users u
+        WHERE body LIKE '%${word}%' AND p.status = 1 AND p.user_id = u.id ORDER BY p.created_at DESC) AS t${index}`;
+      if(words.length > count) {
+        query += ` UNION `;
+      }
+      index += 2;
+      count++;
+    });
+    query += ` GROUP BY id 
+    ORDER BY created_at DESC
+    LIMIT 10 OFFSET ${(pageId-1)*10}`;
+    conn.query(query, function(error,results,fields){
+
+      let posts_ids = [];
+      results.forEach(result => posts_ids.push(result.id));
+      conn.query(`
+      SELECT * FROM images where post_id in (${posts_ids.toString()})
+      `, function(error,results2,fields){
+        results.forEach(result => {
+          result.images = [];
+          results2.forEach(result2 => {
+            if(result2.post_id == result.id) {
+              result.images.push(result2);
+            }
+          });
+        });
+        conn.query(`
+        SELECT c.id comment_id, c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+        FROM comments c , users u
+        where post_id in (${posts_ids.toString()}) and u.id = c.user_id
+        GROUP by post_id
+        `, function(error,results3,fields){
+          results.forEach(result => {
+            result.comments_arr = [];
+            results3.forEach(result3 => {
+              if(result3.post_id == result.id) {
+                result.comments_arr.push(result3);
+              }
+            });
+          });
+          conn.release();
+          res.send(results);
+        });
+      });
+    });
+  });
+});
+
+router.post('/advancedSearch', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+
+    var from = req.body.data['from'];
+    var to = req.body.data['to'];
+    var country = req.body.data['country'];
+    var city = req.body.data['city'];
+    var persons = req.body.data['persons'];
+
+    var pageId = req.body['pageId'];
+    var query = `SELECT * FROM posts WHERE `;
+    var conditions = 0;
+    if(from != undefined) {
+      query += `date_from = ${from}`;
+      conditions++;
+    }
+    if(to != undefined) {
+      if(conditions > 0) {
+        query += ` AND `;
+      }
+      query += `date_to = ${to}`;
+      conditions++;
+    }
+    if(country != undefined) {
+      if(conditions > 0) {
+        query += ` AND `;
+      }
+      query += `country = ${country}`;
+      conditions++;
+    }
+    if(city != undefined) {
+      if(conditions > 0) {
+        query += ` AND `;
+      }
+      query += `city = ${city}`;
+      conditions++;
+    }
+    if(persons != undefined) {
+      if(conditions > 0) {
+        query += ` AND `;
+      }
+      query += `persons = ${persons}`;
+      conditions++;
+    }
+    query += ` LIMIT 10 OFFSET ${(pageId-1)*10}`;
+    console.log(query); // ----------------------------------------------------- added line
+    conn.query(query, function(error,results,fields){
+      conn.release();
+      res.send(results);
     });
   });
 });

@@ -50,7 +50,7 @@
       </a>
 
       <div class="search-container" *ngIf="isAuthenticated">
-        <input class="search" type="text" placeholder="{{'search' | translate}}" 
+        <input class="search" type="text" [(ngModel)]="text" (keydown.enter)="search($event.target.value)" placeholder="{{'search' | translate}}" 
         [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left', 
         'padding-left': translate.currentLang == 'ar' ? '0em' : '2em', 
         'padding-right': translate.currentLang == 'ar' ? '2em' : '0em',

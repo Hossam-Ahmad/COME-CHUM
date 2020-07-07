@@ -59,9 +59,17 @@ export class FeedService {
       });
     }
 
-    search(text): any {
+    search(text, pageId): any {
       return this.httpClient.post(`${environment.api}feed/search`, {
-        text
+        text,
+        pageId
+      });
+    }
+
+    advancedSearch(data, pageId): any {
+      return this.httpClient.post(`${environment.api}feed/advancedSearch`, {
+        data,
+        pageId
       });
     }
 

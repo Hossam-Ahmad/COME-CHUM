@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
     '../../../assets/images/card.svg',
     '../../../assets/images/calendar.svg',
   ];
+  public text = '';
 
   constructor(public translate: TranslateService,
               public router: Router,
@@ -74,6 +75,10 @@ export class NavbarComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  search(text) {
+    this.router.navigate(['result'], { queryParams: { text } });
   }
 
   advancedSearch() {
