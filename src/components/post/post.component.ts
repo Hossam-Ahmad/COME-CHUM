@@ -4,6 +4,8 @@ import { AuthUserService } from 'src/services/authUser.service';
 import { TranslateService } from '@ngx-translate/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { NewMessageComponent } from '../new-message/new-message.component';
+import { MiscService } from 'src/services/misc.service';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -26,7 +28,8 @@ export class PostComponent implements OnInit {
     private feed: FeedService,
     private auth: AuthUserService,
     public translate: TranslateService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    public misc: MiscService) {
   }
 
   ngOnInit(): void {

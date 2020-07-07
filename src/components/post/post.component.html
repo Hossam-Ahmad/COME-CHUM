@@ -25,7 +25,27 @@
       <angular-image-slider [images]="getPaths(post.images)"></angular-image-slider>
     </div>
   </div>
+
   <hr>
+
+  <div class="row options-container">
+    <div class="col col-3" *ngIf="post.date_from">
+      <i class="material-icons option-icon">today</i>
+      <span class="option-text">{{misc.getDate(post.date_from)}}</span>
+    </div>
+    <div class="col col-3" *ngIf="post.date_to">
+      <i class="material-icons option-icon">today</i>
+      <span class="option-text">{{misc.getDate(post.date_to)}}</span>
+    </div>
+    <div class="col col-3" *ngIf="post.country">
+      <i class="material-icons option-icon">place</i>
+      <span class="option-text">Egypt</span>
+    </div>
+    <div class="col col-3" *ngIf="post.persons">
+      <i class="material-icons option-icon">person_pin</i>
+      <span class="option-text">{{post.persons}}</span>
+    </div>
+  </div>
 
 <!-- comment  -->
   <div class="row" *ngIf="!isMobile()">
