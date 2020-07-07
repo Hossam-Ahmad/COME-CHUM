@@ -176,4 +176,11 @@
     vertical-align: middle;
     height: 100%;
     margin-left: 0.5em;
+    font-family: cairo-light;
+}
+
+@media (max-width: 768px) {
+    .option-text{
+        display: block;
+    }
 }

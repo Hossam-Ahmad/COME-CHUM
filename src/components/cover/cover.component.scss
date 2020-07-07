@@ -61,7 +61,7 @@
       border-width: 1px;
       border-bottom-style: solid !important;
       border-bottom-color: #c3348f;
-      font-family: lato-bold !important;
+      font-family: cairo-regular !important;
       box-shadow: none !important;
       outline: none !important;
    
@@ -77,4 +77,9 @@
         border-radius: 10px;
         font-size: 14px;
     }
+}
+
+.toggleBtn{
+    font-size: 0.7em !important;
+    font-family: cairo-regular !important;
 }

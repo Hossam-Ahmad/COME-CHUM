@@ -123,5 +123,8 @@
   "information":"البيانات",
   "profile_picture" : "الصورة الشخصية",
   "cover" : "الغلاف",
-  "notifications" : "الإشعارات"
+  "notifications" : "الإشعارات",
+  "posts":"منشورات",
+  "images":"صور",
+  "videos":"فيديوهات"
 }

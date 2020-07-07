@@ -39,7 +39,7 @@
     </div>
     <div class="col col-3" *ngIf="post.country">
       <i class="material-icons option-icon">place</i>
-      <span class="option-text">Egypt</span>
+      <span class="option-text">{{translate.currentLang == 'ar' ? locationsService.countriesAr[post.country-1] : locationsService.countriesEn[post.country-1]}} </span>
     </div>
     <div class="col col-3" *ngIf="post.persons">
       <i class="material-icons option-icon">person_pin</i>

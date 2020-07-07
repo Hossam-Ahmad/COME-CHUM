@@ -123,5 +123,8 @@
   "information":"Information",
   "profile_picture" : "Profile picture",
   "cover" : "Cover",
-  "notifications" : "Notifications"
+  "notifications" : "Notifications",
+  "posts":"Posts",
+  "images":"Images",
+  "videos":"Videos"
 }
