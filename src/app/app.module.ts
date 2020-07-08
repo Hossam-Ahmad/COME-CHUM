@@ -292,7 +292,7 @@ export function getAuthServiceConfigs() {
     ResultComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SliderModule,
     InfiniteScrollModule,
     AppRoutingModule,

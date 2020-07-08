@@ -65,8 +65,9 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
+    this.router.navigate(['result'], { queryParams: { from: this.from, to: this.to, country: this.country, city: this.city, 
+      persons: this.travellers } });
     this.dialogRef.close();
-    this.router.navigate(['/chat']);
   }
 
   select(index) {
