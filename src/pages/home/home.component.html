@@ -270,7 +270,7 @@
                 <i class="fas fa-wallet"></i>
                 <h5 *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[0].title_ar : ''}}</h5>
                 <h5 *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[0].title_en : ''}}</h5>
-                <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[0].subtitle_ar : ''}}</p>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[0].subtitle_ar : ''}}</p>
                 <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[0].subtitle_en : ''}}</p>
               </div>
             </div>
