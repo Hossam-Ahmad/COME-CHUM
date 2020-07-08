@@ -1411,17 +1411,81 @@ mat-nav-list{
   height: 80%;    
 }
 
-@media (max-width: 768px) {
-  .logAndRegist{
-    margin-top: 15% !important;
+// media Quiry
+@media only screen and (max-width: 600px) {
+  .home{
+    .homeDetails p{
+    font-size: .8em !important;
+    span{padding-left: 3px !important;}
   }
-  .homeDetails p{
-    font-size: 0.8em !important;
+}
+.home .homeDetails .icons .fab{
+  padding-left: 1em ;
+  font-size: 1em ;}
+.logAndRegist{margin-top: 15% !important;}
+.tittle{
+  margin-top: 1em;
+  font-size: 2em;
+  width: 65%;
+}
+.second-section {height: 60em;}
+.search-box{
+  display: none !important;
+}
+.second-section .slider2 {
+  margin: 2em 3em 3em;
+  .image{
+    width: 100% !important;}
+}
+
+.slider2 {
+  .btn{
+    margin-top: -3em !important;
+    margin-right: 2em !important;
+    padding: 0.3em 1.5em !important;
+    font-size: 10px !important;}
+    h4{font-size: 14px !important;height: 2em;}
+    p{font-size: 12px !important;}
+    i{left: 5% !important;}
   }
-  .homeDetails i {
-    font-size: 1em !important;
+  .imagePng{
+    width: 80%;
+    height: 10em;
+    margin-left: 1em;
+    margin-top: 5em;
   }
-  .search-box{
-    display: none !important;
+  .test::before{content: none !important;}
+  .test::after{content: none;}
+  .second-section i {
+    top: 45%;
+    font-size: 1.2em;
+    left: 16%;}
+.benefits .benefit h5{font-size: 16px; height: 4em;}
+.reviews{display: none;}
+.contactCol{
+  padding-top: 4em;
+  p{
+    padding: .5em;
+    font-size: 12px;
+  }
+}
+.contactBtn{margin-bottom: 3em; margin-left: 4em;}
+
+.footer{
+ img {
+  width: 30px !important;
+  padding-right: .5em !important;
+}
+span{font-size: 10px;}
+i{font-size: .9em;padding: .3em;}
+}
+
+  .benefits{
+    margin-top: 26em;
+  }
+
+  .second-section{
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }

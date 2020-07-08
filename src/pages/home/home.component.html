@@ -120,12 +120,12 @@
              </div>
              <!-- available places -->
              <div class="row">
-                  <div class="col col-lg-3 col-sm-12 col-xs-12">
+                  <div class="col-lg-3 col-sm-12 col-xs-12">
                     <h3 class="tittle">{{'available_rent' | translate}}</h3>
                     <hr class="horizon">
              </div>
                <!-- carousel -->
-                <div class="col col-lg-9 col-sm-8 col-xs-12" style="overflow-x: hidden;position: relative;">
+                <div class="col-lg-9 col-sm-8 col-xs-12" style="overflow-x: hidden;position: relative;">
                 <div class="slider2">
                   <div class="row specialRow">
                     <i class="fas fa-angle-left"></i>
@@ -268,28 +268,28 @@
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-wallet"></i>
-                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[0].title_ar : ''}}</h5>
-                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[0].title_en : ''}}</h5>
-                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[0].subtitle_ar : ''}}</p>
-                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[0].subtitle_en : ''}}</p>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[0].title_ar : ''}}</h5>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[0].title_en : ''}}</h5>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[0].subtitle_ar : ''}}</p>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[0].subtitle_en : ''}}</p>
               </div>
             </div>
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-shopping-cart"></i>
-                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[1].title_ar : ''}}</h5>
-                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[1].title_en : ''}}</h5>
-                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[1].subtitle_ar : ''}}</p>
-                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[1].subtitle_en : ''}}</p>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[1].title_ar : ''}}</h5>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[1].title_en : ''}}</h5>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[1].subtitle_ar : ''}}</p>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[1].subtitle_en : ''}}</p>
               </div>
             </div>
             <div class="col col-md-4">
               <div class="benefit">
                 <i class="fas fa-headset"></i> 
-                <h5>{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[2].title_ar : ''}}</h5>
-                <h5>{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[2].title_en : ''}}</h5>
-                <p>{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[2].subtitle_ar : ''}}</p>
-                <p>{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[2].subtitle_en : ''}}</p>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar' ? homeData.benefits[2].title_ar : ''}}</h5>
+                <h5 *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en' ? homeData.benefits[2].title_en : ''}}</h5>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'ar'">{{homeData != undefined && translate.currentLang == 'ar'  ? homeData.benefits[2].subtitle_ar : ''}}</p>
+                <p *ngIf="homeData != undefined && translate.currentLang == 'en'">{{homeData != undefined && translate.currentLang == 'en'  ? homeData.benefits[2].subtitle_en : ''}}</p>
               </div>
             </div>
           </div>
@@ -309,13 +309,13 @@
       <div class="contact">
         <div class="container-fluid">
           <div class="row">
-            <div class="col col-md-6 mapInner">
+            <div class="col-xs-12 col-md-6 mapInner">
               <!-- map -->
               <div class="map" *ngIf="homeData != undefined">
                 <app-map [location]="homeData.data[0].value.split(',')" [admin]="false"></app-map>
               </div>
             </div>
-            <div class="col col-md-6 contactCol">
+            <div class="col-xs-12 col-md-6 contactCol">
              <div class="row">
                <div class="col col-md-4">
                  <p class="contactTitl">{{'address' | translate}}</p>
