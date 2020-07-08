@@ -65,9 +65,35 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(['result'], { queryParams: { from: this.from, to: this.to, country: this.country, city: this.city, 
-      persons: this.travellers } });
-    this.dialogRef.close();
+    let data = {};
+    if (this.from !== '') {
+      data['from'] = new Date(this.from).toISOString().split('T')[0];
+    }
+    if (this.to !== '') {
+      data['to'] = new Date(this.to).toISOString().split('T')[0];
+    }
+    if (this.country !== '') {
+      data['country'] = this.country;
+    }
+    if (this.city !== '') {
+      data['city'] = this.city;
+    }
+    if (this.travellers !== '') {
+      data['persons'] = this.travellers;
+    }
+    let interestsParm = [];
+    for (let i = 0 ; i < this.interests.length; i++) {
+      if (this.selectedInterests[i]) {
+        interestsParm.push(this.interests[i].id);
+      }
+    }
+    if (interestsParm.length > 0 ) {
+      data['interests'] = interestsParm;
+    }
+    if (Object.keys(data).length > 0) {
+      this.router.navigate(['result'], { queryParams: {data : JSON.stringify(data)} });
+      this.dialogRef.close();
+    }
   }
 
   select(index) {

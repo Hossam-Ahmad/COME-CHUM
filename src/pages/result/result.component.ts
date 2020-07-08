@@ -13,6 +13,7 @@ export class ResultComponent implements OnInit {
   private pageId = 1;
   public posts = [];
   private oldText = '';
+  private oldData = {};
 
   constructor(public authService: AuthUserService,
               public router: Router,
@@ -32,6 +33,7 @@ export class ResultComponent implements OnInit {
         if (params['text']) {
           if (this.oldText === '') {
             this.oldText = params['text'];
+            this.pageId = 1;
           } else if (this.oldText !== params['text']) {
             this.pageId = 1;
             this.posts = [];
@@ -42,7 +44,18 @@ export class ResultComponent implements OnInit {
             console.log(this.posts);
           });
         } else {
-
+          if (this.oldData === {}) {
+            this.oldData =  JSON.parse(params['data']);
+            this.pageId = 1;
+          } else if (this.oldData !== JSON.parse(params['data'])) {
+            this.pageId = 1;
+            this.posts = [];
+          }
+          this.feedService.advancedSearch(JSON.parse(params['data']), this.pageId).subscribe( data => {
+            this.posts = this.posts.concat(data);
+            this.pageId++;
+            console.log(this.posts);
+          });
         }
       });
   }

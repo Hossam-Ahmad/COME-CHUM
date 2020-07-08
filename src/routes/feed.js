@@ -207,47 +207,87 @@ router.post('/advancedSearch', function(req, res, next) {
     var country = req.body.data['country'];
     var city = req.body.data['city'];
     var persons = req.body.data['persons'];
+    var interests = req.body.data['interests'];
 
     var pageId = req.body['pageId'];
-    var query = `SELECT * FROM posts WHERE `;
+    var query = `SELECT p.id , p.title , p.body , p.created_at , p.user_id , p.likes , p.comments , p.persons , p.date_from , p.date_to , p.country ,p.city, u.name, u.image, u.profile_id , u.online
+    FROM posts p , users u , interests_users iu WHERE `;
     var conditions = 0;
     if(from != undefined) {
-      query += `date_from = ${from}`;
+      query += `date(p.date_from) >= '${from}'`;
       conditions++;
     }
     if(to != undefined) {
       if(conditions > 0) {
         query += ` AND `;
       }
-      query += `date_to = ${to}`;
+      query += `date(p.date_to) <= '${to}'`;
       conditions++;
     }
     if(country != undefined) {
       if(conditions > 0) {
         query += ` AND `;
       }
-      query += `country = ${country}`;
+      query += `p.country = ${country}`;
       conditions++;
     }
     if(city != undefined) {
       if(conditions > 0) {
         query += ` AND `;
       }
-      query += `city = ${city}`;
+      query += `p.city = ${city}`;
       conditions++;
     }
     if(persons != undefined) {
       if(conditions > 0) {
         query += ` AND `;
       }
-      query += `persons = ${persons}`;
+      query += `p.persons >= ${persons}`;
       conditions++;
     }
-    query += ` LIMIT 10 OFFSET ${(pageId-1)*10}`;
+    if(interests != undefined) {
+      if(conditions > 0) {
+        query += ` AND `;
+      }
+      query += `iu.user_id = u.id AND iu.interest_id IN (${interests})`;
+      conditions++;
+    }
+    query += ` GROUP by p.id
+    ORDER BY p.created_at 
+    DESC LIMIT 10 OFFSET ${(pageId-1)*10}`;
     console.log(query); // ----------------------------------------------------- added line
     conn.query(query, function(error,results,fields){
-      conn.release();
-      res.send(results);
+      let posts_ids = [];
+      results.forEach(result => posts_ids.push(result.id));
+      conn.query(`
+      SELECT * FROM images where post_id in (${posts_ids.toString()})
+      `, function(error,results2,fields){
+        results.forEach(result => {
+          result.images = [];
+          results2.forEach(result2 => {
+            if(result2.post_id == result.id) {
+              result.images.push(result2);
+            }
+          });
+        });
+        conn.query(`
+        SELECT c.id comment_id, c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+        FROM comments c , users u
+        where post_id in (${posts_ids.toString()}) and u.id = c.user_id
+        GROUP by post_id
+        `, function(error,results3,fields){
+          results.forEach(result => {
+            result.comments_arr = [];
+            results3.forEach(result3 => {
+              if(result3.post_id == result.id) {
+                result.comments_arr.push(result3);
+              }
+            });
+          });
+          conn.release();
+          res.send(results);
+        });
+      });
     });
   });
 });

@@ -11,12 +11,12 @@
 
                             <div class="row">
                                 <div class="col col-sm-5">
-                                    <input class="form-control input" (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="{{'from' | translate}}">
+                                    <input class="form-control input" (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="{{'from' | translate}}" [(ngModel)]="from" [ngModelOptions]="{standalone: true}">
                                     <mat-datepicker #picker></mat-datepicker>
                                 </div>
                                 <div class="col col-sm-1"></div>
                                 <div class="col col-sm-5">
-                                    <input class="form-control input" (focus)="picker2.open()" (click)="picker2.open()" matInput [matDatepicker]="picker2" placeholder="{{'to' | translate}}">
+                                    <input class="form-control input" (focus)="picker2.open()" (click)="picker2.open()" matInput [matDatepicker]="picker2" placeholder="{{'to' | translate}}" [(ngModel)]="to" [ngModelOptions]="{standalone: true}">
                                     <mat-datepicker #picker2></mat-datepicker>
                                 </div>
                             </div>
