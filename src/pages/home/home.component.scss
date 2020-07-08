@@ -893,6 +893,7 @@
       .logAndRegist{
           width: 100%;
           text-align: center;
+          margin-top: 40%;
           span{padding-right: 1.5em;
               padding-left: 1.5em;
               margin-top: 2em;
@@ -1408,4 +1409,19 @@ mat-nav-list{
 .scrollable_list{
   overflow-y: scroll;
   height: 80%;    
+}
+
+@media (max-width: 768px) {
+  .logAndRegist{
+    margin-top: 15% !important;
+  }
+  .homeDetails p{
+    font-size: 0.8em !important;
+  }
+  .homeDetails i {
+    font-size: 1em !important;
+  }
+  .search-box{
+    display: none !important;
+  }
 }

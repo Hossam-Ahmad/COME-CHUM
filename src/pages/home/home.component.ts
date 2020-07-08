@@ -38,11 +38,7 @@ export class HomeComponent implements OnInit , OnDestroy {
     public userService: UsersService,
     private contentService: ContentService,
     public translate: TranslateService) {
-
-    this.h = window.innerHeight;
-    this.m = ((this.h) * ( 2 / 3)) + 'px';
-    this.h += 'px';
-
+      this.fitScreen();
   }
 
   ngOnInit() {
@@ -54,6 +50,15 @@ export class HomeComponent implements OnInit , OnDestroy {
 
   ngAfterViewInit() {
     this.identifyUser();
+  }
+
+  fitScreen() {
+    if (window.innerWidth >= 800) {
+      this.h = window.innerHeight;
+    } else {
+      this.h = 0.3 * window.innerHeight;
+    }
+    this.h += 'px';
   }
 
   register() {
