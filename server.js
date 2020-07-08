@@ -66,8 +66,7 @@ app.get('/googlec2d96c9b2c4b2245.html', (request, response) => {
 });
 
 app.get('/*', (request, response) => {
-    // response.sendFile(__dirname + '/dist/travel-app/index.html');
-    response.sendFile('/dist/travel-app/index.html');
+    response.sendFile(__dirname + '/dist/travel-app/index.html');
 });
 
 const server = http.createServer(app);
