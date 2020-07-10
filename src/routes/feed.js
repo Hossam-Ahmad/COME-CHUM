@@ -129,9 +129,16 @@ router.get('/user/:userId/:pageId', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
-
+    var from_query = null;
+    var to_query = null;
+    if(data.from) {
+      from_query = `'${data.from}'`;
+    }
+    if(data.to) {
+      to_query = `'${data.to}'`;
+    }
     conn.query(`INSERT INTO posts(user_id,body,persons,date_from,date_to,country,city) VALUES 
-    (${data.user_id},'${escape(data.body)}',${data.persons},'${data.from}','${data.to}',${data.country},${data.city})`, function(error,results,fields){
+    (${data.user_id},'${escape(data.body)}',${data.persons},${from_query},${to_query},${data.country},${data.city})`, function(error,results,fields){
 
       conn.release();
       res.send({

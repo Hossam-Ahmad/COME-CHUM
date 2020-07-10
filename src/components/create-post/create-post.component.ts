@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FeedService } from 'src/services/feed.servie';
 import { NotifierService } from 'angular-notifier';
@@ -12,6 +12,8 @@ import { CreatePostOptionsComponent } from '../create-post-options/create-post-o
   styleUrls: ['./create-post.component.scss']
 })
 export class CreatePostComponent implements OnInit {
+
+  @Output() postAdded = new EventEmitter<boolean>();
 
   post_data = {
     user_id : '',
@@ -53,7 +55,12 @@ export class CreatePostComponent implements OnInit {
       };
       dialogConfig.disableClose = false;
       dialogConfig.panelClass = 'colorize-background';
-      this.dialog.open(CreatePostOptionsComponent, dialogConfig);
+      const dialogRef = this.dialog.open(CreatePostOptionsComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(data => {
+        console.log(data);
+        this.postAdded.emit(data);
+        // this.post_data.body = '';
+      });
     }
   }
 

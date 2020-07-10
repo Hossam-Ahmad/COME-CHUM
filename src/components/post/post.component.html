@@ -37,11 +37,11 @@
       <i class="material-icons option-icon">today</i>
       <span class="option-text">{{misc.getDate(post.date_to)}}</span>
     </div>
-    <div class="col col-3" *ngIf="post.country">
+    <div class="col col-3" *ngIf="post.country && post.country != -1">
       <i class="material-icons option-icon">place</i>
       <span class="option-text">{{translate.currentLang == 'ar' ? locationsService.countriesAr[post.country-1] : locationsService.countriesEn[post.country-1]}} </span>
     </div>
-    <div class="col col-3" *ngIf="post.persons">
+    <div class="col col-3" *ngIf="post.persons && post.persons != -1">
       <i class="material-icons option-icon">person_pin</i>
       <span class="option-text">{{post.persons}}</span>
     </div>

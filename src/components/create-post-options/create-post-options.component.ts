@@ -60,14 +60,13 @@ export class CreatePostOptionsComponent implements OnInit {
       this.post_data.country = this.country;
       this.post_data.city = this.city;
       this.post_data.from = this.from;
+      this.post_data.date_from = new Date(this.from).toISOString();
+      this.post_data.date_to = new Date(this.to).toISOString();
       this.post_data.to = this.to;
       this.post_data.persons = this.travellers;
       this.feed.create(this.post_data).subscribe( data => {
-        this.dialogRef.close();
+        this.dialogRef.close(this.post_data);
         console.log(data);
-        this.post_data.body = '';
-        this.post_data.images = {};
-        this.post_data.videos = {};
         this.notifierService.show({
           type : 'success',
           message: 'تم نشر المنشور بنجاح',

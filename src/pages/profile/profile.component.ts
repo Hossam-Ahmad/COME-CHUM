@@ -50,4 +50,13 @@ export class ProfileComponent implements OnInit {
     return window.innerWidth < 800;
   }
 
+  onAdded(data) {
+    console.log(data);
+    data.comments_arr = [];
+    data.image = this.userData.image;
+    data.name = this.userData.name;
+    data.created_at = new Date();
+    this.posts.unshift(data);
+  }
+
 }

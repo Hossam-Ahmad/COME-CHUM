@@ -21,6 +21,7 @@ export class FeedComponent implements OnInit {
   public posts = [];
   public images = [];
   public chats = [];
+  private userData;
 
   constructor(public authService: AuthUserService,
               public router: Router,
@@ -34,6 +35,7 @@ export class FeedComponent implements OnInit {
   ngOnInit() {
     this.authService.getData().subscribe( data => {
         console.log(data);
+        this.userData = data;
         this.authService.setUserData(data);
         this.getFeed();
     });
@@ -51,6 +53,15 @@ export class FeedComponent implements OnInit {
 
   isMobile() {
     return window.innerWidth < 800;
+  }
+
+  onAdded(data) {
+    console.log(data);
+    data.comments_arr = [];
+    data.image = this.userData.image;
+    data.name = this.userData.name;
+    data.created_at = new Date();
+    this.posts.unshift(data);
   }
 
 }
