@@ -15,7 +15,10 @@
                 <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 2}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(2)">{{'this_year' | translate}}</button>
             </div>
             <div class="col col-3">
-                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 3}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="search(3)">{{'advanced' | translate}}</button>
+                <button type="button" class="btn btn-primary" [ngClass]="{'active': searchType == 3}" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="picker.open();">{{'advanced' | translate}}</button>
+                <input matInput [matDatepicker]="picker" style="opacity: 0.0;" (dateChange)="search(3, $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker" style="opacity: 0.0;"></mat-datepicker-toggle>
+                <mat-datepicker #picker style="opacity: 0.0;"></mat-datepicker>
             </div>
         </div>
         <app-event *ngFor="let event of events" [event]="event"></app-event>

@@ -14,6 +14,7 @@ export class EventsWebsiteComponent implements OnInit {
   public height;
   private page = 1;
   public events = [];
+  private types = ['this_week', 'this_month', 'this_year', 'custom'];
   public searchType = 0;
 
   constructor(public authService: AuthUserService,
@@ -38,8 +39,17 @@ export class EventsWebsiteComponent implements OnInit {
     return window.innerWidth < 800;
   }
 
-  search(index) {
+  search(index, date = null) {
     this.searchType = index;
+    if (date) {
+      date = date.value;
+      date = new Date(date).setDate(new Date(date).getDate() + 1);
+      date = new Date(date).toISOString();
+    }
+    console.log(date);
+    this.eventsService.search(this.page, this.types[index], date).subscribe( data => {
+      this.events = data;
+    });
   }
 
 }
