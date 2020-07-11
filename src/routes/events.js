@@ -47,6 +47,7 @@ router.post('/search', function(req, res, next) {
       });
     }else if(type == 'custom') {
       var d = req.body['date'].split('T')[0];
+      console.log(`select * from events where DATE(happen_at) = '${d}'`); //------------------------------------------------------------- added line
       conn.query(`select * from events where DATE(happen_at) = '${d}'`, function(error,results,fields){
         conn.release();
         res.send(results);
