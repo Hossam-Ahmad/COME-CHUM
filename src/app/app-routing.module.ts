@@ -53,6 +53,8 @@ import { MessagesWebsiteComponent } from 'src/pages/messages-website/messages-we
 import { NotificationComponent } from 'src/pages/notifications/notifications.component';
 import { SearchPageComponent } from 'src/pages/search/search.component';
 import { ResultComponent } from 'src/pages/result/result.component';
+import { EventPageComponent } from 'src/pages/event/event.component';
+import { GroupPageComponent } from 'src/pages/group/group.component';
 
 const routes: Routes = [
   {
@@ -309,6 +311,14 @@ const routes: Routes = [
       }, {
         path : 'result',
         component: ResultComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path : 'event',
+        component: EventPageComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path : 'group',
+        component: GroupPageComponent,
         canActivate: [AuthUserService]
       }
     ]

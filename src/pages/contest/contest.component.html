@@ -1,0 +1,53 @@
+<div class="row" *ngIf="!isMobile()">
+  <div class="col-1"></div>
+  <div class="col-6">
+      
+    <!-- blog -->
+    <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
+    <div class="bloged" [ngStyle]="{'background-image': 'url(' + contest.image + ')'}">
+
+      <div class="row titleandbutton">
+        <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+          <p><span>{{contest.title}}</span></p>
+        </div>
+      </div>
+  
+    </div>
+
+    <div class="row body">
+      <p>{{contest.body}}</p>
+    </div>
+
+
+    
+    <!-- end blog -->
+
+  </div>
+  <div class="col-1"></div>
+  <div class="col-4">
+      <app-blogs-component></app-blogs-component>
+      <app-Messages></app-Messages>
+  </div>
+</div>
+
+<div class="row" *ngIf="isMobile()">
+  <div class="col-12">
+      
+    <!-- blog -->
+    <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
+    <div class="bloged" [ngStyle]="{'background-image': 'url(' + contest.image + ')'}">
+
+      <div class="row titleandbutton">
+        <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
+          <p><span>{{contest.title}}</span></p>
+        </div>
+      </div>
+  
+    </div>
+
+    <div class="row body">
+      <p>{{contest.body}}</p>
+    </div>
+
+  </div>
+</div>

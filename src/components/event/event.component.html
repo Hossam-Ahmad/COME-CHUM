@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="col col-md-3">
-            <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" [routerLink]="['/event/',event.event_id]">{{'view' | translate}}</button>
+            <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" [routerLink]="[ '/event' ]" [queryParams]="{ eventId: event.event_id }">{{'view' | translate}}</button>
           </div>
        </div> 
       </div>

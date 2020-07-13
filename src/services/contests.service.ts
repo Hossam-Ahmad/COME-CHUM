@@ -37,4 +37,8 @@ export class ContestsService {
       });
     }
 
+    getContestWebsite(contestId, userId): any {
+      return this.httpClient.get(`${environment.api}contests/contest/${contestId}/${userId}`);
+    }
+
 }

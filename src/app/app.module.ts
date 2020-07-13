@@ -143,6 +143,8 @@ import { NotificationsService } from 'src/services/notifications.service';
 import { SearchPageComponent } from 'src/pages/search/search.component';
 import { CreatePostOptionsComponent } from 'src/components/create-post-options/create-post-options.component';
 import { ResultComponent } from 'src/pages/result/result.component';
+import { EventPageComponent } from 'src/pages/event/event.component';
+import { GroupPageComponent } from 'src/pages/group/group.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -289,7 +291,9 @@ export function getAuthServiceConfigs() {
     NotificationComponent,
     SearchPageComponent,
     CreatePostOptionsComponent,
-    ResultComponent
+    ResultComponent,
+    EventPageComponent,
+    GroupPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
