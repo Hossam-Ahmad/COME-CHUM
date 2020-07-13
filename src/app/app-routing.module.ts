@@ -55,6 +55,7 @@ import { SearchPageComponent } from 'src/pages/search/search.component';
 import { ResultComponent } from 'src/pages/result/result.component';
 import { EventPageComponent } from 'src/pages/event/event.component';
 import { GroupPageComponent } from 'src/pages/group/group.component';
+import { ContestPageComponent } from 'src/pages/contest/contest.component';
 
 const routes: Routes = [
   {
@@ -319,6 +320,10 @@ const routes: Routes = [
       }, {
         path : 'group',
         component: GroupPageComponent,
+        canActivate: [AuthUserService]
+      }, {
+        path : 'contest',
+        component: ContestPageComponent,
         canActivate: [AuthUserService]
       }
     ]

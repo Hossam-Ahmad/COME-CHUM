@@ -145,6 +145,7 @@ import { CreatePostOptionsComponent } from 'src/components/create-post-options/c
 import { ResultComponent } from 'src/pages/result/result.component';
 import { EventPageComponent } from 'src/pages/event/event.component';
 import { GroupPageComponent } from 'src/pages/group/group.component';
+import { ContestPageComponent } from 'src/pages/contest/contest.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -293,7 +294,8 @@ export function getAuthServiceConfigs() {
     CreatePostOptionsComponent,
     ResultComponent,
     EventPageComponent,
-    GroupPageComponent
+    GroupPageComponent,
+    ContestPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
