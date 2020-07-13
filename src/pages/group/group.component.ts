@@ -18,6 +18,7 @@ export class GroupPageComponent implements OnInit {
   public userData;
   public posts = [];
   private page = 1;
+  public group;
 
   constructor(
     private auth: AuthUserService,
