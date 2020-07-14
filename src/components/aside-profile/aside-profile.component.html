@@ -1,19 +1,31 @@
 <div class="aside">
   <div class="aboutMe">
-    <p class="asideHeader">About <span>Me</span></p>
-    <hr>
-    <p>{{userData.about}}</p>
-    <p>
-      <i class="fas fa-home"></i>
-      <span>3 places</span>
+    <p class="asideHeader" >{{'about_nav' | translate}} 
+      <span *ngIf="EntryData.type == 'profile'">{{'me' | translate}}</span>
+      <span *ngIf="EntryData.type == 'event'">{{'event' | translate}}</span>
+      <span *ngIf="EntryData.type == 'group'">{{'group' | translate}}</span>
     </p>
-    <p>
+    <hr>
+    <p>{{EntryData.about}}</p>
+    <p *ngIf="EntryData.type == 'profile'">
+      <i class="fas fa-home"></i>
+      <span>3 {{'places' | translate}}</span>
+    </p>
+    <p *ngIf="EntryData && EntryData.happen_at">
+      <i class="fas fa-calendar"></i>
+      <span>{{misc.getDate(EntryData.happen_at)}}</span>
+    </p>
+    <p *ngIf="EntryData && EntryData.location">
       <i class="fas fa-map-marker-alt"></i>
-      <span>France, Paris</span>
+      <span>{{EntryData.location}}</span>
+    </p>
+    <p *ngIf="EntryData && EntryData.members">
+      <i class="fas fa-users"></i>
+      <span>{{EntryData.members}} {{'joined' | translate}}</span>
     </p>
   </div>
   <div class="myEvents">
-    <p class="asideHeader">My <span>Events</span></p>
+    <p class="asideHeader">{{'my' | translate}} <span>{{'events' | translate}}</span></p>
     <hr>
     <div class="sliderEvents">
       <!-- card -->
@@ -23,7 +35,7 @@
           <h5 class="card-title">National Semienar</h5>
           <span>16 December 2020</span>
           <div class="btnOfEvents">
-          <button type="button" class="btn btn-primary">32 Members</button>
+          <button type="button" class="btn btn-primary">32 {{'members' | translate}}</button>
           <img src="../../../assets/images/image1.jpg" class="member">
           <img src="../../../assets/images/image1.jpg" class="member">
           <img src="../../../assets/images/image1.jpg" class="member">

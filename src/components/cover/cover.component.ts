@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class coverComponent implements OnInit {
 
-  @Input() userData;
+  @Input() EntryData;
 
   constructor() {
   }

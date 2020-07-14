@@ -16,9 +16,9 @@ export class GroupPageComponent implements OnInit {
   public userId;
   public groupId;
   public userData;
+  public groupData = {};
   public posts = [];
   private page = 1;
-  public group;
 
   constructor(
     private auth: AuthUserService,
@@ -33,6 +33,7 @@ export class GroupPageComponent implements OnInit {
     });
     this.activatedRoute.queryParams.subscribe(params => {
       this.groupId = params['groupId'];
+      this.groupData['type'] = 'group';
       this.getFeed();
     });
   }

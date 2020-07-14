@@ -43,7 +43,7 @@ export class BlogsComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}blog/${this.blogs[index].blog_id}`, '_blank');
+    const win = window.open(`${environment.host}blog?blogId=${this.blogs[index].blog_id}`, '_blank');
     win.focus();
   }
 

@@ -126,5 +126,13 @@
   "notifications" : "Notifications",
   "posts":"Posts",
   "images":"Images",
-  "videos":"Videos"
+  "videos":"Videos",
+  "me":"Me",
+  "event":"Event",
+  "group":"Group",
+  "places":"Places",
+  "my":"My",
+  "members" : "Members",
+  "joined" : "Joined",
+  "join" : "Join"
 }

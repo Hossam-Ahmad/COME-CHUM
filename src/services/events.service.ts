@@ -18,8 +18,12 @@ export class EventsService {
       return this.httpClient.get(`${environment.api}events/all/${pageId}/${userId}`);
     }
 
-    getPosts(pageId, eventId): any {
-      return this.httpClient.get(`${environment.api}events/feed/${eventId}/${pageId}`);
+    getEvent(eventId, userId): any {
+      return this.httpClient.get(`${environment.api}events/${eventId}/${userId}`);
+    }
+
+    getPosts(eventId, userId, pageId): any {
+      return this.httpClient.get(`${environment.api}events/feed/${eventId}/${userId}/${pageId}`);
     }
 
     search(pageId, type, date): any {

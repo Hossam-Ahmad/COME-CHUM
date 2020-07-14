@@ -1,24 +1,24 @@
 <div class="row specialCoverRow" *ngIf="!isMobile()">
     <div class="col-12 cover">
-        <app-cover [userData]="userData"></app-cover>
+        <app-cover [EntryData]="userData"></app-cover>
     </div>
     <div class="col-1"></div>
     <div class="col-6">
-        <app-create-post *ngIf="group.joined" (postAdded)="onAdded($event)"></app-create-post>
+        <app-create-post *ngIf="groupData.joined" (postAdded)="onAdded($event)"></app-create-post>
         <app-post *ngFor="let post of posts" [post]="post"></app-post>
     </div>
     <div class="col-1"></div>
     <div class="col-4">
-        <app-aside-profile [userData]="userData"></app-aside-profile>
+        <app-aside-profile [EntryData]="groupData"></app-aside-profile>
     </div>
 </div>
 
 <div class="row" *ngIf="isMobile()">
     <div class="col-12 cover">
-        <app-cover [userData]="userData"></app-cover>
+        <app-cover [EntryData]="userData"></app-cover>
     </div>
     <div class="col-12">
-        <app-create-post *ngIf="group.joined"></app-create-post>
+        <app-create-post *ngIf="groupData.joined"></app-create-post>
         <app-post *ngFor="let post of posts" [post]="post"></app-post>
     </div>
 </div>

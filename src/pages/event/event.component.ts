@@ -15,8 +15,8 @@ export class EventPageComponent implements OnInit {
   public userId;
   public eventId;
   public userData;
+  public eventData = {};
   public posts = [];
-  public event;
   private page = 1;
 
   constructor(
@@ -29,16 +29,27 @@ export class EventPageComponent implements OnInit {
   ngOnInit(): void {
     this.auth.getData().subscribe( data => {
       this.userId = data.id;
+      this.activatedRoute.queryParams.subscribe(params => {
+        this.eventId = params['eventId'];
+        this.getEvent();
+        this.getFeed();
+      });
     });
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.eventId = params['eventId'];
-      this.getFeed();
+  }
+
+  getEvent() {
+    this.eventsService.getEvent(this.eventId, this.userId).subscribe( data => {
+      this.eventData = data;
+      this.eventData = this.eventData[0];
+      this.eventData['type'] = 'event';
+      console.log(this.eventData);
     });
   }
 
   getFeed() {
-    this.eventsService.getPosts(this.eventId, this.page).subscribe( data => {
+    this.eventsService.getPosts(this.eventId, this.userId, this.page).subscribe( data => {
       this.posts = this.posts.concat(data as Array<any>);
+      console.log(this.posts);
       this.page++;
     });
   }

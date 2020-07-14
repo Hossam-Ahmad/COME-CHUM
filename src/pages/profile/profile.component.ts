@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
       this.userId = params['userId'];
       this.users.getByProfile(this.userId).subscribe(data => {
         this.userData = data[0];
+        this.userData.type = 'profile';
         console.log(data[0]);
         this.getFeed();
       });

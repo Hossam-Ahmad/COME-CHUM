@@ -1,6 +1,6 @@
 <div class="row specialCoverRow" *ngIf="!isMobile()">
     <div class="col-12 cover">
-        <app-cover [userData]="userData"></app-cover>
+        <app-cover [EntryData]="userData"></app-cover>
     </div>
     <div class="col-1"></div>
     <div class="col-6">
@@ -9,13 +9,13 @@
     </div>
     <div class="col-1"></div>
     <div class="col-4">
-        <app-aside-profile [userData]="userData"></app-aside-profile>
+        <app-aside-profile [EntryData]="userData"></app-aside-profile>
     </div>
 </div>
 
 <div class="row" *ngIf="isMobile()">
     <div class="col-12 cover">
-        <app-cover [userData]="userData"></app-cover>
+        <app-cover [EntryData]="userData"></app-cover>
     </div>
     <div class="col-12">
         <app-create-post></app-create-post>

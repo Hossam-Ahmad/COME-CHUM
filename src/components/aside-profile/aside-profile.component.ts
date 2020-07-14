@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MiscService } from 'src/services/misc.service';
 
 @Component({
   selector: 'app-aside-profile',
@@ -6,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./aside-profile.component.scss']
 })
 export class asideProfileComponent implements OnInit {
-  @Input() userData;
+  @Input() EntryData;
 
-  constructor() {
+  constructor(public misc: MiscService) {
   }
 
   ngOnInit(): void {

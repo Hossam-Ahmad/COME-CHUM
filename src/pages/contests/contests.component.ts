@@ -40,7 +40,7 @@ export class ContestsComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}contest/${this.contests[index].contest_id}`, '_blank');
+    const win = window.open(`${environment.host}contest?contestId=${this.contests[index].contest_id}`, '_blank');
     win.focus();
   }
 

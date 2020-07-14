@@ -43,7 +43,7 @@ export class GroupsComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.groups[index].group_id}`, '_blank');
+    const win = window.open(`${environment.host}group?groupId=${this.groups[index].group_id}`, '_blank');
     win.focus();
   }
 

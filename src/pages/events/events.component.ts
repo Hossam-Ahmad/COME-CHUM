@@ -37,7 +37,7 @@ export class EventsComponent implements OnInit {
   }
 
   open(index) {
-    const win = window.open(`${environment.host}group/${this.events[index].event_id}`, '_blank');
+    const win = window.open(`${environment.host}event?eventId=${this.events[index].event_id}`, '_blank');
     win.focus();
   }
 
