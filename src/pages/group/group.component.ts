@@ -16,7 +16,7 @@ export class GroupPageComponent implements OnInit {
   public userId;
   public groupId;
   public userData;
-  public groupData = {};
+  public groupData;
   public posts = [];
   private page = 1;
 

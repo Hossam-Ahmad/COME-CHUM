@@ -15,7 +15,7 @@ export class EventPageComponent implements OnInit {
   public userId;
   public eventId;
   public userData;
-  public eventData = {};
+  public eventData;
   public posts = [];
   private page = 1;
 
