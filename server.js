@@ -5,6 +5,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const compression = require('compression')
+
 const enviroment = require('./src/routes/enviroment.js');
 const connection = enviroment.connection;
 
@@ -31,6 +33,7 @@ const notifications = require('./src/routes/notifications');
 const app = express();
 const port = process.env.PORT || 4200;
 
+app.use(compression());
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
