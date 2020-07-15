@@ -145,7 +145,7 @@ router.post('/forget', function(req, res, next) {
             <tbody><tr>
               <td style="vertical-align:top" valign="top">
                 <a style="color:#0366d6;text-decoration:none" target="_blank">
-                  <img src="${enviroment.domain}/assets/images/logo_website.png" alt="Come Chum" style="max-width:100%" class="CToWUd" width="100" height="70">
+                  <img src="${enviroment.domain}/assets/images/logo_website.webp" alt="Come Chum" style="max-width:100%" class="CToWUd" width="100" height="70">
                 </a>
               </td>
             </tr>
