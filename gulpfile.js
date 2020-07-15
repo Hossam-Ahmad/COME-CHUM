@@ -1,8 +1,8 @@
 var gulp = require('gulp');
-var gzip = require('gulp-gzip');
+var minify = require('gulp-minify');
 
-gulp.task('compress', function() {
-  return gulp.src(['./dist/travel-app/**/*.js'])
-      .pipe(gzip())
+gulp.task('minify', function() {
+  return gulp.src(['./dist/travel-app/*.js'])
+      .pipe(minify())
       .pipe(gulp.dest('./dist/travel-app'));
 });
