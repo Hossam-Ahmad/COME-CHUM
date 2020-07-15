@@ -5,7 +5,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const axios = require('axios');
 const enviroment = require('./src/routes/enviroment.js');
 const connection = enviroment.connection;
 

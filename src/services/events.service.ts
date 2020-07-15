@@ -32,6 +32,12 @@ export class EventsService {
       });
     }
 
+    createPost(data): any {
+      return this.httpClient.post(`${environment.api}events/posts/create`, {
+        data
+      });
+    }
+
     remove(userId): any {
       return this.httpClient.post(`${environment.api}events/remove`, {
         userId

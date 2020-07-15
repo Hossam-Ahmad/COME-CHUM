@@ -3,73 +3,73 @@ var express = require('express');
 var router = express.Router();
 
 // create customer
-router.post('/stripe/create', function(req, res, next) {
-    const stripe = require('stripe')(enviroment.stripe_key);
-    var email = req.body['email'];
-    var name = req.body['name'];
+// router.post('/stripe/create', function(req, res, next) {
+//     const stripe = require('stripe')(enviroment.stripe_key);
+//     var email = req.body['email'];
+//     var name = req.body['name'];
 
-    stripe.customers.create({
-        email: email,
-        name : name
-    })
-    .then(customer => {
-        res.send({
-            status : `success`,
-            id : customer.id
-        });
-    })
-    .catch(error => {
-        res.send({
-            status : `error:${error}`
-        });
-    });
-});
+//     stripe.customers.create({
+//         email: email,
+//         name : name
+//     })
+//     .then(customer => {
+//         res.send({
+//             status : `success`,
+//             id : customer.id
+//         });
+//     })
+//     .catch(error => {
+//         res.send({
+//             status : `error:${error}`
+//         });
+//     });
+// });
 
 //create card
-router.post('/stripe/create_card', function(req, res, next) {
-    const stripe = require('stripe')(enviroment.stripe_key);
-    var customerId = req.body['customerId'];
-    var token = req.body['token'];
+// router.post('/stripe/create_card', function(req, res, next) {
+//     const stripe = require('stripe')(enviroment.stripe_key);
+//     var customerId = req.body['customerId'];
+//     var token = req.body['token'];
 
-    stripe.customers.createSource(
-        customerId,
-        {source: token},
-        function(err, card) {
-            if(err) {
-                res.send({
-                    error : `${JSON.stringify(err)}`
-                });
-            } else {
-                res.send({
-                    status : `${JSON.stringify(card)}`
-                });
-            }
-        }
-    );
-});
+//     stripe.customers.createSource(
+//         customerId,
+//         {source: token},
+//         function(err, card) {
+//             if(err) {
+//                 res.send({
+//                     error : `${JSON.stringify(err)}`
+//                 });
+//             } else {
+//                 res.send({
+//                     status : `${JSON.stringify(card)}`
+//                 });
+//             }
+//         }
+//     );
+// });
 
 //get cards
-router.post('/stripe/get_cards', function(req, res, next) {
-    const stripe = require('stripe')(enviroment.stripe_key);
-    var customerId = req.body['customerId'];
+// router.post('/stripe/get_cards', function(req, res, next) {
+//     const stripe = require('stripe')(enviroment.stripe_key);
+//     var customerId = req.body['customerId'];
 
-    stripe.customers.listSources(
-        customerId,
-        {object: 'card', limit: 3},
-        function(err, cards) {
-            if(err) {
-                res.send({
-                    error : `${JSON.stringify(err)}`
-                });
-            } else {
-                res.send({
-                    status : `${JSON.stringify(cards)}`
-                });
-            }
-        }
-    );
+//     stripe.customers.listSources(
+//         customerId,
+//         {object: 'card', limit: 3},
+//         function(err, cards) {
+//             if(err) {
+//                 res.send({
+//                     error : `${JSON.stringify(err)}`
+//                 });
+//             } else {
+//                 res.send({
+//                     status : `${JSON.stringify(cards)}`
+//                 });
+//             }
+//         }
+//     );
 
-});
+// });
 
 //create product
 

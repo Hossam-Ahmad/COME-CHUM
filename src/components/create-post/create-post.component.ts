@@ -1,10 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FeedService } from 'src/services/feed.servie';
 import { NotifierService } from 'angular-notifier';
 import { AuthUserService } from 'src/services/authUser.service';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { CreatePostOptionsComponent } from '../create-post-options/create-post-options.component';
+import { EventsService } from 'src/services/events.service';
+import { GroupsService } from 'src/services/groups.service';
 
 @Component({
   selector: 'app-create-post',
@@ -14,6 +16,7 @@ import { CreatePostOptionsComponent } from '../create-post-options/create-post-o
 export class CreatePostComponent implements OnInit {
 
   @Output() postAdded = new EventEmitter<boolean>();
+  @Input() EntryData;
 
   post_data = {
     user_id : '',
@@ -28,7 +31,9 @@ export class CreatePostComponent implements OnInit {
     private feed: FeedService,
     private notifierService: NotifierService,
     private auth: AuthUserService,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private eventService: EventsService,
+    private groupService: GroupsService) {
   }
 
   ngOnInit(): void {
@@ -48,19 +53,28 @@ export class CreatePostComponent implements OnInit {
 
   send() {
     if (this.post_data.body !== '') {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.autoFocus = true;
-      dialogConfig.data = {
-        post_data: this.post_data
-      };
-      dialogConfig.disableClose = false;
-      dialogConfig.panelClass = 'colorize-background';
-      const dialogRef = this.dialog.open(CreatePostOptionsComponent, dialogConfig);
-      dialogRef.afterClosed().subscribe(data => {
-        console.log(data);
-        this.postAdded.emit(data);
-        // this.post_data.body = '';
-      });
+      if (this.EntryData && this.EntryData.type === 'event') {
+        this.eventService.createPost(this.post_data).subscribe( data => {
+          this.postAdded.emit(data);
+        });
+        // this.EntryData.id
+      } else if (this.EntryData && this.EntryData.type === 'group') {
+        // this.EntryData.id
+      } else {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = {
+          post_data: this.post_data
+        };
+        dialogConfig.disableClose = false;
+        dialogConfig.panelClass = 'colorize-background';
+        const dialogRef = this.dialog.open(CreatePostOptionsComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(data => {
+          console.log(data);
+          this.postAdded.emit(data);
+          // this.post_data.body = '';
+        });
+      }
     }
   }
 
