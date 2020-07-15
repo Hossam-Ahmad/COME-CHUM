@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "preinstall": "npm install -g angular-cli",
-    "heroku-postbuild": "ng build --configuration=production && gzipper --verbose ./dist/travel-app",
+    "heroku-postbuild": "ng build --configuration=production && gzipper compress --verbose ./dist/travel-app",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
