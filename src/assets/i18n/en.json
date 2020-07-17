@@ -134,5 +134,6 @@
   "my":"My",
   "members" : "Members",
   "joined" : "Joined",
-  "join" : "Join"
+  "join" : "Join",
+  "leave" : "Leave"
 }

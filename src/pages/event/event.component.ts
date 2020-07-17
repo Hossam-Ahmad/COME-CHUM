@@ -28,11 +28,11 @@ export class EventPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.getData().subscribe( data => {
+      this.userData = data;
       this.userId = data.id;
       this.activatedRoute.queryParams.subscribe(params => {
         this.eventId = params['eventId'];
         this.getEvent();
-        this.getFeed();
       });
     });
   }
@@ -43,11 +43,12 @@ export class EventPageComponent implements OnInit {
       this.eventData = this.eventData[0];
       this.eventData['type'] = 'event';
       console.log(this.eventData);
+      this.getFeed();
     });
   }
 
   getFeed() {
-    this.eventsService.getPosts(this.eventId, this.userId, this.page).subscribe( data => {
+    this.eventsService.getPosts(this.eventData.id, this.userId, this.page).subscribe( data => {
       this.posts = this.posts.concat(data as Array<any>);
       console.log(this.posts);
       this.page++;

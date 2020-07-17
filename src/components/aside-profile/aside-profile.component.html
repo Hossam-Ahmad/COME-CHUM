@@ -1,13 +1,13 @@
 <div class="aside">
   <div class="aboutMe">
     <p class="asideHeader" >{{'about_nav' | translate}} 
-      <span *ngIf="EntryData.type == 'profile'">{{'me' | translate}}</span>
-      <span *ngIf="EntryData.type == 'event'">{{'event' | translate}}</span>
-      <span *ngIf="EntryData.type == 'group'">{{'group' | translate}}</span>
+      <span *ngIf="EntryData && EntryData.type == 'profile'">{{'me' | translate}}</span>
+      <span *ngIf="EntryData && EntryData.type == 'event'">{{'event' | translate}}</span>
+      <span *ngIf="EntryData && EntryData.type == 'group'">{{'group' | translate}}</span>
     </p>
     <hr>
-    <p>{{EntryData.about}}</p>
-    <p *ngIf="EntryData.type == 'profile'">
+    <p *ngIf="EntryData">{{EntryData.about}}</p>
+    <p *ngIf="EntryData && EntryData.type == 'profile'">
       <i class="fas fa-home"></i>
       <span>3 {{'places' | translate}}</span>
     </p>

@@ -3,8 +3,9 @@
   </div>
   <div class="container">
     <p>{{EntryData? EntryData.name : ''}}</p>
-    <button type="button" class="btn btn-light updateProfile" *ngIf="EntryData.type == 'profile'">{{'update' | translate}}</button>
-    <button type="button" class="btn btn-light updateProfile" *ngIf="EntryData.type != 'profile'">{{'join' | translate}}</button>
+    <button type="button" class="btn btn-light updateProfile" *ngIf="EntryData && EntryData.type == 'profile'">{{'update' | translate}}</button>
+    <button type="button" class="btn btn-light updateProfile" *ngIf="EntryData && EntryData.type != 'profile' && EntryData.joined != 1" (click)="join()">{{'join' | translate}}</button>
+    <button type="button" class="btn btn-light updateProfile" *ngIf="EntryData && EntryData.type != 'profile' && EntryData.joined == 1" (click)="leave()">{{'leave' | translate}}</button>
     <hr>
     <div class="toggleDiv">
       <div class="row">

@@ -17,7 +17,7 @@
       <p>{{post.body}}</p>
     </div>
   </div>
-  <div *ngIf="post.images.length > 0" class="row imagesOfPoster">
+  <div *ngIf="post.images && post.images.length > 0" class="row imagesOfPoster">
     <div class="col col-md-12 firstImg" *ngIf="post.images.length == 1">
       <img src="{{post.images[0].path}}">
     </div>

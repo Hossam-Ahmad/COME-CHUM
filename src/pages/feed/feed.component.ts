@@ -21,7 +21,7 @@ export class FeedComponent implements OnInit {
   public posts = [];
   public images = [];
   public chats = [];
-  private userData;
+  public userData;
 
   constructor(public authService: AuthUserService,
               public router: Router,

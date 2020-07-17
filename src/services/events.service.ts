@@ -33,7 +33,7 @@ export class EventsService {
     }
 
     createPost(data): any {
-      return this.httpClient.post(`${environment.api}events/posts/create`, {
+      return this.httpClient.post(`${environment.api}events/feed/create`, {
         data
       });
     }
@@ -41,6 +41,20 @@ export class EventsService {
     remove(userId): any {
       return this.httpClient.post(`${environment.api}events/remove`, {
         userId
+      });
+    }
+
+    join(userId, eventId): any {
+      return this.httpClient.post(`${environment.api}events/join`, {
+        userId,
+        eventId
+      });
+    }
+
+    leave(userId, eventId): any {
+      return this.httpClient.post(`${environment.api}events/leave`, {
+        userId,
+        eventId
       });
     }
 

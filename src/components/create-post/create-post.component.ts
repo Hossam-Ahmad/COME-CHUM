@@ -15,11 +15,12 @@ import { GroupsService } from 'src/services/groups.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  @Output() postAdded = new EventEmitter<boolean>();
+  @Output() postAdded = new EventEmitter<any>();
   @Input() EntryData;
 
   post_data = {
     user_id : '',
+    event_id : '',
     body : '',
     images : {},
     videos : {}
@@ -39,6 +40,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
     this.auth.getData().subscribe(data => {
       this.post_data.user_id = data.id;
+      this.post_data.event_id = this.EntryData.id;
       this.userImage = data.image;
     });
   }
@@ -55,7 +57,8 @@ export class CreatePostComponent implements OnInit {
     if (this.post_data.body !== '') {
       if (this.EntryData && this.EntryData.type === 'event') {
         this.eventService.createPost(this.post_data).subscribe( data => {
-          this.postAdded.emit(data);
+          this.postAdded.emit(JSON.parse(JSON.stringify(this.post_data)));
+          this.post_data.body = '';
         });
         // this.EntryData.id
       } else if (this.EntryData && this.EntryData.type === 'group') {
@@ -71,8 +74,8 @@ export class CreatePostComponent implements OnInit {
         const dialogRef = this.dialog.open(CreatePostOptionsComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(data => {
           console.log(data);
-          this.postAdded.emit(data);
-          // this.post_data.body = '';
+          this.postAdded.emit(JSON.parse(JSON.stringify(data)));
+          this.post_data.body = '';
         });
       }
     }
