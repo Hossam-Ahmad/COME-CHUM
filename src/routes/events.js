@@ -156,7 +156,6 @@ router.post('/join', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var userId = req.body['userId'];
     var eventId = req.body['eventId'];
-
     conn.query(`DELETE from event_members where event_id = ${eventId} and user_id = ${userId};
     INSERT INTO event_members(user_id, event_id, status) VALUES(${userId},  ${eventId}, 1);
     UPDATE events SET members = members + 1 where id =  ${eventId};`, function(error,results,fields){
@@ -165,7 +164,6 @@ router.post('/join', function(req, res, next) {
         status : 'success'
       });
     });
-
     // DROP PROCEDURE IF EXISTS JoinEvent;
 
     // DELIMITER $$
