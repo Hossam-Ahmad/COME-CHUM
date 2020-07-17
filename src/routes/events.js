@@ -152,37 +152,47 @@ router.post('/search', function(req, res, next) {
   });
 });
 
-// DROP PROCEDURE IF EXISTS JoinEvent;
-
-// DELIMITER $$
-
-// CREATE PROCEDURE JoinEvent(
-//    IN userId INT, 
-//    IN eventId INT)
-// BEGIN
-
-
-//   IF (SELECT COUNT(*) FROM event_members
-//    WHERE event_id = eventId and user_id = userId) > 0 THEN
-//     UPDATE event_members SET status = 1 , created_at = NOW() where event_id = eventId and user_id = userId;
-//       ELSE
-//      INSERT INTO event_members(user_id, event_id, status) VALUES(userId, eventId, 1);
-//    END IF;
-//    UPDATE events SET members = members + (SELECT ROW_COUNT()) where id = eventId;
-// END$$
-
-// DELIMITER ;
-
 router.post('/join', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var userId = req.body['userId'];
     var eventId = req.body['eventId'];
-    conn.query(`CALL JoinEvent(${userId}, ${eventId});`, function(error,results,fields){
+
+    conn.query(`DELETE from event_members where event_id = ${eventId} and user_id = ${userId};
+    INSERT INTO event_members(user_id, event_id, status) VALUES(${userId},  ${eventId}, 1);
+    UPDATE events SET members = members + 1 where id =  ${eventId};`, function(error,results,fields){
       conn.release();
       res.send({
         status : 'success'
       });
     });
+
+    // DROP PROCEDURE IF EXISTS JoinEvent;
+
+    // DELIMITER $$
+
+    // CREATE PROCEDURE JoinEvent(
+    //    IN userId INT, 
+    //    IN eventId INT)
+    // BEGIN
+
+
+    //   IF (SELECT COUNT(*) FROM event_members
+    //    WHERE event_id = eventId and user_id = userId) > 0 THEN
+    //     UPDATE event_members SET status = 1 , created_at = NOW() where event_id = eventId and user_id = userId;
+    //       ELSE
+    //      INSERT INTO event_members(user_id, event_id, status) VALUES(userId, eventId, 1);
+    //    END IF;
+    //    UPDATE events SET members = members + (SELECT ROW_COUNT()) where id = eventId;
+    // END$$
+
+    // DELIMITER ;
+
+    // conn.query(`CALL JoinEvent(${userId}, ${eventId});`, function(error,results,fields){
+    //   conn.release();
+    //   res.send({
+    //     status : 'success'
+    //   });
+    // });
   });
 });
 
