@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PackagesService } from '../../services/packages.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MiscService } from 'src/services/misc.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthUserService } from 'src/services/authUser.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { CheckoutComponent } from 'src/components/checkout/checkout.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-packages-website',
@@ -16,6 +17,7 @@ import { CheckoutComponent } from 'src/components/checkout/checkout.component';
 export class PackagesWebsiteComponent implements OnInit {
 
   aboutHeight: any;
+  public package = 0;
   public packages = [{
     name : 'FREE Package',
     price : '0'
@@ -39,11 +41,23 @@ export class PackagesWebsiteComponent implements OnInit {
     public misc: MiscService,
     public translate: TranslateService,
     private dialog: MatDialog,
-    public auth: AuthUserService) {
+    public auth: AuthUserService,
+    private notifierService: NotifierService,
+    private activatedRoute: ActivatedRoute,
+    private userService: AuthUserService) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
   ngOnInit() {
+    this.package = Number(this.userService.userData.package);
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['error'] === 1) {
+        this.notifierService.show({
+          type : 'error',
+          message: 'لقد انتهت باقتك و يجب عليك اختيار باقه للاستمرار',
+        });
+      }
+    });
   }
 
   subscribe(index) {

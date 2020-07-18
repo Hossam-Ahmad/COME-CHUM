@@ -11,11 +11,26 @@ router.post('/auth', function(req, res, next) {
       var email = req.body['email'];
       var password = req.body['password'];
       conn.query(`SELECT * FROM users where email like '${email}' and password like '${password}'`, function(error,results,fields){
-        conn.query(`UPDATE users SET online = 1 where email like '${email}' and password like '${password}'`, function(error,results2,fields){
-          conn.release();  
-          if(results.length > 0){
-              res.send({
-                  status : 'success',
+        conn.query(`SELECT count(*) FROM users where email like '${email}' and password like '${password}' and status = 1 and ( (package = 0 and DATEDIFF(CURDATE(), created_at) <= 7) or (package != 0 and package_end >= CURDATE()) )`, function(error,results2,fields){
+          if(results2[0]['count(*)'] > 0) {
+            conn.query(`UPDATE users SET online = 1 where email like '${email}' and password like '${password}'`, function(error,results3,fields){
+              conn.release();  
+              if(results.length > 0){
+                  res.send({
+                      status : 'success',
+                      token : results[0]['token'],
+                      name : results[0]['name'],
+                      id : results[0]['id'],
+                      image : results[0]['image'],
+                      email : results[0]['email'],
+                      cover : results[0]['cover'],
+                      about : results[0]['about'],
+                      profile_id : results[0]['profile_id'],
+                      package : results[0]['package'],
+                  });
+              } else {
+                res.send({
+                  status : 'failed',
                   token : results[0]['token'],
                   name : results[0]['name'],
                   id : results[0]['id'],
@@ -25,8 +40,10 @@ router.post('/auth', function(req, res, next) {
                   about : results[0]['about'],
                   profile_id : results[0]['profile_id'],
               });
+              }
+            });
           } else {
-            res.send({status : 'failed'});
+            res.send({status : 'package_expired'});
           }
         });
       });
@@ -85,7 +102,7 @@ router.get('/user/profileId/:profileId', function(req, res, next) {
 router.get('/user/token/:token', function(req, res, next) {
   connection.getConnection(function (err, conn) {
     var token = req.params['token'];
-    connection.query(`SELECT * FROM users where token = '${token}'`, function(error,results,fields){
+    connection.query(`SELECT * FROM users where token = '${token}' and status = 1`, function(error,results,fields){
       connection.query(`UPDATE users SET online = 1 where token = '${token}'`, function(error,results2,fields){
         conn.release();  
         res.send(results[0]);

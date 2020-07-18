@@ -17,7 +17,9 @@ export class AuthUserService implements CanActivate {
     cover : '',
     about : '',
     profile_id : '',
-    token : ''
+    token : '',
+    package_expired : '',
+    package : ''
   };
 
   private interval = null;
@@ -37,8 +39,13 @@ export class AuthUserService implements CanActivate {
           if (route.url.toString() === 'login' || route.url.toString() === 'activate' || route.url.toString() === 'forget' || route.url.toString() === 'register' || route.url.toString() === 'home') {
             this.router.navigate(['/feed']);
             return false;
-          } else {
+          }
+          if ((this.userData.package_expired && route.url.toString() === 'packages') || !this.userData.package_expired) {
+            console.log(this.userData.package_expired);
             return true;
+          } else {
+            this.router.navigate(['/packages']);
+            return false;
           }
         } else {
             if (route.url.toString() !== 'login' && route.url.toString() !== 'activate' && route.url.toString() !== 'forget' && route.url.toString() !== 'register' && route.url.toString() !== 'faq' && route.url.toString() !== 'terms' && route.url.toString() !== 'home') {
@@ -82,6 +89,8 @@ export class AuthUserService implements CanActivate {
       this.userData.about = data.about;
       this.userData.profile_id = data.profile_id;
       this.userData.token = data.token;
+      this.userData.package_expired = data.package_expired;
+      this.userData.package = data.package;
     }
 
     changeCredentials(email, oldPassword, newPassword) {

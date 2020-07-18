@@ -91,7 +91,7 @@
             margin-top: 1em;
         }
     }
-    .packCard:hover {
+    .packCard:hover , .packCardActive {
         border: 2px solid #f145b7;
         .btn{
             background-image: linear-gradient(to right, #c3348f , #7b49b7);
