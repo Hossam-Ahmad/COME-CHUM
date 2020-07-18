@@ -61,11 +61,11 @@ export class EventsService {
     }
 
     load_images(eventId, pageId): any {
-      return this.httpClient.get(`${environment.api}events/feed/images/${eventId}/${pageId}`);
+      return this.httpClient.get(`${environment.api}events/event/feed/images/${eventId}/${pageId}`);
     }
 
     load_videos(eventId, pageId): any {
-      return this.httpClient.get(`${environment.api}events/feed/videos/${eventId}/${pageId}`);
+      return this.httpClient.get(`${environment.api}events/event/feed/videos/${eventId}/${pageId}`);
     }
 
     remove(userId): any {

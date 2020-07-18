@@ -226,6 +226,7 @@ router.get('/event/feed/images/:eventId/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var eventId = req.params['eventId'];
     var pageId = req.params['pageId'];
+    console.log(`SELECT * FROM images_events where event_id = ${eventId} limit 10 offset ${10*(pageId-1)}`);//----------------------------------------------------- added line
     conn.query(`SELECT * FROM images_events where event_id = ${eventId} limit 10 offset ${10*(pageId-1)}`, function(error,results,fields){
       conn.release();
       res.send(results);
