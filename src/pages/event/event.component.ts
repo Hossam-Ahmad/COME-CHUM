@@ -17,7 +17,12 @@ export class EventPageComponent implements OnInit {
   public userData;
   public eventData;
   public posts = [];
+  public images = [];
+  public videos = [];
   private page = 1;
+  private pageImages = 1;
+  private pageVideos = 1;
+  public layout = 'posts';
 
   constructor(
     private auth: AuthUserService,
@@ -53,6 +58,10 @@ export class EventPageComponent implements OnInit {
       console.log(this.posts);
       this.page++;
     });
+  }
+
+  changeLayout(data) {
+    this.layout = data;
   }
 
   isMobile() {

@@ -135,5 +135,7 @@
   "members" : "Members",
   "joined" : "Joined",
   "join" : "Join",
-  "leave" : "Leave"
+  "leave" : "Leave",
+  "no_media" : "No media is uploaded yet !",
+  "about" : "About"
 }

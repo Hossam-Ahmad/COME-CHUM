@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventsService } from 'src/services/events.service';
 import { AuthUserService } from 'src/services/authUser.service';
 
@@ -10,6 +10,7 @@ import { AuthUserService } from 'src/services/authUser.service';
 export class coverComponent implements OnInit {
 
   @Input() EntryData;
+  @Output() changeLayout = new EventEmitter<any>();
   userId;
 
   constructor(private eventsService: EventsService, private auth: AuthUserService) {
@@ -31,6 +32,18 @@ export class coverComponent implements OnInit {
     this.eventsService.leave(this.userId, this.EntryData.id).subscribe( data => {
       location.reload();
     });
+  }
+
+  posts() {
+    this.changeLayout.emit('posts');
+  }
+
+  images() {
+    this.changeLayout.emit('images');
+  }
+
+  videos() {
+    this.changeLayout.emit('videos');
   }
 
 }

@@ -60,6 +60,14 @@ export class EventsService {
       return this.httpClient.get(`${environment.api}events/feed/load_comments/${eventId}/${postId}/${pageId}`);
     }
 
+    load_images(eventId, pageId): any {
+      return this.httpClient.get(`${environment.api}events/feed/images/${eventId}/${pageId}`);
+    }
+
+    load_videos(eventId, pageId): any {
+      return this.httpClient.get(`${environment.api}events/feed/videos/${eventId}/${pageId}`);
+    }
+
     remove(userId): any {
       return this.httpClient.post(`${environment.api}events/remove`, {
         userId

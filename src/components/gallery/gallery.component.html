@@ -1,0 +1,17 @@
+<div class="gallery">
+  <div class="container">
+    <div class="row" *ngIf="type == 'images'">
+      <div class="col" *ngFor="let image of images">
+        <img src="{{image}}"/>
+      </div>
+    </div>
+    <div class="row" *ngIf="type == 'videos'">
+      <div class="col" *ngFor="let video of videos">
+        <img src="{{video}}"/>
+      </div>
+    </div>
+    <div *ngIf="(images.length == 0 && type == 'images') || (videos.length == 0 && type == 'videos')">
+        <p>{{'no_media' | translate}}</p>
+    </div>
+  </div>
+</div>

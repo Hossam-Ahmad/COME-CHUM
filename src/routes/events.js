@@ -222,6 +222,28 @@ router.get('/event/:eventId', function(req, res, next) {
   });
 });
 
+router.get('/event/feed/images/:eventId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var eventId = req.params['eventId'];
+    var pageId = req.params['pageId'];
+    conn.query(`SELECT * FROM images_events where event_id = ${eventId} limit 10 offset ${10*(pageId-1)}`, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
+router.get('/event/feed/videos/:eventId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var eventId = req.params['eventId'];
+    var pageId = req.params['pageId'];
+    conn.query(`SELECT * FROM videos_events where event_id = ${eventId} limit 10 offset ${10*(pageId-1)}`, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
 router.post('/feed/like', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var postId = req.body['postId'];
@@ -303,7 +325,7 @@ router.post('/feed/create_comment', function(req, res, next) {
   });
 });
 
-router.get('/load_comments/:eventId/:postId/:pageId', function(req, res, next) {
+router.get('/feed/load_comments/:eventId/:postId/:pageId', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var postId = req.params['postId'];
     var pageId = req.params['pageId'];

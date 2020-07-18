@@ -11,9 +11,9 @@
       <div class="row">
         <div class="col col-md-6 offset-md-3">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary toggleBtn">{{'posts' | translate}}</button>
-            <button type="button" class="btn btn-secondary toggleBtn">{{'images' | translate}}</button>
-            <button type="button" class="btn btn-secondary toggleBtn">{{'videos' | translate}}</button>
+            <button type="button" class="btn btn-secondary toggleBtn" (click)="posts()">{{'posts' | translate}}</button>
+            <button type="button" class="btn btn-secondary toggleBtn" (click)="images()">{{'images' | translate}}</button>
+            <button type="button" class="btn btn-secondary toggleBtn" (click)="videos()">{{'videos' | translate}}</button>
           </div>
         </div>
       </div>

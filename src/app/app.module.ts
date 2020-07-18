@@ -146,11 +146,11 @@ import { ResultComponent } from 'src/pages/result/result.component';
 import { EventPageComponent } from 'src/pages/event/event.component';
 import { GroupPageComponent } from 'src/pages/group/group.component';
 import { ContestPageComponent } from 'src/pages/contest/contest.component';
+import { GalleryComponent } from 'src/components/gallery/gallery.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -295,7 +295,8 @@ export function getAuthServiceConfigs() {
     ResultComponent,
     EventPageComponent,
     GroupPageComponent,
-    ContestPageComponent
+    ContestPageComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
