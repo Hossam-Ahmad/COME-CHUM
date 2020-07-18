@@ -202,7 +202,8 @@ router.post('/leave', function(req, res, next) {
     var userId = req.body['userId'];
     var eventId = req.body['eventId'];
     conn.query(`UPDATE event_members SET status = 2 , created_at = NOW() where event_id = ${eventId} and user_id = ${userId};
-    UPDATE events SET members = members - (SELECT ROW_COUNT()) where id = ${eventId};`, function(error,results,fields){
+    UPDATE events SET members = members - (SELECT ROW_COUNT()) where id = ${eventId};
+    UPDATE events_posts SET status = 2 where event_id = ${eventId} and user_id = ${userId}`, function(error,results,fields){
       conn.release();
       res.send({
         status : 'success'
@@ -217,6 +218,106 @@ router.get('/event/:eventId', function(req, res, next) {
     conn.query('SELECT * FROM events where event_id = ' + eventId, function(error,results,fields){
       conn.release();
       res.send(results);
+    });
+  });
+});
+
+router.post('/feed/like', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var postId = req.body['postId'];
+    var userId = req.body['userId'];
+    var eventId = req.body['eventId'];
+
+    conn.query(`select from likes_events where user_id = ${userId} AND post_id = ${postId} AND event_id=${eventId}`
+    , function(error,results,fields){
+      if(results == undefined) {
+        conn.query(`UPDATE events_posts SET likes = likes + 1 where id = ${postId};
+        INSERT INTO likes_events (user_id , post_id, event_id) VALUES (${userId},${postId},${eventId});
+        ` , function(error,results,fields){
+          conn.release();
+          res.send({
+            status : 'success'
+          });
+        });
+
+      } else {
+        conn.release();
+          res.send({
+            status : 'failed'
+          });
+      }
+    });
+
+    
+  });
+});
+
+router.post('/feed/dislike', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var postId = req.body['postId'];
+    var userId = req.body['userId'];
+    var eventId = req.body['eventId'];
+
+    conn.query(`select from likes_events where user_id = ${userId} AND post_id = ${postId} AND event_id = ${eventId}
+    `, function(error,results,fields){
+
+      if(results == undefined) {
+
+        conn.query(`UPDATE events_posts SET likes = likes - 1 where id = ${postId};
+        DELETE FROM likes_events where user_id = ${userId} AND post_id = ${postId}
+        `, function(error,results,fields){
+          conn.release();
+          res.send({
+            status : 'success'
+          });
+        });
+
+      } else {
+        conn.release();
+        res.send({
+          status : 'failed'
+        });
+      }
+
+    });
+  });
+});
+
+router.post('/feed/create_comment', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var postId = req.body['postId'];
+    var text = req.body['text'];
+    var userId = req.body['userId'];
+    var eventId = req.body['eventId'];
+
+    conn.query(`INSERT INTO comments_events(post_id, user_id, event_id, text, image) VALUES 
+    (${postId} , ${userId}, ${eventId} , '${text}' , '')
+    `, function(error,results,fields){
+    conn.query(`UPDATE events_posts SET comments = comments + 1 where id = ${postId}`, function(error,results,fields){
+        conn.release();
+        res.send({
+          status : 'success'
+        });
+      });
+    });
+  });
+});
+
+router.get('/load_comments/:eventId/:postId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var postId = req.params['postId'];
+    var pageId = req.params['pageId'];
+    var eventId = req.params['eventId'];
+    conn.query(`
+    SELECT c.id comment_id , c.post_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+    FROM comments_events c , users u
+    where post_id = ${postId} and u.id = c.user_id and event_id = ${eventId}
+    limit 10 OFFSET ${10*(pageId-1)}
+    `, function(error,results,fields){
+      conn.release();
+        res.send({
+          results
+        });
     });
   });
 });

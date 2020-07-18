@@ -49,11 +49,11 @@
 
 <!-- comment  -->
   <div class="row" *ngIf="!isMobile()">
-    <div class="col col-md-2">
+    <div class="col col-md-2" *ngIf="post.user_id != user_id">
       <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
     </div>
 
-    <div class="col col-md-10">
+    <div class="col" [ngClass]="{'col-md-10': post.user_id != user_id , 'col-md-12' : post.user_id == user_id}">
       <div class="commentIssues">
       <div class="row">
 
@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <div class="col col-12" style="text-align: center;">
+    <div class="col col-12" style="text-align: center;" *ngIf="post.user_id != user_id">
       <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
     </div>
 

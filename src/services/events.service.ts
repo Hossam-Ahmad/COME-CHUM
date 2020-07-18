@@ -38,6 +38,28 @@ export class EventsService {
       });
     }
 
+    like(eventId, postId, userId): any {
+      return this.httpClient.post(`${environment.api}events/feed/like`, {
+        eventId, postId, userId
+      });
+    }
+
+    dislike(eventId, postId, userId): any {
+      return this.httpClient.post(`${environment.api}events/feed/dislike`, {
+        eventId, postId, userId
+      });
+    }
+
+    create_comment(eventId, postId, text, userId): any {
+      return this.httpClient.post(`${environment.api}events/feed/create_comment`, {
+        eventId, postId, text, userId
+      });
+    }
+
+    load_comments(eventId, postId, pageId): any {
+      return this.httpClient.get(`${environment.api}events/feed/load_comments/${eventId}/${postId}/${pageId}`);
+    }
+
     remove(userId): any {
       return this.httpClient.post(`${environment.api}events/remove`, {
         userId
