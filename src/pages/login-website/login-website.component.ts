@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
 import { UsersService } from 'src/services/users.service';
-// import {
-//   AuthService,
-//   FacebookLoginProvider,
-//   GoogleLoginProvider
-// } from 'angular-6-social-login';
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from 'angular-6-social-login';
 
 @Component({
   selector: 'app-login-website',
@@ -31,7 +31,7 @@ export class LoginWebsiteComponent implements OnInit {
     private social: SocialService,
     private notifierService: NotifierService,
     private users: UsersService,
-    // private socialAuthService: AuthService
+    private socialAuthService: AuthService
     ) {
     this.height = window.innerHeight + 'px';
   }
@@ -40,61 +40,61 @@ export class LoginWebsiteComponent implements OnInit {
   }
 
   loginTwitter() {
-    // this.social.loginTwitter().subscribe(data => {
+    this.social.loginTwitter().subscribe(data => {
 
-    //   const d = new Date();
-    //   d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
-    //   const expires = `expires=${d.toUTCString()}`;
-    //   document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
-    //   document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
-    //   window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
-    // });
+      const d = new Date();
+      d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
+      const expires = `expires=${d.toUTCString()}`;
+      document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
+      document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
+      window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
+    });
   }
 
   signInWithGoogle(): void {
 
-    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-    //   (userData) => {
-    //     console.log('google sign in data : ' , userData);
-    //     this.social.loginGoogle(userData.id).subscribe( data => {
-    //       console.log(data);
-    //       if (data['status'] === 'success') {
-    //           this.loading = false;
-    //           this.authService.setToken(data['token']);
-    //           this.authService.setUserData(data);
-    //           this.router.navigateByUrl('/feed');
-    //       } else {
-    //           this.loading = false;
-    //           this.notifierService.show({
-    //             type : 'error',
-    //             message: 'ليس هناك حساب مربوط بهذه البيانات',
-    //           });
-    //       }
-    //     });
-    //   }
-    // );
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        console.log('google sign in data : ' , userData);
+        this.social.loginGoogle(userData.id).subscribe( data => {
+          console.log(data);
+          if (data['status'] === 'success') {
+              this.loading = false;
+              this.authService.setToken(data['token']);
+              this.authService.setUserData(data);
+              this.router.navigateByUrl('/feed');
+          } else {
+              this.loading = false;
+              this.notifierService.show({
+                type : 'error',
+                message: 'ليس هناك حساب مربوط بهذه البيانات',
+              });
+          }
+        });
+      }
+    );
   }
 
   signInWithFB(): void {
 
-    // this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-    //   (userData) => {
-    //     this.social.loginFb(userData.id).subscribe( data => {
-    //       console.log(data);
-    //       if (data['status'] === 'success') {
-    //           this.loading = false;
-    //           this.authService.setToken(data['token']);
-    //           this.authService.setUserData(data);
-    //           this.router.navigateByUrl('/feed');
-    //       } else {
-    //           this.loading = false;
-    //           this.notifierService.show({
-    //             type : 'error',
-    //             message: 'ليس هناك حساب مربوط بهذه البيانات',
-    //           });
-    //       }
-    //     });
-    //   });
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        this.social.loginFb(userData.id).subscribe( data => {
+          console.log(data);
+          if (data['status'] === 'success') {
+              this.loading = false;
+              this.authService.setToken(data['token']);
+              this.authService.setUserData(data);
+              this.router.navigateByUrl('/feed');
+          } else {
+              this.loading = false;
+              this.notifierService.show({
+                type : 'error',
+                message: 'ليس هناك حساب مربوط بهذه البيانات',
+              });
+          }
+        });
+      });
   }
 
   login() {
