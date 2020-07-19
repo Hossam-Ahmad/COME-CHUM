@@ -37,15 +37,17 @@ export class BlogsService {
     }
 
     like(blogId, userId): any {
-      return this.httpClient.post(`${environment.api}blogs/like`, 
+      return this.httpClient.post(`${environment.api}blogs/like`,
         {
-          blogId, userId
+          blogId,
+          userId
         });
     }
 
     dislike(blogId, userId): any {
       return this.httpClient.post(`${environment.api}blogs/dislike`, {
-        blogId, userId
+        blogId,
+        userId
       });
     }
 
@@ -60,6 +62,16 @@ export class BlogsService {
       return this.httpClient.post(`${environment.api}blogs/remove`, {
         blogId
       });
+    }
+
+    create_comment(blogId, text, userId): any {
+      return this.httpClient.post(`${environment.api}blogs/create_comment`, {
+        blogId, text, userId
+      });
+    }
+
+    load_comments(blogId, pageId): any {
+      return this.httpClient.get(`${environment.api}blogs/load_comments/${blogId}/${pageId}`);
     }
 
 }

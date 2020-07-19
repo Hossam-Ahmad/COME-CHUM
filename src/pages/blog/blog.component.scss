@@ -139,9 +139,9 @@
     border-bottom-left-radius:20px;
     font-size: 14px;
     font-family: lato-bold;
-    font-weight: bold;
+    font-weight: normal;
     color: #939fad;
-    p{margin: 0;font-weight: normal;color: #4d4848;}
+    p{margin: 0;font-weight: normal;color: #4d4848;font-family: lato-light;}
     .user_comment{
         color: black;
         font-weight: bold;
@@ -192,4 +192,16 @@
     p{
         padding: 1em;
     }
+}
+
+.posted_comment{
+    margin: 0em 0 1em;
+    background: white;
+    padding: 1em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.write-comment , .write-comment::placeholder{
+    font-size: 0.9em;
 }

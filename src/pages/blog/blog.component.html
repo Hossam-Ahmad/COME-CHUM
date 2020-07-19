@@ -1,6 +1,6 @@
 <div class="row" *ngIf="!isMobile()">
   <div class="col-1"></div>
-  <div class="col-6">
+  <div class="col-6" *ngIf="blog">
       
     <!-- blog -->
     <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
@@ -20,11 +20,7 @@
 
     <!-- comment  -->
   <div class="row" style="padding-right: 1em;padding-left: 1em;">
-    <div class="col col-md-2" style="background-color: white;">
-      <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
-    </div>
-
-    <div class="col col-md-10" style="background-color: white;">
+    <div class="col col-md-12" style="background-color: white;">
       <div class="commentIssues">
       <div class="row">
 
@@ -42,7 +38,7 @@
               </div>
             </div>
             <div class="col col-md-5">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+              <input type="text" class="form-control write-comment" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
               [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
               'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
               }">
@@ -58,7 +54,7 @@
       </div>
   </div>
 <!-- posted comment -->
-  <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of blog.comments_arr">
+  <div class="row posted_comment" *ngFor="let comment of blog.comments_arr">
 
     <div class="col col-md-2 cursor"  [routerLink]="[ '/profile' ]" [queryParams]="{ userId: comment.profile_id }">
       <div class="photoComment" [ngClass]="{'photoCommentOnline': comment.online}">
@@ -92,7 +88,7 @@
 </div>
 
 <div class="row" *ngIf="isMobile()">
-  <div class="col-12">
+  <div class="col-12" *ngIf="blog">
       
     <!-- blog -->
     <input id="upload_image" accept="image/*" type="file" style="visibility: hidden;width:50px;" (change)="onImageChanged($event)">
@@ -130,7 +126,7 @@
               </div>
             </div>
             <div class="col col-md-5">
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
+              <input type="text" class="form-control write-comment" id="exampleInputPassword1" placeholder="{{'write_comment' | translate}}" [(ngModel)]="comment_text"
               [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : '',
               'text-align': translate.currentLang == 'ar' ? 'right' : 'left'
               }">
@@ -146,9 +142,6 @@
       </div>
     </div>
 
-  <div class="col col-12" style="background-color: white;text-align: center;">
-    <button type="button" class="btn btn-primary" [ngStyle]="{'font-family': translate.currentLang == 'ar' ? 'cairo-regular' : ''}" (click)="chat()">{{'chat' | translate}}</button>
-  </div>
 <!-- posted comment -->
   <div class="row" style="margin: 2em 0 1em;" *ngFor="let comment of blog.comments_arr">
 

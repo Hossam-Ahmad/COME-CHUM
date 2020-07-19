@@ -37,7 +37,7 @@ router.get('/all/:pageId/:userId', function(req, res, next) {
           results.forEach(result => {
             result.comments_arr = [];
             results3.forEach(result3 => {
-              if(result3.post_id == result.id) {
+              if(result3.blog_id == result.id) {
                 result.comments_arr.push(result3);
               }
             });
@@ -149,14 +149,14 @@ router.post('/create', function(req, res, next) {
 
 router.post('/like', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
-    var BlogId = req.body['BlogId'];
+    var blogId = req.body['blogId'];
     var userId = req.body['userId'];
 
-    conn.query(`select from likes_blogs where user_id = ${userId} AND blog_id = ${BlogId}`
+    conn.query(`select * from likes_blogs where user_id = ${userId} AND blog_id = ${blogId}`
     , function(error,results,fields){
-      if(results == undefined) {
-        conn.query(`UPDATE blogs SET likes = likes + 1 where id = ${BlogId};
-        INSERT INTO likes_blogs (user_id , blog_id) VALUES (${userId},${BlogId});
+      if(results) {
+        conn.query(`UPDATE blogs SET likes = likes + 1 where id = ${blogId};
+        INSERT INTO likes_blogs (user_id , blog_id) VALUES (${userId},${blogId});
         ` , function(error,results,fields){
           conn.release();
           res.send({
@@ -262,6 +262,42 @@ router.get('/blog/:blogId/:userId', function(req, res, next) {
           res.send(response);
       });
       });
+    });
+  });
+});
+
+router.post('/create_comment', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var blogId = req.body['blogId'];
+    var text = req.body['text'];
+    var userId = req.body['userId'];
+    conn.query(`INSERT INTO comments_blogs(blog_id, user_id, text, image) VALUES 
+    (${blogId} , ${userId} , '${text}' , '')
+    `, function(error,results,fields){
+    conn.query(`UPDATE blogs SET comments = comments + 1 where id = ${blogId}`, function(error,results,fields){
+        conn.release();
+        res.send({
+          status : 'success'
+        });
+      });
+    });
+  });
+});
+
+router.get('/load_comments/:blogId/:pageId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var blogId = req.params['blogId'];
+    var pageId = req.params['pageId'];
+    conn.query(`
+    SELECT c.id comment_id , c.blog_id , c.user_id , c.text , c.image , c.created_at , u.name user_name , u.image user_image , u.profile_id, u.online
+    FROM comments_blogs c , users u
+    where blog_id = ${blogId} and u.id = c.user_id
+    limit 10 OFFSET ${10*(pageId-1)}
+    `, function(error,results,fields){
+      conn.release();
+        res.send({
+          results
+        });
     });
   });
 });

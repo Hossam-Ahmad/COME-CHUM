@@ -49,7 +49,7 @@ export class BlogPageComponent implements OnInit {
 
   comment() {
     this.auth.getData().subscribe(data => {
-      this.feed.create_comment(this.blog.id, this.comment_text, data.id).subscribe( data2 => {
+      this.blogsService.create_comment(this.blog.id, this.comment_text, data.id).subscribe( data2 => {
         this.blog.comments++;
         this.blog.comments_arr.push({
           user_id : data.profile_id,
@@ -75,7 +75,7 @@ export class BlogPageComponent implements OnInit {
             }
           });
       } else {
-          this.feed.like(this.blog.id,  data.id).subscribe( data2 => {
+          this.blogsService.like(this.blog.id,  data.id).subscribe( data2 => {
             console.log(data2);
             if (data2.status === 'success') {
               this.blog.likes++;
@@ -91,7 +91,7 @@ export class BlogPageComponent implements OnInit {
   }
 
   load_comments() {
-    this.feed.load_comments(this.blog.id, this.page).subscribe( data => {
+    this.blogsService.load_comments(this.blog.id, this.page).subscribe( data => {
       console.log(data);
       this.page++;
       for (let i = 0; i < data.results.length; i++) {
@@ -101,22 +101,6 @@ export class BlogPageComponent implements OnInit {
       }
       this.blog.comments_arr = this.blog.comments_arr.concat(data.results);
       console.log(this.blog.comments_arr);
-    });
-  }
-
-  chat() {
-    this.auth.getData().subscribe(data => {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = false;
-      dialogConfig.autoFocus = true;
-      dialogConfig.data = {
-        other_id: this.blog.user_id,
-        other_name : this.blog.name,
-        image : this.blog.image,
-        id: data.id
-      };
-      dialogConfig.panelClass = 'colorize-background';
-      this.dialog.open(NewMessageComponent, dialogConfig);
     });
   }
 
