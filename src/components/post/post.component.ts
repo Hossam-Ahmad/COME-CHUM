@@ -7,6 +7,7 @@ import { NewMessageComponent } from '../new-message/new-message.component';
 import { MiscService } from 'src/services/misc.service';
 import { LocationsService } from 'src/services/locations.service';
 import { EventsService } from 'src/services/events.service';
+import { GroupsService } from 'src/services/groups.service';
 
 @Component({
   selector: 'app-post',
@@ -35,7 +36,8 @@ export class PostComponent implements OnInit {
     private dialog: MatDialog,
     public misc: MiscService,
     public locationsService: LocationsService,
-    private eventsService: EventsService) {
+    private eventsService: EventsService,
+    private groupService: GroupsService) {
   }
 
   ngOnInit(): void {
@@ -66,9 +68,19 @@ export class PostComponent implements OnInit {
           this.comment_text = '';
         });
       } else if (this.EntryData && this.EntryData.type === 'group') {
-
-      } else if (this.EntryData && this.EntryData.type === 'blog') {
-
+        this.groupService.create_comment(this.EntryData.id, this.post.id, this.comment_text, data.id).subscribe( data2 => {
+          this.post.comments++;
+          this.post.comments_arr.push({
+            user_id : data.profile_id,
+            user_name : data.name,
+            user_image : data.image,
+            text : this.comment_text,
+            online : 1,
+            image : '',
+            created_at : new Date().toISOString()
+          });
+          this.comment_text = '';
+        });
       } else {
         this.feed.create_comment(this.post.id, this.comment_text, data.id).subscribe( data2 => {
           this.post.comments++;
@@ -98,9 +110,12 @@ export class PostComponent implements OnInit {
             }
           });
         } else if (this.EntryData && this.EntryData.type === 'group') {
-
-        } else if (this.EntryData && this.EntryData.type === 'blog') {
-
+          this.groupService.dislike(this.EntryData.id, this.post.id,  data.id).subscribe( data2 => {
+            if (data2.status === 'success') {
+              this.post.likes--;
+              this.post.isliked = false;
+            }
+          });
         } else {
           this.feed.dislike(this.post.id,  data.id).subscribe( data2 => {
             if (data2.status === 'success') {
@@ -118,9 +133,12 @@ export class PostComponent implements OnInit {
             }
           });
         } else if (this.EntryData && this.EntryData.type === 'group') {
-
-        } else if (this.EntryData && this.EntryData.type === 'blog') {
-
+          this.groupService.like(this.EntryData.id, this.post.id,  data.id).subscribe( data2 => {
+            if (data2.status === 'success') {
+              this.post.likes++;
+              this.post.isliked = true;
+            }
+          });
         } else {
           this.feed.like(this.post.id,  data.id).subscribe( data2 => {
             console.log(data2);
@@ -152,9 +170,17 @@ export class PostComponent implements OnInit {
         console.log(this.post.comments_arr);
       });
     } else if (this.EntryData && this.EntryData.type === 'group') {
-
-    } else if (this.EntryData && this.EntryData.type === 'blog') {
-
+      this.groupService.load_comments(this.EntryData.id, this.post.id, this.page).subscribe( data => {
+        console.log(data);
+        this.page++;
+        for (let i = 0; i < data.results.length; i++) {
+          if (data.results[i].comment_id === this.post.comments_arr[0].comment_id) {
+            data.results.splice(i, 1);
+          }
+        }
+        this.post.comments_arr = this.post.comments_arr.concat(data.results);
+        console.log(this.post.comments_arr);
+      });
     } else {
       this.feed.load_comments(this.post.id, this.page).subscribe( data => {
         console.log(data);

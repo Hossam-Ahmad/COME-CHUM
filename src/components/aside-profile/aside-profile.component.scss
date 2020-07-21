@@ -6,17 +6,22 @@
         margin-bottom: 2em;
         padding: 1em;
         background-color: #e9ecef;
+        .about{
+            text-align: center;
+        }
         p{
-            font-family: lato-regular;
+            font-family: cairo-regular;
         }
         .asideHeader{
             font-weight: bold;
+            font-family: cairo-regular;
             span{font-weight: lighter;}
         }
         i{
             color: #8c939c;
             font-size: 1.3em;
             padding-right: 1em;
+            padding-left: 1em;
         }
         hr{margin-bottom: 2em;}
         .card{width: auto !important;

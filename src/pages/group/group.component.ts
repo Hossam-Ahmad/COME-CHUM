@@ -19,6 +19,7 @@ export class GroupPageComponent implements OnInit {
   public groupData;
   public posts = [];
   private page = 1;
+  public layout = 'posts';
 
   constructor(
     private auth: AuthUserService,
@@ -28,21 +29,37 @@ export class GroupPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.getData().subscribe( data => {
-      this.userId = data.id;
-    });
     this.activatedRoute.queryParams.subscribe(params => {
       this.groupId = params['groupId'];
+      this.auth.getData().subscribe( data => {
+        this.userData = data;
+        this.userId = data.id;
+        this.getGroup();
+      });
+    });
+  }
+
+  getGroup() {
+    this.groupsService.getGroup(this.groupId, this.userId).subscribe( data => {
+      this.groupData = data;
+      console.log(data);
+      this.groupData = this.groupData[0];
       this.groupData['type'] = 'group';
+      console.log(this.groupData);
       this.getFeed();
     });
   }
 
   getFeed() {
-    this.groupsService.getPosts(this.groupId, this.page).subscribe( data => {
+    this.groupsService.getPosts(this.groupData.id, this.userId, this.page).subscribe( data => {
       this.posts = this.posts.concat(data as Array<any>);
       this.page++;
+      console.log(this.posts);
     });
+  }
+
+  changeLayout(data) {
+    this.layout = data;
   }
 
   isMobile() {
@@ -55,6 +72,9 @@ export class GroupPageComponent implements OnInit {
     data.image = this.userData.image;
     data.name = this.userData.name;
     data.created_at = new Date();
+    data.comments = 0;
+    data.likes = 0;
+    data.comments_arr = [];
     this.posts.unshift(data);
   }
 

@@ -20,7 +20,7 @@
     <!-- offers -->
   
     <div class="row">
-      <div class="col col-md-3" (click)="subscribe(0)">
+      <div class="col-xs-12 col-md-3" (click)="subscribe(0)">
         <div class="packCard" [ngClass]="{'packCardActive': package == 0}">
         <img src="../../../assets/images/package1.jpg">
         <h3>FREE</h3>
@@ -33,7 +33,7 @@
         <button type="button" class="btn btn-light" *ngIf="package == 0" disabled>Your Package</button>
       </div>
       </div>
-      <div class="col col-md-3" (click)="subscribe(1)">
+      <div class="col-xs-12 col-md-3" (click)="subscribe(1)">
         <div class="packCard" [ngClass]="{'packCardActive': package == 1}">
         <img src="../../../assets/images/package2.jpg">
         <h3>Basic</h3>
@@ -46,7 +46,7 @@
         <button type="button" class="btn btn-light" *ngIf="package == 1" disabled>Your Package</button>
       </div>
       </div>
-      <div class="col col-md-3" (click)="subscribe(2)">
+      <div class="col-xs-12 col-md-3" (click)="subscribe(2)">
         <div class="packCard" [ngClass]="{'packCardActive': package == 2}">
         <img src="../../../assets/images/package3.jpg">
         <h3>Advances</h3>
@@ -59,7 +59,7 @@
         <button type="button" class="btn btn-light" *ngIf="package == 2" disabled>Your Package</button>
       </div>
       </div>
-      <div class="col col-md-3" (click)="subscribe(3)">
+      <div class="col-xs-12 col-md-3" (click)="subscribe(3)">
         <div class="packCard" [ngClass]="{'packCardActive': package == 3}">
         <img src="../../../assets/images/package4.jpg">
         <h3>Premuim</h3>

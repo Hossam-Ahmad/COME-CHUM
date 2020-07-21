@@ -8,10 +8,10 @@
         <app-post *ngFor="let post of posts" [post]="post" [EntryData]="eventData"></app-post>
     </div>
     <div class="col-6" *ngIf="layout == 'images'">
-        <app-gallery [event]="eventData" [type]="'images'"></app-gallery>
+        <app-gallery [data]="eventData" [type]="'images'"></app-gallery>
     </div>
     <div class="col-6" *ngIf="layout == 'videos'">
-        <app-gallery [event]="eventData" [type]="'videos'"></app-gallery>
+        <app-gallery [data]="eventData" [type]="'videos'"></app-gallery>
     </div>
     <div class="col-1"></div>
     <div class="col-4">
@@ -28,10 +28,10 @@
         <app-post *ngFor="let post of posts" [post]="post" [EntryData]="eventData"></app-post>
     </div>
     <div class="col-12" *ngIf="layout == 'images'">
-        <app-gallery [event]="eventData" [type]="'images'"></app-gallery>
+        <app-gallery [data]="eventData" [type]="'images'"></app-gallery>
     </div>
     <div class="col-12" *ngIf="layout == 'videos'">
-        <app-gallery [event]="eventData" [type]="'videos'"></app-gallery>
+        <app-gallery [data]="eventData" [type]="'videos'"></app-gallery>
     </div>
 </div>
 

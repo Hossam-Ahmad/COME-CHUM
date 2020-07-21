@@ -1,11 +1,17 @@
 <div class="row specialCoverRow" *ngIf="!isMobile()">
     <div class="col-12 cover">
-        <app-cover [EntryData]="userData"></app-cover>
+        <app-cover [EntryData]="groupData" (changeLayout)="changeLayout($event)"></app-cover>
     </div>
     <div class="col-1"></div>
-    <div class="col-6">
-        <app-create-post [EntryData]="groupData" *ngIf="groupData && groupData.joined" (postAdded)="onAdded($event)"></app-create-post>
-        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    <div class="col-6" *ngIf="layout == 'posts'">
+        <app-create-post [EntryData]="groupData" *ngIf="groupData && groupData.joined == 1" (postAdded)="onAdded($event)"></app-create-post>
+        <app-post *ngFor="let post of posts" [post]="post" [EntryData]="groupData"></app-post>
+    </div>
+    <div class="col-6" *ngIf="layout == 'images'">
+        <app-gallery [data]="groupData" [type]="'images'"></app-gallery>
+    </div>
+    <div class="col-6" *ngIf="layout == 'videos'">
+        <app-gallery [data]="groupData" [type]="'videos'"></app-gallery>
     </div>
     <div class="col-1"></div>
     <div class="col-4">
@@ -15,11 +21,17 @@
 
 <div class="row" *ngIf="isMobile()">
     <div class="col-12 cover">
-        <app-cover [EntryData]="userData"></app-cover>
+        <app-cover [EntryData]="groupData" (changeLayout)="changeLayout($event)"></app-cover>
     </div>
-    <div class="col-12">
-        <app-create-post [EntryData]="groupData" *ngIf="groupData && groupData.joined"></app-create-post>
-        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+    <div class="col-12" *ngIf="layout == 'posts'">
+        <app-create-post [EntryData]="groupData" *ngIf="groupData && groupData.joined == 1" (postAdded)="onAdded($event)"></app-create-post>
+        <app-post *ngFor="let post of posts" [post]="post" [EntryData]="groupData"></app-post>
+    </div>
+    <div class="col-12" *ngIf="layout == 'images'">
+        <app-gallery [data]="groupData" [type]="'images'"></app-gallery>
+    </div>
+    <div class="col-12" *ngIf="layout == 'videos'">
+        <app-gallery [data]="groupData" [type]="'videos'"></app-gallery>
     </div>
 </div>
 

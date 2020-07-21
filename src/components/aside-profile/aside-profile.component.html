@@ -1,25 +1,25 @@
 <div class="aside">
   <div class="aboutMe">
-    <p class="asideHeader" >{{'about' | translate}} 
+    <p class="asideHeader" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left'}">{{'about' | translate}} 
       <span *ngIf="EntryData && EntryData.type == 'profile'">{{'me' | translate}}</span>
       <span *ngIf="EntryData && EntryData.type == 'event'">{{'event' | translate}}</span>
       <span *ngIf="EntryData && EntryData.type == 'group'">{{'group' | translate}}</span>
     </p>
     <hr>
-    <p *ngIf="EntryData">{{EntryData.about}}</p>
-    <p *ngIf="EntryData && EntryData.type == 'profile'">
+    <p *ngIf="EntryData" class="about">{{EntryData.about}}</p>
+    <p *ngIf="EntryData && EntryData.type == 'profile'" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left' , 'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
       <i class="fas fa-home"></i>
       <span>3 {{'places' | translate}}</span>
     </p>
-    <p *ngIf="EntryData && EntryData.happen_at">
+    <p *ngIf="EntryData && EntryData.happen_at" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left' , 'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
       <i class="fas fa-calendar"></i>
       <span>{{misc.getDate(EntryData.happen_at)}}</span>
     </p>
-    <p *ngIf="EntryData && EntryData.location">
+    <p *ngIf="EntryData && EntryData.location" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left' , 'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
       <i class="fas fa-map-marker-alt"></i>
       <span>{{EntryData.location}}</span>
     </p>
-    <p *ngIf="EntryData && EntryData.members">
+    <p *ngIf="EntryData && EntryData.members" [ngStyle]="{'text-align': translate.currentLang == 'ar' ? 'right' : 'left' , 'direction': translate.currentLang == 'ar' ? 'rtl' : 'ltr'}">
       <i class="fas fa-users"></i>
       <span>{{EntryData.members}} {{'joined' | translate}}</span>
     </p>

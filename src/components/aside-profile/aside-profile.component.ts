@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MiscService } from 'src/services/misc.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-aside-profile',
@@ -9,7 +10,9 @@ import { MiscService } from 'src/services/misc.service';
 export class asideProfileComponent implements OnInit {
   @Input() EntryData;
 
-  constructor(public misc: MiscService) {
+  constructor(
+    public misc: MiscService,
+    public translate: TranslateService) {
   }
 
   ngOnInit(): void {

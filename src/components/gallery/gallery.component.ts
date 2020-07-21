@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { EventsService } from 'src/services/events.service';
+import { GroupsService } from 'src/services/groups.service';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -9,7 +10,7 @@ import { EventsService } from 'src/services/events.service';
 export class GalleryComponent implements OnInit {
 
   @Input() type;
-  @Input() event;
+  @Input() data;
 
   private pageImages = 1;
   private pageVideos = 1;
@@ -18,7 +19,8 @@ export class GalleryComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
-    private eventsService: EventsService) {
+    private eventsService: EventsService,
+    private groupService: GroupsService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +36,13 @@ export class GalleryComponent implements OnInit {
   }
 
   getImages() {
-    this.eventsService.load_images(this.event.id, this.pageImages).subscribe( data => {
+    let request;
+    if (this.data.type === 'event') {
+      request = this.eventsService.load_images(this.data.id, this.pageImages);
+    } else if (this.data.type === 'group') {
+      request = this.groupService.load_images(this.data.id, this.pageImages);
+    }
+    request.subscribe( data => {
       this.images = this.images.concat(data as Array<any>);
       console.log(this.images);
       this.pageImages++;
@@ -42,7 +50,13 @@ export class GalleryComponent implements OnInit {
   }
 
   getVideos() {
-    this.eventsService.load_videos(this.event.id, this.pageVideos).subscribe( data => {
+    let request;
+    if (this.data.type === 'event') {
+      request = this.eventsService.load_videos(this.data.id, this.pageVideos);
+    } else if (this.data.type === 'group') {
+      request = this.groupService.load_videos(this.data.id, this.pageVideos);
+    }
+    request.subscribe( data => {
       this.videos = this.videos.concat(data as Array<any>);
       console.log(this.videos);
       this.pageVideos++;

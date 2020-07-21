@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { EventsService } from 'src/services/events.service';
 import { AuthUserService } from 'src/services/authUser.service';
+import { GroupsService } from 'src/services/groups.service';
 
 @Component({
   selector: 'app-cover',
@@ -13,7 +14,10 @@ export class coverComponent implements OnInit {
   @Output() changeLayout = new EventEmitter<any>();
   userId;
 
-  constructor(private eventsService: EventsService, private auth: AuthUserService) {
+  constructor(
+    private eventsService: EventsService,
+    private auth: AuthUserService,
+    private groupsService: GroupsService) {
   }
 
   ngOnInit(): void {
@@ -23,13 +27,25 @@ export class coverComponent implements OnInit {
   }
 
   join() {
-    this.eventsService.join(this.userId, this.EntryData.id).subscribe( data => {
+    let request;
+    if (this.EntryData.type === 'event') {
+      request = this.eventsService.join(this.userId, this.EntryData.id);
+    } else if (this.EntryData.type === 'group') {
+      request = this.groupsService.join(this.userId, this.EntryData.id);
+    }
+    request.subscribe( data => {
       location.reload();
     });
   }
 
   leave() {
-    this.eventsService.leave(this.userId, this.EntryData.id).subscribe( data => {
+    let request;
+    if (this.EntryData.type === 'event') {
+      request = this.eventsService.leave(this.userId, this.EntryData.id);
+    } else if (this.EntryData.type === 'group') {
+      request = this.groupsService.leave(this.userId, this.EntryData.id);
+    }
+    request.subscribe( data => {
       location.reload();
     });
   }
