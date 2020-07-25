@@ -193,3 +193,21 @@
         padding: 1em;
     }
 }
+
+.places{
+    margin: auto;
+    .place{
+        text-align: center;
+        .place-img{
+            width: 80%;
+        }
+        .place-text{
+            padding: 0em;
+            padding-top: 1em;
+        }
+    }
+}
+
+.deadline{
+    margin: auto;
+}

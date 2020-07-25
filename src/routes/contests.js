@@ -24,6 +24,16 @@ router.get('/contest/:contestId', function(req, res, next) {
   });
 });
 
+router.get('/webcontest/:contestId', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var contestId = req.params['contestId'];
+    connection.query(`SELECT * FROM contest where contest_id = '${contestId}'`, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];

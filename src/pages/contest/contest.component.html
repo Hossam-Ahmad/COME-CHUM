@@ -1,20 +1,45 @@
 <div class="row" *ngIf="!isMobile()">
   <div class="col-1"></div>
-  <div class="col-6">
+  <div class="col-6" *ngIf="contest">
       
     <!-- blog -->
     <div class="bloged" [ngStyle]="{'background-image': 'url(' + contest.image + ')'}">
 
       <div class="row titleandbutton">
         <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
-          <p><span>{{contest.title}}</span></p>
+          <p><span>{{contest.name}}</span></p>
         </div>
       </div>
   
     </div>
 
     <div class="row body">
-      <p>{{contest.body}}</p>
+      <p>{{contest.details}}</p>
+      <div class="row places">
+        <div class="col-4 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/2.png" />
+            <p class="place-text">{{contest.second? contest.second : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-5 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/1.png" />
+            <p class="place-text">{{contest.first? contest.first : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-3 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/3.png" />
+            <p class="place-text">{{contest.third? contest.third : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="deadline">
+        <b>
+          <p>{{'deadline' | translate}}{{misc.getDate(contest.end_at)}}</p>
+        </b>
+      </div>
     </div>
 
 
@@ -30,21 +55,21 @@
 </div>
 
 <div class="row" *ngIf="isMobile()">
-  <div class="col-12">
+  <div class="col-12" *ngIf="contest">
       
     <!-- blog -->
     <div class="bloged" [ngStyle]="{'background-image': 'url(' + contest.image + ')'}">
 
       <div class="row titleandbutton">
         <div class="col col-6 title" [ngStyle]="{'text-align': translate.currentLang == 'ar'? 'right' : 'left'}">
-          <p><span>{{contest.title}}</span></p>
+          <p><span>{{contest.name}}</span></p>
         </div>
       </div>
   
     </div>
 
     <div class="row body">
-      <p>{{contest.body}}</p>
+      <p>{{contest.details}}</p>
     </div>
 
   </div>

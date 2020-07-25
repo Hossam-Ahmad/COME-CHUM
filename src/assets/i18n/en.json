@@ -137,5 +137,7 @@
   "join" : "Join",
   "leave" : "Leave",
   "no_media" : "No media is uploaded yet !",
-  "about" : "About"
+  "about" : "About",
+  "undetermined" : "Undetermined",
+  "deadline" : "Deadline : "
 }

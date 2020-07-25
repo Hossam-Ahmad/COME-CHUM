@@ -5,7 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const compression = require('compression')
+const compression = require('compression');
+const https = require('https');
+const fs = require('fs');
 
 const enviroment = require('./src/routes/enviroment.js');
 const connection = enviroment.connection;
@@ -71,6 +73,12 @@ app.get('/*', (request, response) => {
     response.sendFile(__dirname + '/dist/travel-app/index.html');
 });
 
+// const httpsOptions = {
+//     key: fs.readFileSync('./security/key.pem'),
+//     cert: fs.readFileSync('./security/cert.pem')
+// }
+
+// const server = http.createServer(httpsOptions, app);
 const server = http.createServer(app);
 
 const io = require('socket.io')(server);
@@ -111,6 +119,6 @@ io.on('connection', (socket) => {
     });
 });
 
-app.locals.io = io
+app.locals.io = io;
 
 server.listen(port, () => console.log('Running ...'));

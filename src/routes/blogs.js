@@ -255,11 +255,13 @@ router.get('/blog/:blogId/:userId', function(req, res, next) {
         FROM likes_blogs
         where blog_id = ${results[0].id} and user_id = ${userId}
         `, function(error,results3,fields){
-          response.data = results[0];
-          response.data.comments_arr = results2;
-          response.data.isliked = results3[0]['total'] > 0;
-          conn.release();
-          res.send(response);
+          conn.query(`UPDATE blogs SET seen = seen + 1 where blog_id = '${blogId}'`, function(error,results4,fields){
+            response.data = results[0];
+            response.data.comments_arr = results2;
+            response.data.isliked = results3[0]['total'] > 0;
+            conn.release();
+            res.send(response);
+        });
       });
       });
     });
