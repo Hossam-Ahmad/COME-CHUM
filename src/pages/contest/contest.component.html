@@ -70,6 +70,31 @@
 
     <div class="row body">
       <p>{{contest.details}}</p>
+      <div class="row places">
+        <div class="col-4 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/2.png" />
+            <p class="place-text">{{contest.second? contest.second : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-5 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/1.png" />
+            <p class="place-text">{{contest.first? contest.first : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-3 place">
+          <div>
+            <img class="place-img" src="../../../assets/images/3.png" />
+            <p class="place-text">{{contest.third? contest.third : 'undetermined' | translate}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="deadline">
+        <b>
+          <p>{{'deadline' | translate}}{{misc.getDate(contest.end_at)}}</p>
+        </b>
+      </div>
     </div>
 
   </div>

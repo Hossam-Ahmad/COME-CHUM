@@ -28,7 +28,7 @@ export class ContestPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private contestService: ContestsService,
-    private misc: MiscService) {
+    public misc: MiscService) {
       this.route
       .queryParams
       .subscribe(params => {
