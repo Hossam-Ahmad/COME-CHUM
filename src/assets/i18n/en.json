@@ -67,6 +67,7 @@
   "or" : "OR",
   "registration" : "Registration",
   "advnatages" : "Aduantages",
+  "old_password" : "Old Password",
   "repeat_password" : "Repeat password",
   "continue" : "Continue",
   "gender" : "Gender",
@@ -139,5 +140,12 @@
   "no_media" : "No media is uploaded yet !",
   "about" : "About",
   "undetermined" : "Undetermined",
-  "deadline" : "Deadline : "
+  "deadline" : "Deadline : ",
+  "credit" : "Credit",
+  "card" : "Card",
+  "cards" : "Cards",
+  "default" : "Default",
+  "make_as_default" : "Make as default",
+  "add" : "Add",
+  "change_your_password" : "Reset Password"
 }

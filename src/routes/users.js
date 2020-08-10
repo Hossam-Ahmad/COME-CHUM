@@ -316,4 +316,41 @@ router.post('/create', function(req, res, next) {
   });
 });
 
+router.get('/cards/:user_id', function(req, res, next) {
+  connection.getConnection(function (err, conn) { 
+    var user_id = req.params['user_id'];
+    conn.query(`SELECT * FROM cards where user_id = '${user_id}'`, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
+router.post('/cards/create_card', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var data = req.body['data'];
+    console.log(data);
+    connection.query(`UPDATE cards SET default_card = 0;
+    INSERT INTO cards (user_id,type,default_card,card_number,exp,vcc) VALUES (${data.user_id},${data.type},${data.default_card},'${data.card_number}','${data.exp}','${data.vcc}')`, function(error,results,fields){
+          conn.release();
+           res.send({
+            status : 'success'
+      });
+    });
+  });
+});
+
+router.post('/cards/default_card', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var id = req.body['id'];
+    connection.query(`UPDATE cards SET default_card = 0;
+    UPDATE cards SET default_card = 1 where id = ${id}`, function(error,results,fields){
+      conn.release();
+      res.send({
+        status : 'success'
+      });
+    });
+  });
+});
+
 module.exports = router;

@@ -68,6 +68,7 @@
   "or" : "أو",
   "registration" : "الاشتـــراك",
   "advnatages" : "مميزات",
+  "old_password" : "كلمة المرور القديمه",
   "repeat_password" : "تكرار كلمة المرور",
   "continue" : "استكمال",
   "gender" : "النوع",
@@ -139,5 +140,12 @@
   "no_media" : "ليس هناك مرفقات مرفوعه",
   "about" : "عن",
   "undetermined" : "غير محدد",
-  "deadline" : "ميعاد انتهاء المسابقة : "
+  "deadline" : "ميعاد انتهاء المسابقة : ",
+  "credit" : "ائتمانيه",
+  "card" : "بطاقه",
+  "cards" : "بطاقات",
+  "default" : "الاساسيه",
+  "make_as_default" : "جعلها الافتراضيه",
+  "add" : "اضافه",
+  "change_your_password" : "تغيير كلمة المرور"
 }

@@ -69,4 +69,20 @@ export class UsersService {
       }
     }
 
+    getCards(userId) {
+      return this.httpClient.get(`${environment.api}users/cards/${userId}`);
+    }
+
+    defaultCard(id) {
+      return this.httpClient.post(`${environment.api}users/cards/default_card`, {
+        id
+      });
+    }
+
+    createCard(data) {
+      return this.httpClient.post(`${environment.api}users/cards/create_card`, {
+        data
+      });
+    }
+
 }

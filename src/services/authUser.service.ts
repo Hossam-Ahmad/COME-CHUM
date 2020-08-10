@@ -19,7 +19,11 @@ export class AuthUserService implements CanActivate {
     profile_id : '',
     token : '',
     package_expired : '',
-    package : ''
+    package : '',
+    country : '',
+    city : '',
+    phone : '',
+    postal_code : ''
   };
 
   private interval = null;
@@ -91,6 +95,10 @@ export class AuthUserService implements CanActivate {
       this.userData.token = data.token;
       this.userData.package_expired = data.package_expired;
       this.userData.package = data.package;
+      this.userData.country = data.country;
+      this.userData.city = data.city;
+      this.userData.phone = data.phone;
+      this.userData.postal_code = data.postal_code;
     }
 
     changeCredentials(email, oldPassword, newPassword) {

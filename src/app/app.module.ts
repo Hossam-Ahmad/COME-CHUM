@@ -147,6 +147,7 @@ import { EventPageComponent } from 'src/pages/event/event.component';
 import { GroupPageComponent } from 'src/pages/group/group.component';
 import { ContestPageComponent } from 'src/pages/contest/contest.component';
 import { GalleryComponent } from 'src/components/gallery/gallery.component';
+import { CheckoutCardComponent } from 'src/components/checkout-card/checkout-card.component';
 
 export function createHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -270,6 +271,7 @@ export function getAuthServiceConfigs() {
     BlogsWebsiteComponent,
     BlogComponent,
     CheckoutComponent,
+    CheckoutCardComponent,
     EventsWebsiteComponent,
     EventComponent,
     GroupComponent,
@@ -372,6 +374,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, SearchComponent, CreatePostOptionsComponent]
+  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, CheckoutCardComponent, SearchComponent, CreatePostOptionsComponent]
 })
 export class AppModule { }

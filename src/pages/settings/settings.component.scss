@@ -98,6 +98,45 @@
     }
 }
 
+.cards-container{
+    text-align: center;
+}
+
+.card-container{
+    margin: auto;
+    width: 50%;
+    border-radius: 0.5em;
+    border: 1px solid #00000030;
+    padding: 1em;
+    margin-top: 1em;
+    .icon{
+        font-size: 1.5em;
+        margin-right: 1em;
+        margin-left: 1em;
+    }
+    .button{
+        font-size: 0.8em;
+        border-radius: 0.5em;
+        padding: .3em;
+        margin-right: 2em;
+        margin-left: 2em;
+        color: #c7338d;
+        border: 1px solid #c7338d;
+        cursor: pointer;
+    }
+    .label{
+        color: white;
+        font-size: 0.8em;
+        border-radius: 0.5em;
+        padding: .5em;
+        margin-right: 2em;
+        margin-left: 2em;
+        padding-right: 2em;
+        padding-left: 2em;
+        background: linear-gradient(60deg, #7e49b5 0%, #c7338d 100%) !important;
+    }
+}
+
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
     stroke: #fff !important;
 }

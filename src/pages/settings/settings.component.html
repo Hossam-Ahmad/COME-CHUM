@@ -12,6 +12,8 @@
         <p class="tab" [ngClass]="{'active': activeId == 0}" (click)="changeTab(0)">{{'general' | translate}}</p>
     </div>
     <hr class="line">
+
+    <!-- Profile -->
     <div *ngIf="activeId == 0">
         <div class="upload-image" (click)="select()">
             <img src="{{userData? userData.image : ''}}"/>
@@ -50,7 +52,7 @@
                 <input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone" value="{{userData != undefined? userData.phone : ''}}">
             </div>
             <div class="col col-sm-6 first-col">
-                <input placeholder="{{'postal_code' | translate}}" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal" value="{{userData != undefined? userData.postal_code : ''}}" [ngModelOptions]="{standalone: true}">
+                <input placeholder="{{'postal_code' | translate}}" name="postal" type="text" class="form-control input" lang="en" [(ngModel)]="postal_code" value="{{userData != undefined? userData.postal_code : ''}}" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
 
@@ -71,5 +73,53 @@
         </div>
 
     </div>
+    <!-- End profile -->
+
+    <!-- Billing -->
+    <div *ngIf="activeId == 1">
+        <h5 class="title" *ngIf="translate.currentLang == 'en'" style="font-size: 1em;"> <span>{{'credit' | translate}}</span> {{'cards' | translate}}</h5>
+        <h5 class="title" *ngIf="translate.currentLang == 'ar'" style="font-size: 1em;text-align:right;font-family: cairo-bold;"> <span style="font-family: cairo-regular;">{{'cards' | translate}}</span> {{'credit' | translate}} </h5>
+        <div class="cards-container">
+            <div class="card-container" *ngFor="let card of cards; let i = index">
+                <i *ngIf="card.type == 1" class="fab fa-cc-visa icon"></i>
+                <i *ngIf="card.type == 2" class="fab fa-cc-mastercard icon"></i>
+                <span>**** **** ***** {{card.card_number.substr(card.card_number.length - 4)}}</span>
+                <span class="label" *ngIf="card.default_card == 1">{{'default' | translate}}</span>
+                <span class="button" *ngIf="card.default_card != 1" (click)="defaultCard(i)">{{'make_as_default' | translate}}</span>
+            </div>
+            <div class="card-container">
+                <span style="font-family: cairo-semibold;cursor: pointer;" (click)="addCard()">{{'add' | translate}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- End Billing -->
+
+    <!-- Reset Password -->
+    <div *ngIf="activeId == 2">
+  
+        <div class="login-title">
+            <h5 style="text-align: center;margin: 2em;font-family: cairo-semibold;">{{'change_your_password' | translate}}</h5>
+        </div>
+        <form class="register-form" method="post" action="checkLogin" id="form1">
+            <div class="upper-border">
+                <input style="margin: auto;margin-bottom: 2em;text-align: center;width: 50%;" placeholder="{{'email' | translate}}" name="email" type="email" class="form-control" [(ngModel)]="email">
+                <div>
+                    <button class="btn btn-primary forget-btn" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
+                                   data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="forget()">
+                        <mat-progress-spinner *ngIf="loading"
+                            style="margin: auto;"
+                            diameter="30"
+                            class = "tp-margin"
+                            [color] = "color"
+                            [mode] = "mode">
+                        </mat-progress-spinner>
+                        <span *ngIf="!loading">{{'send' | translate}}</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- End Reset Password -->
 
 </div>
+<notifier-container style="font-family: cocon;"></notifier-container>

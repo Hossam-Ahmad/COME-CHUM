@@ -1,0 +1,36 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">{{'add' | translate}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <input class="form-control" placeholder="Credit card number" type="text" maxlength="16" [(ngModel)]="creditCard" />
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control" placeholder="Expiration date month" type="text" maxlength="2" [(ngModel)]="expMonth" />
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" placeholder="Expiration date year" type="text" maxlength="4" [(ngModel)]="expYear" />
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" placeholder="Cvc" type="text" maxlength="3" [(ngModel)]="cvc" />
+                                </div>
+                            </div>
+                            <div class="center">
+                                <button class="btn-primary" (click)="send()">{{'continue' | translate}}</button>
+                            </div>                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <notifier-container style="font-family: cocon;"></notifier-container>
