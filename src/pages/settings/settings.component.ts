@@ -154,4 +154,11 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  showNotification(text, type) {
+    this.notifierService.show({
+      type,
+      message: text,
+    });
+  }
+
 }
