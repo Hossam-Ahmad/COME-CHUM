@@ -141,4 +141,17 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  reset() {
+    this.loading = true;
+    this.users.forget(this.email).subscribe( data => {
+      if (data['status'] === 'not found') {
+        this.loading = false;
+        this.showNotification('ليس هناك حساب مسجل بهذا البريد الالكتروني', 'error');
+      } else {
+        this.loading = false;
+        this.showNotification('لقد تم ارسال رسالة علي بريدك الالكتروني', 'success');
+      }
+    });
+  }
+
 }
