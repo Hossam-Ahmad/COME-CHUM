@@ -32,14 +32,20 @@ router.get('/:chatId/:pageId', function(req, res, next) {
   });
 });
 
-router.get('/search/:query/:pageId', function(req, res, next) {
+router.get('/search/:query/:userId/:pageId', function(req, res, next) {
     connection.getConnection(function (err, conn) { 
       var query = req.params['query'];
+      var userId = req.params['userId'];
       var pageId = req.params['pageId'];
-      conn.query(`SELECT * FROM messages_chat where chat_id = ${chatId} ORDER BY created_at ASC LIMIT 10 OFFSET ${10*(pageId-1)}`, function(error,results,fields){
-            conn.release();
-            res.send(results);
+
+      conn.query(`SELECT c.id , c.user1_id , c.user2_id , c.last_message_type, c.last_message, c.last_message_created_at , u.name , u.online , u.image, u.last_logout 
+      FROM chat c , users u 
+      WHERE ((c.user1_id = ${userId} AND c.user2_id = u.id) OR (c.user2_id = ${userId} AND c.user1_id = u.id)) AND u.name like '%${query}%'
+      ORDER BY c.last_message_created_at DESC LIMIT 10 OFFSET ${10*(pageId-1)}`, function(error,results,fields){
+        conn.release();
+        res.send(results);
       });
+
     });
 });
 

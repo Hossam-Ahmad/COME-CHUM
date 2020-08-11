@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/services/chat.service';
@@ -26,13 +26,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private notificationSubscribtion = false;
   private apiCall = true;
   private hasMore = true;
+  public query = '';
 
   constructor(
     private authService: AuthUserService,
     private router: Router,
     private chat: ChatService,
     public translate: TranslateService,
-    private socket: Socket) {
+    private socket: Socket,
+    private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -99,12 +101,17 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  searchChats() {
+  searchChats(query) {
     this.pageChats = 1;
-    this.chat.search('', this.pageChats).subscribe( data => {
-      this.chats = data;
-      this.pageChats++;
-    });
+    this.changeDetectorRef.detectChanges();
+    if (this.query && 0 !== this.query.length) {
+      this.chat.search(query, this.userId, this.pageChats).subscribe( data => {
+        this.chats = data;
+        this.pageChats++;
+      });
+    } else {
+      this.getChats();
+    }
   }
 
   getNotifiedMessages() {

@@ -56,32 +56,32 @@
 						<div *ngIf="phase == 1"> 
 							<div class="row lower-border second-row">
 								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'personal_name' | translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name">
+									<input placeholder="{{'personal_name' | translate}}" name="name" type="text" class="form-control input"lang="en" [(ngModel)]="name" required>
 								</div>
 								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
-								</div>
-							</div>
-	
-							<div class="row lower-border second-row">
-								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'password' | translate}}" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password">
-								</div>
-								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'repeat_password' | translate}}" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword">
+									<input placeholder="{{'email' | translate}}" name="email" type="email" class="form-control input" lang="en" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
 								</div>
 							</div>
 	
 							<div class="row lower-border second-row">
 								<div class="col col-sm-6 first-col">
-									<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}" (change)="getCities($event.target.value)">
+									<input placeholder="{{'password' | translate}}" name="password" type="password" class="form-control input" lang="en" [(ngModel)]="password" required>
+								</div>
+								<div class="col col-sm-6 first-col">
+									<input placeholder="{{'repeat_password' | translate}}" name="repassword" type="password" class="form-control input" lang="en" [(ngModel)]="repassword" required>
+								</div>
+							</div>
+	
+							<div class="row lower-border second-row">
+								<div class="col col-sm-6 first-col">
+									<select class="form-control input" [ngClass]="{'non-selected': country == ''}"  [(ngModel)]="country" [ngModelOptions]="{standalone: true}" (change)="getCities($event.target.value)" required>
 										<option value="" disabled selected>{{'country' | translate}}</option>
 										<option value="{{country.id}}" *ngFor="let country of countries">{{translate.currentLang == 'ar' ? country.name_ar : country.name_en}}</option>
 									</select>
 									<i class="fas fa-caret-down select-icon"></i>
 								</div>
 								<div class="col col-sm-6 first-col">
-									<select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+									<select class="form-control input" [ngClass]="{'non-selected': city == ''}"  [(ngModel)]="city" [ngModelOptions]="{standalone: true}" required>
 										<option value="" disabled selected>{{'city' | translate}}</option>
 										<option value="{{city.id}}" *ngFor="let city of cities">{{translate.currentLang == 'ar' ? city.name_ar : city.name_en}}</option>
 									</select>
@@ -96,7 +96,7 @@
 							<p>{{'information' | translate }}</p>
 							<div class="row lower-border second-row">
 								<div class="col col-sm-6 first-col">
-									<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+									<select class="form-control input" [ngClass]="{'non-selected': gender == ''}"  [(ngModel)]="gender" [ngModelOptions]="{standalone: true}" required>
 										<option value="" disabled selected>{{'gender' | translate}}</option>
 										<option value="0">ذكر</option>
 										<option value="1">انثى</option>
@@ -104,19 +104,19 @@
 									<i class="fas fa-caret-down select-icon"></i>
 								</div>
 								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone">
+									<input placeholder="{{'phone' | translate}}" name="phone" type="text" class="form-control input"lang="en" [(ngModel)]="phone" required>
 								</div>
 							</div>
 
 							<div class="row lower-border second-row">
 								<div class="col col-sm-6 first-col">
-									<input placeholder="{{'postal_code' | translate}}" name="phone" type="text" class="form-control input" lang="en" [(ngModel)]="phone">
+									<input placeholder="{{'postal_code' | translate}}" name="phone" type="text" class="form-control input" lang="en" [(ngModel)]="phone" required>
 								</div>
 							</div>
 
 							<div class="row lower-border second-row">
 								<div class="col col-sm-12 first-col">
-									<textarea placeholder="{{'about' | translate}}" name="about" type="text" class="form-control input" lang="en" [(ngModel)]="about"></textarea>
+									<textarea placeholder="{{'about' | translate}}" name="about" type="text" class="form-control input" lang="en" [(ngModel)]="about" required></textarea>
 								</div>
 							</div>
 

@@ -12,6 +12,12 @@ export class UsersService {
                 private translate: TranslateService
        ) {}
 
+    register(data) {
+      return this.httpClient.post(`${environment.api}users/create`, {
+        data
+      });
+    }
+
     getAll(pageId): any {
       return this.httpClient.get(`${environment.api}users/all/${pageId}`);
     }

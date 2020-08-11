@@ -12,7 +12,7 @@
 
     <div class="header" *ngIf="translate.currentLang == 'ar'">
       <div class="search-bar" style="width: 51em;">
-        <input type="text" style="text-align: right;" placeholder="... {{'search' | translate}}" />
+        <input type="text" style="text-align: right;" placeholder="... {{'search' | translate}}" (keydown)="searchChats($event.target.value)" (change)="searchChats($event.target.value)" [(ngModel)]="query" />
        </div>
       <div class="logo">
          <p>{{'inbox' | translate}}</p>

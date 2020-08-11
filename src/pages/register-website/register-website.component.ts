@@ -6,6 +6,7 @@ import { NotifierService } from 'angular-notifier';
 import { InterestsService } from 'src/services/interests.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LocationsService } from 'src/services/locations.service';
+import { UsersService } from 'src/services/users.service';
 
 
 @Component({
@@ -25,6 +26,9 @@ export class RegisterWebsiteComponent implements OnInit {
   public about = '';
   public postal_code = '';
   public phone = '';
+  public profile_picture = '';
+  public prefix_phone = '+966';
+  public cover = '';
   public height;
   public loading = false;
   public phase = 1;
@@ -45,7 +49,8 @@ export class RegisterWebsiteComponent implements OnInit {
     private notifierService: NotifierService,
     private interestsService: InterestsService,
     private locationsService: LocationsService,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    private usersService: UsersService) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
     this.email = navigation.extras.state ? navigation.extras.state.email : '';
@@ -78,6 +83,9 @@ export class RegisterWebsiteComponent implements OnInit {
   }
 
   continue() {
+    if (this.phase === 5) {
+      this.register();
+    }
     this.phase++;
   }
 
@@ -111,6 +119,26 @@ export class RegisterWebsiteComponent implements OnInit {
 
   select(index) {
     this.selectedInterests[index] = !this.selectedInterests[index];
+  }
+
+  register() {
+    const userData = {
+      name : this.name,
+      email : this.email,
+      password : this.password,
+      prefix : this.prefix_phone,
+      phone : this.phone,
+      country : this.country,
+      city : this.city,
+      gender : this.gender,
+      profile_picture : this.profile_picture,
+      cover : this.cover,
+      about : this.about,
+      postal_code : this.postal_code
+    };
+    this.usersService.register(userData).subscribe( data => {
+      this.router.navigateByUrl('/activate');
+    });
   }
 
 }

@@ -30,8 +30,8 @@ export class ChatService {
         });
     }
 
-    search(query, pageId): any {
-        return this.httpClient.get(`${environment.api}chat/search/${query}/${pageId}`);
+    search(query, userId, pageId): any {
+        return this.httpClient.get(`${environment.api}chat/search/${query}/${userId}/${pageId}`);
     }
 
     upload(data , type): any {
