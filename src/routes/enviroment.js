@@ -10,7 +10,7 @@ const mysql = require('mysql');
 //     password : '',
 //     database : 'travel'
 // });
-
+ 
 var connection = mysql.createPool({
     connectionLimit : 10, // default = 10
     multipleStatements: true,
