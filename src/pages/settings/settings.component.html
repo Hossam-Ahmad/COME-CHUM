@@ -81,11 +81,19 @@
         <h5 class="title" *ngIf="translate.currentLang == 'ar'" style="font-size: 1em;text-align:right;font-family: cairo-bold;"> <span style="font-family: cairo-regular;">{{'cards' | translate}}</span> {{'credit' | translate}} </h5>
         <div class="cards-container">
             <div class="card-container" *ngFor="let card of cards; let i = index">
-                <i *ngIf="card.type == 1" class="fab fa-cc-visa icon"></i>
-                <i *ngIf="card.type == 2" class="fab fa-cc-mastercard icon"></i>
-                <span>**** **** ***** {{card.card_number.substr(card.card_number.length - 4)}}</span>
-                <span class="label" *ngIf="card.default_card == 1">{{'default' | translate}}</span>
-                <span class="button" *ngIf="card.default_card != 1" (click)="defaultCard(i)">{{'make_as_default' | translate}}</span>
+                <div class="row">
+                    <div class="col-2">
+                        <i *ngIf="card.type == 1" class="fab fa-cc-visa icon"></i>
+                        <i *ngIf="card.type == 2" class="fab fa-cc-mastercard icon"></i>
+                    </div>
+                    <div class="col-6">
+                        <span class="card">**** **** ***** {{card.card_number.substr(card.card_number.length - 4)}}</span>
+                    </div>
+                    <div class="col-4">
+                        <span class="label" *ngIf="card.default_card == 1">{{'default' | translate}}</span>
+                        <span class="button" *ngIf="card.default_card != 1" (click)="defaultCard(i)">{{'make_as_default' | translate}}</span>
+                    </div>
+                </div>
             </div>
             <div class="card-container">
                 <span style="font-family: cairo-semibold;cursor: pointer;" (click)="addCard()">{{'add' | translate}}</span>
