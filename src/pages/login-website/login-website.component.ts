@@ -114,6 +114,9 @@ export class LoginWebsiteComponent implements OnInit {
             type : 'error',
             message: 'هناك خطأ في البريد الالكتروني او كلمة المرور',
           });
+        } else if (result['status'] === 'not_activated') {
+          this.loading = false;
+          this.router.navigateByUrl('/activate');
         } else if (result['status'] === 'package_expired') {
           this.loading = false;
           result['package_expired'] = true;

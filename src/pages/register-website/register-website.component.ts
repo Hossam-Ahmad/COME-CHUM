@@ -7,6 +7,7 @@ import { InterestsService } from 'src/services/interests.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LocationsService } from 'src/services/locations.service';
 import { UsersService } from 'src/services/users.service';
+import { ContestComponent } from 'src/components/contest/contest.component';
 
 
 @Component({
@@ -89,6 +90,12 @@ export class RegisterWebsiteComponent implements OnInit {
     this.phase++;
   }
 
+  back() {
+    if (this.phase > 0) {
+      this.phase--;
+    }
+  }
+
   forget() {
     this.router.navigateByUrl('/cpanel/forget');
   }
@@ -122,6 +129,12 @@ export class RegisterWebsiteComponent implements OnInit {
   }
 
   register() {
+    const interestsParm = [];
+    for (let i = 0 ; i < this.interests.length; i++) {
+      if (this.selectedInterests[i]) {
+        interestsParm.push(this.interests[i].id);
+      }
+    }
     const userData = {
       name : this.name,
       email : this.email,
@@ -134,7 +147,8 @@ export class RegisterWebsiteComponent implements OnInit {
       profile_picture : this.profile_picture,
       cover : this.cover,
       about : this.about,
-      postal_code : this.postal_code
+      postal_code : this.postal_code,
+      interests : interestsParm
     };
     this.usersService.register(userData).subscribe( data => {
       this.router.navigateByUrl('/activate');

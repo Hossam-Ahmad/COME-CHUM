@@ -249,6 +249,10 @@
     }
 }
 
+.select{
+    padding-left: 2em;
+}
+
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
     stroke: #fff !important;
 }

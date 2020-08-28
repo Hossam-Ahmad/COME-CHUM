@@ -11,35 +11,33 @@ router.post('/auth', function(req, res, next) {
       var email = req.body['email'];
       var password = req.body['password'];
       conn.query(`SELECT * FROM users where email like '${email}' and password like '${password}'`, function(error,results,fields){
-        conn.query(`SELECT count(*) FROM users where email like '${email}' and password like '${password}' and status = 1 and ( (package = 0 and DATEDIFF(CURDATE(), created_at) <= 7) or (package != 0 and package_end >= CURDATE()) )`, function(error,results2,fields){
+        conn.query(`SELECT count(*) FROM users where email like '${email}' and password like '${password}' and ( (package = 0 and DATEDIFF(CURDATE(), created_at) <= 7) or (package != 0 and package_end >= CURDATE()) )`, function(error,results2,fields){
           if(results2[0]['count(*)'] > 0) {
             conn.query(`UPDATE users SET online = 1 where email like '${email}' and password like '${password}'`, function(error,results3,fields){
               conn.release();  
               if(results.length > 0){
+                if(results[0]['status'] == 1){
                   res.send({
-                      status : 'success',
-                      token : results[0]['token'],
-                      name : results[0]['name'],
-                      id : results[0]['id'],
-                      image : results[0]['image'],
-                      email : results[0]['email'],
-                      cover : results[0]['cover'],
-                      about : results[0]['about'],
-                      profile_id : results[0]['profile_id'],
-                      package : results[0]['package'],
+                    status : 'success',
+                    token : results[0]['token'],
+                    name : results[0]['name'],
+                    id : results[0]['id'],
+                    image : results[0]['image'],
+                    email : results[0]['email'],
+                    cover : results[0]['cover'],
+                    about : results[0]['about'],
+                    profile_id : results[0]['profile_id'],
+                    package : results[0]['package'],
                   });
+                } else {
+                  res.send({
+                    status : 'not_activated',
+                  });
+                }
               } else {
                 res.send({
                   status : 'failed',
-                  token : results[0]['token'],
-                  name : results[0]['name'],
-                  id : results[0]['id'],
-                  image : results[0]['image'],
-                  email : results[0]['email'],
-                  cover : results[0]['cover'],
-                  about : results[0]['about'],
-                  profile_id : results[0]['profile_id'],
-              });
+                });
               }
             });
           } else {
@@ -296,21 +294,27 @@ router.post('/create', function(req, res, next) {
     console.log(data);
     var profile_id = Math.random().toString(36).substr(2, 9);
     var token = Math.random().toString(36).substr(2, 9);
-    connection.query(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,1,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`, function(error,results,fields){
-      // connection.query(`INSERT INTO interests_users (user_id, interests_id) VALUES ('${results.insertId}', 0)`, function(error,results2,fields){
-          conn.release();
-          // res.send(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,1,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`);
-           res.send({
-            status : 'success',
-            token : token,
-            name : data.name,
-            id : results.insertId,
-            image : data.image,
-            email : data.email,
-            cover : data.cover,
-            about : data.about,
-            profile_id : profile_id,
-        // });
+    console.log(data.interests);
+    connection.query(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,0,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`, function(error,results,fields){
+      data.interests.forEach(interest => {
+        connection.query(`INSERT INTO interests_users (user_id, interest_id) VALUES (${results.insertId}, ${interest})`, function(error,results2,fields){
+
+        });
+      });
+      conn.release();
+      res.send({
+        status : 'success',
+        token : token,
+        name : data.name,
+        id : results.insertId,
+        image : data.image,
+        email : data.email,
+        cover : data.cover,
+        about : data.about,
+        profile_id : profile_id,
+        country : data.country,
+        city : data.city,
+        gender : data.gender
       });
     });
   });

@@ -4,7 +4,7 @@
       'text-align': translate.currentLang == 'ar' ? 'right' : ''}">{{'create_post' | translate}}</p>
       <div class="row">
           <div class="col col-2">
-              <img src="{{userImage}}">
+              <img src="{{userImage}}" onError="this.onerror=null;this.src='./assets/images/marc.jpg';">
           </div>
           <div class="col col-10">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{'write_post' | translate}}" [(ngModel)]="post_data.body"></textarea>
