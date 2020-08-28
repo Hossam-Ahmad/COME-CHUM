@@ -17,7 +17,7 @@
 						 <div class="col">
 							  <div class="login-title">
 						   <h5>{{'register' | translate}}</h5>
-						    <div class="social-login">
+						    <div class="social-login" *ngIf="social_media">
                                     <button type="button" class="btn btn-primary facebook-login" (click)="loginFB()">
 									<i class="fab fa-facebook-f"></i>
 									 <span style="margin-right: 1em;">{{'login_with_facebook' | translate}}</span>
@@ -28,7 +28,7 @@
                                     <button type="button" class="btn btn-primary insta-login" (click)="loginInsta()">
 									   <i class="fab fa-instagram"></i>
 								    </button>
-							 </div>
+							</div>
 						</div>
 							 
 						 </div>
@@ -161,7 +161,7 @@
 									  </mat-progress-spinner>
 										  <span *ngIf="!loading">{{'continue' | translate}}</span>
 									  </button>
-									  <button *ngIf="phase != 6" class="btn btn-primary forget-btn" style="background: transparent;color: #b33998;margin-top: 1em;" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
+									  <button *ngIf="phase != 6 && phase > 1" class="btn btn-primary forget-btn" style="background: transparent;color: #b33998;margin-top: 1em;" type="submit" form="form1" data-placement-from="top" data-placement-align="left"
 									  data-animate-enter="" data-animate-exit="" data-color-name="bg-black" (click)="back()">
 										  <span *ngIf="!loading">{{'back' | translate}}</span>
 									  </button>

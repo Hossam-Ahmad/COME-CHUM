@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthUserService } from '../../services/authUser.service';
 import { Router } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LocationsService } from 'src/services/locations.service';
 import { UsersService } from 'src/services/users.service';
 import { ContestComponent } from 'src/components/contest/contest.component';
+import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { ContestComponent } from 'src/components/contest/contest.component';
 })
 export class RegisterWebsiteComponent implements OnInit {
 
+  public social_media = true;
   public email = '';
   public name = '';
   public password = '';
@@ -44,14 +46,15 @@ export class RegisterWebsiteComponent implements OnInit {
   mode = 'indeterminate';
 
   constructor(
-    public authService: AuthService,
     public router: Router,
     private social: SocialService,
     private notifierService: NotifierService,
     private interestsService: InterestsService,
     private locationsService: LocationsService,
     public translate: TranslateService,
-    private usersService: UsersService) {
+    private usersService: UsersService,
+    private socialAuthService: AuthService,
+    private authService: AuthUserService) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
     this.email = navigation.extras.state ? navigation.extras.state.email : '';
@@ -61,26 +64,6 @@ export class RegisterWebsiteComponent implements OnInit {
   ngOnInit() {
     this.loadInterests();
     this.getCountries();
-  }
-
-  loginTwitter() {
-    this.social.loginTwitter().subscribe(data => {
-
-      const d = new Date();
-      d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
-      const expires = `expires=${d.toUTCString()}`;
-      document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
-      document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
-      window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
-    });
-  }
-
-  loginFB() {
-
-  }
-
-  loginInsta() {
-
   }
 
   continue() {
@@ -153,6 +136,64 @@ export class RegisterWebsiteComponent implements OnInit {
     this.usersService.register(userData).subscribe( data => {
       this.router.navigateByUrl('/activate');
     });
+  }
+
+  loginTwitter() {
+    this.social.loginTwitter().subscribe(data => {
+
+      const d = new Date();
+      d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
+      const expires = `expires=${d.toUTCString()}`;
+      document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
+      document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
+      window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
+    });
+  }
+
+  loginGoogle(): void {
+
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        console.log('google sign in data : ' , userData);
+        this.social.loginGoogle(userData.id).subscribe( data => {
+          console.log(data);
+          if (data['status'] === 'success') {
+              this.loading = false;
+              this.authService.setToken(data['token']);
+              this.authService.setUserData(data);
+              this.router.navigateByUrl('/feed');
+          } else {
+              this.loading = false;
+              this.notifierService.show({
+                type : 'error',
+                message: 'ليس هناك حساب مربوط بهذه البيانات',
+              });
+          }
+        });
+      }
+    );
+  }
+
+  loginFB(): void {
+
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      (userData) => {
+        console.log(userData);
+        this.social.loginFb(userData.id).subscribe( data => {
+          console.log(data);
+          if (data['status'] === 'success') {
+              this.loading = false;
+              this.notifierService.show({
+                type : 'error',
+                message: 'هناك حساب مربوط بهذه البيانات',
+              });
+          } else {
+            this.loading = false;
+            this.social_media = false;
+            console.log(userData);
+          }
+        });
+      });
   }
 
 }
