@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
 import { InterestsService } from 'src/services/interests.service';
@@ -40,6 +40,10 @@ export class RegisterWebsiteComponent implements OnInit {
   public cities = [];
   selectedInterests = [];
   page = 1;
+  private social_id_key = '';
+  private social_id_value = '';
+  private social_token_key = '';
+  private social_token_value = '';
 
 
   color = 'white';
@@ -54,11 +58,27 @@ export class RegisterWebsiteComponent implements OnInit {
     public translate: TranslateService,
     private usersService: UsersService,
     private socialAuthService: AuthService,
-    private authService: AuthUserService) {
+    private authService: AuthUserService,
+    private route: ActivatedRoute) {
     this.height = window.innerHeight + 'px';
     const navigation = this.router.getCurrentNavigation();
     this.email = navigation.extras.state ? navigation.extras.state.email : '';
     this.password = navigation.extras.state ? navigation.extras.state.password : '';
+    this.route.queryParams.subscribe(params => {
+      if (params['status'] === 'failed') {
+        this.social_media = false;
+        this.name = params['name'];
+        this.social_id_key = 'twitter_id';
+        this.social_id_value = params['id'];
+        this.social_token_key = 'twitter_token';
+        this.social_token_value = params['token'];
+      } else {
+        this.notifierService.show({
+          type : 'error',
+          message: 'هناك حساب مربوط بهذه البيانات',
+        });
+      }
+    });
   }
 
   ngOnInit() {
@@ -133,6 +153,10 @@ export class RegisterWebsiteComponent implements OnInit {
       postal_code : this.postal_code,
       interests : interestsParm
     };
+    if (this.social_id_key !== '') {
+      userData[this.social_id_key] = this.social_id_value;
+      userData[this.social_token_key] = this.social_token_value;
+    }
     this.usersService.register(userData).subscribe( data => {
       this.router.navigateByUrl('/activate');
     });
@@ -140,12 +164,12 @@ export class RegisterWebsiteComponent implements OnInit {
 
   loginTwitter() {
     this.social.loginTwitter().subscribe(data => {
-
       const d = new Date();
       d.setTime(d.getTime() +  24 * 60 * 60 * 1000);
       const expires = `expires=${d.toUTCString()}`;
       document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
       document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
+      document.cookie = `source_link_twitter=/register; ${expires}`;
       window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
     });
   }
@@ -158,16 +182,20 @@ export class RegisterWebsiteComponent implements OnInit {
         this.social.loginGoogle(userData.id).subscribe( data => {
           console.log(data);
           if (data['status'] === 'success') {
-              this.loading = false;
-              this.authService.setToken(data['token']);
-              this.authService.setUserData(data);
-              this.router.navigateByUrl('/feed');
+            this.loading = false;
+            this.notifierService.show({
+              type : 'error',
+              message: 'هناك حساب مربوط بهذه البيانات',
+            });
           } else {
-              this.loading = false;
-              this.notifierService.show({
-                type : 'error',
-                message: 'ليس هناك حساب مربوط بهذه البيانات',
-              });
+            this.social_media = false;
+            this.email = userData.email;
+            this.name = userData.name;
+            this.profile_picture = userData.image;
+            this.social_id_key = 'google_id';
+            this.social_id_value = userData.id;
+            this.social_token_key = 'google_token';
+            this.social_token_value = userData.token;
           }
         });
       }
@@ -190,7 +218,13 @@ export class RegisterWebsiteComponent implements OnInit {
           } else {
             this.loading = false;
             this.social_media = false;
-            console.log(userData);
+            this.email = userData.email;
+            this.name = userData.name;
+            this.profile_picture = userData.image;
+            this.social_id_key = 'fb_id';
+            this.social_id_value = userData.id;
+            this.social_token_key = 'fb_token';
+            this.social_token_value = userData.token;
           }
         });
       });

@@ -88,26 +88,19 @@ router.get('/callbackTwitter', function(req, res, next) {
     });
 
     twitter.getAccessToken(req.query.oauth_token, req.cookies.requestTokenSecret, req.query.oauth_verifier, function(error, accessToken, accessTokenSecret, results) {
+        console.log(results);
         if (error) {
             console.log(error);
         } else {
-            conn.query(`SELECT * FROM users where twitter_id = '${results.user_id}'`, function(error,results,fields){
-                conn.release();
-                if(results.length > 0){
-                    res.send({
-                        status : 'success',
-                        token : results[0]['token'],
-                        name : results[0]['name'],
-                        id : results[0]['id'],
-                        image : results[0]['image'],
-                        email : results[0]['email'],
-                        cover : results[0]['cover'],
-                        about : results[0]['about'],
-                        profile_id : results[0]['profile_id'],
-                    });
-                } else {
-                  res.send({status : 'failed'});
-                }
+            connection.getConnection(function (err, conn) { 
+                conn.query(`SELECT * FROM users where twitter_id = '${results.user_id}'`, function(error,results2,fields){
+                    conn.release();
+                    if(results2.length > 0){
+                        res.redirect(`${req.cookies.source_link_twitter}?status=success&id=${results2[0]['id']}&name=${results2[0]['name']}&token=${results2[0]['token']}&email=${results2[0]['email']}&cover=${results2[0]['cover']}&about=${results2[0]['about']}&profile_id=${results2[0]['profile_id']}&image=${results2[0]['image']}`);
+                    } else {
+                        res.redirect(`${req.cookies.source_link_twitter}?status=failed&id=${results.user_id}&name=${results.screen_name}&token=${accessToken}`);
+                    }
+                });
             });
         }
     });

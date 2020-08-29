@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/authUser.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SocialService } from 'src/services/social.service';
 import { NotifierService } from 'angular-notifier';
 import { UsersService } from 'src/services/users.service';
@@ -31,9 +31,31 @@ export class LoginWebsiteComponent implements OnInit {
     private social: SocialService,
     private notifierService: NotifierService,
     private users: UsersService,
-    private socialAuthService: AuthService
+    private socialAuthService: AuthService,
+    private route: ActivatedRoute
     ) {
     this.height = window.innerHeight + 'px';
+    this.route.queryParams.subscribe(params => {
+      if (params['status'] === 'failed') {
+        this.notifierService.show({
+          type : 'error',
+          message: 'ليس هناك حساب مربوط بهذه البيانات',
+        });
+      } else if (params['status'] === 'success') {
+        this.authService.setToken(params['token']);
+        this.authService.setUserData({
+          token : params['token'],
+          name : params['name'],
+          id : params['id'],
+          image : params['image'],
+          email : params['email'],
+          cover : params['cover'],
+          about : params['about'],
+          profile_id : params['profile_id']
+        });
+        this.router.navigateByUrl('/feed');
+      }
+    });
   }
 
   ngOnInit() {
@@ -47,6 +69,7 @@ export class LoginWebsiteComponent implements OnInit {
       const expires = `expires=${d.toUTCString()}`;
       document.cookie = `requestToken=${data['requestToken']}; ${expires}`;
       document.cookie = `requestTokenSecret=${data['requestTokenSecret']}; ${expires}`;
+      document.cookie = `source_link_twitter=/login; ${expires}`;
       window.location.href = `https://twitter.com/oauth/authenticate?oauth_token=${data['requestToken']}`;
     });
   }

@@ -295,7 +295,7 @@ router.post('/create', function(req, res, next) {
     var profile_id = Math.random().toString(36).substr(2, 9);
     var token = Math.random().toString(36).substr(2, 9);
     console.log(data.interests);
-    connection.query(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,0,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}')`, function(error,results,fields){
+    connection.query(`INSERT INTO users (name,email,password,country,city,phone,postal_code,gender,profile_id,package,status,image,cover,about,online,token,fb_id,fb_token,google_id,google_token,twitter_id,twitter_token) VALUES ( '${data.name}','${data.email}','${data.password}',${data.country},${data.city},'${data.prefix + data.phone}','${data.postal_code}',${data.gender},'${profile_id}',0,0,'${data.profile_picture}','${data.cover}','${data.about}',0,'${token}','${data.fb_id ? data.fb_id : null}','${data.fb_token ? data.fb_token : null}','${data.google_id ? data.google_id : null}','${data.google_token ? data.google_token : null}','${data.twitter_id ? data.twitter_id : null}','${data.twitter_token ? data.twitter_token : null}')`, function(error,results,fields){
       data.interests.forEach(interest => {
         connection.query(`INSERT INTO interests_users (user_id, interest_id) VALUES (${results.insertId}, ${interest})`, function(error,results2,fields){
 

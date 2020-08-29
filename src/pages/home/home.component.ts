@@ -153,4 +153,8 @@ export class HomeComponent implements OnInit , OnDestroy {
     }
   }
 
+  search() {
+    this.router.navigate(['/login']);
+  }
+
 }
