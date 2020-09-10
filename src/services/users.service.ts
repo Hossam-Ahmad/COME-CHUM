@@ -91,4 +91,8 @@ export class UsersService {
       });
     }
 
+    searchByPackage(package_id) {
+      return this.httpClient.get(`${environment.api}users/packages/${package_id}`);
+    }
+
 }

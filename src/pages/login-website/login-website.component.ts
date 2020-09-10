@@ -9,6 +9,7 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from 'angular-6-social-login';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-website',
@@ -32,14 +33,15 @@ export class LoginWebsiteComponent implements OnInit {
     private notifierService: NotifierService,
     private users: UsersService,
     private socialAuthService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public translate: TranslateService
     ) {
     this.height = window.innerHeight + 'px';
     this.route.queryParams.subscribe(params => {
       if (params['status'] === 'failed') {
         this.notifierService.show({
           type : 'error',
-          message: 'ليس هناك حساب مربوط بهذه البيانات',
+          message: this.translate.instant('no_account_attached'),
         });
       } else if (params['status'] === 'success') {
         this.authService.setToken(params['token']);
@@ -90,7 +92,7 @@ export class LoginWebsiteComponent implements OnInit {
               this.loading = false;
               this.notifierService.show({
                 type : 'error',
-                message: 'ليس هناك حساب مربوط بهذه البيانات',
+                message: this.translate.instant('no_account_attached'),
               });
           }
         });
@@ -113,7 +115,7 @@ export class LoginWebsiteComponent implements OnInit {
               this.loading = false;
               this.notifierService.show({
                 type : 'error',
-                message: 'ليس هناك حساب مربوط بهذه البيانات',
+                message: this.translate.instant('no_account_attached'),
               });
           }
         });

@@ -75,7 +75,7 @@ export class RegisterWebsiteComponent implements OnInit {
       } else {
         this.notifierService.show({
           type : 'error',
-          message: 'هناك حساب مربوط بهذه البيانات',
+          message: this.translate.instant('account_attached'),
         });
       }
     });
@@ -185,7 +185,7 @@ export class RegisterWebsiteComponent implements OnInit {
             this.loading = false;
             this.notifierService.show({
               type : 'error',
-              message: 'هناك حساب مربوط بهذه البيانات',
+              message: this.translate.instant('account_attached'),
             });
           } else {
             this.social_media = false;
@@ -213,7 +213,7 @@ export class RegisterWebsiteComponent implements OnInit {
               this.loading = false;
               this.notifierService.show({
                 type : 'error',
-                message: 'هناك حساب مربوط بهذه البيانات',
+                message: this.translate.instant('account_attached'),
               });
           } else {
             this.loading = false;

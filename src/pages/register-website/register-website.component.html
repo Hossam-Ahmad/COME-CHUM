@@ -135,7 +135,7 @@
 						<!-- phase 4 profile picture -->
 						<div *ngIf="phase == 4" class="interests-container distance"> 
 							<p>{{'profile_picture' | translate }}</p>
-							<img class="profile-picture" src="../../../assets/images/upload.png">
+							<img class="profile-picture" src="{{profile_picture != '' ? profile_picture : '../../../assets/images/upload.png' }}">
 						</div>
 						<!-- end phase 4 -->
 

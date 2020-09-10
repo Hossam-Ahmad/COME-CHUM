@@ -138,6 +138,8 @@
   "join" : "Join",
   "leave" : "Leave",
   "no_media" : "No media is uploaded yet !",
+  "account_attached" : "There is an account linked to this data",
+  "no_account_attached" : "There is no account linked to this data",
   "about" : "About",
   "undetermined" : "Undetermined",
   "deadline" : "Deadline : ",
