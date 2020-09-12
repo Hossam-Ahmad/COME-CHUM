@@ -3,6 +3,8 @@ import { ContactService } from '../../services/contact.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MiscService } from 'src/services/misc.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import { MembersComponent } from 'src/components/members/members.component';
 
 @Component({
   selector: 'app-contact',
@@ -18,7 +20,8 @@ export class ContactComponent implements OnInit {
   constructor(
     public contactService: ContactService,
     private router: Router,
-    public misc: MiscService) {
+    public misc: MiscService,
+    private dialog: MatDialog) {
     this.aboutHeight = (window.innerHeight) * ( 2 / 3 ) + 'px';
   }
 
@@ -48,6 +51,14 @@ export class ContactComponent implements OnInit {
 
   details(index) {
 
+  }
+
+  send() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.panelClass = 'colorize-background';
+    this.dialog.open(MembersComponent, dialogConfig);
   }
 
 }

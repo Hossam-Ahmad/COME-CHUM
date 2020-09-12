@@ -21,7 +21,7 @@ router.get('/all/:pageId', function(req, res, next) {
 router.post('/create', function(req, res, next) {
   connection.getConnection(function (err, conn) { 
     var data = req.body['data'];
-    conn.query(`INSERT INTO intersts(name_ar, name_en) VALUES
+    conn.query(`INSERT INTO interests(name_ar, name_en) VALUES
      ('${data.name_ar}' , '${data.name_en}' )`, function(error,results,fields){
       conn.release();
       res.send({

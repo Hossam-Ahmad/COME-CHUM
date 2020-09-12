@@ -15,6 +15,8 @@ export class InterestDetailsComponent implements OnInit {
 
   public name_ar;
   public name_en;
+  public btn_title = '';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,11 +32,31 @@ export class InterestDetailsComponent implements OnInit {
         this.interestsService.get(this.interestId).subscribe( data => {
           console.log(data);
           if (data != null) {
+            this.btn_title = 'تعديل';
             this.interestData = data[0];
             this.name_ar = this.interestData.name_ar;
             this.name_en = this.interestData.name_en;
+          } else {
+            this.btn_title = 'إضافه';
           }
         });
+      });
+  }
+
+  perform() {
+    if( this.btn_title == 'إضافه') {
+      this.create();
+    } else {
+      this.update();
+    }
+  }
+
+  create() {
+      this.interestsService.create({
+          name_ar : this.name_ar,
+          name_en : this.name_en,
+      }).subscribe( data => {
+        this.router.navigate(['/cpanel/interests']);
       });
   }
 
