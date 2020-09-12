@@ -4,11 +4,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-members',
-  templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss']
+  selector: 'app-bulk-message',
+  templateUrl: './bulk-message.component.html',
+  styleUrls: ['./bulk-message.component.scss']
 })
-export class MembersComponent implements OnInit {
+export class BulkMessageComponent implements OnInit {
 
   pageId = 1;
   groupId = 0;
@@ -17,7 +17,7 @@ export class MembersComponent implements OnInit {
   constructor(
     private groupsService: GroupsService,
     private router: Router,
-    private dialogRef: MatDialogRef<MembersComponent>,
+    private dialogRef: MatDialogRef<BulkMessageComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.groupId = data.id;
     }

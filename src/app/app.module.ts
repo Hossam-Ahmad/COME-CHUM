@@ -102,6 +102,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardNavbarComponent } from '../components/dashboard-navbar/dashboard-navbar.component';
 import { MembersComponent } from 'src/components/members/members.component';
+import { BulkMessageComponent } from 'src/components/bulk-message/bulk-message.component';
 import { SidebarWebsiteComponent } from 'src/components/sidebar-website/sidebar-website.component';
 import { SliderComponent } from 'src/components/slider/slider.component';
 import { MapComponent } from 'src/components/map/map.component';
@@ -237,6 +238,7 @@ export function getAuthServiceConfigs() {
     UserProfileComponent,
     ChatContactComponent,
     MembersComponent,
+    BulkMessageComponent,
     BlogsComponent,
     PackagesComponent,
     ForgetComponent,
@@ -374,6 +376,6 @@ export function getAuthServiceConfigs() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MembersComponent, NewMessageComponent, CheckoutComponent, CheckoutCardComponent, SearchComponent, CreatePostOptionsComponent]
+  entryComponents: [MembersComponent,BulkMessageComponent, NewMessageComponent, CheckoutComponent, CheckoutCardComponent, SearchComponent, CreatePostOptionsComponent]
 })
 export class AppModule { }
