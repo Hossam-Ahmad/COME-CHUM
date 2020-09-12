@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { PackagesService } from 'src/services/packages.service';
 import { StaticticsService } from 'src/services/statictics.service';
 
 @Component({
@@ -13,9 +14,14 @@ export class StaticticsComponent implements OnInit {
   public events = 0;
   public groups = 0;
   public users = 0;
+  public visitors = 0;
+  public users_package = 0;
+  public package = 0;
+  public packages = [];
 
   constructor(
-    public statictics: StaticticsService
+    public statictics: StaticticsService,
+    public packagesService: PackagesService
   ) { }
 
   startAnimationForLineChart(chart) {
@@ -156,16 +162,26 @@ export class StaticticsComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+      this.getPackages();
       this.getStatictics();
   }
 
   getStatictics() {
-    this.statictics.getAll().subscribe(data => {
+    this.statictics.getAll(this.package).subscribe(data => {
       this.profits = data[0].total;
       this.events = data[0].events;
       this.users = data[0].users;
       this.groups = data[0].groups;
+      this.visitors = data[0].visitors;
+      this.users_package = data[0].users_package;
       console.log(data);
+    });
+  }
+
+  getPackages() {
+    this.packagesService.getAll(1).subscribe( data => {
+      this.packages = data;
+      console.log(this.packages);
     });
   }
 

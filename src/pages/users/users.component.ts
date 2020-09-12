@@ -18,6 +18,11 @@ export class UsersComponent implements OnInit {
   public cover = '';
   public package = 0;
   pageId = 1;
+
+  public search_flag = 0;
+  public name_search = '';
+  public email_search = '';
+  public package_search = -1;
   constructor(
     public usersService: UsersService,
     public router: Router,
@@ -62,7 +67,9 @@ export class UsersComponent implements OnInit {
   }
 
   onScroll() {
-    this.getUsers();
+    if(this.search_flag == 0) {
+      this.getUsers();
+    }
   }
 
   details(index) {
@@ -70,8 +77,14 @@ export class UsersComponent implements OnInit {
   }
 
   search() {
-    this.usersService.searchByPackage(this.package).subscribe( data => {
+    this.search_flag = 1;
+    this.usersService.search({
+      name_search : this.name_search,
+      email_search : this.email_search,
+      package_search : this.package_search
+    }).subscribe( data => {
       this.users = data as Array<any>;
+      console.log(data);
     });
   }
 

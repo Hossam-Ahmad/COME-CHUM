@@ -67,6 +67,41 @@
           </div>
       </div>
       <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">attach_money</i>
+                    </div>
+                    <p class="card-category">باقات المستخدمين</p>
+                    <h3 class="card-title">{{users_package}}</h3>
+                </div>
+                <div class="card-footer">
+                    <select class="select-date" [(ngModel)]="package" (change)="getStatictics()">
+                        <option value="{{package.id}}" *ngFor="let package of packages">{{package.name}}</option>
+                    </select>
+                  <i class="material-icons select-icon">arrow_drop_down</i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">account_box</i>
+                    </div>
+                    <p class="card-category">زائرين بدون تسجيل</p>
+                    <h3 class="card-title">{{visitors}}</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="row">
           <div class="col-md-4">
               <div class="card card-chart">
                   <div class="card-header card-header-success">

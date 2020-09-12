@@ -357,4 +357,38 @@ router.post('/cards/default_card', function(req, res, next) {
   });
 });
 
+router.post('/search', function(req, res, next) {
+  connection.getConnection(function (err, conn) {
+    var data = req.body['data'];
+    console.log(data);
+    var name_search = data['name_search'];
+    var email_search = data['email_search'];
+    var package_search = data['package_search'];
+    var whereConditions = 'where ';
+    if(name_search != '') {
+      whereConditions += `name like '%${name_search}%'`;
+    }
+    if(email_search != '') {
+      if(whereConditions != 'where ') {
+        whereConditions += ' and ';
+      }
+      whereConditions += `email = '${email_search}'`;
+    }
+    if(package_search != -1) {
+      if(whereConditions != 'where ') {
+        whereConditions += ' and ';
+      }
+      whereConditions += `package = ${package_search}`;
+    }
+    if(whereConditions == 'where ') {
+      whereConditions = '';
+    }
+    console.log(`select * from users ${whereConditions}`);
+    connection.query(`select * from users ${whereConditions}`, function(error,results,fields){
+      conn.release();
+      res.send(results);
+    });
+  });
+});
+
 module.exports = router;

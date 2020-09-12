@@ -8,6 +8,32 @@
                                 <h4 class="card-title ">قائمه المستخدمين</h4>
                             </div>
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="card-footer">
+                                            <select class="select-date" [(ngModel)]="package_search" style="width:100%;text-align: center;">
+                                                <option value="-1">ابحث بالباقه</option>
+                                                <option value="{{package.id}}" *ngFor="let package of packages">{{package.name}}</option>
+                                            </select>
+                                          <i class="material-icons select-icon">arrow_drop_down</i>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput style="text-align: center;"  placeholder="ابحث بالايميل" [(ngModel)]="email_search" [ngModelOptions]="{standalone: true}">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-4">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput style="text-align: center;" placeholder="ابحث بالاسم" [(ngModel)]="name_search" [ngModelOptions]="{standalone: true}">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <button style="margin: 2em 0em 2em 0em;width: 100%;" mat-raised-button type="submit" class="btn btn-primary pull-right btn-create" (click)="search()">بحث</button>
+                                </div>
+
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
@@ -47,7 +73,7 @@
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="open(i)">فتح</button></td>
                                                 <td><button mat-raised-button type="submit" class="btn btn-primary pull-right" (click)="details(i)">تفاصيل</button></td>
                                                 <td>{{misc.formatDate(user.created_at)}}</td>
-                                                <td>{{user.package && packages.length > 0 ? packages[user.package].name : ''}}</td>
+                                                <td>{{packages.length > 0 ? packages[user.package].name : ''}}</td>
                                                 <td>{{user.email}}</td>
                                                 <td>{{user.name}}</td>
                                                 <td class="text-primary">

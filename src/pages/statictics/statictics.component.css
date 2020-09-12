@@ -5,3 +5,18 @@
 .card-category {
     font-family: cairo-regular;
 }
+
+.select-date{
+    border: 1px solid #999;
+    border-radius: 25px;
+    width: 70%;
+    text-align: center;
+    margin: auto;
+}
+
+.select-icon{
+    position: relative;
+    font-size: 16px;
+    color: #999;
+    right: 3em;
+}

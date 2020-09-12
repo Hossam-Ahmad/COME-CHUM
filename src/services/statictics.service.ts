@@ -10,8 +10,8 @@ export class StaticticsService {
                 public router: Router
        ) {}
 
-    getAll(): any {
-      return this.httpClient.get(`${environment.api}statictics/all`);
+    getAll(package_id): any {
+      return this.httpClient.get(`${environment.api}statictics/all/${package_id}`);
     }
 
 }

@@ -44,6 +44,22 @@
     }
 
 }
+
+.select-date{
+    border: 1px solid #999;
+    border-radius: 25px;
+    width: 70%;
+    text-align: center;
+    margin: auto;
+}
+
+.select-icon{
+    position: relative;
+    font-size: 16px;
+    color: #999;
+    right: 3em;
+}
+
 @media (max-width: 768px) {
     .titlePicture{height: 12em !important;}
     .worksInner{
