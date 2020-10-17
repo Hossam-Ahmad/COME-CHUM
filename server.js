@@ -33,7 +33,7 @@ const interests = require('./src/routes/interests');
 const locations = require('./src/routes/locations');
 const notifications = require('./src/routes/notifications');
 const app = express();
-const port = process.env.PORT || 4200;
+const port = process.env.PORT || 80;
 
 app.use(compression());
 app.use(cors());
